@@ -5,9 +5,9 @@
 }
 
 .background--login {
-  background-image: url('../../../public/assets/images/backgrounds/login.svg');
+  background-image: url('../../assets/images/backgrounds/login.svg');
 }
 
 .background--signup {
-  background-image: url('../../../public/assets/images/backgrounds/signup.svg');
+  background-image: url('../../assets/images/backgrounds/signup.svg');
 }

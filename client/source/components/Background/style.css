@@ -1,0 +1,13 @@
+.background {
+  background-size: 365px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.background--login {
+  background-image: url('../../../public/assets/images/backgrounds/login.svg');
+}
+
+.background--signup {
+  background-image: url('../../../public/assets/images/backgrounds/signup.svg');
+}

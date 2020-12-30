@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+    <link
+      rel="shortcut icon"
+      href="../../../public/assets/images/favicon.ico"
+    />
+    <!-- global -->
+    <link rel="stylesheet" href="../../styles/root.css" />
+    <!-- page -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fast-links">
+      <a href="../Error/index.html">error_500</a>
+      <a href="../Error_404/index.html">error_404</a>
+      <a href="../Login/index.html">login</a>
+      <a href="../Signup/index.html">singup</a>
+      <a href="../Chat/index.html">chat</a>
+    </div>
+    <div id="app" class="">
+      <div class="chat">
+        <div class="chat_list chat-list">
+          <div class="chat-list_top">
+            <label for="search_user" class="input-label chat-list_search">
+              <input
+                type="text"
+                class="input input--icon input--icon-search chat-list_search-input"
+                name="search_user"
+                tabindex="1"
+              />
+            </label>
+            <button
+              class="button button--icon button--icon-add-user button--size-s chat-list_add-user"
+            ></button>
+          </div>
+
+          <div class="chat-list_mid">
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status status--online"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">
+                  Тимофей Козлов
+                </div>
+                <div class="chat-item_content text--size-4">
+                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                  amet sint. Velit officia consequat duis enim velit mollit.
+                  Exercitation veniam consequat sunt nostrud amet.
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">01:17</div>
+                <div class="chat-item_badge badge">3</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item chat-item--select">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo2.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status status--wait"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">
+                  Александддра Яковлееева
+                </div>
+                <div class="chat-item_content text--size-4">
+                  Сonsequat duis enim velit mollit. Exercitation veniam
+                  consequat sunt nostrud amet.
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">11:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo3.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">
+                  eslint-config-airbnb@18.2.1
+                </div>
+                <div class="chat-item_content text--size-4">
+                  requires a peer of eslint-plugin-import@^2.22.1 but none is
+                  installed. Y
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">11:25</div>
+                <div class="chat-item_badge badge">!</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo4.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">Red t-short</div>
+                <div class="chat-item_content text--size-4">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Blanditiis natus assumenda sint velit sed provident temporibus
+                  accusantium illo recusandae? Quam neque autem eaque earum,
+                  magni quisquam! Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="chat-list_item chat-item">
+              <div class="chat-item_left">
+                <div class="chat-item_avatar">
+                  <img
+                    src="../../../public/assets/images/test/photo5.png"
+                    alt="avatar"
+                    class="avatar"
+                  />
+                  <div class="chat-item_status status"></div>
+                </div>
+              </div>
+              <div class="chat-item_mid">
+                <div class="chat-item_name-user text--size-3">MoreUsers</div>
+                <div class="chat-item_content text--size-4">
+                  Repellendus minus veniam quibusdam!
+                </div>
+              </div>
+              <div class="chat-item_right">
+                <div class="chat-item_date text--size-4">17:25</div>
+              </div>
+            </div>
+
+            <!--  -->
+          </div>
+
+          <div class="chat-list_bot">
+            <a
+              href=""
+              class="link text--a-center text--size-2 chat-list_link-profile"
+            >
+              <i class="icon icon-profile"></i>
+              &#8203; My profile
+            </a>
+          </div>
+        </div>
+        <div class="chat_messages"></div>
+      </div>
+    </div>
+  </body>
+</html>

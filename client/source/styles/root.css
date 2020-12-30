@@ -1,0 +1,62 @@
+@import url('./typography.css');
+@import url('./scroll.css');
+
+@import url('../components/Background/style.css');
+@import url('../components/Form/style.css');
+@import url('../components/Input/style.css');
+@import url('../components/Link/style.css');
+@import url('../components/Button/style.css');
+@import url('../components/Icon/style.css');
+@import url('../components/Avatar/style.css');
+@import url('../components/ChatItem/style.css');
+@import url('../components/Badge/style.css');
+@import url('../components/Status/status.css');
+@import url('../components/ChatList/style.css');
+
+:root {
+  --color-white: white;
+  --color-black: black;
+  --color-gray-1: #333;
+  --color-gray-2: #4f4f4f;
+  --color-gray-3: #828282;
+  --color-gray-4: #bdbdbd;
+  --color-gray-5: #e0e0e0;
+  --color-gray-6: #f2f2f2;
+  --color-red: #eb5757;
+  --color-blue-1: #2f80ed;
+  --color-blue-2: #2d9cdb;
+  --color-blue-3: #56ccf2;
+  --color-blue-4: #c0f0ff;
+  --color-green-1: #219653;
+  --color-green-2: #27ae60;
+  --color-green-3: #6fcf97;
+  --color-orange: #f2994a;
+  --color-yellow: #f2c94c;
+  --color-purple-1: #9b51e0;
+  --color-purple-2: #bb6bd9;
+
+  --border-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  /* width: 100%;
+  height: 100%; */
+  width: 100vw;
+  height: 100vh;
+}
+
+.fast-links {
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.fast-links a {
+  display: inline-block;
+  margin-right: 15px;
+}

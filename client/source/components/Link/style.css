@@ -1,0 +1,17 @@
+.link {
+  text-decoration: none;
+  color: var(--color-blue-1);
+}
+
+.link:hover {
+  color: var(--color-blue-2);
+  text-decoration: underline;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link--block {
+  display: block;
+}

@@ -1,4 +1,5 @@
 @import url('./typography.css');
+@import url('./scroll.css');
 
 @import url('../components/Background/style.css');
 @import url('../components/Form/style.css');
@@ -7,6 +8,7 @@
 @import url('../components/Button/style.css');
 @import url('../components/Icon/style.css');
 @import url('../components/Avatar/style.css');
+@import url('../components/ChatItem/style.css');
 @import url('../components/Badge/style.css');
 @import url('../components/Status/status.css');
 @import url('../components/ChatList/style.css');
@@ -25,13 +27,13 @@
   --color-blue-2: #2d9cdb;
   --color-blue-3: #56ccf2;
   --color-blue-4: #c0f0ff;
-  --color-green-1: green;
-  --color-green-2: rgb(39, 170, 39);
-  --color-green-3: darkgreen;
+  --color-green-1: #219653;
+  --color-green-2: #27ae60;
+  --color-green-3: #6fcf97;
   --color-orange: #f2994a;
-  --color-yellow: gold;
-  --color-purple-1: purple;
-  --color-purple-2: magenta;
+  --color-yellow: #f2c94c;
+  --color-purple-1: #9b51e0;
+  --color-purple-2: #bb6bd9;
 
   --border-radius: 4px;
 }
@@ -46,10 +48,11 @@
   /* width: 100%;
   height: 100%; */
   width: 100vw;
-  height: 96vh;
+  height: 100vh;
 }
 
 .fast-links {
+  position: absolute;
   text-transform: uppercase;
 }
 

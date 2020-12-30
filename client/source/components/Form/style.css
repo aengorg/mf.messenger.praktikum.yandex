@@ -1,0 +1,11 @@
+.form {
+  padding: 20px;
+}
+
+.form--page {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  background-color: var(--color-gray-6);
+  border-radius: var(--border-radius);
+}

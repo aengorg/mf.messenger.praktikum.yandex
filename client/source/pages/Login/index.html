@@ -3,19 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error 500</title>
+    <title>Login</title>
     <link
       rel="shortcut icon"
       href="../../../public/assets/images/favicon.ico"
     />
     <!-- global -->
     <link rel="stylesheet" href="../../styles/root.css" />
-    <link rel="stylesheet" href="../../styles/typography.css" />
-    <!-- components -->
-    <link rel="stylesheet" href="../../components/Background/style.css" />
-    <link rel="stylesheet" href="../../components/Form/style.css" />
-    <link rel="stylesheet" href="../../components/Input/style.css" />
-    <link rel="stylesheet" href="../../components/Button/style.css" />
     <!-- page -->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -24,13 +18,15 @@
       <a href="../Error/index.html">error_500</a>
       <a href="../Error_404/index.html">error_404</a>
       <a href="../Login/index.html">login</a>
+      <a href="../Signup/index.html">signup</a>
+      <a href="../Chat/index.html">chat</a>
     </div>
     <div id="app" class="background background--login">
       <div class="wrapper-center">
-        <div class="form form--page">
+        <form class="form form--page form--error">
           <div class="text--size-1 text--a-center">Welcome!</div>
 
-          <div class="wrapper-inputs">
+          <div class="form_wrapper-inputs">
             <label for="login" class="input-label">
               <span class="text--size-4">Login or email</span>
               <input
@@ -39,7 +35,7 @@
                 value="Abracadabra"
                 placeholder="Login or email"
                 name="login"
-                tabindex="0"
+                tabindex="1"
               />
             </label>
 
@@ -51,15 +47,24 @@
                 value="Abracadabra"
                 placeholder="password"
                 name="password"
-                tabindex="1"
+                tabindex="2"
               />
             </label>
+            <div class="text--size-4 form-error_message">Form error</div>
           </div>
-          <div class="wrapper-inputs">
-            <button class="button button--primary">Log in</button>
-            <a href="">Sign up</a>
-          </div>
-        </div>
+
+          <button
+            tabindex="3"
+            type="submit"
+            name="submit"
+            class="button button--primary"
+          >
+            Log in
+          </button>
+          <a href="../Signup/index.html" tabindex="4" class="link link--block">
+            Sign up
+          </a>
+        </form>
       </div>
     </div>
   </body>

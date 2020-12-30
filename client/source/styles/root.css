@@ -1,3 +1,16 @@
+@import url('./typography.css');
+
+@import url('../components/Background/style.css');
+@import url('../components/Form/style.css');
+@import url('../components/Input/style.css');
+@import url('../components/Link/style.css');
+@import url('../components/Button/style.css');
+@import url('../components/Icon/style.css');
+@import url('../components/Avatar/style.css');
+@import url('../components/Badge/style.css');
+@import url('../components/Status/status.css');
+@import url('../components/ChatList/style.css');
+
 :root {
   --color-white: white;
   --color-black: black;

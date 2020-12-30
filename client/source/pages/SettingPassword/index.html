@@ -24,49 +24,50 @@
       <a class="link" href="../Settings/index.html">Settings</a>
       <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
     </div>
-    <div id="app" class="background background--login">
+    <div id="app" class="background background--security">
       <div class="wrapper-center">
-        <form class="form form--page form--error">
-          <div class="text--size-1 text--a-center">Welcome!</div>
+        <form class="form form--page">
+          <div class="text--size-1 text--a-center">Change password</div>
 
           <div class="form_wrapper-inputs">
-            <label for="login" class="input-label">
-              <span class="text--size-4">Login or email</span>
-              <input
-                type="text"
-                class="input"
-                value="Abracadabra"
-                placeholder="Login or email"
-                name="login"
-                tabindex="1"
-              />
-            </label>
-
-            <label for="password" class="input-label">
-              <span class="text--size-4">Password</span>
+            <label for="password-old" class="input-label">
+              <span class="text--size-4">Old password</span>
               <input
                 type="password"
                 class="input"
                 value="Abracadabra"
-                placeholder="password"
-                name="password"
+                name="password-old"
+                tabindex="1"
+              />
+            </label>
+
+            <label for="password-new" class="input-label">
+              <span class="text--size-4">New password</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                name="password-new"
                 tabindex="2"
               />
             </label>
-            <div class="text--size-4 form-error_message">Form error</div>
+
+            <label for="password-new2" class="input-label">
+              <span class="text--size-4">New password (again)</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                name="password-new2"
+                tabindex="3"
+              />
+            </label>
           </div>
 
-          <button
-            tabindex="3"
-            type="submit"
-            name="submit"
-            class="button button--primary"
-          >
-            Log in
+          <button tabindex="5" class="button button">Cancel</button>
+          <button tabindex="4" type="submit" class="button button--primary">
+            Save
           </button>
-          <a href="../Signup/index.html" tabindex="4" class="link link--block">
-            Sign up
-          </a>
         </form>
       </div>
     </div>

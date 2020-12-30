@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="shortcut icon" href="../../favicon.ico" />
+    <link
+      rel="shortcut icon"
+      href="../../../public/assets/images/favicon.ico"
+    />
+    <!-- global -->
+    <link rel="stylesheet" href="../../styles/root.css" />
+    <!-- page -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fast-links">
+      <a class="link" href="../Error/index.html">error_500</a>
+      <a class="link" href="../Error_404/index.html">error_404</a>
+      <a class="link" href="../Login/index.html">login</a>
+      <a class="link" href="../Signup/index.html">signup</a>
+      <a class="link" href="../Chat/index.html">chat</a>
+      <a class="link" href="../Settings/index.html">Settings</a>
+      <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
+    </div>
+    <div id="app" class="background background--settings">
+      <div class="wrapper-center">
+        <form class="form form--page form--size-l">
+          <div class="text--size-1 text--a-center">Edit profile</div>
+
+          <div class="wrapper">
+            <div class="wrapper_right">
+              <div class="form_wrapper-inputs">
+                <label for="first-name" class="input-label">
+                  <span class="text--size-4">First name</span>
+                  <input
+                    type="text"
+                    class="input"
+                    value="Ivan"
+                    placeholder="Ivan"
+                    name="first-name"
+                    tabindex="3"
+                  />
+                </label>
+
+                <label for="second-name" class="input-label">
+                  <span class="text--size-4">Second name</span>
+                  <input
+                    type="text"
+                    class="input"
+                    value="Markov"
+                    placeholder="Markov"
+                    name="second-name"
+                    tabindex="4"
+                  />
+                </label>
+
+                <label for="chat-name" class="input-label">
+                  <span class="text--size-4">Chat name</span>
+                  <input
+                    type="text"
+                    class="input"
+                    value="invan@yandex.ru"
+                    placeholder="invan@yandex.ru"
+                    name="chat-name"
+                    tabindex="1"
+                  />
+                </label>
+
+                <label for="login" class="input-label">
+                  <span class="text--size-4">Login</span>
+                  <input
+                    type="text"
+                    class="input"
+                    value="Abracadabra"
+                    placeholder="login"
+                    name="login"
+                    tabindex="2"
+                  />
+                </label>
+
+                <label for="phone" class="input-label">
+                  <span class="text--size-4">Phone</span>
+                  <input
+                    type="text"
+                    class="input"
+                    value="+7(900)800-77-12"
+                    placeholder="+7(999)999-99-99"
+                    name="phone"
+                    tabindex="5"
+                  />
+                </label>
+
+                <div>
+                  <span class="text--size-4">Password</span>
+                  <br />
+                  <a href="" class="link text--size-3">Change password</a>
+                </div>
+              </div>
+            </div>
+            <div class="wrapper_left">
+              <div class="form_wrapper-inputs">
+                <div class="text--size-4" style="width: 100%">
+                  Profile photo
+                </div>
+                <div class="avatar"></div>
+                <div class="file-upload">
+                  <label
+                    for="file-upload"
+                    class="file-upload_label text--size-3"
+                  >
+                    Upload an image
+                  </label>
+                  <input
+                    type="file"
+                    name="file-upload"
+                    class="file-upload_input"
+                  />
+                </div>
+                <button class="button button--danger text--size-3">
+                  Remove photo
+                </button>
+              </div>
+            </div>
+          </div>
+          <button tabindex="5" class="button button">Cancel</button>
+          <button tabindex="4" type="submit" class="button button--primary">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

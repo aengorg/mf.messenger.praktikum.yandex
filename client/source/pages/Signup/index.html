@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="shortcut icon"
+      href="../../../public/assets/images/favicon.ico"
+    />
+    <!-- global -->
+    <link rel="stylesheet" href="../../styles/root.css" />
+    <!-- page -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fast-links">
+      <a href="../Error/index.html">error_500</a>
+      <a href="../Error_404/index.html">error_404</a>
+      <a href="../Login/index.html">login</a>
+      <a href="../Signup/index.html">singup</a>
+    </div>
+    <div id="app" class="background background--signup">
+      <div class="wrapper-center">
+        <form class="form form--page">
+          <div class="text--size-1 text--a-center">Join the world!</div>
+
+          <div class="form_wrapper-inputs">
+            <label for="email" class="input-label">
+              <span class="text--size-4">Email</span>
+              <input
+                type="text"
+                class="input"
+                value="invan@yandex.ru"
+                placeholder="invan@yandex.ru"
+                name="email"
+                tabindex="1"
+              />
+            </label>
+
+            <label for="login" class="input-label">
+              <span class="text--size-4">Login</span>
+              <input
+                type="text"
+                class="input"
+                value="Abracadabra"
+                placeholder="login"
+                name="login"
+                tabindex="2"
+              />
+            </label>
+
+            <label for="first_name" class="input-label">
+              <span class="text--size-4">First name</span>
+              <input
+                type="text"
+                class="input"
+                value="Ivan"
+                placeholder="Ivan"
+                name="first_name"
+                tabindex="3"
+              />
+            </label>
+
+            <label for="second_name" class="input-label">
+              <span class="text--size-4">Second name</span>
+              <input
+                type="text"
+                class="input"
+                value="Markov"
+                placeholder="Markov"
+                name="second_name"
+                tabindex="4"
+              />
+            </label>
+
+            <label for="phone" class="input-label">
+              <span class="text--size-4">Phone</span>
+              <input
+                type="text"
+                class="input"
+                value="+7(900)800-77-12"
+                placeholder="+7(999)999-99-99"
+                name="phone"
+                tabindex="5"
+              />
+            </label>
+
+            <label for="password" class="input-label">
+              <span class="text--size-4">Password</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                placeholder="password"
+                name="password"
+                tabindex="6"
+              />
+            </label>
+
+            <label for="password2" class="input-label">
+              <span class="text--size-4">Password (again)</span>
+              <input
+                type="password"
+                class="input input--error"
+                value="Abracadabra"
+                placeholder="password"
+                name="password2"
+                tabindex="7"
+              />
+              <span class="input_error text--size-4">
+                Passwords do not match
+              </span>
+            </label>
+          </div>
+
+          <button type="submit" tabindex="8" class="button button--primary">
+            Registration
+          </button>
+          <br />
+          <a href="../Login/index.html" tabindex="9">Log in</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

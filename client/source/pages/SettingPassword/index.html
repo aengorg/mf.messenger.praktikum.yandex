@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="shortcut icon" href="../../favicon.ico" />
+    <link
+      rel="shortcut icon"
+      href="../../../public/assets/images/favicon.ico"
+    />
+    <!-- global -->
+    <link rel="stylesheet" href="../../styles/root.css" />
+    <!-- page -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fast-links">
+      <a class="link" href="../Error/index.html">error_500</a>
+      <a class="link" href="../Error_404/index.html">error_404</a>
+      <a class="link" href="../Login/index.html">login</a>
+      <a class="link" href="../Signup/index.html">signup</a>
+      <a class="link" href="../Chat/index.html">chat</a>
+      <a class="link" href="../Settings/index.html">Settings</a>
+      <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
+    </div>
+    <div id="app" class="background background--security">
+      <div class="wrapper-center">
+        <form class="form form--page">
+          <div class="text--size-1 text--a-center">Change password</div>
+
+          <div class="form_wrapper-inputs">
+            <label for="password-old" class="input-label">
+              <span class="text--size-4">Old password</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                name="password-old"
+                tabindex="1"
+              />
+            </label>
+
+            <label for="password-new" class="input-label">
+              <span class="text--size-4">New password</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                name="password-new"
+                tabindex="2"
+              />
+            </label>
+
+            <label for="password-new2" class="input-label">
+              <span class="text--size-4">New password (again)</span>
+              <input
+                type="password"
+                class="input"
+                value="Abracadabra"
+                name="password-new2"
+                tabindex="3"
+              />
+            </label>
+          </div>
+
+          <button tabindex="5" class="button button">Cancel</button>
+          <button tabindex="4" type="submit" class="button button--primary">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

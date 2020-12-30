@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/aengorg/mf.messenger.praktikum.yandex/issues"
   },
-  "homepage": "https://github.com/aengorg/mf.messenger.praktikum.yandex#readme"
+  "homepage": "https://github.com/aengorg/mf.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "prettier": "^2.2.1"
+  }
 }

@@ -1,0 +1,8 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "plugins": ["prettier"],
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier"]
+}

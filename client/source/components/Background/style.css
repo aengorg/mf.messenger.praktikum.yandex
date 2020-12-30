@@ -11,3 +11,11 @@
 .background--signup {
   background-image: url('../../assets/images/backgrounds/signup.svg');
 }
+
+.background--settings {
+  background-image: url('../../assets/images/backgrounds/settings.svg');
+}
+
+.background--security {
+  background-image: url('../../assets/images/backgrounds/security.svg');
+}

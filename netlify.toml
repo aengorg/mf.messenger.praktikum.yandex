@@ -1,2 +1,2 @@
 [build]
-  publish = "client/public"
+  publish = "client/source"

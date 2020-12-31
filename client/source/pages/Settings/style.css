@@ -11,7 +11,7 @@
   justify-content: space-between;
 }
 
-.wrapper_left {
+.wrapper_right {
   flex: none;
   width: 170px;
 }

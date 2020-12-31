@@ -23,10 +23,12 @@
       <a class="link" href="../Chat/index.html">chat</a>
       <a class="link" href="../Settings/index.html">Settings</a>
       <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
+      <a class="link" href="../Modal_add/">Modal_add</a>
+      <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
     </div>
     <div id="app" class="background background--login">
       <div class="wrapper-center">
-        <form class="form form--page form--error">
+        <form id="login" class="form form--page form--error">
           <div class="text--size-1 text--a-center">Welcome!</div>
 
           <div class="form_wrapper-inputs">
@@ -56,6 +58,7 @@
             <div class="text--size-4 form-error_message">Form error</div>
           </div>
 
+          <div class="form_buttons-group form_buttons-group--row">
           <button
             tabindex="3"
             type="submit"
@@ -69,6 +72,8 @@
           </a>
         </form>
       </div>
+      </div>
     </div>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

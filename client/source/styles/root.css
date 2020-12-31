@@ -7,6 +7,7 @@
 @import url('../components/Link/style.css');
 @import url('../components/Button/style.css');
 @import url('../components/Icon/style.css');
+@import url('../components/Modal/style.css');
 @import url('../components/Avatar/style.css');
 @import url('../components/FileUpload/style.css');
 @import url('../components/ChatItem/style.css');
@@ -55,6 +56,7 @@
 .fast-links {
   position: absolute;
   text-transform: uppercase;
+  z-index: 9999;
 }
 
 .fast-links a {

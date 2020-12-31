@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <link rel="shortcut icon" href="../../favicon.ico" />
+    <link rel="stylesheet" href="../../styles/root.css" />
+    <link rel="stylesheet" href="../../styles/typography.css" />
+    <!--  -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="fast-links">
+      <a class="link" href="../Error/index.html">error_500</a>
+      <a class="link" href="../Error_404/index.html">error_404</a>
+      <a class="link" href="../Login/index.html">login</a>
+      <a class="link" href="../Signup/index.html">signup</a>
+      <a class="link" href="../Chat/index.html">chat</a>
+      <a class="link" href="../Settings/index.html">Settings</a>
+      <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
+      <a class="link" href="../Modal_add/">Modal_add</a>
+      <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
+    </div>
+    <div id="app">
+      <div class="modal">
+        <div class="modal_content">
+          <span class="text--size-1">Add friend</span>
+          <label for="login" class="input-label">
+            <span class="text--size-4">Login</span>
+            <input
+              type="text"
+              class="input"
+              placeholder="Mark1999"
+              name="login"
+              tabindex="1"
+            />
+          </label>
+          <div class="form_buttons-group">
+            <button class="button" tabindex="2">Cancel</button
+            ><button class="button button--primary" tabindex="3">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

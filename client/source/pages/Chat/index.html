@@ -26,17 +26,22 @@
       <div class="chat">
         <div class="chat_list chat-list">
           <div class="chat-list_top">
-            <label for="search_user" class="input-label chat-list_search">
+            <label for="search_user" class="field chat-list_search">
               <input
                 type="text"
-                class="input input--icon input--icon-search chat-list_search-input"
+                class="field_input field_input--icon field_input--icon-search field_input--width-unlimit"
                 name="search_user"
                 tabindex="1"
               />
             </label>
-            <button
-              class="button button--icon button--icon-add-user button--size-s chat-list_add-user"
-            ></button>
+            <div class="chat-list_actions">
+              <button
+                class="button button--icon button--icon-add-user button--size-s"
+              ></button>
+              <button
+                class="button button--icon button--icon-create-group button--size-s"
+              ></button>
+            </div>
           </div>
 
           <div class="chat-list_mid">
@@ -50,23 +55,21 @@
                       alt="avatar"
                       class="avatar_image"
                     />
-                  </div>
 
-                  <div class="chat-item_status status status--online"></div>
+                    <div class="avatar_status status status--online"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">
-                  Тимофей Козлов
-                </div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">Тимофей Козлов</div>
+                <div class="chat-item_content">
                   Amet minim mollit non deserunt ullamco est sit aliqua dolor do
                   amet sint. Velit officia consequat duis enim velit mollit.
                   Exercitation veniam consequat sunt nostrud amet.
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">01:17</div>
+                <div class="chat-item_date">01:17</div>
                 <div class="chat-item_badge badge">3</div>
               </div>
             </div>
@@ -81,21 +84,19 @@
                       alt="avatar"
                       class="avatar_image"
                     />
+                    <div class="avatar_status status status--wait"></div>
                   </div>
-                  <div class="chat-item_status status status--wait"></div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">
-                  Александддра Яковлееева
-                </div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">Александддра Яковлееева</div>
+                <div class="chat-item_content">
                   Сonsequat duis enim velit mollit. Exercitation veniam
                   consequat sunt nostrud amet.
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">11:25</div>
+                <div class="chat-item_date">11:25</div>
               </div>
             </div>
 
@@ -109,21 +110,21 @@
                       alt="avatar"
                       class="avatar_image"
                     />
+                    <div class="avatar_status status"></div>
                   </div>
-                  <div class="chat-item_status status"></div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">
+                <div class="chat-item_name-user">
                   eslint-config-airbnb@18.2.1
                 </div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_content">
                   requires a peer of eslint-plugin-import@^2.22.1 but none is
                   installed. Y
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">11:25</div>
+                <div class="chat-item_date">11:25</div>
                 <div class="chat-item_badge badge">!</div>
               </div>
             </div>
@@ -138,13 +139,13 @@
                       alt="avatar"
                       class="avatar_image"
                     />
+                    <div class="avatar_status status"></div>
                   </div>
-                  <div class="chat-item_status status"></div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">Red t-short</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">Red t-short</div>
+                <div class="chat-item_content">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Blanditiis natus assumenda sint velit sed provident temporibus
                   accusantium illo recusandae? Quam neque autem eaque earum,
@@ -152,7 +153,7 @@
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -166,18 +167,18 @@
                       alt="avatar"
                       class="avatar_image"
                     />
+                    <div class="avatar_status status"></div>
                   </div>
-                  <div class="chat-item_status status"></div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -185,18 +186,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -204,18 +206,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -223,18 +226,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -242,18 +246,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -261,18 +266,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -280,18 +286,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -299,18 +306,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -318,18 +326,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -337,18 +346,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -356,18 +366,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -375,18 +386,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -394,18 +406,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -413,18 +426,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -432,18 +446,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -451,18 +466,19 @@
             <div class="chat-list_item chat-item">
               <div class="chat-item_left">
                 <div class="chat-item_avatar">
-                  <div class="avatar avatar--size-s"></div>
-                  <div class="chat-item_status status"></div>
+                  <div class="avatar avatar--size-s">
+                    <div class="avatar_status status"></div>
+                  </div>
                 </div>
               </div>
               <div class="chat-item_mid">
-                <div class="chat-item_name-user text--size-3">MoreUsers</div>
-                <div class="chat-item_content text--size-4">
+                <div class="chat-item_name-user">MoreUsers</div>
+                <div class="chat-item_content">
                   Repellendus minus veniam quibusdam!
                 </div>
               </div>
               <div class="chat-item_right">
-                <div class="chat-item_date text--size-4">17:25</div>
+                <div class="chat-item_date">17:25</div>
               </div>
             </div>
 
@@ -479,7 +495,69 @@
             </a>
           </div>
         </div>
-        <div class="chat_messages"></div>
+        <div class="chat_area">
+          <div class="chat_top-bar top-bar">
+            <div class="top-bar_avatar">
+              <div class="avatar avatar--size-s">
+                <img
+                  src="../../assets/images/test/photo.png"
+                  alt="avatar"
+                  class="avatar_image"
+                />
+                <div class="status status--online avatar_status"></div>
+              </div>
+            </div>
+            <div class="top-bar_chat-name">Александддра Яковлееева</div>
+            <div class="top-bar_actions">
+              <label for="search_user" class="field">
+                <input
+                  type="text"
+                  class="field_input field_input--icon field_input--icon-search"
+                  name="search_user"
+                  tabindex="1"
+                />
+              </label>
+              <button
+                class="button button--icon button--icon-add-user button--size-s"
+                tabindex="2"
+              ></button>
+              <button
+                class="button button--icon button--icon-remove button--size-s"
+                tabindex="3"
+              ></button>
+            </div>
+          </div>
+          <div class="chat_messages">MESSAGES TODO FINAL</div>
+          <div class="chat_bot-bar">
+            <div class="bot-bar_actions">
+              <button
+                class="button button--icon button--icon-add-photo button--size-s"
+              ></button>
+              <button
+                class="button button--icon button--icon-add-file button--size-s"
+              ></button>
+              <button
+                class="button button--icon button--icon-location button--size-s"
+              ></button>
+              <button
+                class="button button--icon button--icon-emoji button--size-s"
+              ></button>
+            </div>
+
+            <label for="search_user" class="field bot-bar_input">
+              <input
+                type="text"
+                class="field_input field_input--width-unlimit"
+                name="search_user"
+                tabindex="1"
+              />
+            </label>
+
+            <button
+              class="button button--icon button--icon-send button--size-s bot-bar_send"
+            ></button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

@@ -7,6 +7,7 @@
 @import url('../components/Link/style.css');
 @import url('../components/Button/style.css');
 @import url('../components/Icon/style.css');
+@import url('../components/BotBar/style.css');
 @import url('../components/Modal/style.css');
 @import url('../components/Avatar/style.css');
 @import url('../components/FileUpload/style.css');
@@ -75,7 +76,6 @@ html {
 }
 
 .app {
-  /**/
 }
 
 .app--center {

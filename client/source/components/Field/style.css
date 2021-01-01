@@ -23,6 +23,10 @@
   overflow: hidden;
 }
 
+.field_input--width-unlimit {
+  max-width: none;
+}
+
 .field_input::placeholder {
   color: var(--color-gray-5);
 }

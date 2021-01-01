@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Setting password</title>
     <link rel="shortcut icon" href="../../favicon.ico" />
     <link
       rel="shortcut icon"
@@ -28,39 +28,39 @@
     </div>
     <div id="app" class="background background--security">
       <div class="wrapper-center">
-        <form class="form form--page">
+        <form id="setting-password" class="form form--page">
           <div class="text--size-1 text--a-center">Change password</div>
 
           <div class="form_wrapper-inputs">
-            <label for="password-old" class="input-label">
+            <label for="oldPassword" class="input-label">
               <span class="text--size-4">Old password</span>
               <input
                 type="password"
                 class="input"
                 value="Abracadabra"
-                name="password-old"
+                name="oldPassword"
                 tabindex="1"
               />
             </label>
 
-            <label for="password-new" class="input-label">
+            <label for="newPassword" class="input-label">
               <span class="text--size-4">New password</span>
               <input
                 type="password"
                 class="input"
                 value="Abracadabra"
-                name="password-new"
+                name="newPassword"
                 tabindex="2"
               />
             </label>
 
-            <label for="password-new2" class="input-label">
+            <label for="newPassword2" class="input-label">
               <span class="text--size-4">New password (again)</span>
               <input
                 type="password"
                 class="input"
                 value="Abracadabra"
-                name="password-new2"
+                name="newPassword2"
                 tabindex="3"
               />
             </label>
@@ -74,5 +74,6 @@
         </form>
       </div>
     </div>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Settings</title>
     <link rel="shortcut icon" href="../../favicon.ico" />
     <link
       rel="shortcut icon"
@@ -23,50 +23,46 @@
       <a class="link" href="../Chat/index.html">chat</a>
       <a class="link" href="../Settings/index.html">Settings</a>
       <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
-      <a class="link" href="../Modal_add/">Modal_add</a>
-      <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
     </div>
     <div id="app" class="background background--settings">
       <div class="wrapper-center">
-        <form class="form form--page form--size-l">
+        <form id="setting" class="form form--page form--size-l">
           <div class="text--size-1 text--a-center">Edit profile</div>
-
           <div class="wrapper">
             <div class="wrapper_left">
               <div class="form_wrapper-inputs">
-                <label for="first-name" class="input-label">
+                <label for="first_name" class="input-label">
                   <span class="text--size-4">First name</span>
                   <input
                     type="text"
                     class="input"
                     value="Ivan"
                     placeholder="Ivan"
-                    name="first-name"
-                    tabindex="3"
+                    name="first_name"
+                    tabindex="1"
                   />
                 </label>
 
-                <label for="second-name" class="input-label">
+                <label for="second_name" class="input-label">
                   <span class="text--size-4">Second name</span>
                   <input
                     type="text"
                     class="input"
                     value="Markov"
                     placeholder="Markov"
-                    name="second-name"
-                    tabindex="4"
+                    name="second_name"
+                    tabindex="2"
                   />
                 </label>
 
-                <label for="chat-name" class="input-label">
+                <label for="display_name" class="input-label">
                   <span class="text--size-4">Chat name</span>
                   <input
                     type="text"
                     class="input"
-                    value=""
-                    placeholder="Abracadabra"
-                    name="chat-name"
-                    tabindex="1"
+                    value="Oriental magician"
+                    name="display_name"
+                    tabindex="3"
                   />
                 </label>
 
@@ -76,21 +72,19 @@
                     type="text"
                     class="input"
                     value="Abracadabra"
-                    placeholder="login"
                     name="login"
-                    tabindex="2"
+                    tabindex="4"
                   />
                 </label>
 
                 <label for="email" class="input-label">
-                  <span class="text--size-4">email</span>
+                  <span class="text--size-4">Email</span>
                   <input
                     type="text"
                     class="input"
-                    value="invan@yandex.ru"
-                    placeholder="email"
+                    value="Ivan@yandex.ru"
                     name="email"
-                    tabindex="2"
+                    tabindex="4"
                   />
                 </label>
 
@@ -106,46 +100,51 @@
                   />
                 </label>
 
-                <div>
+                <div style="width: 100%">
                   <span class="text--size-4">Password</span>
                   <br />
-                  <a href="" class="link text--size-3">Change password</a>
+                  <a
+                    tabindex="6"
+                    href="../SettingPassword/index.html"
+                    class="link text--size-3"
+                    >Change password</a
+                  >
                 </div>
               </div>
             </div>
             <div class="wrapper_right">
               <div class="form_wrapper-inputs">
-                <div class="text--size-4" style="width: 100%">
-                  Profile photo
+                <div>
+                  <div class="text--size-4" style="width: 100%">
+                    Profile photo
+                  </div>
+                  <div class="avatar"></div>
                 </div>
-                <div class="avatar"></div>
                 <div class="file-upload">
                   <label
-                    for="file-upload"
+                    tabindex="7"
+                    for="avatar"
                     class="file-upload_label text--size-3"
                   >
                     Upload an image
                   </label>
-                  <input
-                    type="file"
-                    name="file-upload"
-                    class="file-upload_input"
-                  />
+                  <input type="file" name="avatar" class="file-upload_input" />
                 </div>
-                <button class="button button--danger text--size-3">
+                <button tabindex="8" class="button button--danger text--size-3">
                   Remove photo
                 </button>
               </div>
             </div>
           </div>
           <div class="form_buttons-group">
-            <button tabindex="5" class="button button">Cancel</button>
-            <button tabindex="4" type="submit" class="button button--primary">
+            <button tabindex="10" class="button button">Cancel</button>
+            <button tabindex="9" type="submit" class="button button--primary">
               Save
             </button>
           </div>
         </form>
       </div>
     </div>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

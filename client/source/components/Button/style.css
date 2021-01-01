@@ -8,6 +8,7 @@
   border: 1px solid var(--color-gray-5);
   border-radius: var(--border-radius);
   cursor: pointer;
+  font-size: var(--text-size-3);
 }
 
 .button:hover {
@@ -15,7 +16,7 @@
 }
 
 .button:focus {
-  border: 1px solid var(--color-gray-5);
+  border-color: var(--color-blue-2);
   outline: none;
 }
 
@@ -45,4 +46,32 @@
 
 .button--icon-add-user {
   background-image: url('../../assets/images/icons/add_user.svg');
+}
+
+.button--icon-remove {
+  background-image: url('../../assets/images/icons/trash.svg');
+}
+
+.button--icon-add-file {
+  background-image: url('../../assets/images/icons/add_file.svg');
+}
+
+.button--icon-create-group {
+  background-image: url('../../assets/images/icons/add_group.svg');
+}
+
+.button--icon-add-photo {
+  background-image: url('../../assets/images/icons/add_photo_video.svg');
+}
+
+.button--icon-location {
+  background-image: url('../../assets/images/icons/location.svg');
+}
+
+.button--icon-emoji {
+  background-image: url('../../assets/images/icons/emoji.svg');
+}
+
+.button--icon-send {
+  background-image: url('../../assets/images/icons/send.svg');
 }

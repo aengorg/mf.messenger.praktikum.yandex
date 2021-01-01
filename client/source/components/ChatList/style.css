@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-gray-6);
-  padding: 16px 8px 16px 8px;
 }
 
 .chat-list_top {
@@ -45,10 +44,11 @@
   margin-right: 8px;
 }
 
-.chat-list_add-user {
-  flex: none;
-}
-
+/* TODO huck я залез внутрь блока */
 .chat-list_search-input {
   max-width: 100%;
+}
+
+.chat-list_add-user {
+  flex: none;
 }

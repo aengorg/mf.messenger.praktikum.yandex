@@ -1,18 +1,29 @@
-@import url('./typography.css');
 @import url('./scroll.css');
 
+@import url('../components/Title/style.css');
 @import url('../components/Background/style.css');
 @import url('../components/Form/style.css');
-@import url('../components/Input/style.css');
+@import url('../components/Field/style.css');
 @import url('../components/Link/style.css');
 @import url('../components/Button/style.css');
 @import url('../components/Icon/style.css');
+@import url('../components/BotBar/style.css');
+@import url('../components/Modal/style.css');
 @import url('../components/Avatar/style.css');
 @import url('../components/FileUpload/style.css');
 @import url('../components/ChatItem/style.css');
 @import url('../components/Badge/style.css');
 @import url('../components/Status/status.css');
 @import url('../components/ChatList/style.css');
+@import url('../components/TopBar/style.css');
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'),
+    url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('ttf');
+}
 
 :root {
   --color-white: white;
@@ -37,12 +48,24 @@
   --color-purple-2: #bb6bd9;
 
   --border-radius: 4px;
+
+  --text-size-1: 36px;
+  --text-size-2: 22px;
+  --text-size-3: 16px;
+  --text-size-4: 14px;
+  --text-size-5: 11px;
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: var(--text-size-3);
+  font-weight: normal;
 }
 
 #app {
@@ -52,9 +75,25 @@
   height: 100vh;
 }
 
+.app {
+}
+
+.app--center {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* TODO будет удалено, когда не будет необходимости */
 .fast-links {
   position: absolute;
   text-transform: uppercase;
+  z-index: 9999;
+  bottom: 0;
 }
 
 .fast-links a {

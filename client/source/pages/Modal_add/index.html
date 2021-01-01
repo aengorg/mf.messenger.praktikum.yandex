@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modal</title>
+    <title>Modal add user</title>
     <link rel="shortcut icon" href="../../favicon.ico" />
     <link rel="stylesheet" href="../../styles/root.css" />
     <link rel="stylesheet" href="../../styles/typography.css" />
@@ -24,24 +24,27 @@
     </div>
     <div id="app">
       <div class="modal">
-        <div class="modal_content">
-          <span class="text--size-1">Add friend</span>
-          <label for="login" class="input-label">
-            <span class="text--size-4">Login</span>
-            <input
-              type="text"
-              class="input"
-              placeholder="Mark1999"
-              name="login"
-              tabindex="1"
-            />
-          </label>
-          <div class="form_buttons-group">
-            <button class="button" tabindex="2">Cancel</button
-            ><button class="button button--primary" tabindex="3">Add</button>
+        <form id="add-user">
+          <div class="modal_content">
+            <span class="text--size-1">Add friend</span>
+            <label for="login" class="input-label">
+              <span class="text--size-4">Login</span>
+              <input
+                type="text"
+                class="input"
+                placeholder="Mark1999"
+                name="login"
+                tabindex="1"
+              />
+            </label>
+            <div class="form_buttons-group">
+              <button tabindex="2" class="button">Cancel</button
+              ><button tabindex="3" class="button button--primary">Add</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

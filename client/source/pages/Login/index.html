@@ -26,54 +26,52 @@
       <a class="link" href="../Modal_add/">Modal_add</a>
       <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
     </div>
-    <div id="app" class="background background--login">
-      <div class="wrapper-center">
-        <form id="login" class="form form--page form--error">
-          <div class="text--size-1 text--a-center">Welcome!</div>
+    <div id="app" class="app app--center background background--login">
+      <form id="login" class="form form--page form--error">
+        <h1 class="title title--size-1">Welcome!</h1>
 
-          <div class="form_wrapper-inputs">
-            <label for="login" class="input-label">
-              <span class="text--size-4">Login or email</span>
-              <input
-                type="text"
-                class="input"
-                value="Abracadabra"
-                placeholder="Login or email"
-                name="login"
-                tabindex="1"
-              />
-            </label>
+        <div class="form_wrapper-inputs">
+          <label for="login" class="field">
+            <span class="field_label">Email</span>
+            <input
+              type="text"
+              class="field_input"
+              value="Abracadabra"
+              placeholder="Email"
+              name="login"
+              tabindex="1"
+            />
+          </label>
 
-            <label for="password" class="input-label">
-              <span class="text--size-4">Password</span>
-              <input
-                type="password"
-                class="input"
-                value="Abracadabra"
-                placeholder="password"
-                name="password"
-                tabindex="2"
-              />
-            </label>
-            <div class="text--size-4 form-error_message">Form error</div>
-          </div>
+          <label for="password" class="field">
+            <span class="field_label">Password</span>
+            <input
+              type="password"
+              class="field_input"
+              value="Abracadabra"
+              placeholder="password"
+              name="password"
+              tabindex="2"
+            />
+          </label>
+          <div class="text--size-4 form-error_message">Form error</div>
+        </div>
 
-          <div class="form_buttons-group form_buttons-group--row">
+        <div class="form_buttons-group form_buttons-group--row">
           <button
-            tabindex="3"
             type="submit"
             name="submit"
             class="button button--primary"
+            tabindex="3"
           >
             Log in
           </button>
-          <br>
-          <a href="../Signup/index.html" tabindex="4" class="link link--block">
+          <br />
+          <a href="../Signup/index.html" class="link link--block" tabindex="4">
             Sign up
           </a>
-        </form>
-      </div>
-      </div>
+        </div>
+      </form>
     </div>
     <script type="module" src="index.js"></script>
   </body>

@@ -26,53 +26,51 @@
       <a class="link" href="../Modal_add/">Modal_add</a>
       <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
     </div>
-    <div id="app" class="background background--security">
-      <div class="wrapper-center">
-        <form id="setting-password" class="form form--page">
-          <div class="text--size-1 text--a-center">Change password</div>
+    <div id="app" class="app app--center background background--security">
+      <form id="setting-password" class="form form--page">
+        <h1 class="title title--size-1">Change password</h1>
 
-          <div class="form_wrapper-inputs">
-            <label for="oldPassword" class="input-label">
-              <span class="text--size-4">Old password</span>
-              <input
-                type="password"
-                class="input"
-                value="Abracadabra"
-                name="oldPassword"
-                tabindex="1"
-              />
-            </label>
+        <div class="form_wrapper-inputs">
+          <label for="oldPassword" class="field">
+            <span class="field_label">Old password</span>
+            <input
+              type="password"
+              class="field_input"
+              value="Abracadabra"
+              name="oldPassword"
+              tabindex="1"
+            />
+          </label>
 
-            <label for="newPassword" class="input-label">
-              <span class="text--size-4">New password</span>
-              <input
-                type="password"
-                class="input"
-                value="Abracadabra"
-                name="newPassword"
-                tabindex="2"
-              />
-            </label>
+          <label for="newPassword" class="field">
+            <span class="field_label">New password</span>
+            <input
+              type="password"
+              class="field_input"
+              value="Abracadabra"
+              name="newPassword"
+              tabindex="2"
+            />
+          </label>
 
-            <label for="newPassword2" class="input-label">
-              <span class="text--size-4">New password (again)</span>
-              <input
-                type="password"
-                class="input"
-                value="Abracadabra"
-                name="newPassword2"
-                tabindex="3"
-              />
-            </label>
-          </div>
-          <div class="form_buttons-group">
-            <button tabindex="5" class="button button">Cancel</button>
-            <button tabindex="4" type="submit" class="button button--primary">
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
+          <label for="newPassword2" class="field">
+            <span class="field_label">New password (again)</span>
+            <input
+              type="password"
+              class="field_input"
+              value="Abracadabra"
+              name="newPassword2"
+              tabindex="3"
+            />
+          </label>
+        </div>
+        <div class="form_buttons-group">
+          <button tabindex="5" class="button button">Cancel</button>
+          <button tabindex="4" type="submit" class="button button--primary">
+            Save
+          </button>
+        </div>
+      </form>
     </div>
     <script type="module" src="index.js"></script>
   </body>

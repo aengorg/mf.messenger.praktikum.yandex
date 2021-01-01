@@ -24,126 +24,125 @@
       <a class="link" href="../Settings/index.html">Settings</a>
       <a class="link" href="../SettingPassword/index.html">Setting_Password</a>
     </div>
-    <div id="app" class="background background--settings">
-      <div class="wrapper-center">
-        <form id="setting" class="form form--page form--size-l">
-          <div class="text--size-1 text--a-center">Edit profile</div>
-          <div class="wrapper">
-            <div class="wrapper_left">
-              <div class="form_wrapper-inputs">
-                <label for="first_name" class="input-label">
-                  <span class="text--size-4">First name</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="Ivan"
-                    placeholder="Ivan"
-                    name="first_name"
-                    tabindex="1"
-                  />
-                </label>
+    <div id="app" class="app app--center background background--settings">
+      <form id="setting" class="form form--page form--size-l">
+        <h1 class="title title--size-1">Edit profile</h1>
+        <div class="setting-wrapper">
+          <div class="setting-wrapper_left">
+            <div class="form_wrapper-inputs">
+              <label for="first_name" class="field">
+                <span class="field_label">First name</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  value="Ivan"
+                  placeholder="Ivan"
+                  name="first_name"
+                  tabindex="1"
+                />
+              </label>
 
-                <label for="second_name" class="input-label">
-                  <span class="text--size-4">Second name</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="Markov"
-                    placeholder="Markov"
-                    name="second_name"
-                    tabindex="2"
-                  />
-                </label>
+              <label for="second_name" class="field">
+                <span class="field_label">Second name</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  value="Markov"
+                  placeholder="Markov"
+                  name="second_name"
+                  tabindex="2"
+                />
+              </label>
 
-                <label for="display_name" class="input-label">
-                  <span class="text--size-4">Chat name</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="Oriental magician"
-                    name="display_name"
-                    tabindex="3"
-                  />
-                </label>
+              <label for="display_name" class="field">
+                <span class="field_label">Chat name</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  value="Oriental magician"
+                  name="display_name"
+                  tabindex="3"
+                />
+              </label>
 
-                <label for="login" class="input-label">
-                  <span class="text--size-4">Login</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="Abracadabra"
-                    name="login"
-                    tabindex="4"
-                  />
-                </label>
+              <label for="login" class="field">
+                <span class="field_label">Login</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  value="Abracadabra"
+                  name="login"
+                  tabindex="4"
+                />
+              </label>
 
-                <label for="email" class="input-label">
-                  <span class="text--size-4">Email</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="Ivan@yandex.ru"
-                    name="email"
-                    tabindex="4"
-                  />
-                </label>
+              <label for="email" class="field">
+                <span class="field_label">Email</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  placeholder="Ivan@yandex.ru"
+                  value="Ivan@yandex.ru"
+                  name="email"
+                  tabindex="4"
+                />
+              </label>
 
-                <label for="phone" class="input-label">
-                  <span class="text--size-4">Phone</span>
-                  <input
-                    type="text"
-                    class="input"
-                    value="+7(900)800-77-12"
-                    placeholder="+7(999)999-99-99"
-                    name="phone"
-                    tabindex="5"
-                  />
-                </label>
+              <label for="phone" class="field">
+                <span class="field_label">Phone</span>
+                <input
+                  type="text"
+                  class="field_input"
+                  value="+7(900)800-77-12"
+                  placeholder="+7(999)999-99-99"
+                  name="phone"
+                  tabindex="5"
+                />
+              </label>
 
-                <div style="width: 100%">
-                  <span class="text--size-4">Password</span>
-                  <br />
-                  <a
-                    tabindex="6"
-                    href="../SettingPassword/index.html"
-                    class="link text--size-3"
-                    >Change password</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="wrapper_right">
-              <div class="form_wrapper-inputs">
-                <div>
-                  <div class="text--size-4" style="width: 100%">
-                    Profile photo
-                  </div>
-                  <div class="avatar"></div>
-                </div>
-                <div class="file-upload">
-                  <label
-                    tabindex="7"
-                    for="avatar"
-                    class="file-upload_label text--size-3"
-                  >
-                    Upload an image
-                  </label>
-                  <input type="file" name="avatar" class="file-upload_input" />
-                </div>
-                <button tabindex="8" class="button button--danger text--size-3">
-                  Remove photo
-                </button>
+              <div style="width: 100%">
+                <span class="field_label">Password</span>
+                <br />
+                <a
+                  tabindex="6"
+                  href="../SettingPassword/index.html"
+                  class="link text--size-3"
+                  >Change password</a
+                >
               </div>
             </div>
           </div>
-          <div class="form_buttons-group">
-            <button tabindex="10" class="button button">Cancel</button>
-            <button tabindex="9" type="submit" class="button button--primary">
-              Save
-            </button>
+          <div class="setting-wrapper_right">
+            <div class="form_wrapper-inputs">
+              <div>
+                <div class="title--size-5" style="width: 100%">
+                  Profile photo
+                </div>
+                <div class="avatar"></div>
+              </div>
+              <div class="file-upload">
+                <label
+                  tabindex="7"
+                  for="avatar"
+                  class="file-upload_label text--size-3"
+                >
+                  Upload an image
+                </label>
+                <input type="file" name="avatar" class="file-upload_input" />
+              </div>
+              <button tabindex="8" class="button button--danger text--size-3">
+                Remove photo
+              </button>
+            </div>
           </div>
-        </form>
-      </div>
+        </div>
+        <div class="form_buttons-group">
+          <button tabindex="10" class="button button">Cancel</button>
+          <button tabindex="9" type="submit" class="button button--primary">
+            Save
+          </button>
+        </div>
+      </form>
     </div>
     <script type="module" src="index.js"></script>
   </body>

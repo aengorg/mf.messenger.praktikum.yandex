@@ -26,110 +26,107 @@
       <a class="link" href="../Modal_add/">Modal_add</a>
       <a class="link" href="../Modal_remove/index.html">Modal_remove</a>
     </div>
-    <div id="app" class="background background--signup">
-      <div class="wrapper-center">
-        <form class="form form--page" id="signup">
-          <div class="text--size-1 text--a-center">Join the world!</div>
+    <div id="app" class="app app--center background background--signup">
+      <form class="form form--page" id="signup">
+        <h1 class="title title--size-1">Join the world!</h1>
 
-          <div class="form_wrapper-inputs">
-            <label for="email" class="input-label">
-              <span class="text--size-4">Email</span>
-              <input
-                type="text"
-                class="input"
-                value="invan@yandex.ru"
-                placeholder="invan@yandex.ru"
-                name="email"
-                tabindex="1"
-              />
-            </label>
+        <div class="form_wrapper-inputs">
+          <label for="email" class="field">
+            <span class="field_label">Email</span>
+            <input
+              type="text"
+              class="field_input"
+              value="invan@yandex.ru"
+              placeholder="invan@yandex.ru"
+              name="email"
+              tabindex="1"
+            />
+          </label>
 
-            <label for="login" class="input-label">
-              <span class="text--size-4">Login</span>
-              <input
-                type="text"
-                class="input"
-                value="Abracadabra"
-                placeholder="login"
-                name="login"
-                tabindex="2"
-              />
-            </label>
+          <label for="login" class="field">
+            <span class="field_label">Login</span>
+            <input
+              type="text"
+              class="field_input"
+              value="Abracadabra"
+              placeholder="login"
+              name="login"
+              tabindex="2"
+            />
+          </label>
 
-            <label for="first_name" class="input-label">
-              <span class="text--size-4">First name</span>
-              <input
-                type="text"
-                class="input"
-                value="Ivan"
-                placeholder="Ivan"
-                name="first_name"
-                tabindex="3"
-              />
-            </label>
+          <label for="first_name" class="field">
+            <span class="field_label">First name</span>
+            <input
+              type="text"
+              class="field_input"
+              value="Ivan"
+              placeholder="Ivan"
+              name="first_name"
+              tabindex="3"
+            />
+          </label>
 
-            <label for="second_name" class="input-label">
-              <span class="text--size-4">Second name</span>
-              <input
-                type="text"
-                class="input"
-                value="Markov"
-                placeholder="Markov"
-                name="second_name"
-                tabindex="4"
-              />
-            </label>
+          <label for="second_name" class="field">
+            <span class="field_label">Second name</span>
+            <input
+              type="text"
+              class="field_input"
+              value="Markov"
+              placeholder="Markov"
+              name="second_name"
+              tabindex="4"
+            />
+          </label>
 
-            <label for="phone" class="input-label">
-              <span class="text--size-4">Phone</span>
-              <input
-                type="text"
-                class="input"
-                value="+7(900)800-77-12"
-                placeholder="+7(999)999-99-99"
-                name="phone"
-                tabindex="5"
-              />
-            </label>
+          <label for="phone" class="field">
+            <span class="field_label">Phone</span>
+            <input
+              type="text"
+              class="field_input"
+              value="+7(900)800-77-12"
+              placeholder="+7(999)999-99-99"
+              name="phone"
+              tabindex="5"
+            />
+          </label>
 
-            <label for="password" class="input-label">
-              <span class="text--size-4">Password</span>
-              <input
-                type="password"
-                class="input"
-                value="Abracadabra"
-                placeholder="password"
-                name="password"
-                tabindex="6"
-              />
-            </label>
+          <label for="password" class="field">
+            <span class="field_label">Password</span>
+            <input
+              type="password"
+              class="field_input"
+              value="Abracadabra"
+              placeholder="password"
+              name="password"
+              tabindex="6"
+            />
+          </label>
 
-            <label for="password2" class="input-label">
-              <span class="text--size-4">Password (again)</span>
-              <input
-                type="password"
-                class="input input--error"
-                value="Abracadabra"
-                placeholder="password"
-                name="password2"
-                tabindex="7"
-              />
-              <span class="input_error text--size-4">
-                Passwords do not match
-              </span>
-            </label>
-          </div>
+          <label for="password2" class="field">
+            <span class="field_label">Password (again)</span>
+            <input
+              type="password"
+              class="field_input field_input--error"
+              value="Abracadabra"
+              placeholder="password"
+              name="password2"
+              tabindex="7"
+            />
+            <span class="field_error"> Passwords do not match </span>
+          </label>
+        </div>
 
-          <div class="form_buttons-group form_buttons-group--row">
-            <button type="submit" tabindex="8" class="button button--primary">
-              Registration
-            </button>
-            <br />
-            <a class="link" href="../Login/index.html" tabindex="9">Log in</a>
-          </div>
-        </form>
-      </div>
+        <div class="form_buttons-group form_buttons-group--row">
+          <button type="submit" tabindex="8" class="button button--primary">
+            Registration
+          </button>
+          <br />
+          <a class="link" href="../Login/index.html" tabindex="9">Log in</a>
+        </div>
+      </form>
     </div>
+
     <script type="module" src="index.js"></script>
   </body>
 </html>

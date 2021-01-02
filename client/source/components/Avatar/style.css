@@ -30,6 +30,11 @@
   height: 40px;
 }
 
+.avatar--size-xs {
+  width: 28px;
+  height: 28px;
+}
+
 .avatar--error {
   background-position: center 0px;
   background-image: url('../../assets/images/icons/photo_error.svg');

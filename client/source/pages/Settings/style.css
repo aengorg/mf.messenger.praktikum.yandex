@@ -1,17 +1,9 @@
-.wrapper-center {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrapper {
+.setting-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
-.wrapper_left {
+.setting-wrapper_right {
   flex: none;
   width: 170px;
 }

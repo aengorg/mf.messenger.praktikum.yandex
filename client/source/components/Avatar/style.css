@@ -19,9 +19,20 @@
   border-radius: var(--border-radius);
 }
 
+.avatar_status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .avatar--size-s {
   width: 40px;
   height: 40px;
+}
+
+.avatar--size-xs {
+  width: 28px;
+  height: 28px;
 }
 
 .avatar--error {

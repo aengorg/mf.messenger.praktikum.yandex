@@ -9,6 +9,13 @@
   background-repeat: no-repeat;
 }
 
-.icon-profile {
+.icon--profile {
   background-image: url('../../assets/images/icons/profile.svg');
+}
+
+.icon--done {
+  background-image: url('../../assets/images/icons/done.svg');
+}
+.icon--done-done {
+  background-image: url('../../assets/images/icons/done_done.svg');
 }

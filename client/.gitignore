@@ -1,0 +1,4 @@
+dist
+node_modules
+source/vendor/**/*
+!source/vendor/template.d.ts

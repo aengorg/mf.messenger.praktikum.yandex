@@ -1,3 +1,5 @@
+// Разрешили подключить jest. так что как будет время напишу тесты
+
 // import { EventBus } from './index';
 
 // describe('Event bus', () => {

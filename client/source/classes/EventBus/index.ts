@@ -15,15 +15,15 @@ export class EventBus<TEvent> {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, []);
     }
-    this.listeners!.get(event)!.push(callback);
+    this.listeners.get(event)?.push(callback);
   }
 
   public off(event: TEvent, callback: Function): void {
     this.isExistEvent(event);
 
-    const filtered = this.listeners!.get(event)!.filter(
-      (listener) => listener !== callback,
-    );
+    const filtered = this.listeners
+      .get(event)!
+      .filter((listener) => listener !== callback);
 
     this.listeners.set(event, filtered);
   }
@@ -31,7 +31,7 @@ export class EventBus<TEvent> {
   public emit(event: TEvent, ...args: any[]): void {
     this.isExistEvent(event);
 
-    this.listeners!.get(event)!.forEach(function (listener) {
+    this.listeners.get(event)?.forEach(function (listener) {
       listener(...args);
     });
   }

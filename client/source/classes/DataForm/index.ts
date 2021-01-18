@@ -1,9 +1,9 @@
 interface IData {
-  [input: string]: string;
+  [input: string]: FormDataEntryValue;
 }
 
 export class DataForm {
-  private $form: HTMLFormElement;
+  private $form: HTMLFormElement | null;
 
   constructor(selector: string) {
     this.$form = document.querySelector(selector);
@@ -16,13 +16,15 @@ export class DataForm {
   }
 
   public initEventListeners(): void {
-    this.$form.addEventListener('submit', (e) => this.submitHandler(e));
+    this.$form?.addEventListener('submit', (e) => this.submitHandler(e));
   }
 
   public getData(): IData {
-    const data = {};
-    const form = new FormData(this.$form);
-    for (let [key, value] of form.entries()) data[key] = value;
+    const data: IData = {};
+    if (this.$form) {
+      const form = new FormData(this.$form);
+      for (let [key, value] of form.entries()) data[key] = value;
+    }
     return data;
   }
 }

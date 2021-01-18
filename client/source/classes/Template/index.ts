@@ -1,21 +1,18 @@
 import template from '../../vendor/template.js';
+import { createSlot } from '../../utils/createSlot.js';
 
-export class Template {
-  readonly template: string;
-  readonly options: {
-    interpolate: RegExp;
+export function compileTemplate(
+  templateString: string = '',
+  sourceURL: string,
+) {
+  const options = {
+    escape: /{{-([\s\S]+?)}}/g,
+    evaluate: /{{([\s\S]+?)}}/g,
+    interpolate: /{{=([\s\S]+?)}}/g,
+    imports: {
+      SLOT: createSlot,
+    },
+    sourceURL,
   };
-  private lodashTemplate: Function;
-
-  constructor(string: string = '') {
-    this.template = string;
-    this.options = {
-      interpolate: /{{([\s\S]+?)}}/g,
-    };
-    this.lodashTemplate = template(this.template, this.options);
-  }
-
-  public toHTML(data: Object): string {
-    return this.lodashTemplate(data);
-  }
+  return template(templateString, options);
 }

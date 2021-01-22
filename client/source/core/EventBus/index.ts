@@ -1,5 +1,7 @@
+type TCallback = (...args: any[]) => void;
+
 export class EventBus<TEvent> {
-  listeners: Map<TEvent, Function[]>;
+  listeners: Map<TEvent, TCallback[]>;
 
   constructor() {
     this.listeners = new Map();
@@ -11,14 +13,14 @@ export class EventBus<TEvent> {
     }
   }
 
-  public on(event: TEvent, callback: Function): void {
+  public on(event: TEvent, callback: TCallback): void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, []);
     }
     this.listeners.get(event)?.push(callback);
   }
 
-  public off(event: TEvent, callback: Function): void {
+  public off(event: TEvent, callback: TCallback): void {
     this.isExistEvent(event);
 
     const filtered = this.listeners

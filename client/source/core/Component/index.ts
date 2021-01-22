@@ -21,6 +21,7 @@ enum EVENTS {
   render, // * FLOW_RENDER
 }
 
+// не смог сделать через implements =(
 // implements IComponent<TProps>
 // export interface IComponent<T> {
 //   readonly id: string;
@@ -91,11 +92,10 @@ export abstract class Component<TProps extends PropsComponent> {
     return new Proxy(props, handler);
   }
 
-  // TODO PROPS
-  // public setProps = (nextProps: { [P in keyof TProps]?: TProps[P] }): void => {
-  // Object.assign(this.props, nextProps);
-  // this.eventBus.emit(EVENTS.update, this.props, nextProps);
-  // };
+  public setProps = (nextProps: { [P in keyof TProps]?: TProps[P] }): void => {
+    this.props = Object.assign(this.props, nextProps);
+    this.eventBus.emit(EVENTS.update, this.props, nextProps);
+  };
 
   protected getProps(): Readonly<TProps> {
     return this.props;

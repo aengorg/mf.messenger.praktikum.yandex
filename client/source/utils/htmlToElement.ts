@@ -4,5 +4,5 @@ export function htmlToElement(
 ): Element | null {
   const template = document.createElement(tagName);
   template.innerHTML = html;
-  return template.firstElementChild;
+  return template;
 }

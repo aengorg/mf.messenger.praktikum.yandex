@@ -14,6 +14,8 @@
 
 .link--block {
   display: block;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .link--size-1 {

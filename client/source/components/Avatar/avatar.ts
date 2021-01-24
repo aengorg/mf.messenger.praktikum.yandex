@@ -23,6 +23,8 @@ export class Avatar extends Component<PropsAvatar> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {
       styleClasses: joinClasses([

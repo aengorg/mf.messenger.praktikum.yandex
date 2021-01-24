@@ -30,7 +30,7 @@ export class LoginPage extends Component<PropsLoginPage> {
   public beforeCreateHandler() {}
 
   public createdHandler() {
-    const inputsData = new DataForm('#form-login');
+    const inputsData = new DataForm('#form-login', ['login', 'password']);
     inputsData.addHandlerToSubmit();
   }
 
@@ -39,6 +39,8 @@ export class LoginPage extends Component<PropsLoginPage> {
   public beforeUpdateHandler() {
     return true;
   }
+
+  public beforeRemoveHandler() {}
 
   public getContext() {
     return {};

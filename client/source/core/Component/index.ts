@@ -119,7 +119,9 @@ export abstract class Component<TProps extends PropsComponent> {
   // CREATE
   private create(): void {
     this.eventBus.emit(EVENTS.render); // first render
-    this.eventBus.emit(EVENTS.created);
+    setTimeout(() => {
+      this.eventBus.emit(EVENTS.created);
+    }, 0);
   }
 
   public abstract beforeCreateHandler(): void;

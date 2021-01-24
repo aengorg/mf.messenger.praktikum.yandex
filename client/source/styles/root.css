@@ -6,6 +6,9 @@
 @import url('../components/field/style.css');
 @import url('../components/background/style.css');
 
+/* не знаю как подключить стили для конкретной странице оставлю это до вебпака */
+@import url('../pages/setting/style.css');
+
 @import url('../components/form/style.css');
 @import url('../components/icon/style.css');
 @import url('../components/botBar/style.css');

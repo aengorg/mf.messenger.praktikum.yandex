@@ -1,22 +1,23 @@
 @import url('./scroll.css');
 
-@import url('../components/Title/style.css');
-@import url('../components/Background/style.css');
-@import url('../components/Form/style.css');
-@import url('../components/Field/style.css');
-@import url('../components/Link/style.css');
-@import url('../components/Button/style.css');
-@import url('../components/Icon/style.css');
-@import url('../components/BotBar/style.css');
-@import url('../components/Modal/style.css');
-@import url('../components/Avatar/style.css');
-@import url('../components/FileUpload/style.css');
-@import url('../components/ChatItem/style.css');
-@import url('../components/Message/style.css');
-@import url('../components/Badge/style.css');
-@import url('../components/Status/status.css');
-@import url('../components/ChatList/style.css');
-@import url('../components/TopBar/style.css');
+@import url('../components/title/style.css');
+@import url('../components/button/style.css');
+@import url('../components/link/style.css');
+@import url('../components/field/style.css');
+@import url('../components/background/style.css');
+
+@import url('../components/form/style.css');
+@import url('../components/icon/style.css');
+@import url('../components/botBar/style.css');
+@import url('../components/modal/style.css');
+@import url('../components/avatar/style.css');
+@import url('../components/fileUpload/style.css');
+@import url('../components/chatItem/style.css');
+@import url('../components/message/style.css');
+@import url('../components/badge/style.css');
+@import url('../components/status/status.css');
+@import url('../components/chatList/style.css');
+@import url('../components/topBar/style.css');
 
 @font-face {
   font-family: 'Roboto';
@@ -67,6 +68,11 @@ html {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
   font-size: var(--text-size-3);
   font-weight: normal;
+}
+
+/* глуповатый хак, component это враппер для компонента */
+component {
+  width: 100%;
 }
 
 #app {

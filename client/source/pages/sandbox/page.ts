@@ -1,11 +1,13 @@
 import { Component } from '../../core/Component/index.js';
 import template from './template.js';
 
+import { rules } from '../../utils/validationRules/index.js';
+
 // import { Title, PropsTitle } from '../../components/title/index.js';
 // import { Link, PropsLink } from '../../components/link/index.js';
-// import { Field } from '../../components/field/index.js';
+import { Field } from '../../components/field/index.js';
 // import { Button } from '../../components/button/index.js';
-import { Avatar } from '../../components/avatar/index.js';
+// import { Avatar } from '../../components/avatar/index.js';
 
 export class Sandbox extends Component<any> {
   constructor(props = {}) {
@@ -30,6 +32,16 @@ export class Sandbox extends Component<any> {
       //   type: 'text',
       //   placeholder: 'Ivan',
       // }),
+      fieldValid: new Field({
+        name: 'login',
+        label: 'Login',
+        type: 'text',
+        placeholder: 'Ivan',
+        validation: {
+          events: ['blur'],
+          rules: [rules.required],
+        },
+      }),
       // * Buttons
       // button: new Button({
       //   text: 'Button',
@@ -47,10 +59,10 @@ export class Sandbox extends Component<any> {
       //   icon: 'emoji',
       // }),
       // * Avatar
-      avatar: new Avatar({}),
-      avatarPhoto: new Avatar({
-        url: '../public/assets/images/test/photo.png',
-      }),
+      // avatar: new Avatar({}),
+      // avatarPhoto: new Avatar({
+      //   url: '../public/assets/images/test/photo.png',
+      // }),
     });
   }
 
@@ -63,6 +75,8 @@ export class Sandbox extends Component<any> {
   public beforeUpdateHandler() {
     return true;
   }
+
+  public beforeRemoveHandler() {}
 
   public getContext() {
     return {};

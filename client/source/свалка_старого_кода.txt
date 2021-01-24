@@ -269,3 +269,28 @@ export class Title extends Component<PropsTitle, EmptyState> {
     // }
     // }
         //   //
+
+
+  // public addHandlerValidation(
+  //   event: TEventValidation = 'blur',
+  //   callback?: TCallback,
+  // ): void {
+  //   if (this.inputs !== undefined) {
+  //     Object.values(this.inputs).forEach((input) => {
+  //       input.addEventListener(event, (e) => {
+  //         if (callback === undefined) {
+  //           this.submitHandler(e);
+  //         } else {
+  //           callback(e);
+  //         }
+  //       });
+  //     });
+  //   }
+  // }
+
+
+type TEventValidation = 'blur' | 'change';
+
+
+  <!-- form--error -->
+      <!-- <div class="text--size-4 form-error_message">Form error</div> -->

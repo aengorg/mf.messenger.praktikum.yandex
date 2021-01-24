@@ -34,6 +34,8 @@ export class ErrorPage extends Component<PropsErrorPage> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {};
   }

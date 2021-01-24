@@ -24,6 +24,8 @@ export class Link extends Component<PropsLink> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {
       styleClasses: joinClasses([

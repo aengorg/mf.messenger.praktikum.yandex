@@ -50,6 +50,8 @@ export class SignupPage extends Component<PropsSignupPage> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {};
   }

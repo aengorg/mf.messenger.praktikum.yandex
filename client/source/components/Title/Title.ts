@@ -26,6 +26,8 @@ export class Title extends Component<PropsTitle> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {
       styleClasses: joinClasses([

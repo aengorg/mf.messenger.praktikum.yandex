@@ -63,6 +63,8 @@ export class SettingPage extends Component<PropsSettingPage> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {};
   }

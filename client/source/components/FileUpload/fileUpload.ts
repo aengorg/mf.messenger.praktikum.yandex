@@ -21,6 +21,8 @@ export class FileUpload extends Component<PropsFileUpload> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {};
   }

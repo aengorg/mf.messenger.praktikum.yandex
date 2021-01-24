@@ -36,6 +36,8 @@ export class SettingPasswordPage extends Component<PropsSettingPasswordPage> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {};
   }

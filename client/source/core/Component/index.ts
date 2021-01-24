@@ -18,6 +18,7 @@ enum EVENTS {
   beforeUpdate,
   update, // * FLOW_CDU
   updated,
+  beforeRemove,
   render, // * FLOW_RENDER
 }
 
@@ -113,6 +114,8 @@ export abstract class Component<TProps extends PropsComponent> {
     );
     this.eventBus.on(EVENTS.updated, this.updatedHandler.bind(this));
 
+    this.eventBus.on(EVENTS.beforeRemove, this.beforeRemoveHandler.bind(this));
+
     this.eventBus.on(EVENTS.render, this.renderInternal.bind(this));
   }
 
@@ -133,7 +136,9 @@ export abstract class Component<TProps extends PropsComponent> {
     if (isRender) {
       this.eventBus.emit(EVENTS.render);
     }
-    this.eventBus.emit(EVENTS.updated);
+    setTimeout(() => {
+      this.eventBus.emit(EVENTS.updated);
+    }, 0);
   }
 
   public abstract beforeUpdateHandler(
@@ -141,6 +146,8 @@ export abstract class Component<TProps extends PropsComponent> {
     newProps: TProps,
   ): boolean;
   public abstract updatedHandler(): void;
+
+  public abstract beforeRemoveHandler(): void;
 
   public abstract getContext(): Object;
 
@@ -155,6 +162,7 @@ export abstract class Component<TProps extends PropsComponent> {
     if (element !== null) {
       for (const childName in this.children) {
         if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
+          // TODO slots → querySelectorsAll
           const slot = element.querySelector(
             `${TAG_SLOT}[data-slot=${childName}]`,
           );
@@ -168,10 +176,12 @@ export abstract class Component<TProps extends PropsComponent> {
         this.$element = element;
         this.$element.setAttribute('data-id', this.id);
       } else {
-        // TODO BEFORE DELETE
-        this.$element.firstElementChild?.replaceWith(
-          element?.firstElementChild as Element,
-        );
+        this.eventBus.emit(EVENTS.beforeRemove);
+        setTimeout(() => {
+          this.$element!.firstElementChild?.replaceWith(
+            element?.firstElementChild as Element,
+          );
+        }, 0);
       }
     }
   }

@@ -37,6 +37,8 @@ export class Button extends Component<PropsButton> {
     return true;
   }
 
+  public beforeRemoveHandler() {}
+
   public getContext() {
     return {
       styleClasses: joinClasses([

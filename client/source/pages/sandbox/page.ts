@@ -4,7 +4,8 @@ import template from './template.js';
 // import { Title, PropsTitle } from '../../components/title/index.js';
 // import { Link, PropsLink } from '../../components/link/index.js';
 // import { Field } from '../../components/field/index.js';
-import { Button } from '../../components/button/index.js';
+// import { Button } from '../../components/button/index.js';
+import { Avatar } from '../../components/avatar/index.js';
 
 export class Sandbox extends Component<any> {
   constructor(props = {}) {
@@ -30,22 +31,26 @@ export class Sandbox extends Component<any> {
       //   placeholder: 'Ivan',
       // }),
       // * Buttons
-      button: new Button({
-        text: 'Button',
+      // button: new Button({
+      //   text: 'Button',
+      // }),
+      // buttonPrimary: new Button({
+      //   text: 'Button',
+      //   primary: true,
+      // }),
+      // buttonDanger: new Button({
+      //   text: 'Button',
+      //   danger: true,
+      // }),
+      // buttonIconEmaji: new Button({
+      //   size: 's',
+      //   icon: 'emoji',
+      // }),
+      // * Avatar
+      avatar: new Avatar({}),
+      avatarPhoto: new Avatar({
+        url: '../public/assets/images/test/photo.png',
       }),
-      buttonPrimary: new Button({
-        text: 'Button',
-        primary: true,
-      }),
-      buttonDanger: new Button({
-        text: 'Button',
-        danger: true,
-      }),
-      buttonIconEmaji: new Button({
-        size: 's',
-        icon: 'emoji',
-      }),
-      // *
     });
   }
 

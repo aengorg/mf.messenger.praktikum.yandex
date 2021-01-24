@@ -3,9 +3,11 @@ export default `
   <!-- {{= SLOT('title') }} -->
   <!-- {{= SLOT('link') }} -->
   <!-- {{= SLOT('field') }} -->
-  {{= SLOT('button') }}
-  {{= SLOT('buttonPrimary') }}
-  {{= SLOT('buttonDanger') }}
-  {{= SLOT('buttonIconEmaji') }}
+  <!-- {{= SLOT('button') }} -->
+  <!-- {{= SLOT('buttonPrimary') }} -->
+  <!-- {{= SLOT('buttonDanger') }} -->
+  <!-- {{= SLOT('buttonIconEmaji') }} -->
+  {{= SLOT('avatar') }}
+  {{= SLOT('avatarPhoto') }}
 </div>
 `;

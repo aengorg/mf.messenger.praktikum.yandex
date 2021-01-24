@@ -3,10 +3,12 @@ export default `
   <span class="field_label">{{= data.label }}</span>
   <input
     type="{{= data.type }}"
-    class="field_input"
-    value=""
+    class="{{= state.inputClasses }}"
     placeholder="{{= data.placeholder }}"
     name="{{= data.name }}"
   />
+  {{ if(data.error) { }}
+    <span class="field_error">{{= data.error }}</span>
+  {{ } }}
 </label>
 `;

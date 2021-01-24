@@ -1,3 +1,4 @@
+type TCallback = (e: Event) => void;
 interface IData {
   [input: string]: FormDataEntryValue;
 }
@@ -15,8 +16,14 @@ export class DataForm {
     console.log(this.getData());
   }
 
-  public initEventListeners(): void {
-    this.$form?.addEventListener('submit', (e) => this.submitHandler(e));
+  public addHandlerToSubmit(callback?: TCallback): void {
+    this.$form?.addEventListener('submit', (e) => {
+      if (callback === undefined) {
+        this.submitHandler(e);
+      } else {
+        callback(e);
+      }
+    });
   }
 
   public getData(): IData {

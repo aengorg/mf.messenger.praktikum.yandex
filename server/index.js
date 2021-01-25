@@ -12,5 +12,5 @@ app.use(helmet());
 app.use('/', express.static(path.join(__dirname, PATH_STATIC)));
 
 app.listen(PORT, () => {
-  console.log(`App http://localhost:${PORT}`);
+  console.log(`App http://localhost:${PORT}/public/index.html`);
 });

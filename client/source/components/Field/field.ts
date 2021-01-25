@@ -47,15 +47,16 @@ export class Field extends Component<PropsField> {
     }
   }
 
-  private validationHandler(event: Event): void {
+  public validationHandler(): TErrors {
     if (this.props.validation !== undefined) {
-      const target = event.target as HTMLInputElement;
       const errors: TErrors = validation(
-        target.value,
+        this.$input?.value || '',
         this.props.validation.rules,
       );
       this.setError(errors);
+      return errors;
     }
+    return [];
   }
 
   private setError(errors: TErrors): void {

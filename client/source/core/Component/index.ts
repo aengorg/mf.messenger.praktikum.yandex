@@ -98,7 +98,7 @@ export abstract class Component<TProps extends PropsComponent> {
     this.eventBus.emit(EVENTS.update, this.props, nextProps);
   };
 
-  protected getProps(): Readonly<TProps> {
+  public getProps(): Readonly<TProps> {
     return this.props;
   }
 
@@ -153,6 +153,9 @@ export abstract class Component<TProps extends PropsComponent> {
 
   // RENDER
   public abstract render(): string;
+  public forceRender(): void {
+    this.eventBus.emit(EVENTS.render);
+  }
 
   // *
   private renderInternal(): void {

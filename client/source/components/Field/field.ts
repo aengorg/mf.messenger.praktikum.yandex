@@ -1,6 +1,7 @@
 import { Component, PropsComponent } from '../../core/Component/index.js';
 import template from './template.js';
 
+import { FieldError } from './fieldError/index.js';
 import { TRule, TErrors } from '../../utils/validationRules/index.js';
 import { validation } from '../../utils/validationRules/validation.js';
 import { joinClasses } from '../../utils/joinClasses.js';
@@ -15,17 +16,20 @@ export interface PropsField extends PropsComponent {
     events: string[];
   };
   initValue?: string;
-  error?: string;
 }
 
 export class Field extends Component<PropsField> {
   $input: HTMLInputElement | null;
   value: string;
+  isError: boolean;
 
   constructor(props: PropsField) {
-    super(props);
+    super(props, {
+      error: new FieldError({}),
+    });
     this.$input = null;
     this.value = props.initValue || '';
+    this.isError = false;
   }
 
   public addValidation(): void {
@@ -55,9 +59,13 @@ export class Field extends Component<PropsField> {
 
   private setError(errors: TErrors): void {
     if (errors.length > 0) {
-      this.props.error = errors[0];
+      this.isError = true;
+      this.children.error.props.text = errors[0];
+      this.$input?.classList.add('field_input--error');
     } else {
-      this.props.error = '';
+      this.isError = false;
+      this.children.error.props.text = '';
+      this.$input?.classList.remove('field_input--error');
     }
   }
 
@@ -88,10 +96,7 @@ export class Field extends Component<PropsField> {
 
   public getContext() {
     return {
-      inputClasses: joinClasses([
-        'field_input',
-        this.props.error ? 'field_input--error' : '',
-      ]),
+      inputClasses: joinClasses(['field_input']),
     };
   }
 

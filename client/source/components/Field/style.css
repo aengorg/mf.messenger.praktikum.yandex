@@ -1,6 +1,7 @@
 .field {
   display: flex;
   border-radius: 4px;
+  margin-top: 12px;
   flex-direction: column;
   position: relative;
 }

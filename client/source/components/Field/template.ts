@@ -7,8 +7,6 @@ export default `
     placeholder="{{= data.placeholder }}"
     name="{{= data.name }}"
   />
-  {{ if(data.error) { }}
-    <span class="field_error">{{= data.error }}</span>
-  {{ } }}
+  {{= SLOT('error') }}
 </label>
 `;

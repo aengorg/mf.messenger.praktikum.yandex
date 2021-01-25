@@ -4,9 +4,13 @@ import { generationId } from '../../utils/generationId.js';
 import { htmlToElement } from '../../utils/htmlToElement.js';
 import { TAG_SLOT } from '../../constants/index.js';
 
+// export interface Children {
+//   [key: string]: Component<any>;
+// }
 export interface Children {
-  [key: string]: Component<any>;
+  [key: string]: any;
 }
+
 export interface PropsComponent {}
 
 export interface PropsComponentEmpty extends PropsComponent {}

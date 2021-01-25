@@ -7,6 +7,7 @@ import { Title, PropsTitle } from '../../components/title/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
+import { FormError } from '../../components/Form/formError/index.js';
 
 export interface PropsLoginPage extends PropsComponent {
   title: PropsTitle;
@@ -17,6 +18,10 @@ export interface PropsLoginPage extends PropsComponent {
 }
 
 export class LoginPage extends Component<PropsLoginPage> {
+  formSelector: string;
+  $form: HTMLFormElement | null;
+  inputsData: DataForm | null;
+
   constructor(props: PropsLoginPage) {
     super(props, {
       title: new Title(props.title),
@@ -24,14 +29,43 @@ export class LoginPage extends Component<PropsLoginPage> {
       fieldLogin: new Field(props.fieldLogin),
       fieldPassword: new Field(props.fieldPassword),
       buttonLogin: new Button(props.buttonLogin),
+      error: new FormError({}),
     });
+
+    this.formSelector = '#form-login';
+    this.$form = null;
+    this.inputsData = null;
   }
 
   public beforeCreateHandler() {}
 
   public createdHandler() {
-    const inputsData = new DataForm('#form-login', ['login', 'password']);
-    inputsData.addHandlerToSubmit();
+    this.inputsData = new DataForm(this.formSelector, ['login', 'password']);
+    this.inputsData.addHandlerToSubmit(this.submitHandler.bind(this));
+    this.$form = this.$element!.querySelector(this.formSelector);
+  }
+
+  public submitHandler(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    const inputs: Field[] = [
+      this.children.fieldLogin as Field,
+      this.children.fieldPassword as Field,
+    ];
+    const errors = inputs.map((input) => {
+      return input.validationHandler();
+    });
+
+    const isError = errors.some((arr) => arr.length > 0);
+
+    if (isError) {
+      this.$form?.classList.add('form--error');
+      this.children.error.props.text = 'Error field(s)';
+    } else {
+      this.$form?.classList.remove('form--error');
+      this.children.error.props.text = '';
+      console.log(this.inputsData?.getData());
+    }
   }
 
   public updatedHandler() {}

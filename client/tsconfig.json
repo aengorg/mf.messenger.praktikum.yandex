@@ -17,6 +17,6 @@
     "newLine": "LF",
     "moduleResolution": "node"
   },
-  "include": ["source/**/*"],
-  "exclude": ["node_modules", "vendor", "**/*.spec.ts", "**/*.test.ts"]
+  "include": ["source/**/*", "node_modules/handlebars/types"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

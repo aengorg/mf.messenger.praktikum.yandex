@@ -23,6 +23,7 @@ enum EVENTS {
 }
 
 // не смог сделать через implements =(
+// но хочу
 // implements IComponent<TProps>
 // export interface IComponent<T> {
 //   readonly id: string;
@@ -71,7 +72,7 @@ export abstract class Component<TProps extends PropsComponent> {
     this.children = children || {};
 
     this.$element = null;
-    this.template = compileTemplate(this.render(), Component.name);
+    this.template = compileTemplate(this.render());
 
     this.registerEvents();
     this.eventBus.emit(EVENTS.beforeCreate);

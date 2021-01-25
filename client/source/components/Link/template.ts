@@ -1,8 +1,8 @@
 export default `
-  <a 
-    href="{{= data.url }}" 
-    class="{{= state.styleClasses }}"
+  <a
+    href="{{ data.url }}" 
+    class="{{ state.styleClasses }}"
   >
-    {{= data.text }}
+    {{ data.text }}
   </a>
 `;

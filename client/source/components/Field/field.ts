@@ -27,6 +27,7 @@ export class Field extends Component<PropsField> {
     super(props, {
       error: new FieldError({}),
     });
+
     this.$input = null;
     this.value = props.initValue || '';
     this.isError = false;

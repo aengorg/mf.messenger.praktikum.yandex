@@ -1,18 +1,18 @@
-import template from '../../vendor/template.js';
-import { createSlot } from '../../utils/createSlot.js';
+const Handlebars = window.Handlebars;
+import { TAG_SLOT } from '../../constants/index.js';
 
-export function compileTemplate(
-  templateString: string = '',
-  sourceURL: string,
-) {
-  const options = {
-    escape: /{{-([\s\S]+?)}}/g,
-    evaluate: /{{([\s\S]+?)}}/g,
-    interpolate: /{{=([\s\S]+?)}}/g,
-    imports: {
-      SLOT: createSlot,
-    },
-    sourceURL,
-  };
-  return template(templateString, options);
+export function compileTemplate(templateString: string = '') {
+  return Handlebars.compile(templateString);
 }
+
+function createSlot(name: string): string {
+  const $slot = document.createElement(TAG_SLOT);
+  $slot.setAttribute('data-slot', name);
+  return $slot.outerHTML;
+}
+
+function slot(componentName: string) {
+  return new Handlebars.SafeString(createSlot(componentName));
+}
+
+Handlebars.registerHelper('SLOT', slot);

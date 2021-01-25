@@ -1,7 +1,7 @@
 export default `
-  <h{{= data.level }}
-    class="{{= state.styleClasses }}"
+  <h{{ data.level }}
+    class="{{ state.styleClasses }}"
   >
-    {{= data.text }}
-  </h{{= data.level }}>
+    {{ data.text }}
+  </h{{ data.level }}>
 `;

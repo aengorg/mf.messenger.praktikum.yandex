@@ -33,71 +33,18 @@
 // const page = new ErrorPage(props);
 
 // * LoginPage;
-// import { rules } from './utils/validationRules/index.js';
-// import { LoginPage, PropsLoginPage } from './pages/login/index.js';
-// const props: PropsLoginPage = {
-//   title: {
-//     text: 'Welcome!',
-//     level: 1,
-//     size: 1,
-//   },
-//   linkSignup: {
-//     url: '../signup/index.html',
-//     text: 'Sign up',
-//     block: true,
-//   },
-//   fieldLogin: {
-//     name: 'login',
-//     label: 'Login',
-//     type: 'text',
-//     placeholder: 'Abracadabra',
-//     validation: {
-//       events: ['blur', 'focus'],
-//       rules: [rules.required],
-//     },
-//   },
-//   fieldPassword: {
-//     name: 'password',
-//     label: 'Password',
-//     type: 'password',
-//     placeholder: '...',
-//     validation: {
-//       events: ['blur', 'focus'],
-//       rules: [rules.required],
-//     },
-//   },
-//   buttonLogin: {
-//     text: 'Log in',
-//     name: 'submit',
-//     type: 'submit',
-//     primary: true,
-//   },
-// };
-// const page = new LoginPage(props);
-
-// * SignupPage;
 import { rules } from './utils/validationRules/index.js';
-import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
-const props: PropsSignupPage = {
+import { LoginPage, PropsLoginPage } from './pages/login/index.js';
+const props: PropsLoginPage = {
   title: {
-    text: 'Join the world!',
+    text: 'Welcome!',
     level: 1,
     size: 1,
   },
-  linkLogin: {
-    url: '../login/index.html',
-    text: 'Log in',
+  linkSignup: {
+    url: '../signup/index.html',
+    text: 'Sign up',
     block: true,
-  },
-  fieldEmail: {
-    name: 'email',
-    label: 'Email',
-    type: 'text',
-    placeholder: 'Ivan@yandex.ru',
-    validation: {
-      events: ['blur', 'focus'],
-      rules: [rules.email, rules.required],
-    },
   },
   fieldLogin: {
     name: 'login',
@@ -109,64 +56,117 @@ const props: PropsSignupPage = {
       rules: [rules.required],
     },
   },
-  fieldFirstName: {
-    name: 'first_name',
-    label: 'First name',
-    type: 'text',
-    placeholder: 'Ivan',
-    validation: {
-      events: ['blur', 'focus'],
-      rules: [rules.required],
-    },
-  },
-  fieldSecondName: {
-    name: 'second_name',
-    label: 'Second name',
-    type: 'text',
-    placeholder: 'Markov',
-    validation: {
-      events: ['blur', 'focus'],
-      rules: [rules.required],
-    },
-  },
-  fieldPhone: {
-    name: 'phone',
-    label: 'Phone',
-    type: 'text',
-    placeholder: '+79008007712',
-    validation: {
-      events: ['blur', 'focus'],
-      rules: [rules.required],
-    },
-  },
   fieldPassword: {
     name: 'password',
     label: 'Password',
     type: 'password',
-    placeholder: 'Abracadabra',
+    placeholder: '...',
     validation: {
       events: ['blur', 'focus'],
-      rules: [(v) => rules.range(v, 8), rules.required],
+      rules: [rules.required],
     },
   },
-  fieldPassword2: {
-    name: 'password2',
-    label: 'Password (again)',
-    type: 'password',
-    placeholder: 'Abracadabra',
-    validation: {
-      events: ['blur', 'focus'],
-      rules: [(v) => rules.range(v, 8), rules.required],
-    },
-  },
-  buttonSignup: {
-    text: 'Registration',
+  buttonLogin: {
+    text: 'Log in',
     name: 'submit',
     type: 'submit',
     primary: true,
   },
 };
-const page = new SignupPage(props);
+const page = new LoginPage(props);
+
+// * SignupPage;
+// import { rules } from './utils/validationRules/index.js';
+// import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
+// const props: PropsSignupPage = {
+//   title: {
+//     text: 'Join the world!',
+//     level: 1,
+//     size: 1,
+//   },
+//   linkLogin: {
+//     url: '../login/index.html',
+//     text: 'Log in',
+//     block: true,
+//   },
+//   fieldEmail: {
+//     name: 'email',
+//     label: 'Email',
+//     type: 'text',
+//     placeholder: 'Ivan@yandex.ru',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [rules.email, rules.required],
+//     },
+//   },
+//   fieldLogin: {
+//     name: 'login',
+//     label: 'Login',
+//     type: 'text',
+//     placeholder: 'Abracadabra',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [rules.required],
+//     },
+//   },
+//   fieldFirstName: {
+//     name: 'first_name',
+//     label: 'First name',
+//     type: 'text',
+//     placeholder: 'Ivan',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [rules.required],
+//     },
+//   },
+//   fieldSecondName: {
+//     name: 'second_name',
+//     label: 'Second name',
+//     type: 'text',
+//     placeholder: 'Markov',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [rules.required],
+//     },
+//   },
+//   fieldPhone: {
+//     name: 'phone',
+//     label: 'Phone',
+//     type: 'text',
+//     placeholder: '+79008007712',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [rules.required],
+//     },
+//   },
+//   fieldPassword: {
+//     name: 'password',
+//     label: 'Password',
+//     type: 'password',
+//     placeholder: 'Abracadabra',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [(v) => rules.range(v, 8), rules.required],
+//     },
+//   },
+//   fieldPassword2: {
+//     name: 'password2',
+//     label: 'Password (again)',
+//     type: 'password',
+//     placeholder: 'Abracadabra',
+//     validation: {
+//       events: ['blur', 'focus'],
+//       rules: [(v) => rules.range(v, 8), rules.required],
+//     },
+//   },
+//   buttonSignup: {
+//     text: 'Registration',
+//     name: 'submit',
+//     type: 'submit',
+//     primary: true,
+//   },
+// };
+// const page = new SignupPage(props);
 
 // * SettingPasswordPage;
 // import {
@@ -295,6 +295,5 @@ const page = new SignupPage(props);
 // import { Sandbox } from './pages/sandbox/index.js';
 // const page = new Sandbox({});
 
-//
 const $app = document.querySelector('#app');
 $app!.appendChild(page.getElement() || document.createElement('error'));

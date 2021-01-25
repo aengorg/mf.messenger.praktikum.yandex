@@ -11,10 +11,9 @@
   "author": "Findoss",
   "license": "MIT",
   "devDependencies": {
-    "@types/lodash": "^4.5.0",
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "lodash-cli": "^4.17.5"
+    "handlebars": "^4.7.6"
   }
 }

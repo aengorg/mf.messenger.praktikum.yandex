@@ -3,7 +3,7 @@ import template from './template.js';
 
 import { joinClasses } from '../../utils/joinClasses.js';
 
-export type Icons =
+export type IconsButton =
   | 'add-user'
   | 'add-file'
   | 'create-group'
@@ -19,7 +19,7 @@ export interface PropsButton extends PropsComponent {
   primary?: boolean;
   danger?: boolean;
   size?: 's';
-  icon?: Icons;
+  icon?: IconsButton;
 }
 
 export class Button extends Component<PropsButton> {

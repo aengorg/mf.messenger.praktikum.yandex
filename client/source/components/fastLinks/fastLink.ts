@@ -36,6 +36,14 @@ export class FastLink extends Component<PropsComponentEmpty> {
           text: 'chat',
         }),
         new Link({
+          url: '../public/#modal1',
+          text: 'modal1',
+        }),
+        new Link({
+          url: '../public/#modal2',
+          text: 'modal2',
+        }),
+        new Link({
           url: '../public/#sandbox',
           text: 'sandbox',
         }),

@@ -7,6 +7,8 @@ import {
   PropsSettingPasswordPage,
 } from './pages/settingPassword/index.js';
 import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
+import { ModalPage } from './pages/modal/index.js';
+import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
 import { FastLink } from './components/fastLinks/index.js';
 
 import { rules } from './utils/validationRules/index.js';
@@ -333,6 +335,8 @@ const propsSettingPage: PropsSettingPage = {
   },
 };
 
+// * ModalPage
+
 let page: Children = new ErrorPage(propsErrorPage404);
 
 switch (window.location.hash) {
@@ -356,6 +360,12 @@ switch (window.location.hash) {
     break;
   case '#setting':
     page = new SettingPage(propsSettingPage);
+    break;
+  case '#modal1':
+    page = new ModalPage({});
+    break;
+  case '#modal2':
+    page = new ModalPage2({});
     break;
 
   default:

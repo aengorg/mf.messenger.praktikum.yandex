@@ -1,7 +1,7 @@
 import { Component, PropsComponentEmpty } from '../../core/Component/index.js';
 import template from './template.js';
 
-import { Link } from '../Link/index.js';
+import { Link } from '../link/index.js';
 
 export class FastLink extends Component<PropsComponentEmpty> {
   constructor(props: PropsComponentEmpty) {

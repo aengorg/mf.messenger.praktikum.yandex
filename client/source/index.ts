@@ -1,11 +1,11 @@
 import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
 import { Sandbox } from './pages/sandbox/index.js';
 import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
-import { LoginPage, PropsLoginPage } from './pages/Login/index.js';
+import { LoginPage, PropsLoginPage } from './pages/login/index.js';
 import {
   SettingPasswordPage,
   PropsSettingPasswordPage,
-} from './pages/settingPassword/index.js';
+} from './pages/password/index.js';
 import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
 import { ModalPage } from './pages/modal/index.js';
 import { ModalPage as ModalPage2 } from './pages/modal2/index.js';

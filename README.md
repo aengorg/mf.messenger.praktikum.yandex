@@ -28,7 +28,7 @@ npm i
 npm run client:build
 ```
 
-Запустить
+Запустить (не актуально)
 
 ```
 npm i
@@ -36,6 +36,7 @@ npm run client:build
 npm start
 ```
 
+Запустить (не актуально)
 Для разработки
 
 ```

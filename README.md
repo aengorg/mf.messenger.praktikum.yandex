@@ -16,6 +16,18 @@
 
 ## Помочь проекту можно, но не обязательно
 
+Netlify
+
+```
+git clone https://github.com/aengorg/mf.messenger.praktikum.yandex.git
+
+cd mf.messenger.praktikum.yandex/
+
+npm i
+
+npm run client:build
+```
+
 Запустить
 
 ```

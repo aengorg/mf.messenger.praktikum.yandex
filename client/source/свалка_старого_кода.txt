@@ -292,5 +292,82 @@ export class Title extends Component<PropsTitle, EmptyState> {
 type TEventValidation = 'blur' | 'change';
 
 
-  <!-- form--error -->
-      <!-- <div class="text--size-4 form-error_message">Form error</div> -->
+  <!--  -->
+      <!--  -->
+
+
+// import template from '../../vendor/template.js';
+// import { createSlot } from '../../utils/createSlot.js';
+
+
+  // * old
+  // const options = {
+  //   escape: /{{-([\s\S]+?)}}/g,
+  //   evaluate: /{{([\s\S]+?)}}/g,
+  //   interpolate: /{{=([\s\S]+?)}}/g,
+  //   imports: {
+  //     SLOT: createSlot,
+  //   },
+  //   sourceURL,
+  // };
+  // return template(templateString, options);
+
+  // * new
+
+// export default (template: string, context: any): string => {
+//   return compile(template)(context);
+// };
+
+// declare global {
+//   const Handlebars;
+// }
+
+// export const { compile } = window.Handlebars;
+// export default (template: string, context: any): string => {
+//   return compile(template)(context);
+// };
+
+// var source = document.getElementById('entry-template')?.innerHTML;
+// var x = window.Handlebars;
+
+// console.log(x);
+
+// import Handlebars from '../node_modules/handlebars/dist/handlebars.js';
+// console.log(Handlebars);
+
+
+import template from '../../vendor/template.js';
+import { createSlot } from '../../utils/createSlot.js';
+
+export function compileTemplate(
+  templateString: string = '',
+  sourceURL: string,
+) {
+  const options = {
+    escape: /{{-([\s\S]+?)}}/g,
+    evaluate: /{{([\s\S]+?)}}/g,
+    interpolate: /{{=([\s\S]+?)}}/g,
+    imports: {
+      SLOT: createSlot,
+    },
+    sourceURL,
+  };
+  return template(templateString, options);
+}
+
+// declare global {
+//   const Handlebars;
+// }
+
+// export const { compile } = window.Handlebars;
+// export default (template: string, context: any): string => {
+//   return compile(template)(context);
+// };
+
+// var source = document.getElementById('entry-template')?.innerHTML;
+var x = window.Handlebars;
+
+console.log(x);
+
+// import Handlebars from '../node_modules/handlebars/dist/handlebars.js';
+// console.log(Handlebars);

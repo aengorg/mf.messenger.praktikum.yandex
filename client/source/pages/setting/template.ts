@@ -1,5 +1,5 @@
 export default `
-<div class="app app--center bg bg--img-login">
+<div class="app app--center bg bg--img-settings">
   <form id="form-login" class="form form--page form--size-l">
 
     {{SLOT 'title' }}

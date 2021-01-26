@@ -20,13 +20,7 @@ export class ErrorPage extends Component<PropsErrorPage> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {
-    // ! BAD force update
-    setTimeout(() => {
-      this.children.title.props.text = 'Страница не найдена';
-      this.props.bg = 'error404';
-    }, 3000);
-  }
+  public createdHandler() {}
 
   public updatedHandler() {}
 

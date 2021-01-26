@@ -5,15 +5,18 @@
 @import url('../components/link/style.css');
 @import url('../components/field/style.css');
 @import url('../components/background/style.css');
+@import url('../components/form/style.css');
+@import url('../components/avatar/style.css');
 
 /* не знаю как подключить стили для конкретной странице оставлю это до вебпака */
 @import url('../pages/setting/style.css');
+/* TODO будет удалено, когда не будет необходимости в компоненте */
+@import url('../components/fastLinks/styles.css');
 
-@import url('../components/form/style.css');
+@import url('../pages/setting/style.css');
 @import url('../components/icon/style.css');
 @import url('../components/botBar/style.css');
 @import url('../components/modal/style.css');
-@import url('../components/avatar/style.css');
 @import url('../components/fileUpload/style.css');
 @import url('../components/chatItem/style.css');
 @import url('../components/message/style.css');
@@ -96,17 +99,4 @@ component {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-/* TODO будет удалено, когда не будет необходимости */
-.fast-links {
-  position: absolute;
-  text-transform: uppercase;
-  z-index: 9999;
-  bottom: 0;
-}
-
-.fast-links a {
-  display: inline-block;
-  margin-right: 15px;
 }

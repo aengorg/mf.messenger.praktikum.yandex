@@ -16,7 +16,14 @@ export class Link extends Component<PropsLink> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {}
+  public createdHandler() {
+    // временный хак для смены страницы
+    this.$element?.addEventListener('click', () => {
+      setTimeout(() => {
+        window.location.reload();
+      }, 0);
+    });
+  }
 
   public updatedHandler() {}
 

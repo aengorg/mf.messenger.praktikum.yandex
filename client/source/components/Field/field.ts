@@ -6,6 +6,8 @@ import { TRule, TErrors } from '../../utils/validationRules/index.js';
 import { validation } from '../../utils/validationRules/validation.js';
 import { joinClasses } from '../../utils/joinClasses.js';
 
+export type IconsField = 'search';
+
 export interface PropsField extends PropsComponent {
   name: string;
   label: string;
@@ -16,6 +18,8 @@ export interface PropsField extends PropsComponent {
     events: string[];
   };
   initValue?: string;
+  width?: 'unlimit';
+  icon?: IconsField;
 }
 
 export class Field extends Component<PropsField> {
@@ -98,7 +102,15 @@ export class Field extends Component<PropsField> {
 
   public getContext() {
     return {
-      inputClasses: joinClasses(['field_input']),
+      fieldClasses: joinClasses(['field']),
+      labelClasses: joinClasses(['field_label']),
+      inputClasses: joinClasses([
+        'field_input',
+        this.props.width ? `field_input--width-${this.props.width}` : '',
+        this.props.icon
+          ? `field_input--icon field_input--icon-${this.props.icon}`
+          : '',
+      ]),
     };
   }
 

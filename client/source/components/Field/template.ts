@@ -1,6 +1,6 @@
 export default `
-<label for="{{ data.name }}" class="field">
-  <span class="field_label">{{ data.label }}</span>
+<label for="{{ data.name }}" class="{{ state.fieldClasses }}">
+  <span class="{{ state.labelClasses }}">{{ data.label }}</span>
   <input
     type="{{ data.type }}"
     class="{{ state.inputClasses }}"

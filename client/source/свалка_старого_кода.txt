@@ -379,3 +379,6 @@ http {
     }
   }
 }
+
+[build]
+  publish = "client/source"

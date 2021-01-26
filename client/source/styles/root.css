@@ -1,22 +1,29 @@
 @import url('./scroll.css');
 
-@import url('../components/Title/style.css');
-@import url('../components/Background/style.css');
-@import url('../components/Form/style.css');
-@import url('../components/Field/style.css');
-@import url('../components/Link/style.css');
-@import url('../components/Button/style.css');
-@import url('../components/Icon/style.css');
-@import url('../components/BotBar/style.css');
-@import url('../components/Modal/style.css');
-@import url('../components/Avatar/style.css');
-@import url('../components/FileUpload/style.css');
-@import url('../components/ChatItem/style.css');
-@import url('../components/Message/style.css');
-@import url('../components/Badge/style.css');
-@import url('../components/Status/status.css');
-@import url('../components/ChatList/style.css');
-@import url('../components/TopBar/style.css');
+@import url('../components/title/style.css');
+@import url('../components/button/style.css');
+@import url('../components/link/style.css');
+@import url('../components/field/style.css');
+@import url('../components/background/style.css');
+@import url('../components/form/style.css');
+@import url('../components/avatar/style.css');
+
+/* не знаю как подключить стили для конкретной странице оставлю это до вебпака */
+@import url('../pages/setting/style.css');
+/* TODO будет удалено, когда не будет необходимости в компоненте */
+@import url('../components/fastLinks/styles.css');
+
+@import url('../pages/setting/style.css');
+@import url('../components/icon/style.css');
+@import url('../components/botBar/style.css');
+@import url('../components/modal/style.css');
+@import url('../components/fileUpload/style.css');
+@import url('../components/chatItem/style.css');
+@import url('../components/message/style.css');
+@import url('../components/badge/style.css');
+@import url('../components/status/status.css');
+@import url('../components/chatList/style.css');
+@import url('../components/topBar/style.css');
 
 @font-face {
   font-family: 'Roboto';
@@ -69,6 +76,11 @@ html {
   font-weight: normal;
 }
 
+/* глуповатый хак, component это враппер для компонента */
+component {
+  width: 100%;
+}
+
 #app {
   /* width: 100%;
   height: 100%; */
@@ -87,17 +99,4 @@ html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-/* TODO будет удалено, когда не будет необходимости */
-.fast-links {
-  position: absolute;
-  text-transform: uppercase;
-  z-index: 9999;
-  bottom: 0;
-}
-
-.fast-links a {
-  display: inline-block;
-  margin-right: 15px;
 }

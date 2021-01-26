@@ -28,3 +28,7 @@
 .title--color-red {
   color: var(--color-red);
 }
+
+.title--color-green {
+  color: var(--color-green-1);
+}

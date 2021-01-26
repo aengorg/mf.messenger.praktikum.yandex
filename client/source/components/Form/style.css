@@ -12,7 +12,8 @@
   max-width: 220px;
   padding: 16px;
   margin: 0 auto;
-  margin-bottom: 36px;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
 }
 
 /* huck flex gap */
@@ -50,7 +51,8 @@
   padding-top: 8px;
   border-top: 1px solid var(--color-gray-5);
   display: flex;
-  justify-content: end;
+  gap: 16px;
+  justify-content: start;
   align-items: center;
 }
 

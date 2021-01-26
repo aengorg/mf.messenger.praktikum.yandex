@@ -1,21 +1,37 @@
-.background {
+.bg {
   background-size: 365px;
   background-repeat: no-repeat;
   background-position: bottom right;
 }
 
-.background--login {
-  background-image: url('../../assets/images/backgrounds/login.svg');
+.bg--size-l {
+  background-size: 500px;
 }
 
-.background--signup {
-  background-image: url('../../assets/images/backgrounds/signup.svg');
+.bg--pos-tc {
+  background-position: top center;
 }
 
-.background--settings {
-  background-image: url('../../assets/images/backgrounds/settings.svg');
+.bg--img-error500 {
+  background-image: url('../../../public/assets/images/backgrounds/500.svg');
 }
 
-.background--security {
-  background-image: url('../../assets/images/backgrounds/security.svg');
+.bg--img-error404 {
+  background-image: url('../../../public/assets/images/backgrounds/404.svg');
+}
+
+.bg--img-login {
+  background-image: url('../../../public/assets/images/backgrounds/login.svg');
+}
+
+.bg--img-signup {
+  background-image: url('../../../public/assets/images/backgrounds/signup.svg');
+}
+
+.bg--img-settings {
+  background-image: url('../../../public/assets/images/backgrounds/settings.svg');
+}
+
+.bg--img-security {
+  background-image: url('../../../public/assets/images/backgrounds/security.svg');
 }

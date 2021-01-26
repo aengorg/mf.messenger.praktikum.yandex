@@ -1,14 +1,15 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
+import {
+  AbstractForm,
+  PropsAbstractForm,
+} from '../../components/Form/index.js';
 import template from './template.js';
-
-// import { DataForm } from '../../core/DataForm/index.js';
 
 import { Title, PropsTitle } from '../../components/title/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
 
-export interface PropsSignupPage extends PropsComponent {
+export interface PropsSignupPage extends PropsAbstractForm {
   title: PropsTitle;
   linkLogin: PropsLink;
   fieldEmail: PropsField;
@@ -21,7 +22,7 @@ export interface PropsSignupPage extends PropsComponent {
   buttonSignup: PropsButton;
 }
 
-export class SignupPage extends Component<PropsSignupPage> {
+export class SignupPage extends AbstractForm<PropsSignupPage> {
   constructor(props: PropsSignupPage) {
     super(props, {
       title: new Title(props.title),
@@ -40,8 +41,7 @@ export class SignupPage extends Component<PropsSignupPage> {
   public beforeCreateHandler() {}
 
   public createdHandler() {
-    // const inputsData = new DataForm('#form-login', ['login', 'password']);
-    // inputsData.addHandlerToSubmit();
+    this.initForm();
   }
 
   public updatedHandler() {}

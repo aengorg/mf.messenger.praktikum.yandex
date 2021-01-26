@@ -12,6 +12,7 @@ export default `
       {{SLOT 'fieldPhone' }}
       {{SLOT 'fieldPassword' }}
       {{SLOT 'fieldPassword2' }}
+      {{SLOT 'error'}}
     </div>
 
     <div class="form_buttons-group form_buttons-group--row">

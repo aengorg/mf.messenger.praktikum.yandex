@@ -4,3 +4,8 @@
 .bot-bar_input {
   flex-grow: 1;
 }
+
+.bot-bar_actions {
+  display: flex;
+  gap: 4px;
+}

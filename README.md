@@ -8,6 +8,12 @@
 
 [Вот что получилось - дизайн в figma](https://www.figma.com/proto/mUP7cfOp31SqrgHVCl4mOi/Untitled?node-id=7%3A321&scaling=min-zoom)
 
+## Замечания
+
+1 скрипт в `client/package.json` `postinstall:TODO` нужен что бы вынуть из  
+`node_mpdules` шаблонизатор. так как netlify не выполняет баш скрипты  
+я удалил из игнора файл, и "закоментил" скрипт
+
 ## Помочь проекту можно, но не обязательно
 
 Запустить

@@ -366,7 +366,7 @@ export function compileTemplate(
 
 // var source = document.getElementById('entry-template')?.innerHTML;
 var x = window.Handlebars;
-
+aaa
 console.log(x);
 
 // import Handlebars from '../node_modules/handlebars/dist/handlebars.js';

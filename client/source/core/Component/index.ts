@@ -170,13 +170,24 @@ export abstract class Component<TProps extends PropsComponent> {
     if (element !== null) {
       for (const childName in this.children) {
         if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
-          // TODO slots → querySelectorsAll
           const slot = element.querySelector(
             `${TAG_SLOT}[data-slot=${childName}]`,
           );
+
           if (slot !== null) {
-            slot.replaceWith(this.children[childName]?.getElement() || '');
+            const child = this.children[childName];
+            if (Array.isArray(child)) {
+              const fragment = document.createDocumentFragment();
+              child.forEach((component) => {
+                fragment.appendChild(component?.getElement());
+              });
+              slot.replaceWith(fragment || '');
+            } else {
+              slot.replaceWith(child?.getElement() || '');
+            }
           }
+
+          // TODO slots → querySelectorsAll
         }
       }
 

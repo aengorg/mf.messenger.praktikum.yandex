@@ -67,7 +67,15 @@ export class Field extends Component {
     }
     getContext() {
         return {
-            inputClasses: joinClasses(['field_input']),
+            fieldClasses: joinClasses(['field']),
+            labelClasses: joinClasses(['field_label']),
+            inputClasses: joinClasses([
+                'field_input',
+                this.props.width ? `field_input--width-${this.props.width}` : '',
+                this.props.icon
+                    ? `field_input--icon field_input--icon-${this.props.icon}`
+                    : '',
+            ]),
         };
     }
     render() {

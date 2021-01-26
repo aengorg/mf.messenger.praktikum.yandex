@@ -125,7 +125,6 @@ export class Component {
                             slot.replaceWith((child === null || child === void 0 ? void 0 : child.getElement()) || '');
                         }
                     }
-                    // TODO slots → querySelectorsAll
                 }
             }
             if (this.$element === null) {

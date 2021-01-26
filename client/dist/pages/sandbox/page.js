@@ -57,8 +57,12 @@ export class Sandbox extends Component {
             }),
             // * Avatar
             avatar: new Avatar({}),
-            avatarPhoto: new Avatar({
+            avatarStatus: new Avatar({
                 url: '../public/assets/images/test/photo.png',
+                status: 'online',
+            }),
+            avatarPhoto: new Avatar({
+                url: '../public/assets/images/test/photo2.png',
             }),
         });
     }

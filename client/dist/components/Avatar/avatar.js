@@ -1,9 +1,15 @@
 import { Component } from '../../core/Component/index.js';
 import template from './template.js';
 import { joinClasses } from '../../utils/joinClasses.js';
+import { Status } from '../status/index.js';
 export class Avatar extends Component {
     constructor(props) {
-        super(props);
+        super(props, {
+            status: new Status({
+                className: `avatar_status ${props.className}`,
+                status: props.status,
+            }),
+        });
     }
     beforeCreateHandler() { }
     createdHandler() { }

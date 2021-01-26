@@ -19,6 +19,7 @@ export default `
   {{SLOT 'buttonIconEmoji' }}
   {{SLOT 'avatar' }}
   {{SLOT 'avatarPhoto' }}
+  {{SLOT 'avatarStatus' }}
 </div>
 `;
 //# sourceMappingURL=template.js.map

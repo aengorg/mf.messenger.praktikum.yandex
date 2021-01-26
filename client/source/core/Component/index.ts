@@ -11,7 +11,9 @@ export interface Children {
   [key: string]: any;
 }
 
-export interface PropsComponent {}
+export interface PropsComponent {
+  className?: string;
+}
 
 export interface PropsComponentEmpty extends PropsComponent {}
 
@@ -186,8 +188,6 @@ export abstract class Component<TProps extends PropsComponent> {
               slot.replaceWith(child?.getElement() || '');
             }
           }
-
-          // TODO slots → querySelectorsAll
         }
       }
 

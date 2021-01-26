@@ -371,3 +371,11 @@ console.log(x);
 
 // import Handlebars from '../node_modules/handlebars/dist/handlebars.js';
 // console.log(Handlebars);
+
+http {
+  server {
+    location / {
+      root /client/source;
+    }
+  }
+}

@@ -26,6 +26,7 @@ const propsErrorPage500: PropsErrorPage = {
     url: './',
     text: 'Back to chats',
     size: 2,
+    block: true,
   },
 };
 // 404
@@ -41,6 +42,7 @@ const propsErrorPage404: PropsErrorPage = {
     url: './',
     text: 'Back to chats',
     size: 2,
+    block: true,
   },
 };
 
@@ -178,6 +180,7 @@ const propsSignupPage: PropsSignupPage = {
 
 // * SettingPasswordPage;
 const propsSettingPasswordPage: PropsSettingPasswordPage = {
+  formSelector: '#form-setting-password',
   title: {
     text: 'Change password',
     level: 1,
@@ -188,18 +191,30 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
     label: 'Old password',
     type: 'password',
     placeholder: '...',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldNewPassword: {
     name: 'newPassword',
     label: 'New Password',
     type: 'password',
     placeholder: '...',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldNewPassword2: {
     name: 'newPassword2',
     label: 'New password (again)',
     type: 'password',
     placeholder: '...',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   buttonCancel: {
     text: 'Cancel',
@@ -216,6 +231,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
 
 // * PropsSettingPage;
 const propsSettingPage: PropsSettingPage = {
+  formSelector: '#form-setting',
   title: {
     text: 'Edit profile',
     level: 1,
@@ -226,39 +242,63 @@ const propsSettingPage: PropsSettingPage = {
     label: 'First name',
     type: 'text',
     placeholder: 'Ivan',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldSecondName: {
     name: 'second_name',
     label: 'Second name',
     type: 'text',
     placeholder: 'Markov',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldChatName: {
     name: 'chat_name',
     label: 'Chat name',
     type: 'text',
     placeholder: 'Oriental magician',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldEmail: {
     name: 'email',
     label: 'Email',
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required, rules.email],
+    },
   },
   fieldLogin: {
     name: 'login',
     label: 'Login',
     type: 'text',
     placeholder: 'Abracadabra',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   fieldPhone: {
     name: 'phone',
     label: 'Phone',
     type: 'text',
     placeholder: '+79008007712',
+    validation: {
+      events: ['blur', 'focus'],
+      rules: [rules.required],
+    },
   },
   linkPasswordSetting: {
-    url: '../signup/index.html',
+    url: '../public/#pass',
     text: 'Change password',
     size: 3,
   },

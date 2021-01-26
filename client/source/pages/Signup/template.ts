@@ -17,7 +17,6 @@ export default `
 
     <div class="form_buttons-group form_buttons-group--row">
       {{SLOT 'buttonSignup' }}
-      <br />
       {{SLOT 'linkLogin' }}
     </div>
   </form>

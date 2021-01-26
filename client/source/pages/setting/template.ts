@@ -1,6 +1,6 @@
 export default `
 <div class="app app--center bg bg--img-settings">
-  <form id="form-login" class="form form--page form--size-l">
+  <form id="form-setting" class="form form--page form--size-l">
 
     {{SLOT 'title' }}
 
@@ -18,6 +18,7 @@ export default `
             <br />
             {{SLOT 'linkPasswordSetting' }}
           </component>
+          {{SLOT 'error' }}
         </div>
       </div>
 
@@ -29,6 +30,7 @@ export default `
           </div>
           {{SLOT 'uploadAvatar' }}
           {{SLOT 'removePhoto' }}
+          
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
+import {
+  AbstractForm,
+  PropsAbstractForm,
+} from '../../components/form/index.js';
 import template from './template.js';
-
-import { DataForm } from '../../core/DataForm/index.js';
 
 import { Title, PropsTitle } from '../../components/title/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
@@ -13,7 +14,7 @@ import {
   PropsFileUpload,
 } from '../../components/fileUpload/index.js';
 
-export interface PropsSettingPage extends PropsComponent {
+export interface PropsSettingPage extends PropsAbstractForm {
   title: PropsTitle;
   fieldFirstName: PropsField;
   fieldSecondName: PropsField;
@@ -30,7 +31,7 @@ export interface PropsSettingPage extends PropsComponent {
   buttonSave: PropsButton;
 }
 
-export class SettingPage extends Component<PropsSettingPage> {
+export class SettingPage extends AbstractForm<PropsSettingPage> {
   constructor(props: PropsSettingPage) {
     super(props, {
       title: new Title(props.title),
@@ -53,8 +54,7 @@ export class SettingPage extends Component<PropsSettingPage> {
   public beforeCreateHandler() {}
 
   public createdHandler() {
-    const inputsData = new DataForm('#form-login', ['login', 'password']);
-    inputsData.addHandlerToSubmit();
+    this.initForm();
   }
 
   public updatedHandler() {}

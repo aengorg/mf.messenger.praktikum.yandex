@@ -8,6 +8,7 @@ export default `
       {{SLOT 'fieldOldPassword' }}
       {{SLOT 'fieldNewPassword' }}
       {{SLOT 'fieldNewPassword2' }}
+      {{SLOT 'error' }}
     </div>
 
     <div class="form_buttons-group">

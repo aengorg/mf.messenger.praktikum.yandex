@@ -1,11 +1,14 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
+import {
+  AbstractForm,
+  PropsAbstractForm,
+} from '../../components/Form/index.js';
 import template from './template.js';
 
 import { Title, PropsTitle } from '../../components/title/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
 
-export interface PropsSettingPasswordPage extends PropsComponent {
+export interface PropsSettingPasswordPage extends PropsAbstractForm {
   title: PropsTitle;
   fieldOldPassword: PropsField;
   fieldNewPassword: PropsField;
@@ -14,7 +17,7 @@ export interface PropsSettingPasswordPage extends PropsComponent {
   buttonSave: PropsButton;
 }
 
-export class SettingPasswordPage extends Component<PropsSettingPasswordPage> {
+export class SettingPasswordPage extends AbstractForm<PropsSettingPasswordPage> {
   constructor(props: PropsSettingPasswordPage) {
     super(props, {
       title: new Title(props.title),
@@ -28,7 +31,9 @@ export class SettingPasswordPage extends Component<PropsSettingPasswordPage> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {}
+  public createdHandler() {
+    this.initForm();
+  }
 
   public updatedHandler() {}
 

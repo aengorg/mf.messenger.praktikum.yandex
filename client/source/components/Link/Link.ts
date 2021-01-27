@@ -7,6 +7,7 @@ export interface PropsLink extends PropsComponent {
   url: string;
   size?: number;
   block?: boolean;
+  staticContent?: string;
 }
 
 export class Link extends Component<PropsLink> {

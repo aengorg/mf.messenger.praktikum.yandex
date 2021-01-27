@@ -366,8 +366,19 @@ export function compileTemplate(
 
 // var source = document.getElementById('entry-template')?.innerHTML;
 var x = window.Handlebars;
-
+aaa
 console.log(x);
 
 // import Handlebars from '../node_modules/handlebars/dist/handlebars.js';
 // console.log(Handlebars);
+
+http {
+  server {
+    location / {
+      root /client/source;
+    }
+  }
+}
+
+[build]
+  publish = "client/source"

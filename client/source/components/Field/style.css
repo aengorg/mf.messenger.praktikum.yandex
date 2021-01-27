@@ -1,7 +1,6 @@
 .field {
   display: flex;
   border-radius: 4px;
-  margin-bottom: 12px;
   flex-direction: column;
   position: relative;
 }
@@ -66,7 +65,7 @@
 }
 
 .field_input--icon-search {
-  background-image: url('../../assets/images/icons/search.svg');
+  background-image: url('../../../public/assets/images/icons/search.svg');
 }
 
 .field_input:focus.field_input--icon {

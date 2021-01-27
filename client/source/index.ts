@@ -1,4 +1,5 @@
 import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
+import { ChatPage, PropsChatPage } from './pages/chat/index.js';
 import { Sandbox } from './pages/sandbox/index.js';
 import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
 import { LoginPage, PropsLoginPage } from './pages/login/index.js';
@@ -13,6 +14,7 @@ import { FastLink } from './components/fastLinks/index.js';
 
 import { rules } from './utils/validationRules/index.js';
 import { Children } from './core/Component/index.js';
+import { Icon } from './components/Icon/icon.js';
 
 // * ErrorPage
 // 500
@@ -25,7 +27,7 @@ const propsErrorPage500: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './',
+    url: './#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -41,7 +43,7 @@ const propsErrorPage404: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './',
+    url: './#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -57,7 +59,7 @@ const propsLoginPage: PropsLoginPage = {
     size: 1,
   },
   linkSignup: {
-    url: '../public/#signup',
+    url: './#signup',
     text: 'Sign up',
     block: true,
   },
@@ -98,7 +100,7 @@ const propsSignupPage: PropsSignupPage = {
     size: 1,
   },
   linkLogin: {
-    url: '../public/#login',
+    url: './#login',
     text: 'Log in',
     block: true,
   },
@@ -300,7 +302,7 @@ const propsSettingPage: PropsSettingPage = {
     },
   },
   linkPasswordSetting: {
-    url: '../public/#pass',
+    url: './#pass',
     text: 'Change password',
     size: 3,
   },
@@ -335,7 +337,39 @@ const propsSettingPage: PropsSettingPage = {
   },
 };
 
-// * ModalPage
+// * ChatPage
+const propsChatPage: PropsChatPage = {
+  fieldSearch: {
+    name: 'search_user',
+    label: '',
+    icon: 'search',
+    width: 'unlimit',
+  },
+  buttonAddUser: {
+    text: '',
+    name: 'add_user',
+    size: 's',
+    icon: 'add-user',
+  },
+  buttonCreateGroup: {
+    text: '',
+    name: 'create_group',
+    size: 's',
+    icon: 'create-group',
+  },
+  avatar: {
+    url: '../../client/public/assets/images/test/photo.png',
+    size: 's',
+    status: 'online',
+  },
+  linkProfile: {
+    url: './#setting',
+    text: 'My profile',
+    size: 2,
+    className: 'chat-list_link-profile',
+    staticContent: new Icon({ icon: 'profile' }).getContent(),
+  },
+};
 
 let page: Children = new ErrorPage(propsErrorPage404);
 
@@ -366,6 +400,9 @@ switch (window.location.hash) {
     break;
   case '#modal2':
     page = new ModalPage2({});
+    break;
+  case '#chat':
+    page = new ChatPage(propsChatPage);
     break;
 
   default:

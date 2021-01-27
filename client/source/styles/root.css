@@ -7,22 +7,22 @@
 @import url('../components/background/style.css');
 @import url('../components/form/style.css');
 @import url('../components/avatar/style.css');
+@import url('../components/modal/style.css');
+@import url('../components/fileUpload/style.css');
+@import url('../components/status/status.css');
+@import url('../components/fastLinks/styles.css');
+@import url('../components/icon/style.css');
 
 /* не знаю как подключить стили для конкретной странице оставлю это до вебпака */
 @import url('../pages/setting/style.css');
-/* TODO будет удалено, когда не будет необходимости в компоненте */
-@import url('../components/fastLinks/styles.css');
+@import url('../pages/chat/style.css');
 
-@import url('../pages/setting/style.css');
-@import url('../components/icon/style.css');
-@import url('../components/botBar/style.css');
-@import url('../components/modal/style.css');
-@import url('../components/fileUpload/style.css');
+/* В процессе создания */
+@import url('../components/chatList/style.css');
 @import url('../components/chatItem/style.css');
 @import url('../components/message/style.css');
 @import url('../components/badge/style.css');
-@import url('../components/status/status.css');
-@import url('../components/chatList/style.css');
+@import url('../components/botBar/style.css');
 @import url('../components/topBar/style.css');
 
 @font-face {

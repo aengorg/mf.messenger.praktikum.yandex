@@ -27,7 +27,7 @@ const propsErrorPage500: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './',
+    url: './#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -43,7 +43,7 @@ const propsErrorPage404: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './',
+    url: './#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -59,7 +59,7 @@ const propsLoginPage: PropsLoginPage = {
     size: 1,
   },
   linkSignup: {
-    url: '../public/#signup',
+    url: './#signup',
     text: 'Sign up',
     block: true,
   },
@@ -100,7 +100,7 @@ const propsSignupPage: PropsSignupPage = {
     size: 1,
   },
   linkLogin: {
-    url: '../public/#login',
+    url: './#login',
     text: 'Log in',
     block: true,
   },
@@ -302,7 +302,7 @@ const propsSettingPage: PropsSettingPage = {
     },
   },
   linkPasswordSetting: {
-    url: '../public/#pass',
+    url: './#pass',
     text: 'Change password',
     size: 3,
   },
@@ -363,7 +363,7 @@ const propsChatPage: PropsChatPage = {
     status: 'online',
   },
   linkProfile: {
-    url: '../public/#setting',
+    url: './#setting',
     text: 'My profile',
     size: 2,
     className: 'chat-list_link-profile',

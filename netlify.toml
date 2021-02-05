@@ -1,5 +1,6 @@
 [build]
-  base = "client/public"
+  base = ""
+  publish = "client/public"
 
 [[redirects]]
   from = "/"

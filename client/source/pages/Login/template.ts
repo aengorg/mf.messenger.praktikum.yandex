@@ -7,7 +7,7 @@ export default `
     <div class="form_wrapper-inputs">
       {{SLOT 'fieldLogin' }}
       {{SLOT 'fieldPassword' }}
-      {{SLOT 'error'}}
+      {{SLOT 'error' }}
     </div>
 
     <div class="form_buttons-group form_buttons-group--row">

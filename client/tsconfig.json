@@ -1,7 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./public/dist",
     "module": "es2015",
     "target": "es2017",
     "strict": true,
@@ -17,6 +17,7 @@
     "newLine": "LF",
     "moduleResolution": "node"
   },
+  "files": ["source/vendor/handlebars.min.js"],
   "include": ["source/**/*", "node_modules/handlebars/types"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

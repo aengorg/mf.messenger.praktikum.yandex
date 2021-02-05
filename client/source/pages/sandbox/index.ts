@@ -1,2 +1,1 @@
-import { Sandbox } from './page.js';
-export { Sandbox };
+export { Sandbox } from './page.js';

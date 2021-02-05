@@ -1,7 +1,7 @@
 import { EventBus } from '../EventBus/index.js';
 import { compileTemplate } from '../Template/index.js';
-import { generationId } from '../../utils/generationId.js';
-import { htmlToElement } from '../../utils/htmlToElement.js';
+import { generationId } from '../../utils/generationId/index.js';
+import { htmlToElement } from '../../utils/htmlToElement/index.js';
 import { TAG_SLOT } from '../../constants/index.js';
 
 // export interface Children {
@@ -17,7 +17,7 @@ export interface PropsComponent {
 
 export interface PropsComponentEmpty extends PropsComponent {}
 
-enum EVENTS {
+enum Events {
   beforeCreate,
   create, // * INIT
   created, // * FLOW_CDM
@@ -27,43 +27,9 @@ enum EVENTS {
   beforeRemove,
   render, // * FLOW_RENDER
 }
-
-// не смог сделать через implements =(
-// но хочу
-// implements IComponent<TProps>
-// export interface IComponent<T> {
-//   readonly id: string;
-//   readonly eventBus: EventBus<EVENTS>;
-//   $element: Element | null;
-//   props: T;
-//   children: Children;
-
-//   new (props: T, children?: Children): IComponent<T>;
-
-//   template: (data: { data: T; state: Object }) => string;
-//   makeProxy(props: T): T;
-//   registerEvents(): void;
-
-//   beforeCreateHandler(): void;
-//   create(): void;
-//   createdHandler(): void;
-
-//   beforeUpdateHandler(oldProps: T, newProps: T): boolean;
-//   update(oldProps: T, newProps: T): void;
-//   updatedHandler(): void;
-
-//   render(): string;
-//   renderInternal(): void;
-
-//   getProps(): Readonly<T>;
-//   getContent(): string;
-//   getElement(): Element | null;
-//   getContext(): Object;
-// }
-
 export abstract class Component<TProps extends PropsComponent> {
   readonly id: string;
-  readonly eventBus: EventBus<EVENTS>;
+  readonly eventBus: EventBus<Events>;
   $element: Element | null;
   props: TProps;
   children: Children;
@@ -81,8 +47,8 @@ export abstract class Component<TProps extends PropsComponent> {
     this.template = compileTemplate(this.render());
 
     this.registerEvents();
-    this.eventBus.emit(EVENTS.beforeCreate);
-    this.eventBus.emit(EVENTS.create);
+    this.eventBus.emit(Events.beforeCreate);
+    this.eventBus.emit(Events.create);
   }
 
   private makeProxy(props: TProps): TProps {
@@ -90,7 +56,7 @@ export abstract class Component<TProps extends PropsComponent> {
     const handler = {
       set(target: TProps, prop: keyof TProps, value: any): boolean {
         target[prop] = value;
-        self.eventBus.emit(EVENTS.update, { ...target }, target);
+        self.eventBus.emit(Events.update, { ...target }, target);
         return true;
       },
       deleteProperty(): never {
@@ -102,35 +68,35 @@ export abstract class Component<TProps extends PropsComponent> {
 
   public setProps = (nextProps: { [P in keyof TProps]?: TProps[P] }): void => {
     this.props = Object.assign(this.props, nextProps);
-    this.eventBus.emit(EVENTS.update, this.props, nextProps);
+    this.eventBus.emit(Events.update, this.props, nextProps);
   };
 
   public getProps(): Readonly<TProps> {
     return this.props;
   }
 
-  // EVENTS
+  // Events
   private registerEvents(): void {
-    this.eventBus.on(EVENTS.beforeCreate, this.beforeCreateHandler.bind(this));
-    this.eventBus.on(EVENTS.create, this.create.bind(this));
-    this.eventBus.on(EVENTS.created, this.createdHandler.bind(this));
+    this.eventBus.on(Events.beforeCreate, this.beforeCreateHandler.bind(this));
+    this.eventBus.on(Events.create, this.create.bind(this));
+    this.eventBus.on(Events.created, this.createdHandler.bind(this));
 
-    this.eventBus.on(EVENTS.beforeUpdate, this.beforeUpdateHandler.bind(this));
-    this.eventBus.on(EVENTS.update, (oldProps: TProps, newProps: TProps) =>
+    this.eventBus.on(Events.beforeUpdate, this.beforeUpdateHandler.bind(this));
+    this.eventBus.on(Events.update, (oldProps: TProps, newProps: TProps) =>
       this.update(oldProps, newProps),
     );
-    this.eventBus.on(EVENTS.updated, this.updatedHandler.bind(this));
+    this.eventBus.on(Events.updated, this.updatedHandler.bind(this));
 
-    this.eventBus.on(EVENTS.beforeRemove, this.beforeRemoveHandler.bind(this));
+    this.eventBus.on(Events.beforeRemove, this.beforeRemoveHandler.bind(this));
 
-    this.eventBus.on(EVENTS.render, this.renderInternal.bind(this));
+    this.eventBus.on(Events.render, this.renderInternal.bind(this));
   }
 
   // CREATE
   private create(): void {
-    this.eventBus.emit(EVENTS.render); // first render
+    this.eventBus.emit(Events.render); // first render
     setTimeout(() => {
-      this.eventBus.emit(EVENTS.created);
+      this.eventBus.emit(Events.created);
     }, 0);
   }
 
@@ -141,10 +107,10 @@ export abstract class Component<TProps extends PropsComponent> {
   private update(oldProps: TProps, newProps: TProps): void {
     const isRender = this.beforeUpdateHandler(oldProps, newProps);
     if (isRender) {
-      this.eventBus.emit(EVENTS.render);
+      this.eventBus.emit(Events.render);
     }
     setTimeout(() => {
-      this.eventBus.emit(EVENTS.updated);
+      this.eventBus.emit(Events.updated);
     }, 0);
   }
 
@@ -161,7 +127,7 @@ export abstract class Component<TProps extends PropsComponent> {
   // RENDER
   public abstract render(): string;
   public forceRender(): void {
-    this.eventBus.emit(EVENTS.render);
+    this.eventBus.emit(Events.render);
   }
 
   // *
@@ -195,7 +161,7 @@ export abstract class Component<TProps extends PropsComponent> {
         this.$element = element;
         this.$element.setAttribute('data-id', this.id);
       } else {
-        this.eventBus.emit(EVENTS.beforeRemove);
+        this.eventBus.emit(Events.beforeRemove);
         setTimeout(() => {
           this.$element!.firstElementChild?.replaceWith(
             element?.firstElementChild as Element,

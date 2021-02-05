@@ -1,7 +1,7 @@
 import { Component, PropsComponent } from '../../core/Component/index.js';
 import template from './template.js';
 
-import { joinClasses } from '../../utils/joinClasses.js';
+import { joinClasses } from '../../utils/joinClasses/index.js';
 
 export type IconsButton =
   | 'add-user'

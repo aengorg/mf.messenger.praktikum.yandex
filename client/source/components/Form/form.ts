@@ -49,7 +49,7 @@ export abstract class AbstractForm<
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.isValidation()) {
+    if (this.isValid()) {
       this.$form?.classList.add('form--error');
       this.children.error.props.text = 'Error field(s)';
     } else {
@@ -59,9 +59,10 @@ export abstract class AbstractForm<
     }
   }
 
-  public isValidation(): boolean {
+  public isValid(): boolean {
     const inputs: Field[] = Object.values(this.children).filter((child) => {
       // TODO использовать перечисленные поля
+      // происходит фильтрация от других не валидируемых компонентов
       return child instanceof Field;
     });
 

@@ -4,7 +4,7 @@ import template from './template.js';
 import { FieldError } from './fieldError/index.js';
 import { TRule, TErrors } from '../../utils/validationRules/index.js';
 import { validation } from '../../utils/validationRules/validation.js';
-import { joinClasses } from '../../utils/joinClasses.js';
+import { joinClasses } from '../../utils/joinClasses/index.js';
 
 export type IconsField = 'search';
 

@@ -8,43 +8,43 @@ export class FastLink extends Component<PropsComponentEmpty> {
     super(props, {
       links: [
         new Link({
-          url: '../public/#error500',
+          url: './#error500',
           text: 'error_500',
         }),
         new Link({
-          url: '../public/#error404',
+          url: './#error404',
           text: 'error_404',
         }),
         new Link({
-          url: '../public/#login',
+          url: './#login',
           text: 'login',
         }),
         new Link({
-          url: '../public/#signup',
+          url: './#signup',
           text: 'signup',
         }),
         new Link({
-          url: '../public/#setting',
+          url: './#setting',
           text: 'setting',
         }),
         new Link({
-          url: '../public/#pass',
+          url: './#pass',
           text: 'Password',
         }),
         new Link({
-          url: '../public/#chat',
+          url: './#chat',
           text: 'chat',
         }),
         new Link({
-          url: '../public/#modal1',
+          url: './#modal1',
           text: 'modal1',
         }),
         new Link({
-          url: '../public/#modal2',
+          url: './#modal2',
           text: 'modal2',
         }),
         new Link({
-          url: '../public/#sandbox',
+          url: './#sandbox',
           text: 'sandbox',
         }),
       ],

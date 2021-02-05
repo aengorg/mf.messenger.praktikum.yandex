@@ -1,5 +1,5 @@
 import { Component, PropsComponent } from '../../core/Component/index.js';
-import { joinClasses } from '../../utils/joinClasses.js';
+import { joinClasses } from '../../utils/joinClasses/index.js';
 import template from './template.js';
 
 export interface PropsLink extends PropsComponent {

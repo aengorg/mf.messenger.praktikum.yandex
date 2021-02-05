@@ -1,2 +1,1 @@
-import { ErrorPage, PropsErrorPage } from './page.js';
-export { ErrorPage, PropsErrorPage };
+export { ErrorPage, PropsErrorPage } from './page.js';

@@ -50,7 +50,7 @@ export default `
         <div class="top-bar_avatar">
               <div class="avatar avatar--size-s">
                 <img
-                  src="../public/assets/images/test/photo3.png"
+                  src="./assets/images/test/photo3.png"
                   alt="avatar"
                   class="avatar_image"
                 />

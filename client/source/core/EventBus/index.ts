@@ -33,7 +33,7 @@ export class EventBus<TEvent> {
   public emit(event: TEvent, ...args: any[]): void {
     this.isExistEvent(event);
 
-    this.listeners.get(event)?.forEach(function (listener) {
+    this.listeners.get(event)?.forEach((listener) => {
       listener(...args);
     });
   }

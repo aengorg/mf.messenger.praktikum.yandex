@@ -1,3 +1,7 @@
 tmp
 node_modules
+
 client/public/dist
+
+client/source/vendor/**/*
+! client/source/vendor/handlebars.min.js

@@ -94,8 +94,9 @@ export class Field extends Component<PropsField> {
   public beforeRemoveHandler() {
     if (this.props.validation !== undefined) {
       this.props.validation.events.forEach((event) => {
-        console.log('delete event');
-        this.$input?.removeEventListener(event, this.validationHandler);
+        if (this.$input !== null) {
+          this.$input.removeEventListener(event, this.validationHandler);
+        }
       });
     }
   }

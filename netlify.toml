@@ -1,8 +1,8 @@
 [build]
-  base = "client/"
+  base = "client/public"
 
 [[redirects]]
   from = "/"
-  to = "/client/public/#"
+  to = "/#"
   status = 200
   force = true

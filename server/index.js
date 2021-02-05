@@ -12,5 +12,5 @@ const { HOST, PATH_STATIC, PORT } = process.env;
 app.use('/', express.static(path.join(__dirname, PATH_STATIC)));
 
 app.listen(PORT, () => {
-  console.log(`App http://localhost:${PORT}/public/#`);
+  console.log(`App http://localhost:${PORT}/#`);
 });

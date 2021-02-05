@@ -77,7 +77,7 @@ const propsLoginPage: PropsLoginPage = {
     name: 'password',
     label: 'Password',
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -158,7 +158,7 @@ const propsSignupPage: PropsSignupPage = {
     name: 'password',
     label: 'Password',
     type: 'password',
-    placeholder: 'Abracadabra',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
@@ -168,7 +168,7 @@ const propsSignupPage: PropsSignupPage = {
     name: 'password2',
     label: 'Password (again)',
     type: 'password',
-    placeholder: 'Abracadabra',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
@@ -194,7 +194,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
     name: 'oldPassword',
     label: 'Old password',
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -204,7 +204,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
     name: 'newPassword',
     label: 'New Password',
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -214,7 +214,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
     name: 'newPassword2',
     label: 'New password (again)',
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],

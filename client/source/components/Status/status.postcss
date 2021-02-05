@@ -1,0 +1,19 @@
+.status {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--color-white);
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--color-gray-1);
+
+  &--online {
+    background-color: var(--color-green-1);
+  }
+
+  &--wait {
+    background-color: var(--color-orange);
+  }
+
+  &--busy {
+    background-color: var(--color-red);
+  }
+}

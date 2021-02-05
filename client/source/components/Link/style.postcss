@@ -1,0 +1,25 @@
+.link {
+  text-decoration: none;
+  color: var(--color-blue-1);
+
+  &:hover {
+    color: var(--color-blue-2);
+    text-decoration: underline;
+  }
+
+  &--block {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  &--size {
+    &-1 {
+      font-size: var(--text-size-1);
+    }
+
+    &-2 {
+      font-size: var(--text-size-2);
+    }
+  }
+}

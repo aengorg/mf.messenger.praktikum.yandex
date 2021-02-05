@@ -1,0 +1,51 @@
+.chat {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+
+  &_list {
+    max-width: 350px;
+    border-right: 1px solid var(--color-gray-5);
+    padding: 8px;
+  }
+
+  &_area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: var(--color-gray-6);
+  }
+
+  &_top-bar {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  &_messages {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 8px;
+    overflow-y: auto;
+  }
+
+  &_bot-bar {
+    width: 100%;
+    height: 40px;
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.chat-list_actions {
+  display: flex;
+  gap: 8px;
+}

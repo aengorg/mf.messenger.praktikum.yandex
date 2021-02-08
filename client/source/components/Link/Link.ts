@@ -6,6 +6,7 @@ export interface PropsLink extends PropsComponent {
   text: string;
   url: string;
   size?: number;
+  target?: string;
   block?: boolean;
   staticContent?: string;
 }
@@ -17,14 +18,7 @@ export class Link extends Component<PropsLink> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {
-    // временный хак для смены страницы
-    this.$element?.addEventListener('click', () => {
-      setTimeout(() => {
-        window.location.reload();
-      }, 0);
-    });
-  }
+  public createdHandler() {}
 
   public updatedHandler() {}
 

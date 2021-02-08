@@ -61,11 +61,11 @@ export class Sandbox extends Component<any> {
       // * Avatar
       avatar: new Avatar({}),
       avatarStatus: new Avatar({
-        url: './assets/images/test/photo.png',
+        url: '../assets/images/test/photo1.png',
         status: 'online',
       }),
       avatarPhoto: new Avatar({
-        url: './assets/images/test/photo2.png',
+        url: '../assets/images/test/photo2.png',
       }),
     });
   }

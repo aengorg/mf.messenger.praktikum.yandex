@@ -85,7 +85,7 @@ export default `
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="..//public/assets/images/test/photo3.png"
+                  src="./assets/images/test/photo3.png"
                   alt="avatar"
                   class="avatar_image"
                 />

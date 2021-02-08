@@ -10,11 +10,13 @@ import {
 import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
 import { ModalPage } from './pages/modal/index.js';
 import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
-import { FastLink } from './components/fastLinks/index.js';
+// import { FastLink } from './components/fastLinks/index.js';
 
 import { rules } from './utils/validationRules/index.js';
-import { Children } from './core/Component/index.js';
 import { Icon } from './components/Icon/icon.js';
+import { Router } from './core/Router/index.js';
+
+export const router = new Router();
 
 // * ErrorPage
 // 500
@@ -27,7 +29,7 @@ const propsErrorPage500: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './#login',
+    url: '#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -43,7 +45,7 @@ const propsErrorPage404: PropsErrorPage = {
     color: 'red',
   },
   link: {
-    url: './#login',
+    url: '#login',
     text: 'Back to chats',
     size: 2,
     block: true,
@@ -59,7 +61,7 @@ const propsLoginPage: PropsLoginPage = {
     size: 1,
   },
   linkSignup: {
-    url: './#signup',
+    url: '#signup',
     text: 'Sign up',
     block: true,
   },
@@ -100,7 +102,7 @@ const propsSignupPage: PropsSignupPage = {
     size: 1,
   },
   linkLogin: {
-    url: './#login',
+    url: '#login',
     text: 'Log in',
     block: true,
   },
@@ -302,7 +304,7 @@ const propsSettingPage: PropsSettingPage = {
     },
   },
   linkPasswordSetting: {
-    url: './#pass',
+    url: '#pass',
     text: 'Change password',
     size: 3,
   },
@@ -358,12 +360,12 @@ const propsChatPage: PropsChatPage = {
     icon: 'create-group',
   },
   avatar: {
-    url: '../../client/public/assets/images/test/photo.png',
+    url: '../assets/images/test/photo1.png',
     size: 's',
     status: 'online',
   },
   linkProfile: {
-    url: './#setting',
+    url: '#setting',
     text: 'My profile',
     size: 2,
     className: 'chat-list_link-profile',
@@ -371,47 +373,22 @@ const propsChatPage: PropsChatPage = {
   },
 };
 
-let page: Children = new ErrorPage(propsErrorPage404);
+const $app = document.querySelector('#app') || document.createElement('error');
 
-switch (window.location.hash) {
-  case '#error500':
-    page = new ErrorPage(propsErrorPage500);
-    break;
-  case '#error404':
-    page = new ErrorPage(propsErrorPage404);
-    break;
-  case '#login':
-    page = new LoginPage(propsLoginPage);
-    break;
-  case '#signup':
-    page = new SignupPage(propsSignupPage);
-    break;
-  case '#sandbox':
-    page = new Sandbox({});
-    break;
-  case '#pass':
-    page = new SettingPasswordPage(propsSettingPasswordPage);
-    break;
-  case '#setting':
-    page = new SettingPage(propsSettingPage);
-    break;
-  case '#modal1':
-    page = new ModalPage({});
-    break;
-  case '#modal2':
-    page = new ModalPage2({});
-    break;
-  case '#chat':
-    page = new ChatPage(propsChatPage);
-    break;
+router
+  .use(['', 'login'], new LoginPage(propsLoginPage))
+  .use('signup', new SignupPage(propsSignupPage))
+  .use('sandbox', new Sandbox({}))
+  .use('pass', new SettingPasswordPage(propsSettingPasswordPage))
+  .use('setting', new SettingPage(propsSettingPage))
+  .use('modal', new ModalPage({}))
+  .use('modal2', new ModalPage2({}))
+  .use('chat', new ChatPage(propsChatPage))
+  .use('error500', new ErrorPage(propsErrorPage500))
+  .default('error404', new ErrorPage(propsErrorPage404))
+  .start($app);
 
-  default:
-    page = new ErrorPage(propsErrorPage404);
-    break;
-}
-
-const $app = document.querySelector('#app');
-$app!.appendChild(
-  new FastLink({}).getElement() || document.createElement('error'),
-);
-$app!.appendChild(page.getElement() || document.createElement('error'));
+// $app!.appendChild(
+//   new FastLink({}).getElement() || document.createElement('error'),
+// );
+// $app!.appendChild(page.getElement() || document.createElement('error'));

@@ -73,6 +73,12 @@ export abstract class AbstractForm<
     return errors.some((arr) => arr.length > 0);
   }
 
+  // TODO переопределять на странице
+  // public validHandler(): void {
+  //   console.log(this.inputsData?.getData());
+  // }
+
+  // TODO переопределять на странице
   public submitHandler(): void {
     console.log(this.inputsData?.getData());
   }

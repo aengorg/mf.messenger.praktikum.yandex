@@ -89,7 +89,7 @@ export abstract class Component<TProps extends PropsComponent> {
 
     this.eventBus.on(Events.beforeRemove, this.beforeRemoveHandler.bind(this));
 
-    this.eventBus.on(Events.render, this.renderInternal.bind(this));
+    this.eventBus.on(Events.render, this.internalRender.bind(this));
   }
 
   // CREATE
@@ -131,28 +131,28 @@ export abstract class Component<TProps extends PropsComponent> {
   }
 
   // *
-  private renderInternal(): void {
+  private internalRender(): void {
     const context = { data: this.props, state: this.getContext() };
     const element: HTMLElement = htmlToElement(this.template(context));
 
     if (element !== null) {
       for (const childName in this.children) {
         if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
-          const slot = element.querySelector(
+          const slots = element.querySelectorAll(
             `${TAG_SLOT}[data-slot=${childName}]`,
           );
 
-          if (slot !== null) {
-            const child = this.children[childName];
-            if (Array.isArray(child)) {
-              const fragment = document.createDocumentFragment();
-              child.forEach((component) => {
-                fragment.appendChild(component?.getElement());
-              });
-              slot.replaceWith(fragment || '');
-            } else {
-              slot.replaceWith(child?.getElement() || '');
-            }
+          if (slots !== null) {
+            slots.forEach((slot) => {
+              const child = this.children[childName];
+              const index = slot.getAttribute('data-index');
+
+              if (Array.isArray(child) && index !== null) {
+                slot.replaceWith(child[Number(index) - 1].getElement() || '');
+              } else {
+                slot.replaceWith(child?.getElement() || '');
+              }
+            });
           }
         }
       }
@@ -181,13 +181,10 @@ export abstract class Component<TProps extends PropsComponent> {
   }
 
   public show(): void {
-    // this.$element!.style.visibility = 'visible';
     this.$element!.style.display = 'initial';
   }
 
   public hide(): void {
     this.$element!.style.display = 'none';
-    // this.$element!.style.visibility = 'hidden';
-    // this.$element!.style.position = 'absolute';
   }
 }

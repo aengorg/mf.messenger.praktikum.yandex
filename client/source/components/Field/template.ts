@@ -6,6 +6,7 @@ export default `
     class="{{ state.inputClasses }}"
     placeholder="{{ data.placeholder }}"
     name="{{ data.name }}"
+    value="{{ state.value }}"
   />
   {{SLOT 'error' }}
 </label>

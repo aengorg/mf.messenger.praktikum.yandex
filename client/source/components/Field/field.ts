@@ -24,7 +24,6 @@ export interface PropsField extends PropsComponent {
 
 export class Field extends Component<PropsField> {
   $input: HTMLInputElement | null;
-  value: string;
   isError: boolean;
 
   constructor(props: PropsField) {
@@ -33,7 +32,6 @@ export class Field extends Component<PropsField> {
     });
 
     this.$input = null;
-    this.value = props.initValue || '';
     this.isError = false;
   }
 
@@ -103,6 +101,7 @@ export class Field extends Component<PropsField> {
 
   public getContext() {
     return {
+      value: this.props.initValue,
       fieldClasses: joinClasses(['field']),
       labelClasses: joinClasses(['field_label']),
       inputClasses: joinClasses([

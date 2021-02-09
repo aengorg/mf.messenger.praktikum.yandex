@@ -93,10 +93,8 @@ npm run install:all
 Запуск
 
 ```
-npm run client:dev
-```
-
-```
+npm run client:dev:ts
+npm run client:dev:css
 npm run server:dev
 ```
 

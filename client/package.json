@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc -w",
+    "dev:ts": "tsc -w",
+    "dev:css": "postcss source/**/*.postcss --base source --ext .css --dir public/dist --watch",
     "build": "npm run build:ts && npm run build:css",
     "build:ts": "tsc --build",
     "build:css": "postcss source/**/*.postcss --base source --ext .css --dir public/dist",

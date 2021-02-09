@@ -12,6 +12,8 @@ import { ModalPage } from './pages/modal/index.js';
 import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
 import { FastLink } from './components/fastLinks/index.js';
 
+import { generationId } from './utils/generationId/index.js';
+import { generationInt } from './utils/generationInt/index.js';
 import { rules } from './utils/validationRules/index.js';
 import { Icon } from './components/Icon/icon.js';
 import { Router } from './core/Router/index.js';
@@ -111,9 +113,10 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Email',
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
+    initValue: `${generationId()}@example.com`,
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.email, rules.required],
+      rules: [rules.required, rules.email],
     },
   },
   fieldLogin: {
@@ -121,6 +124,7 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Login',
     type: 'text',
     placeholder: 'Abracadabra',
+    initValue: `${generationId()}`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -131,6 +135,7 @@ const propsSignupPage: PropsSignupPage = {
     label: 'First name',
     type: 'text',
     placeholder: 'Ivan',
+    initValue: `Ivan`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -141,6 +146,7 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Second name',
     type: 'text',
     placeholder: 'Markov',
+    initValue: `Markov`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -151,9 +157,10 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Phone',
     type: 'text',
     placeholder: '+79008007712',
+    initValue: `+7800${generationInt(1000000, 9999999)}`,
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.required],
+      rules: [rules.required, rules.phone],
     },
   },
   fieldPassword: {
@@ -161,6 +168,7 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Password',
     type: 'password',
     placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
@@ -171,6 +179,7 @@ const propsSignupPage: PropsSignupPage = {
     label: 'Password (again)',
     type: 'password',
     placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
@@ -300,7 +309,7 @@ const propsSettingPage: PropsSettingPage = {
     placeholder: '+79008007712',
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.required],
+      rules: [rules.required, rules.phone],
     },
   },
   linkPasswordSetting: {

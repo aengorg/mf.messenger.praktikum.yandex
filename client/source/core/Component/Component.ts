@@ -55,8 +55,9 @@ export abstract class Component<TProps extends PropsComponent> {
     const self = this;
     const handler = {
       set(target: TProps, prop: keyof TProps, value: any): boolean {
+        const oldTarget = { ...target };
         target[prop] = value;
-        self.eventBus.emit(Events.update, { ...target }, target);
+        self.eventBus.emit(Events.update, oldTarget, target);
         return true;
       },
       deleteProperty(): never {

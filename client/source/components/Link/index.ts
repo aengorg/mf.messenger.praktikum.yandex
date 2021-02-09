@@ -1,2 +1,1 @@
-import { Link, PropsLink } from './link.js';
-export { Link, PropsLink };
+export { Link, PropsLink } from './link.js';

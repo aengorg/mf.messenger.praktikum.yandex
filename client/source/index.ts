@@ -10,7 +10,7 @@ import {
 import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
 import { ModalPage } from './pages/modal/index.js';
 import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
-// import { FastLink } from './components/fastLinks/index.js';
+import { FastLink } from './components/fastLinks/index.js';
 
 import { rules } from './utils/validationRules/index.js';
 import { Icon } from './components/Icon/icon.js';
@@ -388,7 +388,6 @@ router
   .default('error404', new ErrorPage(propsErrorPage404))
   .start($app);
 
-// $app!.appendChild(
-//   new FastLink({}).getElement() || document.createElement('error'),
-// );
-// $app!.appendChild(page.getElement() || document.createElement('error'));
+$app!.appendChild(
+  new FastLink({}).getElement() || document.createElement('error'),
+);

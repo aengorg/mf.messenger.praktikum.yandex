@@ -56,16 +56,16 @@ export class Sandbox extends Component<any> {
       }),
       buttonIconEmoji: new Button({
         size: 's',
-        icon: 'emoji',
+        icon: 'add-user',
       }),
       // * Avatar
       avatar: new Avatar({}),
       avatarStatus: new Avatar({
-        url: '../assets/images/test/photo1.png',
+        url: './assets/images/test/photo1.png',
         status: 'online',
       }),
       avatarPhoto: new Avatar({
-        url: '../assets/images/test/photo2.png',
+        url: './assets/images/test/photo2.png',
       }),
     });
   }

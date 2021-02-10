@@ -33,23 +33,38 @@ export class HTTPTransport {
     this.apiBaseUrl = url;
   }
 
-  public get = (url: string, options: Options = {}): Promise<any> => {
+  public get = (
+    url: string,
+    options: Options = {},
+  ): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: Methods.GET });
   };
 
-  public post = (url: string, options: Options = {}): Promise<any> => {
+  public post = (
+    url: string,
+    options: Options = {},
+  ): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: Methods.POST });
   };
 
-  public put = (url: string, options: Options = {}): Promise<any> => {
+  public put = (
+    url: string,
+    options: Options = {},
+  ): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: Methods.PUT });
   };
 
-  public delete = (url: string, options: Options = {}): Promise<any> => {
+  public delete = (
+    url: string,
+    options: Options = {},
+  ): Promise<XMLHttpRequest> => {
     return this.request(url, { ...options, method: Methods.DELETE });
   };
 
-  private request = (url: string, options: Options): Promise<any> => {
+  private request = (
+    url: string,
+    options: Options = {},
+  ): Promise<XMLHttpRequest> => {
     const { data, method, timeout, getParam } = options;
 
     return new Promise((resolve, reject) => {

@@ -15,25 +15,15 @@ export default `
 
 {{!-- chat-list_mid --}}
       <ul class="chat-list_mid">
-        <li class="chat-list_item chat-item">
-          <div class="chat-item_left">
-            <div class="chat-item_avatar">
-              {{SLOT 'avatar' }}
-            </div>
-          </div>
-          <div class="chat-item_mid">
-            <div class="chat-item_name-user">Тимофей Козлов</div>
-            <div class="chat-item_content">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation veniam consequat sunt nostrud amet.
-            </div>
-          </div>
-          <div class="chat-item_right">
-            <div class="chat-item_date">01:17</div>
-            <div class="chat-item_badge badge">3</div>
-          </div>
-        </li>
+        {{#each data.chatItems }}
+          {{SLOT 'chatItems' @index }}
+        {{else}}
+          {{#if data.search }}
+            <li class="bg bg--img-searching bg--pos-tc bg--size-s" style="height: 100%;"></li>
+          {{else}}
+            <li class="bg bg--img-empty bg--pos-tc bg--size-s" style="height: 100%;"></li>
+          {{/if}}
+        {{/each}} 
       </ul>
 
 {{!-- chat-list_bot --}}
@@ -50,7 +40,7 @@ export default `
         <div class="top-bar_avatar">
               <div class="avatar avatar--size-s">
                 <img
-                  src="./assets/images/test/photo3.png"
+                  src="./assets/images/test/      .png"
                   alt="avatar"
                   class="avatar_image"
                 />

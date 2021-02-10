@@ -1,3 +1,5 @@
+import { t } from './locales/index.js';
+
 import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
 import { ChatPage, PropsChatPage } from './pages/chat/index.js';
 import { Sandbox } from './pages/sandbox/index.js';
@@ -16,6 +18,7 @@ import { generationId } from './utils/generationId/index.js';
 import { generationInt } from './utils/generationInt/index.js';
 import { rules } from './utils/validationRules/index.js';
 import { Icon } from './components/Icon/icon.js';
+
 import { Router } from './core/Router/index.js';
 
 export const router = new Router();
@@ -25,14 +28,14 @@ export const router = new Router();
 const propsErrorPage500: PropsErrorPage = {
   bg: 'error500',
   title: {
-    text: 'Server error 500',
+    text: `${t['serverError']} 500`,
     level: 1,
     size: 1,
     color: 'red',
   },
   link: {
     url: '#login',
-    text: 'Back to chats',
+    text: t['backToChats'],
     size: 2,
     block: true,
   },
@@ -41,14 +44,14 @@ const propsErrorPage500: PropsErrorPage = {
 const propsErrorPage404: PropsErrorPage = {
   bg: 'error404',
   title: {
-    text: 'Page not found. 404',
+    text: `${t['pageNotFound']} 404`,
     level: 1,
     size: 1,
     color: 'red',
   },
   link: {
     url: '#login',
-    text: 'Back to chats',
+    text: t['backToChats'],
     size: 2,
     block: true,
   },
@@ -58,20 +61,21 @@ const propsErrorPage404: PropsErrorPage = {
 const propsLoginPage: PropsLoginPage = {
   formSelector: '#form-login',
   title: {
-    text: 'Welcome!',
+    text: t['welcome'],
     level: 1,
     size: 1,
   },
   linkSignup: {
     url: '#signup',
-    text: 'Sign up',
+    text: t['registration'],
     block: true,
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
+    initValue: `Nm31odvlhi20`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -79,16 +83,17 @@ const propsLoginPage: PropsLoginPage = {
   },
   fieldPassword: {
     name: 'password',
-    label: 'Password',
+    label: t['password'],
     type: 'password',
     placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
     },
   },
   buttonLogin: {
-    text: 'Log in',
+    text: t['logIn'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -99,18 +104,18 @@ const propsLoginPage: PropsLoginPage = {
 const propsSignupPage: PropsSignupPage = {
   formSelector: '#form-signup',
   title: {
-    text: 'Join the world!',
+    text: t['join'],
     level: 1,
     size: 1,
   },
   linkLogin: {
     url: '#login',
-    text: 'Log in',
+    text: t['logIn'],
     block: true,
   },
   fieldEmail: {
     name: 'email',
-    label: 'Email',
+    label: t['email'],
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
     initValue: `${generationId()}@example.com`,
@@ -121,7 +126,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
     initValue: `${generationId()}`,
@@ -132,7 +137,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldFirstName: {
     name: 'first_name',
-    label: 'First name',
+    label: t['firstName'],
     type: 'text',
     placeholder: 'Ivan',
     initValue: `Ivan`,
@@ -143,7 +148,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldSecondName: {
     name: 'second_name',
-    label: 'Second name',
+    label: t['secondName'],
     type: 'text',
     placeholder: 'Markov',
     initValue: `Markov`,
@@ -154,7 +159,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldPhone: {
     name: 'phone',
-    label: 'Phone',
+    label: t['phone'],
     type: 'text',
     placeholder: '+79008007712',
     initValue: `+7800${generationInt(1000000, 9999999)}`,
@@ -165,7 +170,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldPassword: {
     name: 'password',
-    label: 'Password',
+    label: t['password'],
     type: 'password',
     placeholder: '●●●●●●',
     initValue: `password`,
@@ -176,7 +181,7 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldPassword2: {
     name: 'password2',
-    label: 'Password (again)',
+    label: `${t['password']} (${t['again']})`,
     type: 'password',
     placeholder: '●●●●●●',
     initValue: `password`,
@@ -186,7 +191,7 @@ const propsSignupPage: PropsSignupPage = {
     },
   },
   buttonSignup: {
-    text: 'Registration',
+    text: t['registration'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -197,13 +202,13 @@ const propsSignupPage: PropsSignupPage = {
 const propsSettingPasswordPage: PropsSettingPasswordPage = {
   formSelector: '#form-setting-password',
   title: {
-    text: 'Change password',
+    text: t['changePassword'],
     level: 1,
     size: 1,
   },
   fieldOldPassword: {
     name: 'oldPassword',
-    label: 'Old password',
+    label: t['oldPassword'],
     type: 'password',
     placeholder: '●●●●●●',
     validation: {
@@ -213,7 +218,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
   },
   fieldNewPassword: {
     name: 'newPassword',
-    label: 'New Password',
+    label: t['newPassword'],
     type: 'password',
     placeholder: '●●●●●●',
     validation: {
@@ -223,7 +228,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
   },
   fieldNewPassword2: {
     name: 'newPassword2',
-    label: 'New password (again)',
+    label: `${t['newPassword']} (${t['again']})`,
     type: 'password',
     placeholder: '●●●●●●',
     validation: {
@@ -232,12 +237,12 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
     },
   },
   buttonCancel: {
-    text: 'Cancel',
+    text: t['cancel'],
     name: 'cancel',
     type: 'button',
   },
   buttonSave: {
-    text: 'Save',
+    text: t['save'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -248,13 +253,13 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
 const propsSettingPage: PropsSettingPage = {
   formSelector: '#form-setting',
   title: {
-    text: 'Edit profile',
+    text: t['editProfile'],
     level: 1,
     size: 1,
   },
   fieldFirstName: {
     name: 'first_name',
-    label: 'First name',
+    label: t['firstName'],
     type: 'text',
     placeholder: 'Ivan',
     validation: {
@@ -264,7 +269,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldSecondName: {
     name: 'second_name',
-    label: 'Second name',
+    label: t['secondName'],
     type: 'text',
     placeholder: 'Markov',
     validation: {
@@ -274,7 +279,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldChatName: {
     name: 'chat_name',
-    label: 'Chat name',
+    label: t['chatName'],
     type: 'text',
     placeholder: 'Oriental magician',
     validation: {
@@ -284,7 +289,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldEmail: {
     name: 'email',
-    label: 'Email',
+    label: t['email'],
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
     validation: {
@@ -294,7 +299,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
     validation: {
@@ -304,7 +309,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldPhone: {
     name: 'phone',
-    label: 'Phone',
+    label: t['phone'],
     type: 'text',
     placeholder: '+79008007712',
     validation: {
@@ -314,11 +319,11 @@ const propsSettingPage: PropsSettingPage = {
   },
   linkPasswordSetting: {
     url: '#pass',
-    text: 'Change password',
+    text: t['changePassword'],
     size: 3,
   },
   titleAvatar: {
-    text: 'Profile photo',
+    text: t['profilePhoto'],
     level: 3,
     size: 5,
   },
@@ -326,22 +331,28 @@ const propsSettingPage: PropsSettingPage = {
     // url: '../../client/public/assets/images/test/photo.png',
   },
   uploadAvatar: {
-    text: 'Upload an image',
+    text: t['uploadAnImagePhoto'],
     name: 'upload_avatar',
   },
   removePhoto: {
-    text: 'Remove photo',
+    text: t['removePhoto'],
     name: 'remove_photo',
     type: 'button',
     danger: true,
   },
+  buttonLogout: {
+    text: t['logout'],
+    name: 'logout',
+    type: 'button',
+    danger: true,
+  },
   buttonCancel: {
-    text: 'Cancel',
+    text: t['cancel'],
     name: 'cancel',
     type: 'button',
   },
   buttonSave: {
-    text: 'Save',
+    text: t['save'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -382,7 +393,9 @@ const propsChatPage: PropsChatPage = {
   },
 };
 
-const $app = document.querySelector('#app') || document.createElement('error');
+const $app =
+  document.querySelector('#app') ||
+  document.createElement('error-root-element');
 
 router
   .use(['', 'login'], new LoginPage(propsLoginPage))

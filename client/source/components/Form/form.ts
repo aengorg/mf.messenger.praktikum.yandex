@@ -50,13 +50,21 @@ export abstract class AbstractForm<
     e.stopPropagation();
 
     if (this.isValid()) {
-      this.$form?.classList.add('form--error');
-      this.children.error.props.text = 'Error field(s)';
+      this.setErrorFrom('Error field(s)');
     } else {
-      this.$form?.classList.remove('form--error');
-      this.children.error.props.text = '';
+      this.delErrorFrom();
       this.submitHandler();
     }
+  }
+
+  public setErrorFrom(text: string): void {
+    this.$form?.classList.add('form--error');
+    this.children.error.props.text = text;
+  }
+
+  public delErrorFrom(): void {
+    this.$form?.classList.remove('form--error');
+    this.children.error.props.text = '';
   }
 
   public isValid(): boolean {

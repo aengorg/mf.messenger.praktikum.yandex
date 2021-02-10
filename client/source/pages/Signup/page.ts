@@ -8,6 +8,10 @@ import { Title, PropsTitle } from '../../components/title/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
+import { Alert } from '../../components/alert/index.js';
+
+import { authService } from '../../services/auth.js';
+import { TypeSignUpForm } from '../../api/types.js';
 
 export interface PropsSignupPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -25,6 +29,7 @@ export interface PropsSignupPage extends PropsAbstractForm {
 export class SignupPage extends AbstractForm<PropsSignupPage> {
   constructor(props: PropsSignupPage) {
     super(props, {
+      alert: new Alert({ delete: 3000 }),
       title: new Title(props.title),
       linkLogin: new Link(props.linkLogin),
       fieldEmail: new Field(props.fieldEmail),
@@ -36,6 +41,20 @@ export class SignupPage extends AbstractForm<PropsSignupPage> {
       fieldPassword2: new Field(props.fieldPassword2),
       buttonSignup: new Button(props.buttonSignup),
     });
+  }
+
+  public submitHandler(): void {
+    authService
+      .signUp(this.inputsData?.getData() as TypeSignUpForm)
+      .then(() => {
+        this.children.alert.props.type = 'success';
+        this.children.alert.props.text = 'ok';
+      })
+      .catch((error) => {
+        this.children.alert.props.type = 'error';
+        this.children.alert.props.text = error;
+        this.setErrorFrom(error);
+      });
   }
 
   public beforeCreateHandler() {}

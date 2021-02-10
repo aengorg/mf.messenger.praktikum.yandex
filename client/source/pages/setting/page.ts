@@ -13,6 +13,9 @@ import {
   FileUpload,
   PropsFileUpload,
 } from '../../components/fileUpload/index.js';
+import { Alert } from '../../components/alert/index.js';
+
+import { authService } from '../../services/auth.js';
 
 export interface PropsSettingPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -27,6 +30,7 @@ export interface PropsSettingPage extends PropsAbstractForm {
   avatar: PropsAvatar;
   uploadAvatar: PropsFileUpload;
   removePhoto: PropsButton;
+  buttonLogout: PropsButton;
   buttonCancel: PropsButton;
   buttonSave: PropsButton;
 }
@@ -34,6 +38,7 @@ export interface PropsSettingPage extends PropsAbstractForm {
 export class SettingPage extends AbstractForm<PropsSettingPage> {
   constructor(props: PropsSettingPage) {
     super(props, {
+      alert: new Alert({ delete: 3000, type: 'error' }),
       title: new Title(props.title),
       fieldFirstName: new Field(props.fieldFirstName),
       fieldSecondName: new Field(props.fieldSecondName),
@@ -46,6 +51,7 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
       avatar: new Avatar(props.avatar),
       uploadAvatar: new FileUpload(props.uploadAvatar),
       removePhoto: new Button(props.removePhoto),
+      buttonLogout: new Button(props.buttonLogout),
       buttonCancel: new Button(props.buttonCancel),
       buttonSave: new Button(props.buttonSave),
     });
@@ -55,6 +61,12 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
 
   public createdHandler() {
     this.initForm();
+
+    this.children.buttonLogout.$element.addEventListener('click', () => {
+      authService.logout().catch((error) => {
+        this.children.alert.props.text = error;
+      });
+    });
   }
 
   public updatedHandler() {}

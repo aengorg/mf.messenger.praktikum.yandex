@@ -2,11 +2,11 @@ import { Component } from '../Component/index.js';
 
 export type TPathNames = string | string[];
 
-export class Route {
+export class Route<PropsComponent> {
   private pathname: TPathNames;
-  private component: Component<any>;
+  private component: Component<PropsComponent>;
 
-  constructor(pathname: TPathNames, component: Component<any>) {
+  constructor(pathname: TPathNames, component: Component<PropsComponent>) {
     this.pathname = pathname;
     this.component = component;
   }

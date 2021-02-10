@@ -2,11 +2,11 @@ import { Route, TPathNames } from './index.js';
 import { Component } from '../Component/index.js';
 
 export class Router {
-  public currentRoute: Route | null = null;
+  public currentRoute: Route<any> | null = null;
 
   private history = window.history;
   private defaultPathname: string;
-  private routes: Route[] = [];
+  private routes: Route<any>[] = [];
   private rootNode: Element;
 
   constructor() {
@@ -18,7 +18,10 @@ export class Router {
       document.querySelector('#app') || document.createElement('div');
   }
 
-  public default(pathname: string, component: Component<any>): this {
+  public default<PropsComponent>(
+    pathname: string,
+    component: Component<PropsComponent>,
+  ): this {
     this.defaultPathname = pathname;
     this.use(pathname, component);
     return this;
@@ -33,8 +36,11 @@ export class Router {
     this.handlePathChange(document.location.hash);
   }
 
-  public use(pathname: TPathNames, component: Component<any>): this {
-    const route = new Route(pathname, component);
+  public use<PropsComponent>(
+    pathname: TPathNames,
+    component: Component<PropsComponent>,
+  ): this {
+    const route = new Route<PropsComponent>(pathname, component);
     this.routes.push(route);
     return this;
   }
@@ -70,7 +76,7 @@ export class Router {
     history.forward();
   }
 
-  public getRoute(pathname: string): Route | undefined {
+  public getRoute(pathname: string): Route<any> | undefined {
     return this.routes.find((route) => route.match(pathname));
   }
 }

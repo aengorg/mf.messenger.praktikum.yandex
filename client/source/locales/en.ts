@@ -19,7 +19,7 @@ export const en: { [k: string]: string } = {
   logIn: 'Log in',
   logout: 'Logout',
   registration: 'Registration',
-  uploadAnImage: 'Upload an image',
+  uploadAnImagePhoto: 'Upload an image',
 
   // ? fields
   login: 'Login',
@@ -44,4 +44,5 @@ export const en: { [k: string]: string } = {
   'user already in system': 'User already in system',
   'Login or password is incorrect': 'Login or password is incorrect',
   'Cookie is not valid': 'Error #001',
+  ErrorUnauthorized: 'No access',
 };

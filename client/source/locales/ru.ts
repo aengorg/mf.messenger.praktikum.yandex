@@ -19,7 +19,7 @@ export const ru: { [k: string]: string } = {
   logIn: 'Войти',
   logout: 'Выйти',
   registration: 'Регистрация',
-  uploadAnImage: 'Загрузить фото',
+  uploadAnImagePhoto: 'Загрузить фото',
 
   // ? fields
   login: 'Логин',
@@ -43,5 +43,6 @@ export const ru: { [k: string]: string } = {
   // ? Responses
   'user already in system': 'Пользователь уже в системе',
   'Login or password is incorrect': 'Логин или пароль не верные',
-  'Cookie is not valid': 'Ошибка, не возможное действие #001',
+  'Cookie is not valid': 'Ошибка #001',
+  ErrorUnauthorized: 'Нет доступа, необходимо войти',
 };

@@ -36,7 +36,7 @@ export class LoginPage extends AbstractForm<PropsLoginPage> {
   public submitHandler(): void {
     authService
       .signIn(this.inputsData?.getData() as TypeSignInRequest)
-      .then((data: any) => {
+      .then((data) => {
         this.children.alert.props.type = 'success';
         this.children.alert.props.text = String(data.message);
       })

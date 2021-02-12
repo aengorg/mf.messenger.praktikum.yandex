@@ -34,6 +34,7 @@ export class Title extends Component<PropsTitle> {
         'title',
         this.props?.size ? `title--size-${this.props.size}` : '',
         this.props?.color ? `title--color-${this.props.color}` : '',
+        this.props?.className ? `${this.props.className}` : '',
       ]),
     };
   }

@@ -40,7 +40,7 @@ export default `
         <div class="top-bar_avatar">
               <div class="avatar avatar--size-s">
                 <img
-                  src="./assets/images/test/      .png"
+                  {{!-- src="./assets/images/test/      .png" --}}
                   alt="avatar"
                   class="avatar_image"
                 />

@@ -25,13 +25,7 @@ export default `
 
       <div class="setting-wrapper_right">
         <div class="form_wrapper-inputs">
-          <div>
-            {{SLOT 'titleAvatar' }}
-            {{SLOT 'avatar' }}
-          </div>
-          {{SLOT 'uploadAvatar' }}
-          {{SLOT 'removePhoto' }}
-          
+          {{SLOT 'avatarUpload' }}
         </div>
       </div>
     </div>

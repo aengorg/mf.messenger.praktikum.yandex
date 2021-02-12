@@ -8,12 +8,8 @@ import { Title, PropsTitle } from '../../components/title/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
-import { Avatar, PropsAvatar } from '../../components/avatar/index.js';
-import {
-  FileUpload,
-  PropsFileUpload,
-} from '../../components/fileUpload/index.js';
 import { Alert } from '../../components/alert/index.js';
+import { AvatarUpload } from '../../components/avatarUpload/index.js';
 
 import { authService } from '../../services/auth.js';
 
@@ -27,12 +23,14 @@ export interface PropsSettingPage extends PropsAbstractForm {
   fieldPhone: PropsField;
   linkPasswordSetting: PropsLink;
   titleAvatar: PropsTitle;
-  avatar: PropsAvatar;
-  uploadAvatar: PropsFileUpload;
-  removePhoto: PropsButton;
   buttonLogout: PropsButton;
   buttonCancel: PropsButton;
   buttonSave: PropsButton;
+  avatarUpload: {
+    uploadText: string;
+    title: string;
+    removeText: string;
+  };
 }
 
 export class SettingPage extends AbstractForm<PropsSettingPage> {
@@ -47,26 +45,66 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
       fieldLogin: new Field(props.fieldLogin),
       fieldPhone: new Field(props.fieldPhone),
       linkPasswordSetting: new Link(props.linkPasswordSetting),
-      titleAvatar: new Title(props.titleAvatar),
-      avatar: new Avatar(props.avatar),
-      uploadAvatar: new FileUpload(props.uploadAvatar),
-      removePhoto: new Button(props.removePhoto),
+      avatarUpload: new AvatarUpload({
+        title: props.avatarUpload.title,
+        urlAvatar: '',
+        uploadText: props.avatarUpload.uploadText,
+        uploadName: 'upload_avatar',
+        removeText: props.avatarUpload.removeText,
+        removeName: 'remove_photo',
+      }),
       buttonLogout: new Button(props.buttonLogout),
       buttonCancel: new Button(props.buttonCancel),
       buttonSave: new Button(props.buttonSave),
     });
   }
 
-  public beforeCreateHandler() {}
+  public initFormFields() {
+    authService
+      .getUser()
+      .then((data) => {
+        this.children.fieldFirstName.props.initValue = data.first_name;
+        this.children.fieldSecondName.props.initValue = data.second_name;
+        this.children.fieldChatName.props.initValue = data.display_name || '';
+        this.children.fieldEmail.props.initValue = data.email;
+        this.children.fieldLogin.props.initValue = data.login;
+        this.children.fieldPhone.props.initValue = data.phone;
+        this.children.avatarUpload.children.avatar.props.url =
+          data.avatar || '';
+      })
+      .catch((error) => {
+        this.children.alert.props.text = error;
+      });
+  }
 
-  public createdHandler() {
-    this.initForm();
-
+  public initEventLogout() {
     this.children.buttonLogout.$element.addEventListener('click', () => {
       authService.logout().catch((error) => {
         this.children.alert.props.text = error;
       });
     });
+  }
+
+  public submitHandler() {
+    // authService
+    // .signIn(this.inputsData?.getData() as TypeSignInRequest)
+    // .then((data) => {
+    //   this.children.alert.props.type = 'success';
+    //   this.children.alert.props.text = String(data.message);
+    // })
+    // .catch((error: string) => {
+    //   this.children.alert.props.type = 'error';
+    //   this.children.alert.props.text = error;
+    //   this.setErrorFrom(error);
+    // });
+  }
+
+  public beforeCreateHandler() {}
+
+  public createdHandler() {
+    this.initForm();
+    this.initEventLogout();
+    this.initFormFields();
   }
 
   public updatedHandler() {}

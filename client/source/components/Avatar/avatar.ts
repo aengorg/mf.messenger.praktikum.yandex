@@ -34,9 +34,13 @@ export class Avatar extends Component<PropsAvatar> {
 
   public getContext() {
     return {
-      styleClasses: joinClasses([
+      styleComponent: joinClasses([
         'avatar',
         this.props?.size ? `avatar--size-${this.props.size}` : '',
+      ]),
+      styleImage: joinClasses([
+        'avatar_image',
+        this.props?.url ? '' : `avatar_image--hide`,
       ]),
     };
   }

@@ -1,8 +1,12 @@
 export default `
-<div class="{{ state.styleClasses }}">
-  {{#if data.url }}
-    <img src="{{ data.url }}" alt="avatar" class="avatar_image">
-  {{/if}}
+<div class="{{ state.styleComponent }}">
+  <img 
+    {{#if data.url }}
+      src="{{ data.url }}" 
+    {{/if}}
+    alt="avatar" 
+    class="{{ state.styleImage }}"
+  >
   {{#if data.status }}
     {{SLOT 'status' }}
   {{/if}}

@@ -119,6 +119,7 @@ export abstract class Component<TProps extends PropsComponent> {
     oldProps: TProps,
     newProps: TProps,
   ): boolean;
+
   public abstract updatedHandler(): void;
 
   public abstract beforeRemoveHandler(): void;
@@ -172,13 +173,12 @@ export abstract class Component<TProps extends PropsComponent> {
     }
   }
 
-  // Возвращаем текст, теряем все события!
   public getContent(): string {
     return this.$element?.outerHTML || '';
   }
 
   public getElement(): HTMLElement {
-    return this.$element || document.createElement('error');
+    return this.$element || document.createElement('error-get-element');
   }
 
   public show(): void {

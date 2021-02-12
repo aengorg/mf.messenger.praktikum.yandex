@@ -25,4 +25,8 @@ export class ApiAuth {
   public logout() {
     return this.fetch.post(`${API_AUTH}/logout`);
   }
+
+  public getUser() {
+    return this.fetch.get(`${API_AUTH}/user`);
+  }
 }

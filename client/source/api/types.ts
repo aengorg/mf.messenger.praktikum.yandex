@@ -1,3 +1,5 @@
+type StringOrNull = string | null;
+
 // * Response
 export type TypeEmptyResponse = {};
 export type TypeBadResponse = {
@@ -31,11 +33,11 @@ export type TypeUserResponse = {
   id: number;
   first_name: string;
   second_name: string;
-  display_name: string | null;
+  display_name: StringOrNull;
   login: string;
   email: string;
   phone: string;
-  avatar: string | null;
+  avatar: StringOrNull;
 };
 
 export type TypeUserPasswordRequest = {
@@ -59,6 +61,22 @@ export type TypeUserProfileResponse = {
   display_name: string;
   login: string;
   email: string;
+};
+
+export type TypeUserAvatarRequest = {
+  avatar: FileList;
+};
+
+export type TypeUserAvatarResponse = {
+  id: number;
+  login: string;
+  first_name: string;
+  second_name: string;
+  email: string;
+  phone: string;
+  display_name: StringOrNull;
+  avatar: StringOrNull;
+  status: StringOrNull;
 };
 
 export type TypeUserLogin = {

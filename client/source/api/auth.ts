@@ -3,10 +3,6 @@ import { HTTPTransport } from '../core/Transport/Http/index.js';
 
 import { TypeSignUpRequest, TypeSignInRequest } from './types.js';
 
-const headers = {
-  'Content-type': 'application/json',
-};
-
 export class ApiAuth {
   private fetch: HTTPTransport;
 
@@ -15,11 +11,11 @@ export class ApiAuth {
   }
 
   public signIn(data: TypeSignInRequest) {
-    return this.fetch.post(`${API_AUTH}/signin`, { data, headers });
+    return this.fetch.post(`${API_AUTH}/signin`, { data });
   }
 
   public signUp(data: TypeSignUpRequest) {
-    return this.fetch.post(`${API_AUTH}/signup`, { data, headers });
+    return this.fetch.post(`${API_AUTH}/signup`, { data });
   }
 
   public logout() {

@@ -8,6 +8,7 @@ export interface PropsAvatar extends PropsComponent {
   url?: string;
   size?: 's' | 'xs';
   status?: TypeStatus;
+  error?: boolean;
 }
 
 export class Avatar extends Component<PropsAvatar> {
@@ -37,9 +38,11 @@ export class Avatar extends Component<PropsAvatar> {
       styleComponent: joinClasses([
         'avatar',
         this.props?.size ? `avatar--size-${this.props.size}` : '',
+        this.props?.error ? `avatar--error` : '',
       ]),
       styleImage: joinClasses([
         'avatar_image',
+        this.props?.error ? `avatar_image--hide` : '',
         this.props?.url ? '' : `avatar_image--hide`,
       ]),
     };

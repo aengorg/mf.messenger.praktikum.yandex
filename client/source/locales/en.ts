@@ -44,5 +44,7 @@ export const en: { [k: string]: string } = {
   'user already in system': 'User already in system',
   'Login or password is incorrect': 'Login or password is incorrect',
   'Cookie is not valid': 'Error #001',
-  ErrorUnauthorized: 'No access',
+  errorUnauthorized: 'No access',
+  errorPasswordIsIncorrect: 'Old password is incorrect',
+  errorUploadAvatar: 'Error upload avatar #002',
 };

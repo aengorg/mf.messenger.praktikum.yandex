@@ -44,5 +44,8 @@ export const ru: { [k: string]: string } = {
   'user already in system': 'Пользователь уже в системе',
   'Login or password is incorrect': 'Логин или пароль не верные',
   'Cookie is not valid': 'Ошибка #001',
-  ErrorUnauthorized: 'Нет доступа, необходимо войти',
+  errorUnauthorized: 'Нет доступа, необходимо войти',
+  errorPasswordIsIncorrect: 'Текущий пароль указан не верно',
+  errorDefaultForm: 'Ошибка в форме, проверьте все поля',
+  errorUploadAvatar: 'Ошибка загрузки аватара #002',
 };

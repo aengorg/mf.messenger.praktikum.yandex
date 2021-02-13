@@ -1,55 +1,57 @@
-// Разрешили подключить jest. так что как будет время напишу тесты
+import 'mocha';
+import { expect } from 'chai';
 
-// import { EventBus } from './index';
+import { EventBus } from './EventBus';
 
-// describe('Event bus', () => {
-//   it('добавляем обработчик события', () => {
-//     const bus = new EventBus();
-//     const hendler = () => {};
+describe('Event bus', () => {
+  it('добавляем обработчик события', () => {
+    const bus = new EventBus();
+    const handler = () => {};
 
-//     bus.on('event-1', () => {});
-//     expect(bus.listeners.hasOwnProperty('event-1')).toBe(true);
-//   });
+    bus.on('event-1', handler);
 
-//   it('удаляем обработчик события', () => {
-//     const bus = new EventBus();
-//     const hendler = () => {};
-//     const hendler2 = () => {};
+    expect(bus.listeners.hasOwnProperty('event-1')).to.be.true;
+  });
 
-//     bus.on('event-1', hendler);
-//     bus.on('event-1', hendler2);
-//     bus.off('event-1', hendler);
+  it('удаляем обработчик события', () => {
+    const bus = new EventBus();
+    const hendler = () => {};
+    const hendler2 = () => {};
 
-//     expect(bus.listeners['event-1'].length).toBe(1);
-//   });
+    bus.on('event-1', hendler);
+    bus.on('event-1', hendler2);
+    bus.off('event-1', hendler);
 
-//   it('нельзя удалить не существующий обработчик', () => {
-//     const bus = new EventBus();
-//     const hendler = () => {};
+    expect(bus.listeners['event-1'].length).to.equal(1);
+  });
 
-//     const expected = () => {
-//       bus.off('event-1', hendler);
-//     };
+  // it('нельзя удалить не существующий обработчик', () => {
+  //   const bus = new EventBus();
+  //   const hendler = () => {};
 
-//     expect(expected).toThrow(Error);
-//   });
+  //   const expected = () => {
+  //     bus.off('event-1', hendler);
+  //   };
 
-//   it('вызываем обработчики события', () => {
-//     const bus = new EventBus();
-//     const mock = jest.fn();
+  //   expect(expected).toThrow(Error);
+  // });
 
-//     bus.on('event-1', mock);
-//     bus.emit('event-1');
+  // it('вызываем обработчики события', () => {
+  //   const bus = new EventBus();
+  //   const mock = jest.fn();
 
-//     expect(mock).toBeCalled();
-//   });
+  //   bus.on('event-1', mock);
+  //   bus.emit('event-1');
 
-//   it('удаляем событие', () => {
-//     const bus = new EventBus();
-//     const hendler = () => {};
+  //   expect(mock).toBeCalled();
+  // });
 
-//     bus.on('event-1', hendler);
-//     bus.off('event-1', hendler);
-//     expect(Object.keys(bus.listeners).length).toBe(0);
-//   });
-// });
+  // it('удаляем событие', () => {
+  //   const bus = new EventBus();
+  //   const hendler = () => {};
+
+  //   bus.on('event-1', hendler);
+  //   bus.off('event-1', hendler);
+  //   expect(Object.keys(bus.listeners).length).toBe(0);
+  // });
+});

@@ -2,7 +2,7 @@ import { Component, PropsComponent } from '../../core/Component/index.js';
 import template from './template.js';
 
 import { FieldError } from './fieldError/index.js';
-import { TRule, TErrors } from '../../utils/validationRules/index.js';
+import { TRule } from '../../utils/validationRules/index.js';
 import { validation } from '../../utils/validationRules/validation.js';
 import { joinClasses } from '../../utils/joinClasses/index.js';
 
@@ -49,9 +49,9 @@ export class Field extends Component<PropsField> {
     }
   }
 
-  public validationHandler(): TErrors {
+  public validationHandler(): string[] {
     if (this.props.validation !== undefined) {
-      const errors: TErrors = validation(
+      const errors: string[] = validation(
         this.$input?.value || '',
         this.props.validation.rules,
       );
@@ -61,7 +61,7 @@ export class Field extends Component<PropsField> {
     return [];
   }
 
-  private setError(errors: TErrors): void {
+  private setError(errors: string[]): void {
     if (errors.length > 0) {
       this.isError = true;
       this.children.error.props.text = errors[0];

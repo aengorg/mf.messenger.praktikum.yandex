@@ -8,4 +8,3 @@ import {
 export const rules = { required, range, email, equalPasswords, phone };
 
 export type TRule = (...args: any[]) => string;
-export type TErrors = string[];

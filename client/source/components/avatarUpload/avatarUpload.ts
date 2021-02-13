@@ -41,7 +41,7 @@ export class AvatarUpload extends Component<PropsAvatarUpload> {
     });
 
     this.input = this.children.upload.$element.querySelector(
-      '[name=upload_avatar]',
+      `[name=${props.uploadName}]`,
     );
     this.image = this.children.avatar.$element.querySelector('.avatar_image');
   }
@@ -62,6 +62,7 @@ export class AvatarUpload extends Component<PropsAvatarUpload> {
     this.children.remove.$element.addEventListener('click', () => {
       this.children.upload.props.url = '';
       this.children.avatar.props.url = '';
+      this.input.value = '';
     });
   }
 

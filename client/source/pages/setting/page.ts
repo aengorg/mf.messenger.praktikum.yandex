@@ -12,6 +12,10 @@ import { Alert } from '../../components/alert/index.js';
 import { AvatarUpload } from '../../components/avatarUpload/index.js';
 
 import { authService } from '../../services/auth.js';
+import { userService } from '../../services/user.js';
+import { router } from '../../router/index.js';
+import { HOST } from '../../constants/index.js';
+import { TypeUserProfileRequest } from '../../api/types.js';
 
 export interface PropsSettingPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -49,7 +53,7 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
         title: props.avatarUpload.title,
         urlAvatar: '',
         uploadText: props.avatarUpload.uploadText,
-        uploadName: 'upload_avatar',
+        uploadName: 'avatar',
         removeText: props.avatarUpload.removeText,
         removeName: 'remove_photo',
       }),
@@ -63,14 +67,14 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
     authService
       .getUser()
       .then((data) => {
+        const avatarUrl = data.avatar ? `${HOST}${data.avatar}` : '';
         this.children.fieldFirstName.props.initValue = data.first_name;
         this.children.fieldSecondName.props.initValue = data.second_name;
         this.children.fieldChatName.props.initValue = data.display_name || '';
         this.children.fieldEmail.props.initValue = data.email;
         this.children.fieldLogin.props.initValue = data.login;
         this.children.fieldPhone.props.initValue = data.phone;
-        this.children.avatarUpload.children.avatar.props.url =
-          data.avatar || '';
+        this.children.avatarUpload.children.avatar.props.url = avatarUrl;
       })
       .catch((error) => {
         this.children.alert.props.text = error;
@@ -85,26 +89,58 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
     });
   }
 
+  public initEventUploadAvatar() {
+    this.children.avatarUpload.children.upload.$element.addEventListener(
+      'change',
+      () => {
+        const avaData = new FormData();
+        avaData.append('avatar', this.children.avatarUpload.input.files[0]);
+        this.children.avatarUpload.children.avatar.props.error = false;
+
+        userService
+          .changeAvatar(avaData)
+          .then((data) => {
+            this.children.alert.props.type = 'success';
+            this.children.alert.props.text = String(data.message);
+          })
+          .catch((error: string) => {
+            this.children.alert.props.type = 'error';
+            this.children.alert.props.text = error;
+            this.children.avatarUpload.children.avatar.props.error = true;
+          });
+      },
+    );
+  }
+
+  public initEventCancel() {
+    this.children.buttonCancel.$element.addEventListener('click', () => {
+      router.back();
+    });
+  }
+
   public submitHandler() {
-    // authService
-    // .signIn(this.inputsData?.getData() as TypeSignInRequest)
-    // .then((data) => {
-    //   this.children.alert.props.type = 'success';
-    //   this.children.alert.props.text = String(data.message);
-    // })
-    // .catch((error: string) => {
-    //   this.children.alert.props.type = 'error';
-    //   this.children.alert.props.text = error;
-    //   this.setErrorFrom(error);
-    // });
+    userService
+      .changeProfile(this.inputsData?.getData() as TypeUserProfileRequest)
+      .then((data) => {
+        this.children.alert.props.type = 'success';
+        this.children.alert.props.text = String(data.message);
+        router.go('#error404');
+      })
+      .catch((error: string) => {
+        this.children.alert.props.type = 'error';
+        this.children.alert.props.text = error;
+        this.setErrorFrom(error);
+      });
   }
 
   public beforeCreateHandler() {}
 
   public createdHandler() {
     this.initForm();
-    this.initEventLogout();
     this.initFormFields();
+    this.initEventLogout();
+    this.initEventCancel();
+    this.initEventUploadAvatar();
   }
 
   public updatedHandler() {}

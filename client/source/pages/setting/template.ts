@@ -2,9 +2,7 @@ export default `
 <div class="app app--center bg bg--img-settings">
   {{SLOT 'alert' }}
   <form id="form-setting" class="form form--page form--size-l">
-
     {{SLOT 'title' }}
-
     <div class="setting-wrapper">
       <div class="setting-wrapper_left">
         <div class="form_wrapper-inputs">

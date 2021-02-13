@@ -19,9 +19,7 @@ import { generationInt } from './utils/generationInt/index.js';
 import { rules } from './utils/validationRules/index.js';
 import { Icon } from './components/Icon/icon.js';
 
-import { Router } from './core/Router/index.js';
-
-export const router = new Router();
+import { router } from './router/index.js';
 
 // * ErrorPage
 // 500
@@ -59,6 +57,7 @@ const propsErrorPage404: PropsErrorPage = {
 
 // * LoginPage
 const propsLoginPage: PropsLoginPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-login',
   title: {
     text: t['welcome'],
@@ -102,6 +101,7 @@ const propsLoginPage: PropsLoginPage = {
 
 // * SignupPage;
 const propsSignupPage: PropsSignupPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-signup',
   title: {
     text: t['join'],
@@ -140,7 +140,7 @@ const propsSignupPage: PropsSignupPage = {
     label: t['firstName'],
     type: 'text',
     placeholder: 'Ivan',
-    initValue: `Ivan`,
+    initValue: 'Ivan',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -200,6 +200,7 @@ const propsSignupPage: PropsSignupPage = {
 
 // * SettingPasswordPage;
 const propsSettingPasswordPage: PropsSettingPasswordPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-setting-password',
   title: {
     text: t['changePassword'],
@@ -251,6 +252,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
 
 // * PropsSettingPage;
 const propsSettingPage: PropsSettingPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-setting',
   title: {
     text: t['editProfile'],
@@ -278,7 +280,7 @@ const propsSettingPage: PropsSettingPage = {
     },
   },
   fieldChatName: {
-    name: 'chat_name',
+    name: 'display_name',
     label: t['chatName'],
     type: 'text',
     placeholder: 'Oriental magician',
@@ -327,18 +329,10 @@ const propsSettingPage: PropsSettingPage = {
     level: 3,
     size: 5,
   },
-  avatar: {
-    // url: '../../client/public/assets/images/test/photo.png',
-  },
-  uploadAvatar: {
-    text: t['uploadAnImagePhoto'],
-    name: 'upload_avatar',
-  },
-  removePhoto: {
-    text: t['removePhoto'],
-    name: 'remove_photo',
-    type: 'button',
-    danger: true,
+  avatarUpload: {
+    title: t['profilePhoto'],
+    removeText: t['removePhoto'],
+    uploadText: t['uploadAnImagePhoto'],
   },
   buttonLogout: {
     text: t['logout'],
@@ -380,7 +374,7 @@ const propsChatPage: PropsChatPage = {
     icon: 'create-group',
   },
   avatar: {
-    url: '../assets/images/test/photo1.png',
+    url: './assets/images/test/photo1.png',
     size: 's',
     status: 'online',
   },

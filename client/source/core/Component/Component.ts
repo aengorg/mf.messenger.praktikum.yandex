@@ -181,6 +181,13 @@ export abstract class Component<TProps extends PropsComponent> {
     return this.$element || document.createElement('error-get-element');
   }
 
+  public remove(): void {
+    this.eventBus.emit(Events.beforeRemove);
+    setTimeout(() => {
+      this.$element!.outerHTML = '';
+    }, 0);
+  }
+
   public show(): void {
     this.$element!.style.display = 'initial';
   }

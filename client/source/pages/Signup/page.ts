@@ -10,8 +10,9 @@ import { Field, PropsField } from '../../components/field/index.js';
 import { Button, PropsButton } from '../../components/button/index.js';
 import { Alert } from '../../components/alert/index.js';
 
-import { authService } from '../../services/auth.js';
 import { TypeSignUpForm } from '../../api/types.js';
+import { authService } from '../../services/auth.js';
+import { rules } from '../../utils/validationRules/index.js';
 
 export interface PropsSignupPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -55,6 +56,15 @@ export class SignupPage extends AbstractForm<PropsSignupPage> {
         this.children.alert.props.text = error;
         this.setErrorFrom(error);
       });
+  }
+
+  public validHandler() {
+    const data = this.inputsData!.getData();
+    const equalPasswords = rules.equalPasswords(
+      data.password as string,
+      data.password2 as string,
+    );
+    return [equalPasswords];
   }
 
   public beforeCreateHandler() {}

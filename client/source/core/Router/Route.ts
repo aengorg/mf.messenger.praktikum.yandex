@@ -12,11 +12,10 @@ export class Route<PropsComponent> {
   }
 
   public leave(): void {
-    this.component.hide();
+    this.component.remove();
   }
 
   public render(node: Element): void {
-    this.component.show();
     node.appendChild(this.component.getElement());
   }
 

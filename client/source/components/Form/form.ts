@@ -15,6 +15,7 @@ import { Field } from '../field/index.js';
 
 export interface PropsAbstractForm extends PropsComponent {
   formSelector: string;
+  defaultErrorForm?: string;
 }
 
 export abstract class AbstractForm<
@@ -23,6 +24,7 @@ export abstract class AbstractForm<
   formSelector: string;
   $form: HTMLFormElement | null;
   inputsData: DataForm | null;
+  defaultErrorForm: string;
 
   constructor(
     props: PropsAbstractForm & PropsFormComponent,
@@ -33,6 +35,7 @@ export abstract class AbstractForm<
       error: new FormError({}),
     });
 
+    this.defaultErrorForm = props.defaultErrorForm || 'Error form';
     this.formSelector = props.formSelector;
     this.$form = null;
     this.inputsData = null;
@@ -49,8 +52,9 @@ export abstract class AbstractForm<
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.isValid()) {
-      this.setErrorFrom('Error field(s)');
+    const valid = this.valid();
+    if (valid) {
+      this.setErrorFrom(valid);
     } else {
       this.delErrorFrom();
       this.submitHandler();
@@ -67,27 +71,36 @@ export abstract class AbstractForm<
     this.children.error.props.text = '';
   }
 
-  public isValid(): boolean {
+  public valid(): false | string {
     const inputs: Field[] = Object.values(this.children).filter((child) => {
       // TODO использовать перечисленные поля
       // происходит фильтрация от других не валидируемых компонентов
       return child instanceof Field;
     });
 
-    const errors = inputs.map((input) => {
+    let errors = inputs.map((input) => {
       return input.validationHandler();
     });
 
-    return errors.some((arr) => arr.length > 0);
+    // проверка полей формы
+    if (errors.some((arr) => arr.length > 0)) {
+      return this.defaultErrorForm;
+    }
+
+    // кастомная проверка формы
+    const customValidation = this.validHandler();
+    if (customValidation.some((arr) => arr.length > 0)) {
+      return customValidation[0];
+    }
+
+    return false;
   }
 
-  // TODO переопределять на странице
-  // public validHandler(): void {
-  //   console.log(this.inputsData?.getData());
-  // }
-
-  // TODO переопределять на странице
-  public submitHandler(): void {
-    console.log(this.inputsData?.getData());
+  // переопределять на странице
+  public validHandler(): string[] {
+    return [];
   }
+
+  // переопределять на странице
+  public submitHandler(): void {}
 }

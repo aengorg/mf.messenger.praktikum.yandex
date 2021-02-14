@@ -66,16 +66,26 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
   public initFormFields() {
     authService
       .getUser()
-      .then((data) => {
-        const avatarUrl = data.avatar ? `${HOST}${data.avatar}` : '';
-        this.children.fieldFirstName.props.initValue = data.first_name;
-        this.children.fieldSecondName.props.initValue = data.second_name;
-        this.children.fieldChatName.props.initValue = data.display_name || '';
-        this.children.fieldEmail.props.initValue = data.email;
-        this.children.fieldLogin.props.initValue = data.login;
-        this.children.fieldPhone.props.initValue = data.phone;
-        this.children.avatarUpload.children.avatar.props.url = avatarUrl;
-      })
+      .then(
+        ({
+          avatar,
+          first_name,
+          second_name,
+          display_name,
+          email,
+          login,
+          phone,
+        }) => {
+          const avatarUrl = avatar ? `${HOST}${avatar}` : '';
+          this.children.fieldFirstName.props.initValue = first_name;
+          this.children.fieldSecondName.props.initValue = second_name;
+          this.children.fieldChatName.props.initValue = display_name || '';
+          this.children.fieldEmail.props.initValue = email;
+          this.children.fieldLogin.props.initValue = login;
+          this.children.fieldPhone.props.initValue = phone;
+          this.children.avatarUpload.children.avatar.props.url = avatarUrl;
+        },
+      )
       .catch((error) => {
         this.children.alert.props.text = error;
       });

@@ -7,6 +7,7 @@ import {
   TypeUserResponse,
 } from '../api/types.js';
 import { t } from '../locales/index.js';
+import { LS } from '../constants/index.js';
 
 export class AuthService {
   api: ApiAuth;
@@ -19,6 +20,7 @@ export class AuthService {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
       this.api.signIn(data).then((res) => {
         if (res.status === 200) {
+          localStorage.setItem(`${LS}-auth`, 'true');
           resolve({ message: t['ok'] });
         } else {
           const errorStr = JSON.parse(res.response).reason;
@@ -32,6 +34,7 @@ export class AuthService {
     return new Promise<TypeSignUpResponse>((resolve, reject) => {
       this.api.signUp(data).then((res) => {
         if (res.status === 200) {
+          localStorage.setItem(`${LS}-auth`, 'true');
           resolve(JSON.parse(res.response));
         } else {
           const errorStr = JSON.parse(res.response).reason;
@@ -45,6 +48,7 @@ export class AuthService {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
       this.api.logout().then((res) => {
         if (res.status === 200) {
+          localStorage.removeItem(`${LS}-auth`);
           resolve({ message: t['ok'] });
         } else {
           const errorStr = JSON.parse(res.response).reason;
@@ -58,8 +62,8 @@ export class AuthService {
     return new Promise<TypeUserResponse>((resolve, reject) => {
       this.api.getUser().then((res) => {
         if (res.status === 200) {
-          const userData: TypeUserResponse = JSON.parse(res.response);
-          resolve(userData);
+          const user: TypeUserResponse = JSON.parse(res.response);
+          resolve(user);
         } else if (res.status === 401) {
           reject(t['ErrorUnauthorized']);
         } else {
@@ -69,6 +73,10 @@ export class AuthService {
         }
       });
     });
+  }
+
+  isAuth(): boolean {
+    return Boolean(localStorage.getItem(`${LS}-auth`));
   }
 }
 

@@ -4,11 +4,14 @@
   left: 0;
   bottom: 0;
   right: 0;
+  height: 100vh;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 
   &_content {
     width: 220px;
@@ -20,5 +23,13 @@
     background-color: var(--color-gray-5);
     border-radius: var(--border-radius);
     padding: 16px;
+  }
+
+  &--show-false {
+    visibility: hidden;
+  }
+
+  &--show-true {
+    visibility: visible;
   }
 }

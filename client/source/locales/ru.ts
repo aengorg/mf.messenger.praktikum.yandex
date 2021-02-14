@@ -10,9 +10,13 @@ export const ru: { [k: string]: string } = {
   ok: 'Ok',
   changePassword: 'Изменить пароль',
   profilePhoto: 'Фото профиля',
+  textAddFirstChat: 'Добавьте свой первый чат',
+  createChat: 'Создать чат',
+  textSelectChat: 'Выберите чат',
 
   // ? button
   cancel: 'Отмена',
+  add: 'Добавить',
   save: 'Сохранить',
   removePhoto: 'Удалить фото',
   myProfile: 'Мой профиль',
@@ -20,6 +24,7 @@ export const ru: { [k: string]: string } = {
   logout: 'Выйти',
   registration: 'Регистрация',
   uploadAnImagePhoto: 'Загрузить фото',
+  create: 'Создать',
 
   // ? fields
   login: 'Логин',
@@ -28,6 +33,7 @@ export const ru: { [k: string]: string } = {
   secondName: 'Фамилия',
   chatName: 'Ник в чате',
   password: 'Пароль',
+  titleChat: 'Название чата',
   phone: 'Телефон',
   oldPassword: 'Старый пароль',
   newPassword: 'Новый пароль',
@@ -44,6 +50,7 @@ export const ru: { [k: string]: string } = {
   'user already in system': 'Пользователь уже в системе',
   'Login or password is incorrect': 'Логин или пароль не верные',
   'Cookie is not valid': 'Ошибка #001',
+  'No chat': 'Такого чата нет',
   errorUnauthorized: 'Нет доступа, необходимо войти',
   errorPasswordIsIncorrect: 'Текущий пароль указан не верно',
   errorDefaultForm: 'Ошибка в форме, проверьте все поля',

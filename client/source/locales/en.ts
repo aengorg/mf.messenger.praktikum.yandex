@@ -10,9 +10,13 @@ export const en: { [k: string]: string } = {
   ok: 'Ok',
   changePassword: 'Change password',
   profilePhoto: 'Profile photo',
+  textAddFirstChat: 'Add your first chat',
+  createChat: 'Create new chat',
+  textSelectChat: 'Select chat',
 
   // ? button
   cancel: 'Cancel',
+  add: 'Add',
   save: 'Save',
   removePhoto: 'Remove photo',
   myProfile: 'My profile',
@@ -20,6 +24,7 @@ export const en: { [k: string]: string } = {
   logout: 'Logout',
   registration: 'Registration',
   uploadAnImagePhoto: 'Upload an image',
+  create: 'Create',
 
   // ? fields
   login: 'Login',
@@ -28,6 +33,7 @@ export const en: { [k: string]: string } = {
   secondName: 'Second name',
   chatName: 'Chat name',
   password: 'Password',
+  titleChat: 'Title chat',
   phone: 'Phone',
   oldPassword: 'Old password',
   newPassword: 'New password',
@@ -44,7 +50,9 @@ export const en: { [k: string]: string } = {
   'user already in system': 'User already in system',
   'Login or password is incorrect': 'Login or password is incorrect',
   'Cookie is not valid': 'Error #001',
+  'No chat': 'No chat',
   errorUnauthorized: 'No access',
   errorPasswordIsIncorrect: 'Old password is incorrect',
+  errorDefaultForm: 'Ошибка в форме, проверьте все поля',
   errorUploadAvatar: 'Error upload avatar #002',
 };

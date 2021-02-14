@@ -4,12 +4,16 @@ import template from './template.js';
 import { joinClasses } from '../../utils/joinClasses/index.js';
 
 export type IconsButton =
+  | 'add-chat'
+  | 'setting-chat'
   | 'add-user'
+  | 'remove-user'
   | 'add-file'
   | 'create-group'
   | 'add-photo'
   | 'location'
   | 'emoji'
+  | 'trash'
   | 'send';
 
 export interface PropsButton extends PropsComponent {

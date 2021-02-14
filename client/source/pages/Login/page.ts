@@ -12,6 +12,7 @@ import { Alert } from '../../components/alert/index.js';
 
 import { TypeSignInRequest } from '../../api/types.js';
 import { authService } from '../../services/auth.js';
+import { router } from '../../router/index.js';
 
 export interface PropsLoginPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -39,6 +40,7 @@ export class LoginPage extends AbstractForm<PropsLoginPage> {
       .then((data) => {
         this.children.alert.props.type = 'success';
         this.children.alert.props.text = String(data.message);
+        router.go('#chat');
       })
       .catch((error: string) => {
         this.children.alert.props.type = 'error';
@@ -50,7 +52,11 @@ export class LoginPage extends AbstractForm<PropsLoginPage> {
   public beforeCreateHandler() {}
 
   public createdHandler() {
-    this.initForm();
+    if (authService.isAuth()) {
+      router.go('#chat');
+    } else {
+      this.initForm();
+    }
   }
 
   public updatedHandler() {}

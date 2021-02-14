@@ -29,6 +29,10 @@ export class DataForm {
     const inputs: IInputs = {};
     names.forEach((name) => {
       const input = this.$form?.querySelector(`[name=${name}]`);
+      input?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
       if (input) {
         inputs[name] = input;
       }
@@ -38,6 +42,9 @@ export class DataForm {
 
   public addHandlerToSubmit(callback?: TCallback): void {
     this.$form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
       if (callback === undefined) {
         this.submitHandler(e);
       } else {

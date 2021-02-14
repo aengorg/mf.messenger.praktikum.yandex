@@ -82,3 +82,16 @@ export type TypeUserAvatarResponse = {
 export type TypeUserLogin = {
   login: string;
 };
+
+// * Chat
+
+export type TypeChatRequest = {
+  title: string;
+};
+export type TypeChatResponse = TypeGoodResponse;
+
+export type TypeChatsResponse = {
+  id: number;
+  title: string;
+  avatar: string;
+}[];

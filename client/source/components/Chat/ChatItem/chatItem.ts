@@ -1,10 +1,10 @@
 import { Component, PropsComponent } from '../../../core/Component/index.js';
 import template from './template.js';
 
-import { Avatar } from '../../../components/avatar/index.js';
+import { Avatar, PropsAvatar } from '../../../components/avatar/index.js';
 
 export interface PropsChatItem extends PropsComponent {
-  avatar: Avatar;
+  avatar: PropsAvatar;
   name: string;
   date?: string;
   content?: string;
@@ -13,7 +13,7 @@ export interface PropsChatItem extends PropsComponent {
 
 export class ChatItem extends Component<PropsChatItem> {
   constructor(props: PropsChatItem) {
-    super(props, { avatar: props.avatar });
+    super(props, { avatar: new Avatar(props.avatar) });
   }
 
   public beforeCreateHandler() {}

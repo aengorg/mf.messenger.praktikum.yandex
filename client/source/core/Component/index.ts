@@ -1,5 +1,6 @@
 export {
   Component,
+  ComponentFactory,
   PropsComponent,
   PropsComponentEmpty,
   Children,

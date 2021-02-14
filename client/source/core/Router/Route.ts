@@ -1,22 +1,33 @@
-import { Component } from '../Component/index.js';
+import { ComponentFactory, Component } from '../Component/index.js';
 
 export type TPathNames = string | string[];
 
 export class Route<PropsComponent> {
   private pathname: TPathNames;
-  private component: Component<PropsComponent>;
+  private component: ComponentFactory<PropsComponent>;
+  private defaultProps: PropsComponent;
+  private page: Component<PropsComponent> | null;
 
-  constructor(pathname: TPathNames, component: Component<PropsComponent>) {
+  constructor(
+    pathname: TPathNames,
+    component: ComponentFactory<PropsComponent>,
+    defaultProps: PropsComponent,
+  ) {
     this.pathname = pathname;
     this.component = component;
+    this.defaultProps = defaultProps;
+    this.page = null;
   }
 
   public leave(): void {
-    this.component.remove();
+    if (this.page !== null) {
+      this.page.remove();
+    }
   }
 
   public render(node: Element): void {
-    node.appendChild(this.component.getElement());
+    this.page = new this.component(this.defaultProps);
+    node.appendChild(this.page!.getElement());
   }
 
   public match(pathname: string): boolean {

@@ -1,4 +1,5 @@
 import { t } from './locales/index.js';
+import { PropsComponentEmpty } from './core/Component/index.js';
 
 import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
 import { ChatPage, PropsChatPage } from './pages/chat/index.js';
@@ -392,16 +393,16 @@ const $app =
   document.createElement('error-root-element');
 
 router
-  .use(['', 'login'], new LoginPage(propsLoginPage))
-  .use('signup', new SignupPage(propsSignupPage))
-  .use('sandbox', new Sandbox({}))
-  .use('pass', new SettingPasswordPage(propsSettingPasswordPage))
-  .use('setting', new SettingPage(propsSettingPage))
-  .use('modal', new ModalPage({}))
-  .use('modal2', new ModalPage2({}))
-  .use('chat', new ChatPage(propsChatPage))
-  .use('error500', new ErrorPage(propsErrorPage500))
-  .default('error404', new ErrorPage(propsErrorPage404))
+  .use(['', 'login'], LoginPage, propsLoginPage)
+  .use('signup', SignupPage, propsSignupPage)
+  .use('sandbox', Sandbox, {} as PropsComponentEmpty)
+  .use('pass', SettingPasswordPage, propsSettingPasswordPage)
+  .use('setting', SettingPage, propsSettingPage)
+  .use('modal', ModalPage, {})
+  .use('modal2', ModalPage2, {})
+  .use('chat', ChatPage, propsChatPage)
+  .use('error500', ErrorPage, propsErrorPage500)
+  .default('error404', ErrorPage, propsErrorPage404)
   .start($app);
 
 $app!.appendChild(

@@ -1,4 +1,4 @@
-import { Component } from '../../core/Component/index.js';
+import { Component, PropsComponentEmpty } from '../../core/Component/index.js';
 import template from './template.js';
 
 import { rules } from '../../utils/validationRules/index.js';
@@ -9,7 +9,7 @@ import { Field } from '../../components/field/index.js';
 import { Button } from '../../components/button/index.js';
 import { Avatar } from '../../components/avatar/index.js';
 
-export class Sandbox extends Component<any> {
+export class Sandbox extends Component<PropsComponentEmpty> {
   constructor(props = {}) {
     super(props, {
       // * Link

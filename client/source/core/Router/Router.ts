@@ -1,12 +1,12 @@
+import { ComponentFactory } from '../Component/index.js';
 import { Route, TPathNames } from './index.js';
-import { Component } from '../Component/index.js';
 
 export class Router {
   public currentRoute: Route<any> | null = null;
 
   private history = window.history;
   private defaultPathname: string;
-  private routes: Route<any>[] = [];
+  private routes: Route<any>[];
   private rootNode: Element;
 
   constructor() {
@@ -20,10 +20,12 @@ export class Router {
 
   public default<PropsComponent>(
     pathname: string,
-    component: Component<PropsComponent>,
+
+    component: ComponentFactory<PropsComponent>,
+    defaultProps: PropsComponent,
   ): this {
     this.defaultPathname = pathname;
-    this.use(pathname, component);
+    this.use(pathname, component, defaultProps);
     return this;
   }
 
@@ -38,9 +40,11 @@ export class Router {
 
   public use<PropsComponent>(
     pathname: TPathNames,
-    component: Component<PropsComponent>,
+
+    component: ComponentFactory<PropsComponent>,
+    defaultProps: PropsComponent,
   ): this {
-    const route = new Route<PropsComponent>(pathname, component);
+    const route = new Route<PropsComponent>(pathname, component, defaultProps);
     this.routes.push(route);
     return this;
   }

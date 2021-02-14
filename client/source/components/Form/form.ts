@@ -2,7 +2,6 @@ import {
   Children,
   Component,
   PropsComponent,
-  PropsComponentEmpty,
 } from '../../core/Component/index.js';
 
 import { DataForm } from '../../core/DataForm/index.js';
@@ -18,9 +17,7 @@ export interface PropsAbstractForm extends PropsComponent {
   defaultErrorForm?: string;
 }
 
-export abstract class AbstractForm<
-  PropsFormComponent
-> extends Component<PropsComponentEmpty> {
+export abstract class AbstractForm<PropsFormComponent> extends Component<any> {
   formSelector: string;
   $form: HTMLFormElement | null;
   inputsData: DataForm | null;

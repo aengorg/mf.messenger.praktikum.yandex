@@ -27,16 +27,21 @@ enum Events {
   beforeRemove,
   render, // * FLOW_RENDER
 }
-export abstract class Component<TProps extends PropsComponent> {
+
+export interface ComponentFactory<TypeProps> {
+  new (props: TypeProps, children?: Children): Component<TypeProps>;
+}
+
+export abstract class Component<TypeProps extends PropsComponent> {
   readonly id: string;
   readonly eventBus: EventBus<Events>;
   public children: Children;
   public $element: HTMLElement | null;
-  public props: TProps;
+  public props: TypeProps;
 
-  template: (data: { data: TProps; state: Object }) => string;
+  template: (data: { data: TypeProps; state: Object }) => string;
 
-  constructor(props: TProps, children?: Children) {
+  constructor(props: TypeProps, children?: Children) {
     this.eventBus = new EventBus();
 
     this.id = generationId();
@@ -51,10 +56,10 @@ export abstract class Component<TProps extends PropsComponent> {
     this.eventBus.emit(Events.create);
   }
 
-  private makeProxy(props: TProps): TProps {
+  private makeProxy(props: TypeProps): TypeProps {
     const self = this;
     const handler = {
-      set(target: TProps, prop: keyof TProps, value: any): boolean {
+      set(target: TypeProps, prop: keyof TypeProps, value: any): boolean {
         const oldTarget = { ...target };
         target[prop] = value;
         self.eventBus.emit(Events.update, oldTarget, target);
@@ -67,12 +72,14 @@ export abstract class Component<TProps extends PropsComponent> {
     return new Proxy(props, handler);
   }
 
-  public setProps = (nextProps: { [P in keyof TProps]?: TProps[P] }): void => {
+  public setProps = (
+    nextProps: { [P in keyof TypeProps]?: TypeProps[P] },
+  ): void => {
     this.props = Object.assign(this.props, nextProps);
     this.eventBus.emit(Events.update, this.props, nextProps);
   };
 
-  public getProps(): Readonly<TProps> {
+  public getProps(): Readonly<TypeProps> {
     return this.props;
   }
 
@@ -83,8 +90,10 @@ export abstract class Component<TProps extends PropsComponent> {
     this.eventBus.on(Events.created, this.createdHandler.bind(this));
 
     this.eventBus.on(Events.beforeUpdate, this.beforeUpdateHandler.bind(this));
-    this.eventBus.on(Events.update, (oldProps: TProps, newProps: TProps) =>
-      this.update(oldProps, newProps),
+    this.eventBus.on(
+      Events.update,
+      (oldProps: TypeProps, newProps: TypeProps) =>
+        this.update(oldProps, newProps),
     );
     this.eventBus.on(Events.updated, this.updatedHandler.bind(this));
 
@@ -105,7 +114,7 @@ export abstract class Component<TProps extends PropsComponent> {
   public abstract createdHandler(): void;
 
   // UPDATE
-  private update(oldProps: TProps, newProps: TProps): void {
+  private update(oldProps: TypeProps, newProps: TypeProps): void {
     const isRender = this.beforeUpdateHandler(oldProps, newProps);
     if (isRender) {
       this.eventBus.emit(Events.render);
@@ -116,8 +125,8 @@ export abstract class Component<TProps extends PropsComponent> {
   }
 
   public abstract beforeUpdateHandler(
-    oldProps: TProps,
-    newProps: TProps,
+    oldProps: TypeProps,
+    newProps: TypeProps,
   ): boolean;
 
   public abstract updatedHandler(): void;

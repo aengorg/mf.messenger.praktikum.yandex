@@ -93,9 +93,14 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
 
   public initEventLogout() {
     this.children.buttonLogout.$element.addEventListener('click', () => {
-      authService.logout().catch((error) => {
-        this.children.alert.props.text = error;
-      });
+      authService
+        .logout()
+        .then(() => {
+          router.go('#login');
+        })
+        .catch((error) => {
+          this.children.alert.props.text = error;
+        });
     });
   }
 

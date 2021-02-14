@@ -30,7 +30,12 @@ function getParams(data: PlainObject | [], parentKey?: string) {
     if (isArrayOrObject(value)) {
       result.push(...getParams(value, getKey(key, parentKey)));
     } else {
-      result.push([getKey(key, parentKey), encodeURIComponent(String(value))]);
+      if (value !== undefined) {
+        result.push([
+          getKey(key, parentKey),
+          encodeURIComponent(String(value)),
+        ]);
+      }
     }
   }
 
@@ -42,7 +47,9 @@ export function queryString(data: PlainObject) {
     throw new Error('input must be an object');
   }
 
-  return getParams(data)
+  const params = getParams(data)
     .map((arr) => arr.join('='))
     .join('&');
+
+  return `/?${params}`;
 }

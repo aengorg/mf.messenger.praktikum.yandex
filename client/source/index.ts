@@ -11,10 +11,6 @@ import {
   PropsSettingPasswordPage,
 } from './pages/password/index.js';
 import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
-import { ModalPage } from './pages/modal/index.js';
-import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
-import { FastLink } from './components/fastLinks/index.js';
-
 import { generationId } from './utils/generationId/index.js';
 import { generationInt } from './utils/generationInt/index.js';
 import { rules } from './utils/validationRules/index.js';
@@ -362,29 +358,42 @@ const propsChatPage: PropsChatPage = {
     icon: 'search',
     width: 'unlimit',
   },
-  buttonAddUser: {
+  buttonAddChat: {
     text: '',
-    name: 'add_user',
+    name: 'add_chat',
     size: 's',
-    icon: 'add-user',
-  },
-  buttonCreateGroup: {
-    text: '',
-    name: 'create_group',
-    size: 's',
-    icon: 'create-group',
-  },
-  avatar: {
-    url: './assets/images/test/photo1.png',
-    size: 's',
-    status: 'online',
+    icon: 'add-chat',
   },
   linkProfile: {
     url: '#setting',
     text: 'My profile',
     size: 2,
+    block: true,
     className: 'chat-list_link-profile',
     staticContent: new Icon({ icon: 'profile' }).getContent(),
+  },
+  modalAddChat: {
+    show: false,
+    formSelector: '#form-create-chat',
+    title: t['createChat'],
+    fieldTitle: {
+      name: 'title',
+      label: t['titleChat'],
+      type: 'text',
+      placeholder: 'Super chat',
+      validation: {
+        events: ['blur'],
+        rules: [rules.required],
+      },
+    },
+    buttonCancel: {
+      text: t['cancel'],
+    },
+    buttonCreate: {
+      text: t['create'],
+      type: 'submit',
+      primary: true,
+    },
   },
 };
 
@@ -398,13 +407,12 @@ router
   .use('sandbox', Sandbox, {} as PropsComponentEmpty)
   .use('pass', SettingPasswordPage, propsSettingPasswordPage)
   .use('setting', SettingPage, propsSettingPage)
-  .use('modal', ModalPage, {})
-  .use('modal2', ModalPage2, {})
   .use('chat', ChatPage, propsChatPage)
   .use('error500', ErrorPage, propsErrorPage500)
   .default('error404', ErrorPage, propsErrorPage404)
   .start($app);
 
+import { FastLink } from './components/fastLinks/index.js';
 $app!.appendChild(
   new FastLink({}).getElement() || document.createElement('error'),
 );

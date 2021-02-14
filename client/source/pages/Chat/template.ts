@@ -1,20 +1,24 @@
 export default `
 <div class="app">
+  {{SLOT 'alert' }}
+  {{SLOT 'modalAddChat' }}
   <div class="chat">
 {{!-- chat_list --}}
     <div class="chat_list chat-list">
 
 {{!-- chat-list_top --}}
       <header class="chat-list_top">
-        {{SLOT 'fieldSearch' }}
+        {{#if data.chatItems }}
+          {{SLOT 'fieldSearch' }}
+        {{/if}}
         <div class="chat-list_actions">
-          {{SLOT 'buttonAddUser' }}
-          {{SLOT 'buttonCreateGroup' }}
+          {{SLOT 'buttonAddChat' }}
         </div>
       </header>
 
 {{!-- chat-list_mid --}}
-      <ul class="chat-list_mid">
+      {{SLOT 'chatList' }}
+      {{!-- <ul class="chat-list_mid">
         {{#each data.chatItems }}
           {{SLOT 'chatItems' @index }}
         {{else}}
@@ -24,7 +28,7 @@ export default `
             <li class="bg bg--img-empty bg--pos-tc bg--size-s" style="height: 100%;"></li>
           {{/if}}
         {{/each}} 
-      </ul>
+      </ul> --}}
 
 {{!-- chat-list_bot --}}
       <footer class="chat-list_bot">
@@ -37,10 +41,10 @@ export default `
 
 {{!-- chat_top --}}
       <header class="chat_top-bar top-bar">
-        <div class="top-bar_avatar">
+        {{!-- <div class="top-bar_avatar">
               <div class="avatar avatar--size-s">
                 <img
-                  {{!-- src="./assets/images/test/      .png" --}}
+                  src="./assets/images/test/      .png"
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -65,12 +69,28 @@ export default `
             class="button button--icon button--icon-remove button--size-s"
             tabindex="3"
           ></button>
-        </div>
+        </div> --}}
       </header>
 
 {{!-- chat_messages --}}
       <main class="chat_messages">
-        <div class="message">
+        {{#unless data.chatList }}
+          <div class="bg bg--img-solo bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+        {{#unless data.selectChat }}
+          <div class="bg bg--img-dou bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+
+
+        {{!-- <div class="message">
           <div class="message_top">
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
@@ -94,12 +114,12 @@ export default `
               neque.
             </div>
           </div>
-        </div>
+        </div> --}}
       </main>
 
 {{!-- chat_bot --}}
       <footer class="chat_bot-bar">
-        <div class="bot-bar_actions">
+        {{!-- <div class="bot-bar_actions">
           <button
             class="button button--icon button--icon-add-photo button--size-s"
           ></button>
@@ -125,7 +145,7 @@ export default `
 
         <button
           class="button button--icon button--icon-send button--size-s bot-bar_send"
-        ></button>
+        ></button> --}}
       </footer>
     </div>
 

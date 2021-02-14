@@ -15,7 +15,7 @@ export class ChatList extends Component<PropsChatList> {
   }
   public beforeCreateHandler() {}
   public createdHandler() {
-    this.$element!.style.height = '100%';
+    this.$element!.classList.add('chat-list_mid');
   }
   public updatedHandler() {}
   public beforeUpdateHandler() {

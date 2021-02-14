@@ -1,5 +1,5 @@
 export default `
-<ul class="chat-list_mid">
+<ul>
   {{#each data.chatItems }}
     {{SLOT 'chatItems' @index }}
   {{else}}

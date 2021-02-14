@@ -8,7 +8,7 @@ export default `
 
 {{!-- chat-list_top --}}
       <header class="chat-list_top">
-        {{#if data.chatItems }}
+        {{#if data.chatList }}
           {{SLOT 'fieldSearch' }}
         {{/if}}
         <div class="chat-list_actions">
@@ -18,17 +18,6 @@ export default `
 
 {{!-- chat-list_mid --}}
       {{SLOT 'chatList' }}
-      {{!-- <ul class="chat-list_mid">
-        {{#each data.chatItems }}
-          {{SLOT 'chatItems' @index }}
-        {{else}}
-          {{#if data.search }}
-            <li class="bg bg--img-searching bg--pos-tc bg--size-s" style="height: 100%;"></li>
-          {{else}}
-            <li class="bg bg--img-empty bg--pos-tc bg--size-s" style="height: 100%;"></li>
-          {{/if}}
-        {{/each}} 
-      </ul> --}}
 
 {{!-- chat-list_bot --}}
       <footer class="chat-list_bot">
@@ -41,19 +30,12 @@ export default `
 
 {{!-- chat_top --}}
       <header class="chat_top-bar top-bar">
-        {{!-- <div class="top-bar_avatar">
-              <div class="avatar avatar--size-s">
-                <img
-                  src="./assets/images/test/      .png"
-                  alt="avatar"
-                  class="avatar_image"
-                />
-                <div class="status status--online avatar_status"></div>
-              </div>
+        <div class="top-bar_avatar">
+              {{SLOT 'userAvatar' }}
         </div>
-        <div class="top-bar_chat-name">Александддра Яковлееева</div>
+        <div class="top-bar_chat-name">{{ data.userName }}</div>
         <div class="top-bar_actions">
-          <label for="search_user" class="field">
+          {{!-- <label for="search_user" class="field">
             <input
               type="text"
               class="field_input field_input--icon field_input--icon-search"
@@ -68,8 +50,8 @@ export default `
           <button
             class="button button--icon button--icon-remove button--size-s"
             tabindex="3"
-          ></button>
-        </div> --}}
+          ></button> --}}
+        </div>
       </header>
 
 {{!-- chat_messages --}}

@@ -5,15 +5,17 @@ import template from './template.js';
 import { Button, PropsButton } from '../../components/button/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
+import { PropsChatItem } from '../../components/chat/chatItem/index.js';
+import { Alert } from '../../components/alert/alert.js';
+import { ChatList } from '../../components/Chat/ChatList/index.js';
+import { Avatar, PropsAvatar } from '../../components/avatar/index.js';
 import {
   ModalAddChat,
   PropsModalAddChat,
 } from '../../components/modalAddChat/index.js';
-import { PropsChatItem } from '../../components/chat/chatItem/index.js';
-import { Alert } from '../../components/alert/alert.js';
-import { ChatList } from '../../components/Chat/ChatList/index.js';
 
 import { chatService } from '../../services/chat.js';
+import { authService } from '../../services/auth.js';
 import { TypeChatRequest } from '../../api/types.js';
 import { t } from '../../locales/index.js';
 
@@ -39,6 +41,8 @@ export interface PropsChatPage extends PropsComponent {
   modalAddChat: PropsModalAddChat;
   chatList?: PropsChatItem[];
   selectChat?: string;
+  userName?: string;
+  userAvatar: PropsAvatar;
 }
 
 export class ChatPage extends Component<PropsChatPage> {
@@ -52,6 +56,7 @@ export class ChatPage extends Component<PropsChatPage> {
         buttonAddChat: new Button(props.buttonAddChat),
         linkProfile: new Link(props.linkProfile),
         chatList: new ChatList({ chatItems }),
+        userAvatar: new Avatar(props.userAvatar),
       },
     );
   }
@@ -69,9 +74,24 @@ export class ChatPage extends Component<PropsChatPage> {
             },
           };
         });
-        const chatList = new ChatList({ chatItems });
+
+        const xxx = new Array(6).fill(chatItems[0], 1, 20);
+        const chatList = new ChatList({ chatItems: xxx });
         this.children.chatList = chatList;
         this.props.chatList = chatItems;
+      })
+      .catch((error) => {
+        this.children.alert.props.type = 'error';
+        this.children.alert.props.text = error;
+      });
+  }
+
+  public initUserProfile() {
+    authService
+      .getUser()
+      .then(({ avatar, first_name, second_name }) => {
+        this.props.userName = `${first_name} ${second_name}`;
+        this.children.userAvatar.props.url = avatar;
       })
       .catch((error) => {
         this.children.alert.props.type = 'error';
@@ -120,6 +140,7 @@ export class ChatPage extends Component<PropsChatPage> {
 
   public createdHandler() {
     this.initChatList();
+    this.initUserProfile();
     this.initEventModelCreateChat();
   }
 

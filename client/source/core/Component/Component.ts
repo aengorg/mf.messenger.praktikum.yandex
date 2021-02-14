@@ -158,8 +158,10 @@ export abstract class Component<TypeProps extends PropsComponent> {
               const child = this.children[childName];
               const index = slot.getAttribute('data-index');
 
-              if (Array.isArray(child) && index !== null) {
-                slot.replaceWith(child[Number(index) - 1].getElement() || '');
+              if (Array.isArray(child)) {
+                if (index !== null && child.length > 0) {
+                  slot.replaceWith(child[Number(index) - 1].getElement() || '');
+                }
               } else {
                 slot.replaceWith(child?.getElement() || '');
               }

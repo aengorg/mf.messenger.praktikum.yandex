@@ -1,12 +1,12 @@
 export default `
-<div class="modal">
-  <form id="add-user">
+<div class="modal modal--show-{{ data.show }}">
+  <form id="form-create-chat">
     <div class="modal_content">
       {{SLOT 'title' }}
-      {{SLOT 'fieldLogin' }}
+      {{SLOT 'fieldTitle' }}
       <div class="form_buttons-group">
         {{SLOT 'buttonCancel' }}
-        {{SLOT 'buttonAdd' }}
+        {{SLOT 'buttonCreate' }}
       </div>
     </div>
   </form>

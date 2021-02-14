@@ -5,7 +5,7 @@ import {
   TypeChatResponse,
 } from '../api/types.js';
 import { t } from '../locales/index.js';
-
+import { urlAvatar } from '../utils/urlAvatar/index.js';
 export class ChatService {
   api: ApiChat;
 
@@ -30,7 +30,11 @@ export class ChatService {
     return new Promise<TypeChatsResponse>((resolve, reject) => {
       this.api.getChats().then((res) => {
         if (res.status === 200) {
-          const chats: TypeChatsResponse = JSON.parse(res.response);
+          let chats: TypeChatsResponse = JSON.parse(res.response);
+          chats = chats.map((chat) => {
+            chat.avatar = urlAvatar(chat.avatar);
+            return chat;
+          });
           resolve(chats);
         } else {
           const errorStr = JSON.parse(res.response).reason;

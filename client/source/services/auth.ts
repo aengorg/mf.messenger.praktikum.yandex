@@ -8,6 +8,7 @@ import {
 } from '../api/types.js';
 import { t } from '../locales/index.js';
 import { LS } from '../constants/index.js';
+import { urlAvatar } from '../utils/urlAvatar/index.js';
 
 export class AuthService {
   api: ApiAuth;
@@ -46,15 +47,19 @@ export class AuthService {
 
   public logout() {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
-      this.api.logout().then((res) => {
-        if (res.status === 200) {
+      this.api
+        .logout()
+        .then((res) => {
+          if (res.status === 200) {
+            resolve({ message: t['ok'] });
+          } else {
+            const errorStr = JSON.parse(res.response).reason;
+            reject(t[errorStr]);
+          }
+        })
+        .finally(() => {
           localStorage.removeItem(`${LS}-auth`);
-          resolve({ message: t['ok'] });
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        });
     });
   }
 
@@ -63,12 +68,12 @@ export class AuthService {
       this.api.getUser().then((res) => {
         if (res.status === 200) {
           const user: TypeUserResponse = JSON.parse(res.response);
+          user.avatar = urlAvatar(user.avatar);
           resolve(user);
         } else if (res.status === 401) {
           reject(t['ErrorUnauthorized']);
         } else {
           const errorStr = JSON.parse(res.response).reason;
-
           reject(t[errorStr]);
         }
       });

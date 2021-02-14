@@ -13,7 +13,7 @@ export default `
           {{SLOT 'fieldLogin' }}
           {{SLOT 'fieldPhone' }}
           <component>
-            <span class="field_label">Password</span>
+            <span class="field_label">{{ data.textPassword }}</span>
             <br />
             {{SLOT 'linkPasswordSetting' }}
           </component>

@@ -251,6 +251,7 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
 const propsSettingPage: PropsSettingPage = {
   defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-setting',
+  textPassword: t['password'],
   title: {
     text: t['editProfile'],
     level: 1,
@@ -352,6 +353,11 @@ const propsSettingPage: PropsSettingPage = {
 
 // * ChatPage
 const propsChatPage: PropsChatPage = {
+  userAvatar: {
+    size: 's',
+    url: '',
+  },
+  userName: '',
   fieldSearch: {
     name: 'search_user',
     label: '',
@@ -412,7 +418,7 @@ router
   .default('error404', ErrorPage, propsErrorPage404)
   .start($app);
 
-import { FastLink } from './components/fastLinks/index.js';
-$app!.appendChild(
-  new FastLink({}).getElement() || document.createElement('error'),
-);
+// import { FastLink } from './components/fastLinks/index.js';
+// $app!.appendChild(
+//   new FastLink({}).getElement() || document.createElement('error'),
+// );

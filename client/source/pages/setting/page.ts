@@ -11,11 +11,10 @@ import { Button, PropsButton } from '../../components/button/index.js';
 import { Alert } from '../../components/alert/index.js';
 import { AvatarUpload } from '../../components/avatarUpload/index.js';
 
+import { TypeUserProfileRequest } from '../../api/types.js';
 import { authService } from '../../services/auth.js';
 import { userService } from '../../services/user.js';
 import { router } from '../../router/index.js';
-import { HOST } from '../../constants/index.js';
-import { TypeUserProfileRequest } from '../../api/types.js';
 
 export interface PropsSettingPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -30,6 +29,7 @@ export interface PropsSettingPage extends PropsAbstractForm {
   buttonLogout: PropsButton;
   buttonCancel: PropsButton;
   buttonSave: PropsButton;
+  textPassword: string;
   avatarUpload: {
     uploadText: string;
     title: string;
@@ -76,14 +76,13 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
           login,
           phone,
         }) => {
-          const avatarUrl = avatar ? `${HOST}${avatar}` : '';
           this.children.fieldFirstName.props.initValue = first_name;
           this.children.fieldSecondName.props.initValue = second_name;
           this.children.fieldChatName.props.initValue = display_name || '';
           this.children.fieldEmail.props.initValue = email;
           this.children.fieldLogin.props.initValue = login;
           this.children.fieldPhone.props.initValue = phone;
-          this.children.avatarUpload.children.avatar.props.url = avatarUrl;
+          this.children.avatarUpload.children.avatar.props.url = avatar;
         },
       )
       .catch((error) => {
@@ -95,11 +94,11 @@ export class SettingPage extends AbstractForm<PropsSettingPage> {
     this.children.buttonLogout.$element.addEventListener('click', () => {
       authService
         .logout()
-        .then(() => {
-          router.go('#login');
-        })
         .catch((error) => {
           this.children.alert.props.text = error;
+        })
+        .finally(() => {
+          router.go('#login');
         });
     });
   }

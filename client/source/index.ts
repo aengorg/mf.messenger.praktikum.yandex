@@ -358,17 +358,41 @@ const propsChatPage: PropsChatPage = {
     url: '',
   },
   userName: '',
-  fieldSearch: {
+  fieldSearchUser: {
     name: 'search_user',
     label: '',
     icon: 'search',
     width: 'unlimit',
   },
-  buttonAddChat: {
+  fieldSearchMessage: {
+    name: 'search_message',
+    label: '',
+    icon: 'search',
+    width: 'unlimit',
+  },
+  buttonCreateChat: {
     text: '',
     name: 'add_chat',
     size: 's',
     icon: 'add-chat',
+  },
+  buttonChatAddUser: {
+    text: '',
+    name: 'chat_add_user',
+    size: 's',
+    icon: 'add-user',
+  },
+  buttonChatSettingUsers: {
+    text: '',
+    name: 'chat_setting_user',
+    size: 's',
+    icon: 'list-user',
+  },
+  buttonChatSetting: {
+    text: '',
+    name: 'chat_setting',
+    size: 's',
+    icon: 'setting-chat',
   },
   linkProfile: {
     url: '#setting',
@@ -378,7 +402,7 @@ const propsChatPage: PropsChatPage = {
     className: 'chat-list_link-profile',
     staticContent: new Icon({ icon: 'profile' }).getContent(),
   },
-  modalAddChat: {
+  modalCreateChat: {
     show: false,
     formSelector: '#form-create-chat',
     title: t['createChat'],
@@ -397,6 +421,29 @@ const propsChatPage: PropsChatPage = {
     },
     buttonCreate: {
       text: t['create'],
+      type: 'submit',
+      primary: true,
+    },
+  },
+  modalAddChatUser: {
+    show: false,
+    formSelector: '#form-add-chat-user',
+    title: t['addUserChat'],
+    fieldLogin: {
+      name: 'login',
+      label: t['login'],
+      type: 'text',
+      placeholder: 'Abracadabra',
+      validation: {
+        events: ['blur'],
+        rules: [rules.required],
+      },
+    },
+    buttonCancel: {
+      text: t['cancel'],
+    },
+    buttonAdd: {
+      text: t['add'],
       type: 'submit',
       primary: true,
     },

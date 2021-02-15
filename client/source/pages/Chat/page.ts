@@ -5,14 +5,21 @@ import template from './template.js';
 import { Button, PropsButton } from '../../components/button/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
-import { PropsChatItem } from '../../components/chat/chatItem/index.js';
+import {
+  ChatItem,
+  PropsChatItem,
+} from '../../components/chat/chatItem/index.js';
 import { Alert } from '../../components/alert/alert.js';
 import { ChatList } from '../../components/Chat/ChatList/index.js';
 import { Avatar, PropsAvatar } from '../../components/avatar/index.js';
 import {
-  ModalAddChat,
-  PropsModalAddChat,
-} from '../../components/modalAddChat/index.js';
+  ModalCreateChat,
+  PropsModalCreateChat,
+} from '../../components/modalCreateChat/index.js';
+import {
+  ModalAddChatUser,
+  PropsModalAddChatUser,
+} from '../../components/modalAddChatUser/index.js';
 
 import { chatService } from '../../services/chat.js';
 import { authService } from '../../services/auth.js';
@@ -34,26 +41,38 @@ const chatItems: PropsChatItem[] = [
   // }),
 ];
 
-export interface PropsChatPage extends PropsComponent {
-  fieldSearch: PropsField;
-  buttonAddChat: PropsButton;
-  linkProfile: PropsLink;
-  modalAddChat: PropsModalAddChat;
-  chatList?: PropsChatItem[];
-  selectChat?: string;
-  userName?: string;
-  userAvatar: PropsAvatar;
-}
+type TypeState = { selectChatId: number | undefined; selectChat?: ChatItem };
 
+const state: TypeState = { selectChatId: undefined };
+
+export interface PropsChatPage extends PropsComponent {
+  fieldSearchUser: PropsField;
+  fieldSearchMessage: PropsField;
+  buttonChatAddUser: PropsButton;
+  buttonChatSettingUsers: PropsButton;
+  buttonChatSetting: PropsButton;
+  buttonCreateChat: PropsButton;
+  linkProfile: PropsLink;
+  modalCreateChat: PropsModalCreateChat;
+  modalAddChatUser: PropsModalAddChatUser;
+  userAvatar: PropsAvatar;
+  chatList?: PropsChatItem[];
+  userName?: string;
+}
 export class ChatPage extends Component<PropsChatPage> {
   constructor(props: PropsChatPage) {
     super(
       { ...props, chatList: chatItems },
       {
         alert: new Alert({ delete: 3000 }),
-        modalAddChat: new ModalAddChat(props.modalAddChat),
-        fieldSearch: new Field(props.fieldSearch),
-        buttonAddChat: new Button(props.buttonAddChat),
+        modalCreateChat: new ModalCreateChat(props.modalCreateChat),
+        modalAddChatUser: new ModalAddChatUser(props.modalAddChatUser),
+        fieldSearchUser: new Field(props.fieldSearchUser),
+        fieldSearchMessage: new Field(props.fieldSearchMessage),
+        buttonCreateChat: new Button(props.buttonCreateChat),
+        buttonChatAddUser: new Button(props.buttonChatAddUser),
+        buttonChatSettingUsers: new Button(props.buttonChatSettingUsers),
+        buttonChatSetting: new Button(props.buttonChatSetting),
         linkProfile: new Link(props.linkProfile),
         chatList: new ChatList({ chatItems }),
         userAvatar: new Avatar(props.userAvatar),
@@ -67,6 +86,7 @@ export class ChatPage extends Component<PropsChatPage> {
       .then((data) => {
         const chatItems: PropsChatItem[] = data.map((chat) => {
           return {
+            id: chat.id,
             name: chat.title,
             avatar: {
               url: chat.avatar || '',
@@ -75,10 +95,13 @@ export class ChatPage extends Component<PropsChatPage> {
           };
         });
 
-        const xxx = new Array(6).fill(chatItems[0], 1, 20);
-        const chatList = new ChatList({ chatItems: xxx });
+        const chatList = new ChatList({
+          chatItems: chatItems,
+          selectChatId: state.selectChatId,
+        });
         this.children.chatList = chatList;
         this.props.chatList = chatItems;
+        this.initEventSelectChat();
       })
       .catch((error) => {
         this.children.alert.props.type = 'error';
@@ -99,34 +122,34 @@ export class ChatPage extends Component<PropsChatPage> {
       });
   }
 
-  public initEventModelCreateChat() {
-    const buttonShowModal = this.children.buttonAddChat.$element;
+  public initEventModalCreateChat() {
+    const $buttonShowModal = this.children.buttonCreateChat.$element;
 
-    buttonShowModal.addEventListener('click', () => {
-      this.children.modalAddChat.props.show = true;
+    $buttonShowModal.addEventListener('click', () => {
+      this.children.modalCreateChat.props.show = true;
     });
 
-    const buttonCancelCreateChat = this.children.modalAddChat.children
-      .buttonCancel.$element;
+    // const $buttonCancelCreateChat = this.children.modalCreateChat.children
+    //   .buttonCancel.$element;
 
-    buttonCancelCreateChat.addEventListener('click', (e: Event) => {
-      e.preventDefault();
-      this.children.modalAddChat.props.show = false;
-    });
+    // $buttonCancelCreateChat.addEventListener('click', (e: Event) => {
+    //   e.preventDefault();
+    //   this.children.modalCreateChat.props.show = false;
+    // });
 
-    const buttonCreateChat = this.children.modalAddChat.children.buttonCreate
-      .$element;
+    const $buttonCreateChat = this.children.modalCreateChat.children
+      .buttonCreate.$element;
 
-    buttonCreateChat.addEventListener('click', () => {
+    $buttonCreateChat.addEventListener('click', () => {
       chatService
         .addChat(
-          this.children.modalAddChat.inputsData?.getData() as TypeChatRequest,
+          this.children.modalCreateChat.inputsData?.getData() as TypeChatRequest,
         )
         .then((data) => {
           this.children.alert.props.type = 'success';
           this.children.alert.props.text = data.message;
-          this.children.modalAddChat.children.fieldTitle.iniValue = '';
-          this.children.modalAddChat.props.show = false;
+          this.children.modalCreateChat.children.fieldTitle.iniValue = '';
+          this.children.modalCreateChat.props.show = false;
           this.initChatList();
         })
         .catch((error) => {
@@ -136,12 +159,45 @@ export class ChatPage extends Component<PropsChatPage> {
     });
   }
 
+  public initEventSelectChat() {
+    this.children.chatList.children.chatItems.forEach((chat: ChatItem) => {
+      if (chat.$element !== null) {
+        chat.$element.addEventListener('click', (e: Event) => {
+          const $chat = e.currentTarget as HTMLElement;
+          const id = Number($chat.firstElementChild?.getAttribute('data-key'));
+
+          if (state.selectChatId && state.selectChat) {
+            state.selectChat.props.selectChatId = 0;
+          }
+          state.selectChatId = id;
+          state.selectChat = chat;
+          chat.props.selectChatId = id;
+
+          this.selectChatHandler();
+        });
+      }
+    });
+  }
+
+  public initEventModalAddUserChat() {
+    const $buttonShowModal = this.children.buttonChatAddUser.$element;
+
+    $buttonShowModal.addEventListener('click', () => {
+      this.children.modalAddChatUser.props.show = true;
+    });
+  }
+
+  public selectChatHandler() {
+    this.forceRender();
+  }
+
   public beforeCreateHandler() {}
 
   public createdHandler() {
     this.initChatList();
     this.initUserProfile();
-    this.initEventModelCreateChat();
+    this.initEventModalCreateChat();
+    this.initEventModalAddUserChat();
   }
 
   public updatedHandler() {}
@@ -154,7 +210,7 @@ export class ChatPage extends Component<PropsChatPage> {
 
   public getContext() {
     let textWarningChat = '';
-    if (this.props.selectChat === undefined) {
+    if (state.selectChatId === undefined) {
       textWarningChat = t['textSelectChat'];
     }
     if (this.props.chatList?.length === 0) {
@@ -162,6 +218,7 @@ export class ChatPage extends Component<PropsChatPage> {
     }
 
     return {
+      selectChatId: state.selectChatId,
       textWarningChat: textWarningChat,
     };
   }

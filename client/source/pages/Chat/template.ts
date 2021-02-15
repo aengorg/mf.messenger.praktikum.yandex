@@ -1,7 +1,8 @@
 export default `
 <div class="app">
   {{SLOT 'alert' }}
-  {{SLOT 'modalAddChat' }}
+  {{SLOT 'modalCreateChat' }}
+  {{SLOT 'modalAddChatUser' }}
   <div class="chat">
 {{!-- chat_list --}}
     <div class="chat_list chat-list">
@@ -9,10 +10,10 @@ export default `
 {{!-- chat-list_top --}}
       <header class="chat-list_top">
         {{#if data.chatList }}
-          {{SLOT 'fieldSearch' }}
+          {{SLOT 'fieldSearchUser' }}
         {{/if}}
         <div class="chat-list_actions">
-          {{SLOT 'buttonAddChat' }}
+          {{SLOT 'buttonCreateChat' }}
         </div>
       </header>
 
@@ -31,27 +32,19 @@ export default `
 {{!-- chat_top --}}
       <header class="chat_top-bar top-bar">
         <div class="top-bar_avatar">
-              {{SLOT 'userAvatar' }}
+          {{SLOT 'userAvatar' }}
         </div>
-        <div class="top-bar_chat-name">{{ data.userName }}</div>
-        <div class="top-bar_actions">
-          {{!-- <label for="search_user" class="field">
-            <input
-              type="text"
-              class="field_input field_input--icon field_input--icon-search"
-              name="search_user"
-              tabindex="1"
-            />
-          </label>
-          <button
-            class="button button--icon button--icon-add-user button--size-s"
-            tabindex="2"
-          ></button>
-          <button
-            class="button button--icon button--icon-remove button--size-s"
-            tabindex="3"
-          ></button> --}}
+        <div class="top-bar_chat-name">
+          {{ data.userName }}
         </div>
+        {{#if state.selectChatId }}
+          <div class="top-bar_actions">
+            {{SLOT 'fieldSearchMessage' }}
+            {{SLOT 'buttonChatAddUser' }}
+            {{SLOT 'buttonChatSettingUsers' }}
+            {{SLOT 'buttonChatSetting' }}
+          </div>
+        {{/if}}
       </header>
 
 {{!-- chat_messages --}}
@@ -63,7 +56,7 @@ export default `
             </div>
           </div>
         {{/unless}}
-        {{#unless data.selectChat }}
+        {{#unless state.selectChatId }}
           <div class="bg bg--img-dou bg--size-l bg--pos-tc" style="height: 100%;">
             <div class="text-center-page">
               {{ state.textWarningChat }}

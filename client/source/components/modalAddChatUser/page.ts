@@ -5,45 +5,26 @@ import { Title } from '../title/index.js';
 import { Field, PropsField } from '../field/index.js';
 import { Button, PropsButton } from '../button/index.js';
 
-// import { chatService } from '../../services/chat.js';
-// import { TypeChatRequest } from '../../api/types.js';
-
-export interface PropsModalAddChat extends PropsAbstractForm {
+export interface PropsModalAddChatUser extends PropsAbstractForm {
   title: string;
-  fieldTitle: PropsField;
+  fieldLogin: PropsField;
   buttonCancel: PropsButton;
-  buttonCreate: PropsButton;
+  buttonAdd: PropsButton;
   show: boolean;
 }
 
-export class ModalAddChat extends AbstractForm<PropsModalAddChat> {
-  constructor(props: PropsModalAddChat) {
+export class ModalAddChatUser extends AbstractForm<PropsModalAddChatUser> {
+  constructor(props: PropsModalAddChatUser) {
     super(props, {
       title: new Title({
         text: props.title,
         level: 1,
         size: 2,
       }),
-      fieldTitle: new Field(props.fieldTitle),
+      fieldLogin: new Field(props.fieldLogin),
       buttonCancel: new Button(props.buttonCancel),
-      buttonCreate: new Button(props.buttonCreate),
+      buttonAdd: new Button(props.buttonAdd),
     });
-  }
-
-  public submitHandler() {
-    // chatService
-    //   .addChat(this.inputsData?.getData() as TypeChatRequest)
-    //   .then((data) => {
-    //     console.log(data);
-    //     // this.children.alert.props.type = 'success';
-    //     // this.children.alert.props.text = data.message;
-    //     // this.initChatList();
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     // this.children.alert.props.type = 'error';
-    //     // this.children.alert.props.text = error;
-    //   });
   }
 
   public initEventCancel() {

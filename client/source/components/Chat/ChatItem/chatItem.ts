@@ -3,9 +3,12 @@ import template from './template.js';
 
 import { Avatar, PropsAvatar } from '../../../components/avatar/index.js';
 
+import { joinClasses } from '../../../utils/joinClasses/index.js';
 export interface PropsChatItem extends PropsComponent {
+  id: number;
   avatar: PropsAvatar;
   name: string;
+  selectChatId?: number;
   date?: string;
   content?: string;
   badge?: number;
@@ -29,7 +32,12 @@ export class ChatItem extends Component<PropsChatItem> {
   public beforeRemoveHandler() {}
 
   public getContext() {
-    return {};
+    return {
+      styleClasses: joinClasses([
+        'chat-item',
+        this.props?.selectChatId === this.props.id ? `chat-item--select` : '',
+      ]),
+    };
   }
 
   public render() {

@@ -5,12 +5,20 @@ import { ChatItem, PropsChatItem } from '../ChatItem/index.js';
 
 export interface PropsChatList extends PropsComponent {
   chatItems: PropsChatItem[];
+  selectChatId?: number;
 }
 
 export class ChatList extends Component<PropsChatList> {
   constructor(props: PropsChatList) {
     super(props, {
-      chatItems: props.chatItems.map((v) => new ChatItem(v)),
+      chatItems: props.chatItems.map(
+        (v) =>
+          new ChatItem({
+            ...v,
+            className: 'chat-list_item',
+            selectChatId: props.selectChatId,
+          }),
+      ),
     });
   }
   public beforeCreateHandler() {}

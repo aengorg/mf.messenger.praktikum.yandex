@@ -1,5 +1,5 @@
 export default `
-<li class="chat-list_item chat-item">
+<li class="{{ data.className }} {{ state.styleClasses }}" data-key={{ data.id }}>
   <div class="chat-item_left">
     <div class="chat-item_avatar">
       {{SLOT 'avatar' 1 }}

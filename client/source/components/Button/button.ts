@@ -13,6 +13,7 @@ export type IconsButton =
   | 'add-photo'
   | 'location'
   | 'emoji'
+  | 'list-user'
   | 'trash'
   | 'send';
 

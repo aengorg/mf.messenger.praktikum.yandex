@@ -13,6 +13,7 @@ import { Alert } from '../../components/alert/index.js';
 import { TypeSignUpForm } from '../../api/types.js';
 import { authService } from '../../services/auth.js';
 import { rules } from '../../utils/validationRules/index.js';
+import { router } from '../../router/index.js';
 
 export interface PropsSignupPage extends PropsAbstractForm {
   title: PropsTitle;
@@ -50,6 +51,7 @@ export class SignupPage extends AbstractForm<PropsSignupPage> {
       .then(() => {
         this.children.alert.props.type = 'success';
         this.children.alert.props.text = 'ok';
+        router.go('#chat');
       })
       .catch((error) => {
         this.children.alert.props.type = 'error';

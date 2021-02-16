@@ -1,2 +1,1 @@
-import { Button, PropsButton } from './button.js';
-export { Button, PropsButton };
+export { Button, PropsButton, TypeIconsButton } from './button.js';

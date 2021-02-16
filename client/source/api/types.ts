@@ -101,6 +101,8 @@ export type TypeChatsResponse = {
   avatar: string;
 }[];
 
+export type TypeRole = 'admin' | 'regular' | undefined;
+
 export type TypeChatUsersResponse = {
   id: number;
   first_name: string;
@@ -110,5 +112,5 @@ export type TypeChatUsersResponse = {
   email: string;
   phone: string;
   avatar: StringOrNull;
-  role: string;
+  role: TypeRole;
 }[];

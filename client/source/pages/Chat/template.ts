@@ -3,13 +3,14 @@ export default `
   {{SLOT 'alert' }}
   {{SLOT 'modalCreateChat' }}
   {{SLOT 'modalAddChatUser' }}
+  {{SLOT 'modalListUser' }}
   <div class="chat">
 {{!-- chat_list --}}
     <div class="chat_list chat-list">
 
 {{!-- chat-list_top --}}
       <header class="chat-list_top">
-        {{#if data.chatList }}
+        {{#if data.chatItems }}
           {{SLOT 'fieldSearchUser' }}
         {{/if}}
         <div class="chat-list_actions">
@@ -49,7 +50,7 @@ export default `
 
 {{!-- chat_messages --}}
       <main class="chat_messages">
-        {{#unless data.chatList }}
+        {{#unless data.chatItems }}
           <div class="bg bg--img-solo bg--size-l bg--pos-tc" style="height: 100%;">
             <div class="text-center-page">
               {{ state.textWarningChat }}

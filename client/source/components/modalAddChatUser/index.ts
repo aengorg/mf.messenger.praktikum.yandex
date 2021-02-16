@@ -1,1 +1,1 @@
-export { ModalAddChatUser, PropsModalAddChatUser } from './page.js';
+export { ModalAddChatUser, PropsModalAddChatUser } from './modal.js';

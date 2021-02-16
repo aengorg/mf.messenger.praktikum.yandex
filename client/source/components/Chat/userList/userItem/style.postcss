@@ -1,0 +1,44 @@
+.user-item {
+  position: relative;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  border-radius: var(--border-radius);
+  margin: 4px;
+
+  &_chat-name {
+    color: var(--color-gray-3);
+    font-size: var(--text-size-5);
+  }
+
+  &_action {
+    margin-left: auto;
+  }
+
+  &--admin {
+    background-color: var(--color-white);
+  }
+
+  &--empty {
+    text-align: center;
+    display: block;
+  }
+
+  &:hover {
+    background-color: var(--color-blue-4);
+  }
+
+  &::after {
+    content: '';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-gray-5);
+    border-radius: var(--border-radius);
+  }
+}

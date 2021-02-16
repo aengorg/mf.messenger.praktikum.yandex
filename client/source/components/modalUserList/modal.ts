@@ -3,10 +3,10 @@ import template from './template.js';
 
 import { Title } from '../title/index.js';
 import { Button, PropsButton } from '../button/index.js';
-import { UserItem, PropsUserItem } from './userItem/index.js';
+import { UserList, PropsUserList } from '../Chat/userList/index.js';
 
 export interface PropsModalListUser extends PropsComponent {
-  userItems: PropsUserItem[];
+  userItems: PropsUserList;
   title: string;
   buttonClose: PropsButton;
   show: boolean;
@@ -15,7 +15,7 @@ export interface PropsModalListUser extends PropsComponent {
 export class ModalListUser extends Component<PropsModalListUser> {
   constructor(props: PropsModalListUser) {
     super(props, {
-      userItems: props.userItems.map((v) => new UserItem(v)),
+      userList: new UserList(props.userItems),
       title: new Title({
         text: props.title,
         level: 1,

@@ -1,16 +1,9 @@
 export default `
 <div class="modal modal--show-{{ data.show }}">
-    <div class="modal_content">
+    <div class="modal_content modal_content--size-l">
       {{SLOT 'title' }}
-
-      <ul>
-        {{#each data.userItems }}
-          {{SLOT 'userItems' @index }}
-        {{else}}
-          <div>Empty</div>
-        {{/each}} 
-      </ul>
-
+      {{SLOT 'userList' @index }}
+      <br>
       {{SLOT 'buttonClose' }}
     </div>
   </form>

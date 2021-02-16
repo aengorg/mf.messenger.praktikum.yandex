@@ -1,19 +1,20 @@
-import { AbstractForm, PropsAbstractForm } from '../Form/form.js';
+import { Component, PropsComponent } from '../../core/Component/index.js';
 import template from './template.js';
 
 import { Title } from '../title/index.js';
 import { Field, PropsField } from '../field/index.js';
 import { Button, PropsButton } from '../button/index.js';
+import { UserList, PropsUserList } from '../Chat/userList/index.js';
 
-export interface PropsModalAddChatUser extends PropsAbstractForm {
+export interface PropsModalAddChatUser extends PropsComponent {
   title: string;
   fieldLogin: PropsField;
-  buttonCancel: PropsButton;
-  buttonAdd: PropsButton;
+  buttonClose: PropsButton;
+  userItems: PropsUserList;
   show: boolean;
 }
 
-export class ModalAddChatUser extends AbstractForm<PropsModalAddChatUser> {
+export class ModalAddChatUser extends Component<PropsModalAddChatUser> {
   constructor(props: PropsModalAddChatUser) {
     super(props, {
       title: new Title({
@@ -22,19 +23,16 @@ export class ModalAddChatUser extends AbstractForm<PropsModalAddChatUser> {
         size: 2,
       }),
       fieldLogin: new Field(props.fieldLogin),
-      buttonCancel: new Button(props.buttonCancel),
-      buttonAdd: new Button(props.buttonAdd),
+      userList: new UserList(props.userItems),
+      buttonClose: new Button(props.buttonClose),
     });
   }
 
   public initEventCancel() {
-    this.children.buttonCancel.$element.addEventListener(
-      'click',
-      (e: Event) => {
-        e.preventDefault();
-        this.props.show = false;
-      },
-    );
+    this.children.buttonClose.$element.addEventListener('click', (e: Event) => {
+      e.preventDefault();
+      this.props.show = false;
+    });
   }
 
   public beforeCreateHandler() {}
@@ -42,7 +40,6 @@ export class ModalAddChatUser extends AbstractForm<PropsModalAddChatUser> {
   public createdHandler() {}
 
   public updatedHandler() {
-    this.initForm();
     this.initEventCancel();
   }
 

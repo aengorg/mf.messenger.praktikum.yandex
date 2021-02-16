@@ -3,6 +3,9 @@ import {
   TypeChatRequest,
   TypeChatsResponse,
   TypeChatResponse,
+  TypeGoodResponse,
+  TypeChatUsersRequest,
+  TypeChatUsersResponse,
 } from '../api/types.js';
 import { t } from '../locales/index.js';
 import { urlAvatar } from '../utils/urlAvatar/index.js';
@@ -18,6 +21,33 @@ export class ChatService {
       this.api.addChat(data).then((res) => {
         if (res.status === 200) {
           resolve({ message: t['ok'] });
+        } else {
+          const errorStr = JSON.parse(res.response).reason;
+          reject(t[errorStr]);
+        }
+      });
+    });
+  }
+
+  public addUsersChat(data: TypeChatUsersRequest) {
+    return new Promise<TypeGoodResponse>((resolve, reject) => {
+      this.api.addUserChat(data).then((res) => {
+        if (res.status === 200) {
+          resolve({ message: t['successAddUserChat'] });
+        } else {
+          const errorStr = JSON.parse(res.response).reason;
+          reject(t[errorStr]);
+        }
+      });
+    });
+  }
+
+  public getUsersChat(idChat: number) {
+    return new Promise<TypeChatUsersResponse>((resolve, reject) => {
+      this.api.getChatUsers(idChat).then((res) => {
+        if (res.status === 200) {
+          let users: TypeChatUsersResponse = JSON.parse(res.response);
+          resolve(users);
         } else {
           const errorStr = JSON.parse(res.response).reason;
           reject(t[errorStr]);

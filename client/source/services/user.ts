@@ -4,7 +4,8 @@ import {
   TypeUserPasswordRequest,
   TypeUserPasswordResponse,
   TypeUserProfileRequest,
-  // TypeUserAvatarRequest,
+  TypeUserResponse,
+  TypeUserLogin,
 } from '../api/types.js';
 import { t } from '../locales/index.js';
 
@@ -51,6 +52,23 @@ export class UserService {
           resolve({ message: t['ok'] });
         } else {
           reject(t['errorUploadAvatar']);
+        }
+      });
+    });
+  }
+
+  public searchUser(data: TypeUserLogin) {
+    return new Promise<TypeUserResponse[]>((resolve, reject) => {
+      this.api.searchUser(data).then((res) => {
+        if (res.status === 200) {
+          const data: TypeUserResponse[] = JSON.parse(res.response);
+          if (!data.length) {
+            reject(t['userNotFound']);
+          }
+          resolve(data);
+        } else {
+          const errorStr = JSON.parse(res.response).reason;
+          reject(t[errorStr]);
         }
       });
     });

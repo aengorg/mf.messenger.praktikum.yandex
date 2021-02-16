@@ -83,6 +83,11 @@ export type TypeUserLogin = {
   login: string;
 };
 
+export type TypeChatUsersRequest = {
+  users: number[];
+  chatId: number;
+};
+
 // * Chat
 
 export type TypeChatRequest = {
@@ -94,4 +99,16 @@ export type TypeChatsResponse = {
   id: number;
   title: string;
   avatar: string;
+}[];
+
+export type TypeChatUsersResponse = {
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name: StringOrNull;
+  login: string;
+  email: string;
+  phone: string;
+  avatar: StringOrNull;
+  role: string;
 }[];

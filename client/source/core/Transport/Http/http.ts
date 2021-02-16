@@ -4,7 +4,7 @@ export type Data =
   | null
   | string
   | FormData
-  | { [index: string]: string | any[] };
+  | { [index: string]: string | number | any[] };
 
 export type TypeHeaders = {
   [key: string]: string;

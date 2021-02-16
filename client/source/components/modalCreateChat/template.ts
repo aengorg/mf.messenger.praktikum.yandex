@@ -1,9 +1,15 @@
 export default `
 <div class="modal modal--show-{{ data.show }}">
-  <form id="form-create-chat">
+  <form id="form-create-chat"  class="form">
     <div class="modal_content">
+
       {{SLOT 'title' }}
-      {{SLOT 'fieldTitle' }}
+
+      <div class="form_wrapper-inputs">
+        {{SLOT 'fieldTitle' }}
+        {{SLOT 'error' }}
+      </div>
+
       <div class="form_buttons-group">
         {{SLOT 'buttonCancel' }}
         {{SLOT 'buttonCreate' }}

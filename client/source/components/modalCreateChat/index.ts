@@ -1,1 +1,1 @@
-export { ModalCreateChat, PropsModalCreateChat } from './page.js';
+export { ModalCreateChat, PropsModalCreateChat } from './modal.js';

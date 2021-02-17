@@ -14,6 +14,7 @@ export type TypeIconsButton =
   | 'location'
   | 'emoji'
   | 'list-user'
+  | 'done-user'
   | 'trash'
   | 'send';
 
@@ -25,6 +26,8 @@ export interface PropsButton extends PropsComponent {
   danger?: boolean;
   size?: 's';
   icon?: TypeIconsButton;
+  disabled?: boolean;
+  value?: string | number;
 }
 
 export class Button extends Component<PropsButton> {

@@ -24,6 +24,10 @@
     outline: none;
   }
 
+  &[disabled]:hover {
+    filter: grayscale(1);
+  }
+
   &--primary {
     color: var(--color-white);
     background-color: var(--color-blue-1);
@@ -92,6 +96,10 @@
 
     &-trash {
       background-image: url('../../../assets/images/icons/trash.svg');
+    }
+
+    &-done-user {
+      background-image: url('../../../assets/images/icons/done_user.svg');
     }
   }
 

@@ -5,16 +5,17 @@ import { Button, PropsButton } from '../../components/button/index.js';
 import { Field, PropsField } from '../../components/field/index.js';
 import { Link, PropsLink } from '../../components/link/index.js';
 import { Alert } from '../../components/alert/alert.js';
-import { ChatList } from '../../components/Chat/ChatList/index.js';
+import { ChatList } from '../../components/Chat/chatList/index.js';
+import { UserList } from '../../components/Chat/userList/index.js';
 import {
   UserItem,
   PropsUserItem,
-} from '../../components/modalUserList/userItem/index.js';
+} from '../../components/Chat/userList/userItem/index.js';
 import { Avatar, PropsAvatar } from '../../components/avatar/index.js';
 import {
   ChatItem,
   PropsChatItem,
-} from '../../components/chat/chatItem/index.js';
+} from '../../components/Chat/ChatList/ChatItem/index.js';
 import {
   ModalCreateChat,
   PropsModalCreateChat,
@@ -28,12 +29,15 @@ import {
   PropsModalListUser,
 } from '../../components/modalUserList/index.js';
 
+import { t } from '../../locales/index.js';
+import { TypeChatRequest } from '../../api/types.js';
+
 import { chatService } from '../../services/chat.js';
 import { authService } from '../../services/auth.js';
-import { TypeChatRequest, TypeUserLogin } from '../../api/types.js';
-import { t } from '../../locales/index.js';
 import { userService } from '../../services/user.js';
+
 import { urlAvatar } from '../../utils/urlAvatar/index.js';
+import { debounce } from '../../utils/debounce/index.js';
 
 type TypeState = { selectChatId: number | undefined; selectChat?: ChatItem };
 const state: TypeState = { selectChatId: undefined };
@@ -144,14 +148,6 @@ export class ChatPage extends Component<PropsChatPage> {
       this.children.modalCreateChat.props.show = true;
     });
 
-    // const $buttonCancelCreateChat = this.children.modalCreateChat.children
-    //   .buttonCancel.$element;
-
-    // $buttonCancelCreateChat.addEventListener('click', (e: Event) => {
-    //   e.preventDefault();
-    //   this.children.modalCreateChat.props.show = false;
-    // });
-
     const $buttonCreateChat = this.children.modalCreateChat.children
       .buttonCreate.$element;
 
@@ -182,40 +178,51 @@ export class ChatPage extends Component<PropsChatPage> {
       this.children.modalAddChatUser.props.show = true;
     });
 
-    const $buttonAddUserChat = this.children.modalAddChatUser.children.buttonAdd
-      .$element;
+    const inputLogin = this.children.modalAddChatUser.children.fieldLogin;
+    const $inputLogin = inputLogin.$element;
 
-    $buttonAddUserChat.addEventListener('click', () => {
-      userService
-        .searchUser(
-          this.children.modalAddChatUser.inputsData?.getData() as TypeUserLogin,
-        )
-        .then((data) => {
-          const idChat = state.selectChatId;
-          const users = data.map((user) => user.id);
-          if (idChat) {
-            chatService
-              .addUsersChat({
-                users: users,
-                chatId: idChat,
-              })
-              .then((data) => {
-                this.children.modalAddChatUser.children.fieldLogin.iniValue =
-                  '';
-                this.children.modalAddChatUser.delErrorFrom();
-                this.children.modalAddChatUser.props.show = false;
-                this.children.alert.props.type = 'success';
-                this.children.alert.props.text = data.message;
-              })
-              .catch((error) => {
-                this.children.modalAddChatUser.setErrorFrom(error);
-              });
-          }
-        })
-        .catch((error) => {
-          this.children.modalAddChatUser.setErrorFrom(error);
-        });
-    });
+    const inputHandler = debounce((e) => {
+      const errors: string[] = inputLogin.validationHandler();
+
+      if (errors.length === 0) {
+        const value = e[0].target.value;
+
+        userService
+          .searchUser({ login: value })
+          .then((data) => {
+            const userItems: PropsUserItem[] = data.map((user) => {
+              return {
+                id: user.id,
+                fullName: `${user.first_name} ${user.second_name}`,
+                chatName: user.display_name,
+                avatar: urlAvatar(user.avatar),
+                buttonIcon: 'add-user',
+              };
+            });
+
+            const payload = {
+              userItems: userItems,
+              textEmpty: '',
+            };
+
+            this.children.modalAddChatUser.children.userList = new UserList(
+              payload,
+            );
+            this.children.modalAddChatUser.props.userItems = payload;
+
+            this.initEventAddUserChatHandler();
+          })
+          .catch((error) => {
+            this.children.alert.props.type = 'error';
+            this.children.alert.props.text = error;
+          });
+      }
+    }, 500);
+
+    $inputLogin.addEventListener('input', inputHandler);
+
+    // для дебага
+    // $buttonShowModal.click();
   }
 
   public initEventModalListUserChat() {
@@ -231,37 +238,100 @@ export class ChatPage extends Component<PropsChatPage> {
               fullName: `${user.first_name} ${user.second_name}`,
               chatName: user.display_name,
               avatar: urlAvatar(user.avatar),
+              buttonIcon: 'remove-user',
               role: user.role,
             };
           });
 
-          this.children.modalListUser.children.userItems = userItems.map(
-            (v) => new UserItem(v),
-          );
-          this.children.modalListUser.props.userItems = userItems;
+          const payload = {
+            userItems: userItems,
+            textEmpty: '',
+          };
+
+          this.children.modalListUser.children.userList = new UserList(payload);
+          this.children.modalListUser.props.userItems = payload;
+
+          this.initEventDeleteUserChatHandler();
         })
         .catch((error) => {
           this.children.alert.props.type = 'error';
           this.children.alert.props.text = error;
         });
     });
+    // для дебага
+    // $buttonShowModal.click();
   }
 
   public selectChatHandler() {
-    // if (state.selectChatId) {
-    //   chatService
-    //     .getUsersChat(state.selectChatId)
-    //     .then((data) => {
-    //       console.log(data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
     this.forceRender();
   }
 
-  public initEventModalListUser() {}
+  public initEventAddUserChatHandler() {
+    const userItems = this.children.modalAddChatUser.children.userList.children
+      .userItems;
+
+    userItems.forEach((user: UserItem) => {
+      const buttonAddUser = user.children.button;
+      const $buttonAddUser = buttonAddUser.$element;
+
+      $buttonAddUser.addEventListener('click', (e: Event) => {
+        const $el = e.target as HTMLInputElement;
+        const idUser = Number($el.value);
+        const idChat = state.selectChatId;
+
+        if (idChat) {
+          chatService
+            .addUsersChat({
+              users: [idUser],
+              chatId: idChat,
+            })
+            .then((data) => {
+              buttonAddUser.props.disabled = true;
+              buttonAddUser.props.icon = 'done-user';
+
+              this.children.alert.props.type = 'success';
+              this.children.alert.props.text = data.message;
+            })
+            .catch((error) => {
+              this.children.alert.props.type = 'error';
+              this.children.alert.props.text = error;
+            });
+        }
+      });
+    });
+  }
+
+  public initEventDeleteUserChatHandler() {
+    const userItems = this.children.modalListUser.children.userList.children
+      .userItems;
+
+    userItems.forEach((user: UserItem) => {
+      const $buttonDeleteUser = user.children.button.$element;
+
+      $buttonDeleteUser.addEventListener('click', (e: Event) => {
+        const $el = e.target as HTMLInputElement;
+        const idUser = Number($el.value);
+        const idChat = state.selectChatId;
+
+        if (idChat) {
+          chatService
+            .deleteUserChat({
+              users: [idUser],
+              chatId: idChat,
+            })
+            .then((data) => {
+              user.remove();
+              this.children.alert.props.type = 'success';
+              this.children.alert.props.text = data.message;
+            })
+            .catch((error) => {
+              this.children.alert.props.type = 'error';
+              this.children.alert.props.text = error;
+            });
+        }
+      });
+    });
+  }
 
   public beforeCreateHandler() {}
 

@@ -402,6 +402,7 @@ const propsChatPage: PropsChatPage = {
     className: 'chat-list_link-profile',
     staticContent: new Icon({ icon: 'profile' }).getContent(),
   },
+  chatItems: [],
   modalCreateChat: {
     show: false,
     formSelector: '#form-create-chat',
@@ -426,26 +427,29 @@ const propsChatPage: PropsChatPage = {
     },
   },
   modalAddChatUser: {
+    userItems: { userItems: [], textEmpty: t['listEmpty'] },
     show: false,
-    formSelector: '#form-add-chat-user',
     title: t['addUserChat'],
     fieldLogin: {
       name: 'login',
       label: t['login'],
       type: 'text',
-      placeholder: 'Abracadabra',
+      icon: 'search',
       validation: {
         events: ['blur'],
         rules: [rules.required],
       },
     },
-    buttonCancel: {
-      text: t['cancel'],
+    buttonClose: {
+      text: t['close'],
     },
-    buttonAdd: {
-      text: t['add'],
-      type: 'submit',
-      primary: true,
+  },
+  modalListUser: {
+    userItems: { userItems: [], textEmpty: t['listEmpty'] },
+    title: t['usersChat'],
+    show: false,
+    buttonClose: {
+      text: t['close'],
     },
   },
 };

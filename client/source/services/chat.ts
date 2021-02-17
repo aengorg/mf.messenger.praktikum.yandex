@@ -42,6 +42,19 @@ export class ChatService {
     });
   }
 
+  public deleteUserChat(data: TypeChatUsersRequest) {
+    return new Promise<TypeGoodResponse>((resolve, reject) => {
+      this.api.deleteUserChat(data).then((res) => {
+        if (res.status === 200) {
+          resolve({ message: t['successDeleteUserChat'] });
+        } else {
+          const errorStr = JSON.parse(res.response).reason;
+          reject(t[errorStr]);
+        }
+      });
+    });
+  }
+
   public getUsersChat(idChat: number) {
     return new Promise<TypeChatUsersResponse>((resolve, reject) => {
       this.api.getChatUsers(idChat).then((res) => {

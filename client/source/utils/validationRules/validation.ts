@@ -1,4 +1,4 @@
-import { TRule } from './index.js';
+import { TRule } from './index';
 
 export function validation(value: string | number, rules: TRule[]): string[] {
   const arr = rules.map((rule) => rule(value));

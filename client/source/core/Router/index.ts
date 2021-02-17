@@ -1,2 +1,2 @@
-export { Router } from './Router.js';
-export { Route, TPathNames } from './Route.js';
+export { Router } from './Router';
+export { Route, TPathNames } from './Route';

@@ -4,4 +4,4 @@ export {
   PropsComponent,
   PropsComponentEmpty,
   Children,
-} from './Component.js';
+} from './Component';

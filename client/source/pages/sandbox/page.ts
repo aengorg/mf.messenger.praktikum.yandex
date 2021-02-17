@@ -1,13 +1,13 @@
-import { Component, PropsComponentEmpty } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponentEmpty } from '../../core/Component/index';
+import template from './template';
 
-import { rules } from '../../utils/validationRules/index.js';
+import { rules } from '../../utils/validationRules/index';
 
-import { Title } from '../../components/title/index.js';
-import { Link } from '../../components/link/index.js';
-import { Field } from '../../components/field/index.js';
-import { Button } from '../../components/button/index.js';
-import { Avatar } from '../../components/avatar/index.js';
+import { Title } from '../../components/title/index';
+import { Link } from '../../components/link/index';
+import { Field } from '../../components/field/index';
+import { Button } from '../../components/button/index';
+import { Avatar } from '../../components/avatar/index';
 
 export class Sandbox extends Component<PropsComponentEmpty> {
   constructor(props = {}) {

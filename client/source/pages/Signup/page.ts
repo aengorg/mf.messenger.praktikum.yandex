@@ -1,19 +1,16 @@
-import {
-  AbstractForm,
-  PropsAbstractForm,
-} from '../../components/Form/index.js';
-import template from './template.js';
+import { AbstractForm, PropsAbstractForm } from '../../components/Form/index';
+import template from './template';
 
-import { Title, PropsTitle } from '../../components/title/index.js';
-import { Link, PropsLink } from '../../components/link/index.js';
-import { Field, PropsField } from '../../components/field/index.js';
-import { Button, PropsButton } from '../../components/button/index.js';
-import { Alert } from '../../components/alert/index.js';
+import { Title, PropsTitle } from '../../components/title/index';
+import { Link, PropsLink } from '../../components/link/index';
+import { Field, PropsField } from '../../components/field/index';
+import { Button, PropsButton } from '../../components/button/index';
+import { Alert } from '../../components/alert/index';
 
-import { TypeSignUpForm } from '../../api/types.js';
-import { authService } from '../../services/auth.js';
-import { rules } from '../../utils/validationRules/index.js';
-import { router } from '../../router/index.js';
+import { TypeSignUpForm } from '../../api/types';
+import { authService } from '../../services/auth';
+import { rules } from '../../utils/validationRules/index';
+import { router } from '../../router/index';
 
 export interface PropsSignupPage extends PropsAbstractForm {
   title: PropsTitle;

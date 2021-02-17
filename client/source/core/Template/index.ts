@@ -1,1 +1,1 @@
-export { compileTemplate } from './Template.js';
+export { compileTemplate } from './template';

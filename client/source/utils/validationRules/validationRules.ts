@@ -1,4 +1,4 @@
-import { t } from '../../locales/index.js';
+import { t } from '../../locales/index';
 
 export function required(v: unknown): string {
   if (!v) return t['ruleRequired'];

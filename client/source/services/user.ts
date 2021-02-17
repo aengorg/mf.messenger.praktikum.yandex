@@ -1,4 +1,4 @@
-import { ApiUser } from '../api/user.js';
+import { ApiUser } from '../api/user';
 import {
   TypeGoodResponse,
   TypeUserPasswordRequest,
@@ -6,8 +6,8 @@ import {
   TypeUserProfileRequest,
   TypeUserResponse,
   TypeUserLogin,
-} from '../api/types.js';
-import { t } from '../locales/index.js';
+} from '../api/types';
+import { t } from '../locales/index';
 
 export class UserService {
   api: ApiUser;

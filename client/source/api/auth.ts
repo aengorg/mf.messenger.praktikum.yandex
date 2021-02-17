@@ -1,7 +1,7 @@
-import { API_HOST, API_AUTH } from '../constants/index.js';
-import { HTTPTransport } from '../core/Transport/Http/index.js';
+import { API_HOST, API_AUTH } from '../constants/index';
+import { HTTPTransport } from '../core/Transport/Http/index';
 
-import { TypeSignUpRequest, TypeSignInRequest } from './types.js';
+import { TypeSignUpRequest, TypeSignInRequest } from './types';
 
 export class ApiAuth {
   private fetch: HTTPTransport;

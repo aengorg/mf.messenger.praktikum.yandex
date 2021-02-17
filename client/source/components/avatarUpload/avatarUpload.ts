@@ -1,10 +1,10 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { Avatar } from '../../components/avatar/index.js';
-import { FileUpload } from '../../components/fileUpload/index.js';
-import { Button } from '../button/index.js';
-import { Title } from '../title/index.js';
+import { Avatar } from '../../components/avatar/index';
+import { FileUpload } from '../../components/fileUpload/index';
+import { Button } from '../button/index';
+import { Title } from '../title/index';
 
 export interface PropsAvatarUpload extends PropsComponent {
   urlAvatar: string;

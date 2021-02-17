@@ -1,22 +1,22 @@
-import { t } from './locales/index.js';
-import { PropsComponentEmpty } from './core/Component/index.js';
+import { t } from './locales/index';
+import { PropsComponentEmpty } from './core/Component/index';
 
-import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
-import { ChatPage, PropsChatPage } from './pages/chat/index.js';
-import { Sandbox } from './pages/sandbox/index.js';
-import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
-import { LoginPage, PropsLoginPage } from './pages/login/index.js';
+import { ErrorPage, PropsErrorPage } from './pages/error/index';
+import { ChatPage, PropsChatPage } from './pages/chat/index';
+import { Sandbox } from './pages/sandbox/index';
+import { SignupPage, PropsSignupPage } from './pages/signup/index';
+import { LoginPage, PropsLoginPage } from './pages/login/index';
 import {
   SettingPasswordPage,
   PropsSettingPasswordPage,
-} from './pages/password/index.js';
-import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
-import { generationId } from './utils/generationId/index.js';
-import { generationInt } from './utils/generationInt/index.js';
-import { rules } from './utils/validationRules/index.js';
-import { Icon } from './components/Icon/icon.js';
+} from './pages/password/index';
+import { SettingPage, PropsSettingPage } from './pages/setting/index';
+import { generationId } from './utils/generationId/index';
+import { generationInt } from './utils/generationInt/index';
+import { rules } from './utils/validationRules/index';
+import { Icon } from './components/Icon/icon';
 
-import { router } from './router/index.js';
+import { router } from './router/index';
 
 // * ErrorPage
 // 500
@@ -469,7 +469,7 @@ router
   .default('error404', ErrorPage, propsErrorPage404)
   .start($app);
 
-// import { FastLink } from './components/fastLinks/index.js';
+// import { FastLink } from './components/fastLinks/index';
 // $app!.appendChild(
 //   new FastLink({}).getElement() || document.createElement('error'),
 // );

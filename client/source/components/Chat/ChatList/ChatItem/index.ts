@@ -1,1 +1,1 @@
-export { ChatItem, PropsChatItem } from './chatItem.js';
+export { ChatItem, PropsChatItem } from './chatItem';

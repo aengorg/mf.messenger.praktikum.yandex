@@ -1,4 +1,4 @@
-import { ApiChat } from '../api/chat.js';
+import { ApiChat } from '../api/chat';
 import {
   TypeChatRequest,
   TypeChatsResponse,
@@ -6,9 +6,9 @@ import {
   TypeGoodResponse,
   TypeChatUsersRequest,
   TypeChatUsersResponse,
-} from '../api/types.js';
-import { t } from '../locales/index.js';
-import { urlAvatar } from '../utils/urlAvatar/index.js';
+} from '../api/types';
+import { t } from '../locales/index';
+import { urlAvatar } from '../utils/urlAvatar/index';
 export class ChatService {
   api: ApiChat;
 

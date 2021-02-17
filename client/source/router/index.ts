@@ -1,2 +1,2 @@
-import { Router } from '../core/Router/index.js';
+import { Router } from '../core/Router/index';
 export const router = new Router();

@@ -1,8 +1,8 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { joinClasses } from '../../utils/joinClasses/index.js';
-import { Status, TypeStatus } from '../status/index.js';
+import { joinClasses } from '../../utils/joinClasses/index';
+import { Status, TypeStatus } from '../status/index';
 
 export interface PropsAvatar extends PropsComponent {
   url?: string;

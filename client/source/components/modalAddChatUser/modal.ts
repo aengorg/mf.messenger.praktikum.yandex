@@ -1,10 +1,10 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { Title } from '../title/index.js';
-import { Field, PropsField } from '../field/index.js';
-import { Button, PropsButton } from '../button/index.js';
-import { UserList, PropsUserList } from '../Chat/userList/index.js';
+import { Title } from '../title/index';
+import { Field, PropsField } from '../field/index';
+import { Button, PropsButton } from '../button/index';
+import { UserList, PropsUserList } from '../Chat/userList/index';
 
 export interface PropsModalAddChatUser extends PropsComponent {
   title: string;

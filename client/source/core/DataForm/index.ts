@@ -1,1 +1,1 @@
-export { DataForm } from './DataForm.js';
+export { DataForm } from './DataForm';

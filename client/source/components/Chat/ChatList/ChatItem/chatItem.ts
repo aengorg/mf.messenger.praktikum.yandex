@@ -1,9 +1,9 @@
-import { Component, PropsComponent } from '../../../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../../../core/Component/index';
+import template from './template';
 
-import { Avatar, PropsAvatar } from '../../../avatar/index.js';
+import { Avatar, PropsAvatar } from '../../../avatar/index';
 
-import { joinClasses } from '../../../../utils/joinClasses/index.js';
+import { joinClasses } from '../../../../utils/joinClasses/index';
 export interface PropsChatItem extends PropsComponent {
   id: number;
   avatar: PropsAvatar;

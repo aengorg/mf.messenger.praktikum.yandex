@@ -1,11 +1,11 @@
-import { API_HOST, API_USER } from '../constants/index.js';
-import { HTTPTransport } from '../core/Transport/Http/index.js';
+import { API_HOST, API_USER } from '../constants/index';
+import { HTTPTransport } from '../core/Transport/Http/index';
 
 import {
   TypeUserPasswordRequest,
   TypeUserProfileRequest,
   TypeUserLogin,
-} from './types.js';
+} from './types';
 
 export class ApiUser {
   private fetch: HTTPTransport;

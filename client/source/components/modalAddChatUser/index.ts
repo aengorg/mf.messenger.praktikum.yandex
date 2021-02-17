@@ -1,1 +1,1 @@
-export { ModalAddChatUser, PropsModalAddChatUser } from './modal.js';
+export { ModalAddChatUser, PropsModalAddChatUser } from './modal';

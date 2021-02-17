@@ -1,1 +1,1 @@
-export { Sandbox } from './page.js';
+export { Sandbox } from './page';

@@ -1,5 +1,5 @@
-import { ru } from './ru.js';
+import { ru } from './ru';
 export let t = ru;
 
-// import { en } from './en.js';
+// import { en } from './en';
 // export let t = en;

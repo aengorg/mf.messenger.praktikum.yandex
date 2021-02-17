@@ -1,10 +1,10 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { FieldError } from './fieldError/index.js';
-import { TRule } from '../../utils/validationRules/index.js';
-import { validation } from '../../utils/validationRules/validation.js';
-import { joinClasses } from '../../utils/joinClasses/index.js';
+import { FieldError } from './fieldError/index';
+import { TRule } from '../../utils/validationRules/index';
+import { validation } from '../../utils/validationRules/validation';
+import { joinClasses } from '../../utils/joinClasses/index';
 
 export type IconsField = 'search';
 

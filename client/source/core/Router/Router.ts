@@ -1,5 +1,5 @@
-import { ComponentFactory } from '../Component/index.js';
-import { Route, TPathNames } from './index.js';
+import { ComponentFactory } from '../Component/index';
+import { Route, TPathNames } from './index';
 
 export class Router {
   public currentRoute: Route<any> | null = null;

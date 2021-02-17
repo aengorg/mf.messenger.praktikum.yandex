@@ -1,14 +1,14 @@
-import { ApiAuth } from '../api/auth.js';
+import { ApiAuth } from '../api/auth';
 import {
   TypeGoodResponse,
   TypeSignInRequest,
   TypeSignUpForm,
   TypeSignUpResponse,
   TypeUserResponse,
-} from '../api/types.js';
-import { t } from '../locales/index.js';
-import { LS } from '../constants/index.js';
-import { urlAvatar } from '../utils/urlAvatar/index.js';
+} from '../api/types';
+import { t } from '../locales/index';
+import { LS } from '../constants/index';
+import { urlAvatar } from '../utils/urlAvatar/index';
 
 export class AuthService {
   api: ApiAuth;

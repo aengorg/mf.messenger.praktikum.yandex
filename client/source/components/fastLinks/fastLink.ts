@@ -1,7 +1,7 @@
-import { Component, PropsComponentEmpty } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponentEmpty } from '../../core/Component/index';
+import template from './template';
 
-import { Link } from '../link/index.js';
+import { Link } from '../link/index';
 
 const staticLinks = [
   new Link({

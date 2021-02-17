@@ -1,9 +1,9 @@
-import { AbstractForm, PropsAbstractForm } from '../Form/form.js';
-import template from './template.js';
+import { AbstractForm, PropsAbstractForm } from '../Form/form';
+import template from './template';
 
-import { Title } from '../title/index.js';
-import { Field, PropsField } from '../field/index.js';
-import { Button, PropsButton } from '../button/index.js';
+import { Title } from '../title/index';
+import { Field, PropsField } from '../field/index';
+import { Button, PropsButton } from '../button/index';
 
 export interface PropsModalCreateChat extends PropsAbstractForm {
   title: string;

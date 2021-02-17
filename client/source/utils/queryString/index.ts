@@ -1,1 +1,1 @@
-export { queryString } from './queryString.js';
+export { queryString } from './queryString';

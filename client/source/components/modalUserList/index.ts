@@ -1,1 +1,1 @@
-export { ModalListUser, PropsModalListUser } from './modal.js';
+export { ModalListUser, PropsModalListUser } from './modal';

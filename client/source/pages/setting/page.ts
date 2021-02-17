@@ -1,20 +1,17 @@
-import {
-  AbstractForm,
-  PropsAbstractForm,
-} from '../../components/form/index.js';
-import template from './template.js';
+import { AbstractForm, PropsAbstractForm } from '../../components/form/index';
+import template from './template';
 
-import { Title, PropsTitle } from '../../components/title/index.js';
-import { Link, PropsLink } from '../../components/link/index.js';
-import { Field, PropsField } from '../../components/field/index.js';
-import { Button, PropsButton } from '../../components/button/index.js';
-import { Alert } from '../../components/alert/index.js';
-import { AvatarUpload } from '../../components/avatarUpload/index.js';
+import { Title, PropsTitle } from '../../components/title/index';
+import { Link, PropsLink } from '../../components/link/index';
+import { Field, PropsField } from '../../components/field/index';
+import { Button, PropsButton } from '../../components/button/index';
+import { Alert } from '../../components/alert/index';
+import { AvatarUpload } from '../../components/avatarUpload/index';
 
-import { TypeUserProfileRequest } from '../../api/types.js';
-import { authService } from '../../services/auth.js';
-import { userService } from '../../services/user.js';
-import { router } from '../../router/index.js';
+import { TypeUserProfileRequest } from '../../api/types';
+import { authService } from '../../services/auth';
+import { userService } from '../../services/user';
+import { router } from '../../router/index';
 
 export interface PropsSettingPage extends PropsAbstractForm {
   title: PropsTitle;

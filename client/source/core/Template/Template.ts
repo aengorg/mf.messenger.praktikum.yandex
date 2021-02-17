@@ -1,5 +1,5 @@
 const Handlebars = window.Handlebars;
-import { TAG_SLOT } from '../../constants/index.js';
+import { TAG_SLOT } from '../../constants/index';
 
 export function compileTemplate(templateString: string = '') {
   return Handlebars.compile(templateString);

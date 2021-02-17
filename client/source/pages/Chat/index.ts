@@ -1,1 +1,1 @@
-export { ChatPage, PropsChatPage } from './page.js';
+export { ChatPage, PropsChatPage } from './page';

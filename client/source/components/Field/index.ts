@@ -1,1 +1,1 @@
-export { Field, PropsField } from './field.js';
+export { Field, PropsField } from './field';

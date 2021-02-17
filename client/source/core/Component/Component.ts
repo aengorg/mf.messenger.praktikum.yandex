@@ -1,8 +1,8 @@
-import { EventBus } from '../EventBus/index.js';
-import { compileTemplate } from '../Template/index.js';
-import { generationId } from '../../utils/generationId/index.js';
-import { htmlToElement } from '../../utils/htmlToElement/index.js';
-import { TAG_SLOT } from '../../constants/index.js';
+import { EventBus } from '../EventBus/index';
+import { compileTemplate } from '../Template/index';
+import { generationId } from '../../utils/generationId/index';
+import { htmlToElement } from '../../utils/htmlToElement/index';
+import { TAG_SLOT } from '../../constants/index';
 
 export interface Children {
   [key: string]: any;

@@ -1,43 +1,43 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { Button, PropsButton } from '../../components/button/index.js';
-import { Field, PropsField } from '../../components/field/index.js';
-import { Link, PropsLink } from '../../components/link/index.js';
-import { Alert } from '../../components/alert/alert.js';
-import { ChatList } from '../../components/Chat/chatList/index.js';
-import { UserList } from '../../components/Chat/userList/index.js';
+import { Button, PropsButton } from '../../components/button/index';
+import { Field, PropsField } from '../../components/field/index';
+import { Link, PropsLink } from '../../components/link/index';
+import { Alert } from '../../components/alert/alert';
+import { ChatList } from '../../components/Chat/chatList/index';
+import { UserList } from '../../components/Chat/userList/index';
 import {
   UserItem,
   PropsUserItem,
-} from '../../components/Chat/userList/userItem/index.js';
-import { Avatar, PropsAvatar } from '../../components/avatar/index.js';
+} from '../../components/Chat/userList/userItem/index';
+import { Avatar, PropsAvatar } from '../../components/avatar/index';
 import {
   ChatItem,
   PropsChatItem,
-} from '../../components/Chat/ChatList/ChatItem/index.js';
+} from '../../components/Chat/ChatList/ChatItem/index';
 import {
   ModalCreateChat,
   PropsModalCreateChat,
-} from '../../components/modalCreateChat/index.js';
+} from '../../components/modalCreateChat/index';
 import {
   ModalAddChatUser,
   PropsModalAddChatUser,
-} from '../../components/modalAddChatUser/index.js';
+} from '../../components/modalAddChatUser/index';
 import {
   ModalListUser,
   PropsModalListUser,
-} from '../../components/modalUserList/index.js';
+} from '../../components/modalUserList/index';
 
-import { t } from '../../locales/index.js';
-import { TypeChatRequest } from '../../api/types.js';
+import { t } from '../../locales/index';
+import { TypeChatRequest } from '../../api/types';
 
-import { chatService } from '../../services/chat.js';
-import { authService } from '../../services/auth.js';
-import { userService } from '../../services/user.js';
+import { chatService } from '../../services/chat';
+import { authService } from '../../services/auth';
+import { userService } from '../../services/user';
 
-import { urlAvatar } from '../../utils/urlAvatar/index.js';
-import { debounce } from '../../utils/debounce/index.js';
+import { urlAvatar } from '../../utils/urlAvatar/index';
+import { debounce } from '../../utils/debounce/index';
 
 type TypeState = { selectChatId: number | undefined; selectChat?: ChatItem };
 const state: TypeState = { selectChatId: undefined };

@@ -1,1 +1,1 @@
-export { UserList, PropsUserList } from './userList.js';
+export { UserList, PropsUserList } from './userList';

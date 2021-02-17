@@ -1,1 +1,1 @@
-export { SignupPage, PropsSignupPage } from './page.js';
+export { SignupPage, PropsSignupPage } from './page';

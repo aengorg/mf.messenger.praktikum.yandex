@@ -1,12 +1,12 @@
-import { Component, PropsComponent } from '../../../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../../../core/Component/index';
+import template from './template';
 
-import { Avatar } from '../../../avatar/index.js';
-import { Button, TypeIconsButton } from '../../../button/index.js';
+import { Avatar } from '../../../avatar/index';
+import { Button, TypeIconsButton } from '../../../button/index';
 
-import { joinClasses } from '../../../../utils/joinClasses/index.js';
-import { TypeRole } from '../../../../api/types.js';
-import { Icon } from '../../../Icon/icon.js';
+import { joinClasses } from '../../../../utils/joinClasses/index';
+import { TypeRole } from '../../../../api/types';
+import { Icon } from '../../../Icon/icon';
 
 export interface PropsUserItem extends PropsComponent {
   id: number;

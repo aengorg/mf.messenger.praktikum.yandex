@@ -1,4 +1,4 @@
-import { queryString } from '../../../utils/queryString/index.js';
+import { queryString } from '../../../utils/queryString/index';
 
 export type Data =
   | null

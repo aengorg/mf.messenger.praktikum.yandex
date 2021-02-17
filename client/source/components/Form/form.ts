@@ -2,12 +2,12 @@ import {
   Children,
   Component,
   PropsComponent,
-} from '../../core/Component/index.js';
+} from '../../core/Component/index';
 
-import { DataForm } from '../../core/DataForm/index.js';
-import { FormError } from './formError/index.js';
+import { DataForm } from '../../core/DataForm/index';
+import { FormError } from './formError/index';
 
-import { Field } from '../field/index.js';
+import { Field } from '../field/index';
 
 // TODO задумано тут перечислить все поля ввода
 // export type TInputs = Field

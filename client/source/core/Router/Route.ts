@@ -1,4 +1,4 @@
-import { ComponentFactory, Component } from '../Component/index.js';
+import { ComponentFactory, Component } from '../Component/index';
 
 export type TPathNames = string | string[];
 

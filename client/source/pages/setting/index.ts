@@ -1,1 +1,1 @@
-export { SettingPage, PropsSettingPage } from './page.js';
+export { SettingPage, PropsSettingPage } from './page';

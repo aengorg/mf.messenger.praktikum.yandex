@@ -1,1 +1,1 @@
-export { AvatarUpload, PropsAvatarUpload } from './avatarUpload.js';
+export { AvatarUpload, PropsAvatarUpload } from './avatarUpload';

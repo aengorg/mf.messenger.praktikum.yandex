@@ -1,7 +1,7 @@
-import { API_HOST, API_CHAT } from '../constants/index.js';
-import { HTTPTransport } from '../core/Transport/Http/index.js';
+import { API_HOST, API_CHAT } from '../constants/index';
+import { HTTPTransport } from '../core/Transport/Http/index';
 
-import { TypeChatRequest, TypeChatUsersRequest } from './types.js';
+import { TypeChatRequest, TypeChatUsersRequest } from './types';
 
 export class ApiChat {
   private fetch: HTTPTransport;

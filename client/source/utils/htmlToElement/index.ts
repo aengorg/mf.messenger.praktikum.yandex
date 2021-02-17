@@ -1,1 +1,1 @@
-export { htmlToElement } from './htmlToElement.js';
+export { htmlToElement } from './htmlToElement';

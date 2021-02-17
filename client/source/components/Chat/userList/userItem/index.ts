@@ -1,1 +1,1 @@
-export { UserItem, PropsUserItem } from './userItem.js';
+export { UserItem, PropsUserItem } from './userItem';

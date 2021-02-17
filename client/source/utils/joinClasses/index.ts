@@ -1,1 +1,1 @@
-export { joinClasses } from './joinClasses.js';
+export { joinClasses } from './joinClasses';

@@ -1,1 +1,1 @@
-export { HTTPTransport } from './http.js';
+export { HTTPTransport } from './http';

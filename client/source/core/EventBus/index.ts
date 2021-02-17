@@ -1,1 +1,1 @@
-export { EventBus } from './EventBus.js';
+export { EventBus } from './EventBus';

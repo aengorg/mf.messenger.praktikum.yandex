@@ -1,1 +1,1 @@
-export { ChatList, PropsChatList } from './chatList.js';
+export { ChatList, PropsChatList } from './chatList';

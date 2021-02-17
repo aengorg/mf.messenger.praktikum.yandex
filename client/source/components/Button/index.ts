@@ -1,1 +1,1 @@
-export { Button, PropsButton, TypeIconsButton } from './button.js';
+export { Button, PropsButton, TypeIconsButton } from './button';

@@ -1,7 +1,7 @@
-import { Component, PropsComponent } from '../../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../../core/Component/index';
+import template from './template';
 
-import { ChatItem, PropsChatItem } from './ChatItem/index.js';
+import { ChatItem, PropsChatItem } from './ChatItem/index';
 
 export interface PropsChatList extends PropsComponent {
   chatItems: PropsChatItem[];

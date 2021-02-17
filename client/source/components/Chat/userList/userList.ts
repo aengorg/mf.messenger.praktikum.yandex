@@ -1,7 +1,7 @@
-import { Component, PropsComponent } from '../../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../../core/Component/index';
+import template from './template';
 
-import { UserItem, PropsUserItem } from './UserItem/index.js';
+import { UserItem, PropsUserItem } from './UserItem/index';
 
 export interface PropsUserList extends PropsComponent {
   userItems: PropsUserItem[];

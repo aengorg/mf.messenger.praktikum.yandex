@@ -2,18 +2,21 @@ const FileHound = require('filehound');
 const fs = require('fs');
 const path = require('path');
 const files = FileHound.create()
-  .paths(__dirname + '/src/js')
+  .paths(path.join(__dirname, '../public/dist/'))
   .discard('node_modules')
   .ext('js')
   .find();
+
+// console.log();
+
 files.then((filePaths) => {
   filePaths.forEach((filepath) => {
     fs.readFile(filepath, 'utf8', (err, data) => {
-      if (!data.match(/import .* from/g)) {
+      if (!data.match(/import|export .* from/g)) {
         return;
       }
       let newData = data.replace(
-        /(import .* from\s+['"])(.*)(?=['"])/g,
+        /(import|export .* from\s+['"])(.*)(?=['"])/g,
         '$1$2.js',
       );
       if (err) throw err;
@@ -24,5 +27,5 @@ files.then((filePaths) => {
       });
     });
   });
-  console.log('\x1b[0m', 'complete');
+  console.log('complete');
 });

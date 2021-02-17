@@ -1,1 +1,1 @@
-export { Avatar, PropsAvatar } from './avatar.js';
+export { Avatar, PropsAvatar } from './avatar';

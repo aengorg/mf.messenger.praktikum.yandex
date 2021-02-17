@@ -1,4 +1,6 @@
-# [Messenger](https://messenger-1.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/f8219fec-4561-4017-9c56-946bb0ddbfb1/deploy-status)](https://app.netlify.com/sites/dreamy-noether-285e69/deploys)
+# [Messenger](https://messenger-1.netlify.app/index.html#login) [![Netlify Status](https://api.netlify.com/api/v1/badges/f8219fec-4561-4017-9c56-946bb0ddbfb1/deploy-status)](https://app.netlify.com/sites/dreamy-noether-285e69/deploys)
+
+[https://messenger-1.netlify.app/index.html#login](https://messenger-1.netlify.app/index.html#login)
 
 # Замечания
 
@@ -45,15 +47,6 @@ constructor({title, linkLogin, fieldPhone ...}: PropsSignupPage) { }
 Не ясно что будет удобнее, так как мне необходим и props целиком, собирать его обратно.
 то на то и выйдет.
 
-<!--
-0 доступен по адресу [https://messenger-1.netlify.app/client/public/#](https://messenger-1.netlify.app/client/public/#)
-
-1 Не доделал страницу чата по компонентам
-
-2 не осилил сборку и нормальные пути. пришлось просто закомитить файлы
-
-3 есть 1 any -->
-
 ## Во время самоизоляции нужно больше общения
 
 Встречаем новый Messenger
@@ -67,7 +60,11 @@ constructor({title, linkLogin, fieldPhone ...}: PropsSignupPage) { }
 Публикация на Netlify
 
 ```
+npm run client:build
+git add .
+git commit -m 'build'
 git checkout main
+git merge dev
 npm version patch
 git checkout deploy
 git merge main

@@ -114,3 +114,5 @@ export type TypeChatUsersResponse = {
   avatar: StringOrNull;
   role: TypeRole;
 }[];
+
+export type TypeUserId = { id: number };

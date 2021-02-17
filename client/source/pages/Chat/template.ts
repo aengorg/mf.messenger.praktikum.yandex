@@ -64,6 +64,11 @@ export default `
             </div>
           </div>
         {{/unless}}
+        <div class="bg bg--img-message-sent bg--size-l bg--pos-tc" style="height: 100%;">
+          <div class="text-center-page">
+            {{ state.textWarningChat }}
+          </div>
+        </div>
 
 
         {{!-- <div class="message">

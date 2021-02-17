@@ -352,7 +352,7 @@ export class ChatPage extends Component<PropsChatPage> {
   public beforeRemoveHandler() {}
 
   public getContext() {
-    let textWarningChat = '';
+    let textWarningChat = t['textSendFirstMsg'];
     if (state.selectChatId === undefined) {
       textWarningChat = t['textSelectChat'];
     }

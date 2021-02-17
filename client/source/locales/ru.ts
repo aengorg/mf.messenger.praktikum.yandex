@@ -12,6 +12,7 @@ export const ru: { [k: string]: string } = {
   textAddFirstChat: 'Добавьте свой первый чат',
   createChat: 'Создать чат',
   textSelectChat: 'Выберите чат',
+  textSendFirstMsg: 'Напишите первое сообщение',
   addUserChat: 'Добавить в чат',
   usersChat: 'Участники чата',
   listEmpty: 'Список пуст',

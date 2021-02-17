@@ -92,7 +92,6 @@ export class SettingPage extends AbstractForm {
             .then((data) => {
             this.children.alert.props.type = 'success';
             this.children.alert.props.text = String(data.message);
-            router.go('#error404');
         })
             .catch((error) => {
             this.children.alert.props.type = 'error';

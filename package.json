@@ -1,6 +1,6 @@
 {
   "name": "mf.messenger.praktikum.yandex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Messenger",
   "scripts": {
     "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",

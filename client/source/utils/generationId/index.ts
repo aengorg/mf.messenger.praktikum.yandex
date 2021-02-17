@@ -1,0 +1,1 @@
+export { generationId } from './generationId';

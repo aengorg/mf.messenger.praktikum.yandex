@@ -1,2 +1,1 @@
-import { Title, PropsTitle } from './title.js';
-export { Title, PropsTitle };
+export { Title, PropsTitle } from './title';

@@ -1,15 +1,21 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { joinClasses } from '../../utils/joinClasses.js';
+import { joinClasses } from '../../utils/joinClasses/index';
 
-export type IconsButton =
+export type TypeIconsButton =
+  | 'add-chat'
+  | 'setting-chat'
   | 'add-user'
+  | 'remove-user'
   | 'add-file'
   | 'create-group'
   | 'add-photo'
   | 'location'
   | 'emoji'
+  | 'list-user'
+  | 'done-user'
+  | 'trash'
   | 'send';
 
 export interface PropsButton extends PropsComponent {
@@ -19,7 +25,9 @@ export interface PropsButton extends PropsComponent {
   primary?: boolean;
   danger?: boolean;
   size?: 's';
-  icon?: IconsButton;
+  icon?: TypeIconsButton;
+  disabled?: boolean;
+  value?: string | number;
 }
 
 export class Button extends Component<PropsButton> {

@@ -1,40 +1,25 @@
 export default `
 <div class="app">
+  {{SLOT 'alert' }}
+  {{SLOT 'modalCreateChat' }}
+  {{SLOT 'modalAddChatUser' }}
+  {{SLOT 'modalListUser' }}
   <div class="chat">
 {{!-- chat_list --}}
     <div class="chat_list chat-list">
 
 {{!-- chat-list_top --}}
       <header class="chat-list_top">
-        {{SLOT 'fieldSearch' }}
+        {{#if data.chatItems }}
+          {{SLOT 'fieldSearchUser' }}
+        {{/if}}
         <div class="chat-list_actions">
-          {{SLOT 'buttonAddUser' }}
-          {{SLOT 'buttonCreateGroup' }}
+          {{SLOT 'buttonCreateChat' }}
         </div>
       </header>
 
 {{!-- chat-list_mid --}}
-      <ul class="chat-list_mid">
-        <li class="chat-list_item chat-item">
-          <div class="chat-item_left">
-            <div class="chat-item_avatar">
-              {{SLOT 'avatar' }}
-            </div>
-          </div>
-          <div class="chat-item_mid">
-            <div class="chat-item_name-user">Тимофей Козлов</div>
-            <div class="chat-item_content">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation veniam consequat sunt nostrud amet.
-            </div>
-          </div>
-          <div class="chat-item_right">
-            <div class="chat-item_date">01:17</div>
-            <div class="chat-item_badge badge">3</div>
-          </div>
-        </li>
-      </ul>
+      {{SLOT 'chatList' }}
 
 {{!-- chat-list_bot --}}
       <footer class="chat-list_bot">
@@ -48,44 +33,50 @@ export default `
 {{!-- chat_top --}}
       <header class="chat_top-bar top-bar">
         <div class="top-bar_avatar">
-              <div class="avatar avatar--size-s">
-                <img
-                  src="../public/assets/images/test/photo3.png"
-                  alt="avatar"
-                  class="avatar_image"
-                />
-                <div class="status status--online avatar_status"></div>
-              </div>
+          {{SLOT 'userAvatar' }}
         </div>
-        <div class="top-bar_chat-name">Александддра Яковлееева</div>
-        <div class="top-bar_actions">
-          <label for="search_user" class="field">
-            <input
-              type="text"
-              class="field_input field_input--icon field_input--icon-search"
-              name="search_user"
-              tabindex="1"
-            />
-          </label>
-          <button
-            class="button button--icon button--icon-add-user button--size-s"
-            tabindex="2"
-          ></button>
-          <button
-            class="button button--icon button--icon-remove button--size-s"
-            tabindex="3"
-          ></button>
+        <div class="top-bar_chat-name">
+          {{ data.userName }}
         </div>
+        {{#if state.selectChatId }}
+          <div class="top-bar_actions">
+            {{SLOT 'fieldSearchMessage' }}
+            {{SLOT 'buttonChatAddUser' }}
+            {{SLOT 'buttonChatSettingUsers' }}
+            {{SLOT 'buttonChatSetting' }}
+          </div>
+        {{/if}}
       </header>
 
 {{!-- chat_messages --}}
       <main class="chat_messages">
-        <div class="message">
+        {{#unless data.chatItems }}
+          <div class="bg bg--img-solo bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+        {{#unless state.selectChatId }}
+          <div class="bg bg--img-dou bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+        <div class="bg bg--img-message-sent bg--size-l bg--pos-tc" style="height: 100%;">
+          <div class="text-center-page">
+            {{ state.textWarningChat }}
+          </div>
+        </div>
+
+
+        {{!-- <div class="message">
           <div class="message_top">
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="..//public/assets/images/test/photo3.png"
+                  src="./assets/images/test/photo3.png"
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -104,12 +95,12 @@ export default `
               neque.
             </div>
           </div>
-        </div>
+        </div> --}}
       </main>
 
 {{!-- chat_bot --}}
       <footer class="chat_bot-bar">
-        <div class="bot-bar_actions">
+        {{!-- <div class="bot-bar_actions">
           <button
             class="button button--icon button--icon-add-photo button--size-s"
           ></button>
@@ -135,7 +126,7 @@ export default `
 
         <button
           class="button button--icon button--icon-send button--size-s bot-bar_send"
-        ></button>
+        ></button> --}}
       </footer>
     </div>
 

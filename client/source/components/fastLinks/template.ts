@@ -1,5 +1,7 @@
 export default `
 <div class="fast-links">
-  {{SLOT 'links' }}
+  {{#each state.links }}
+    {{SLOT 'links' @index }}
+  {{/each }}
 </div>
 `;

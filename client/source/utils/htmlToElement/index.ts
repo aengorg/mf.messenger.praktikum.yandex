@@ -1,0 +1,1 @@
+export { htmlToElement } from './htmlToElement';

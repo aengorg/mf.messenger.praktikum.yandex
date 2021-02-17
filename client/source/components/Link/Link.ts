@@ -1,11 +1,12 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import { joinClasses } from '../../utils/joinClasses.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import { joinClasses } from '../../utils/joinClasses/index';
+import template from './template';
 
 export interface PropsLink extends PropsComponent {
   text: string;
   url: string;
   size?: number;
+  target?: string;
   block?: boolean;
   staticContent?: string;
 }
@@ -17,14 +18,7 @@ export class Link extends Component<PropsLink> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {
-    // временный хак для смены страницы
-    this.$element?.addEventListener('click', () => {
-      setTimeout(() => {
-        window.location.reload();
-      }, 0);
-    });
-  }
+  public createdHandler() {}
 
   public updatedHandler() {}
 

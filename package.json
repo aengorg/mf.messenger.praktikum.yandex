@@ -1,32 +1,27 @@
 {
   "name": "mf.messenger.praktikum.yandex",
-  "version": "1.0.1",
-  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/f8219fec-4561-4017-9c56-946bb0ddbfb1/deploy-status)](https://app.netlify.com/sites/dreamy-noether-285e69/deploys)",
-  "main": "/server/index.js",
+  "version": "1.0.0",
+  "description": "Messenger",
   "scripts": {
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
     "start": "cd server && npm start",
-    "install:all": "npm i && npm run server:install",
+    "test": "cd client && npm test",
     "server:dev": "cd server && npm run dev",
     "server:start": "cd server && npm start",
     "server:install": "cd server && npm install",
-    "client:dev": "cd client && npm run dev",
-    "client:build": "cd client && npm run build",
+    "client:update": "cd client && npm update && npm run postupdate",
     "client:install": "cd client && npm install",
-    "client:deploy": "npm ci && npm run client:build",
+    "client:dev:ts": "cd client && npm run dev:ts",
+    "client:dev:css": "cd client && npm run dev:css",
+    "client:build": "cd client && npm run build",
+    "client:netlify": "npm run client:install && npm run client:build",
     "client:delete": "cd client && rm -rf node_modules && rm -rf dist",
-    "postinstall": "npm run client:install"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aengorg/mf.messenger.praktikum.yandex.git"
+    "postinstall": "npm run client:install && npm run server:install"
   },
   "author": "Findoss",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/aengorg/mf.messenger.praktikum.yandex/issues"
-  },
-  "homepage": "https://github.com/aengorg/mf.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",

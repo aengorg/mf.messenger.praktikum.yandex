@@ -1,0 +1,13 @@
+export default `
+<ul>
+  {{#each data.chatItems }}
+    {{SLOT 'chatItems' @index }}
+  {{else}}
+    {{#if data.search }}
+      <li class="bg bg--img-searching bg--pos-tc bg--size-s" style="height: 100%;"></li>
+    {{else}}
+      <li class="bg bg--img-empty bg--pos-tc bg--size-s" style="height: 100%;"></li>
+    {{/if}}
+  {{/each}} 
+</ul>
+`;

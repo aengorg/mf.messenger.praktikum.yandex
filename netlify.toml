@@ -1,8 +1,9 @@
 [build]
-  base = "client/"
+  base = ""
+  publish = "client/public"
 
 [[redirects]]
   from = "/"
-  to = "/client/public/#"
+  to = "/#"
   status = 200
   force = true

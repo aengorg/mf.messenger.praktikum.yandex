@@ -1,0 +1,27 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &_avatar {
+    margin-right: 8px;
+    flex-basis: 40px;
+  }
+
+  &_chat-name {
+    font-size: var(--text-size-2);
+    text-align: left;
+    margin-right: auto;
+  }
+
+  &_actions {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    component {
+      width: auto;
+    }
+  }
+}

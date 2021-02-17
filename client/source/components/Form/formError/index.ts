@@ -1,2 +1,1 @@
-import { FormError, PropsFormError } from './formError.js';
-export { FormError, PropsFormError };
+export { FormError, PropsFormError } from './formError';

@@ -1,8 +1,8 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { Title, PropsTitle } from '../../components/title/index.js';
-import { Link, PropsLink } from '../../components/link/index.js';
+import { Title, PropsTitle } from '../../components/title/index';
+import { Link, PropsLink } from '../../components/link/index';
 
 export interface PropsErrorPage extends PropsComponent {
   bg?: string;

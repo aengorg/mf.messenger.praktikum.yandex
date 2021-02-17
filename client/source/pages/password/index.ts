@@ -1,2 +1,1 @@
-import { SettingPasswordPage, PropsSettingPasswordPage } from './page.js';
-export { SettingPasswordPage, PropsSettingPasswordPage };
+export { SettingPasswordPage, PropsSettingPasswordPage } from './page';

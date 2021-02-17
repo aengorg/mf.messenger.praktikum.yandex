@@ -1,34 +1,36 @@
-import { ErrorPage, PropsErrorPage } from './pages/error/index.js';
-import { ChatPage, PropsChatPage } from './pages/chat/index.js';
-import { Sandbox } from './pages/sandbox/index.js';
-import { SignupPage, PropsSignupPage } from './pages/signup/index.js';
-import { LoginPage, PropsLoginPage } from './pages/login/index.js';
+import { t } from './locales/index';
+import { PropsComponentEmpty } from './core/Component/index';
+
+import { ErrorPage, PropsErrorPage } from './pages/error/index';
+import { ChatPage, PropsChatPage } from './pages/chat/index';
+import { Sandbox } from './pages/sandbox/index';
+import { SignupPage, PropsSignupPage } from './pages/signup/index';
+import { LoginPage, PropsLoginPage } from './pages/login/index';
 import {
   SettingPasswordPage,
   PropsSettingPasswordPage,
-} from './pages/password/index.js';
-import { SettingPage, PropsSettingPage } from './pages/setting/index.js';
-import { ModalPage } from './pages/modal/index.js';
-import { ModalPage as ModalPage2 } from './pages/modal2/index.js';
-import { FastLink } from './components/fastLinks/index.js';
+} from './pages/password/index';
+import { SettingPage, PropsSettingPage } from './pages/setting/index';
+import { generationId } from './utils/generationId/index';
+import { generationInt } from './utils/generationInt/index';
+import { rules } from './utils/validationRules/index';
+import { Icon } from './components/Icon/icon';
 
-import { rules } from './utils/validationRules/index.js';
-import { Children } from './core/Component/index.js';
-import { Icon } from './components/Icon/icon.js';
+import { router } from './router/index';
 
 // * ErrorPage
 // 500
 const propsErrorPage500: PropsErrorPage = {
   bg: 'error500',
   title: {
-    text: 'Server error 500',
+    text: `${t['serverError']} 500`,
     level: 1,
     size: 1,
     color: 'red',
   },
   link: {
-    url: './#login',
-    text: 'Back to chats',
+    url: '#login',
+    text: t['backToChats'],
     size: 2,
     block: true,
   },
@@ -37,14 +39,14 @@ const propsErrorPage500: PropsErrorPage = {
 const propsErrorPage404: PropsErrorPage = {
   bg: 'error404',
   title: {
-    text: 'Page not found. 404',
+    text: `${t['pageNotFound']} 404`,
     level: 1,
     size: 1,
     color: 'red',
   },
   link: {
-    url: './#login',
-    text: 'Back to chats',
+    url: '#login',
+    text: t['backToChats'],
     size: 2,
     block: true,
   },
@@ -52,22 +54,24 @@ const propsErrorPage404: PropsErrorPage = {
 
 // * LoginPage
 const propsLoginPage: PropsLoginPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-login',
   title: {
-    text: 'Welcome!',
+    text: t['welcome'],
     level: 1,
     size: 1,
   },
   linkSignup: {
-    url: './#signup',
-    text: 'Sign up',
+    url: '#signup',
+    text: t['registration'],
     block: true,
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
+    initValue: `Nm31odvlhi20`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -75,16 +79,17 @@ const propsLoginPage: PropsLoginPage = {
   },
   fieldPassword: {
     name: 'password',
-    label: 'Password',
+    label: t['password'],
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
     },
   },
   buttonLogin: {
-    text: 'Log in',
+    text: t['logIn'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -93,32 +98,35 @@ const propsLoginPage: PropsLoginPage = {
 
 // * SignupPage;
 const propsSignupPage: PropsSignupPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-signup',
   title: {
-    text: 'Join the world!',
+    text: t['join'],
     level: 1,
     size: 1,
   },
   linkLogin: {
-    url: './#login',
-    text: 'Log in',
+    url: '#login',
+    text: t['logIn'],
     block: true,
   },
   fieldEmail: {
     name: 'email',
-    label: 'Email',
+    label: t['email'],
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
+    initValue: `${generationId()}@example.com`,
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.email, rules.required],
+      rules: [rules.required, rules.email],
     },
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
+    initValue: `${generationId()}`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -126,9 +134,10 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldFirstName: {
     name: 'first_name',
-    label: 'First name',
+    label: t['firstName'],
     type: 'text',
     placeholder: 'Ivan',
+    initValue: 'Ivan',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -136,9 +145,10 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldSecondName: {
     name: 'second_name',
-    label: 'Second name',
+    label: t['secondName'],
     type: 'text',
     placeholder: 'Markov',
+    initValue: `Markov`,
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -146,19 +156,21 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldPhone: {
     name: 'phone',
-    label: 'Phone',
+    label: t['phone'],
     type: 'text',
     placeholder: '+79008007712',
+    initValue: `+7800${generationInt(1000000, 9999999)}`,
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.required],
+      rules: [rules.required, rules.phone],
     },
   },
   fieldPassword: {
     name: 'password',
-    label: 'Password',
+    label: t['password'],
     type: 'password',
-    placeholder: 'Abracadabra',
+    placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
@@ -166,16 +178,17 @@ const propsSignupPage: PropsSignupPage = {
   },
   fieldPassword2: {
     name: 'password2',
-    label: 'Password (again)',
+    label: `${t['password']} (${t['again']})`,
     type: 'password',
-    placeholder: 'Abracadabra',
+    placeholder: '●●●●●●',
+    initValue: `password`,
     validation: {
       events: ['blur', 'focus'],
       rules: [(v) => rules.range(v, 8), rules.required],
     },
   },
   buttonSignup: {
-    text: 'Registration',
+    text: t['registration'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -184,17 +197,18 @@ const propsSignupPage: PropsSignupPage = {
 
 // * SettingPasswordPage;
 const propsSettingPasswordPage: PropsSettingPasswordPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-setting-password',
   title: {
-    text: 'Change password',
+    text: t['changePassword'],
     level: 1,
     size: 1,
   },
   fieldOldPassword: {
     name: 'oldPassword',
-    label: 'Old password',
+    label: t['oldPassword'],
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -202,9 +216,9 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
   },
   fieldNewPassword: {
     name: 'newPassword',
-    label: 'New Password',
+    label: t['newPassword'],
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
@@ -212,21 +226,21 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
   },
   fieldNewPassword2: {
     name: 'newPassword2',
-    label: 'New password (again)',
+    label: `${t['newPassword']} (${t['again']})`,
     type: 'password',
-    placeholder: '...',
+    placeholder: '●●●●●●',
     validation: {
       events: ['blur', 'focus'],
       rules: [rules.required],
     },
   },
   buttonCancel: {
-    text: 'Cancel',
+    text: t['cancel'],
     name: 'cancel',
     type: 'button',
   },
   buttonSave: {
-    text: 'Save',
+    text: t['save'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -235,15 +249,17 @@ const propsSettingPasswordPage: PropsSettingPasswordPage = {
 
 // * PropsSettingPage;
 const propsSettingPage: PropsSettingPage = {
+  defaultErrorForm: t['defaultErrorForm'],
   formSelector: '#form-setting',
+  textPassword: t['password'],
   title: {
-    text: 'Edit profile',
+    text: t['editProfile'],
     level: 1,
     size: 1,
   },
   fieldFirstName: {
     name: 'first_name',
-    label: 'First name',
+    label: t['firstName'],
     type: 'text',
     placeholder: 'Ivan',
     validation: {
@@ -253,7 +269,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldSecondName: {
     name: 'second_name',
-    label: 'Second name',
+    label: t['secondName'],
     type: 'text',
     placeholder: 'Markov',
     validation: {
@@ -262,8 +278,8 @@ const propsSettingPage: PropsSettingPage = {
     },
   },
   fieldChatName: {
-    name: 'chat_name',
-    label: 'Chat name',
+    name: 'display_name',
+    label: t['chatName'],
     type: 'text',
     placeholder: 'Oriental magician',
     validation: {
@@ -273,7 +289,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldEmail: {
     name: 'email',
-    label: 'Email',
+    label: t['email'],
     type: 'text',
     placeholder: 'Ivan@yandex.ru',
     validation: {
@@ -283,7 +299,7 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldLogin: {
     name: 'login',
-    label: 'Login',
+    label: t['login'],
     type: 'text',
     placeholder: 'Abracadabra',
     validation: {
@@ -293,44 +309,42 @@ const propsSettingPage: PropsSettingPage = {
   },
   fieldPhone: {
     name: 'phone',
-    label: 'Phone',
+    label: t['phone'],
     type: 'text',
     placeholder: '+79008007712',
     validation: {
       events: ['blur', 'focus'],
-      rules: [rules.required],
+      rules: [rules.required, rules.phone],
     },
   },
   linkPasswordSetting: {
-    url: './#pass',
-    text: 'Change password',
+    url: '#pass',
+    text: t['changePassword'],
     size: 3,
   },
   titleAvatar: {
-    text: 'Profile photo',
+    text: t['profilePhoto'],
     level: 3,
     size: 5,
   },
-  avatar: {
-    // url: '../../client/public/assets/images/test/photo.png',
+  avatarUpload: {
+    title: t['profilePhoto'],
+    removeText: t['removePhoto'],
+    uploadText: t['uploadAnImagePhoto'],
   },
-  uploadAvatar: {
-    text: 'Upload an image',
-    name: 'upload_avatar',
-  },
-  removePhoto: {
-    text: 'Remove photo',
-    name: 'remove_photo',
+  buttonLogout: {
+    text: t['logout'],
+    name: 'logout',
     type: 'button',
     danger: true,
   },
   buttonCancel: {
-    text: 'Cancel',
+    text: t['cancel'],
     name: 'cancel',
     type: 'button',
   },
   buttonSave: {
-    text: 'Save',
+    text: t['save'],
     name: 'submit',
     type: 'submit',
     primary: true,
@@ -339,79 +353,123 @@ const propsSettingPage: PropsSettingPage = {
 
 // * ChatPage
 const propsChatPage: PropsChatPage = {
-  fieldSearch: {
+  userAvatar: {
+    size: 's',
+    url: '',
+  },
+  userName: '',
+  fieldSearchUser: {
     name: 'search_user',
     label: '',
     icon: 'search',
     width: 'unlimit',
   },
-  buttonAddUser: {
+  fieldSearchMessage: {
+    name: 'search_message',
+    label: '',
+    icon: 'search',
+    width: 'unlimit',
+  },
+  buttonCreateChat: {
     text: '',
-    name: 'add_user',
+    name: 'add_chat',
+    size: 's',
+    icon: 'add-chat',
+  },
+  buttonChatAddUser: {
+    text: '',
+    name: 'chat_add_user',
     size: 's',
     icon: 'add-user',
   },
-  buttonCreateGroup: {
+  buttonChatSettingUsers: {
     text: '',
-    name: 'create_group',
+    name: 'chat_setting_user',
     size: 's',
-    icon: 'create-group',
+    icon: 'list-user',
   },
-  avatar: {
-    url: '../../client/public/assets/images/test/photo.png',
+  buttonChatSetting: {
+    text: '',
+    name: 'chat_setting',
     size: 's',
-    status: 'online',
+    icon: 'setting-chat',
   },
   linkProfile: {
-    url: './#setting',
+    url: '#setting',
     text: 'My profile',
     size: 2,
+    block: true,
     className: 'chat-list_link-profile',
     staticContent: new Icon({ icon: 'profile' }).getContent(),
   },
+  chatItems: [],
+  modalCreateChat: {
+    show: false,
+    formSelector: '#form-create-chat',
+    title: t['createChat'],
+    fieldTitle: {
+      name: 'title',
+      label: t['titleChat'],
+      type: 'text',
+      placeholder: 'Super chat',
+      validation: {
+        events: ['blur'],
+        rules: [rules.required],
+      },
+    },
+    buttonCancel: {
+      text: t['cancel'],
+    },
+    buttonCreate: {
+      text: t['create'],
+      type: 'submit',
+      primary: true,
+    },
+  },
+  modalAddChatUser: {
+    userItems: { userItems: [], textEmpty: t['listEmpty'] },
+    show: false,
+    title: t['addUserChat'],
+    fieldLogin: {
+      name: 'login',
+      label: t['login'],
+      type: 'text',
+      icon: 'search',
+      validation: {
+        events: ['blur'],
+        rules: [rules.required],
+      },
+    },
+    buttonClose: {
+      text: t['close'],
+    },
+  },
+  modalListUser: {
+    userItems: { userItems: [], textEmpty: t['listEmpty'] },
+    title: t['usersChat'],
+    show: false,
+    buttonClose: {
+      text: t['close'],
+    },
+  },
 };
 
-let page: Children = new ErrorPage(propsErrorPage404);
+const $app =
+  document.querySelector('#app') ||
+  document.createElement('error-root-element');
 
-switch (window.location.hash) {
-  case '#error500':
-    page = new ErrorPage(propsErrorPage500);
-    break;
-  case '#error404':
-    page = new ErrorPage(propsErrorPage404);
-    break;
-  case '#login':
-    page = new LoginPage(propsLoginPage);
-    break;
-  case '#signup':
-    page = new SignupPage(propsSignupPage);
-    break;
-  case '#sandbox':
-    page = new Sandbox({});
-    break;
-  case '#pass':
-    page = new SettingPasswordPage(propsSettingPasswordPage);
-    break;
-  case '#setting':
-    page = new SettingPage(propsSettingPage);
-    break;
-  case '#modal1':
-    page = new ModalPage({});
-    break;
-  case '#modal2':
-    page = new ModalPage2({});
-    break;
-  case '#chat':
-    page = new ChatPage(propsChatPage);
-    break;
+router
+  .use(['', 'login'], LoginPage, propsLoginPage)
+  .use('signup', SignupPage, propsSignupPage)
+  .use('sandbox', Sandbox, {} as PropsComponentEmpty)
+  .use('pass', SettingPasswordPage, propsSettingPasswordPage)
+  .use('setting', SettingPage, propsSettingPage)
+  .use('chat', ChatPage, propsChatPage)
+  .use('error500', ErrorPage, propsErrorPage500)
+  .default('error404', ErrorPage, propsErrorPage404)
+  .start($app);
 
-  default:
-    page = new ErrorPage(propsErrorPage404);
-    break;
-}
-
-const $app = document.querySelector('#app');
-$app!.appendChild(
-  new FastLink({}).getElement() || document.createElement('error'),
-);
-$app!.appendChild(page.getElement() || document.createElement('error'));
+// import { FastLink } from './components/fastLinks/index';
+// $app!.appendChild(
+//   new FastLink({}).getElement() || document.createElement('error'),
+// );

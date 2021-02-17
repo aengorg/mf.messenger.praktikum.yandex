@@ -1,2 +1,1 @@
-import { Field, PropsField } from './field.js';
-export { Field, PropsField };
+export { Field, PropsField } from './field';

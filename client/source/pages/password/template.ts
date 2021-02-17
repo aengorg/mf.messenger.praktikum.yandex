@@ -1,5 +1,6 @@
 export default `
 <div class="app app--center bg bg--img-security">
+  {{SLOT 'alert' }}
   <form id="form-setting-password" class="form form--page">
 
     {{SLOT 'title' }}

@@ -1,5 +1,6 @@
 export default `
 <div class="app app--center bg bg--img-signup">
+  {{SLOT 'alert' }}
   <form id="form-signup" class="form form--page">
 
     {{SLOT 'title' }}

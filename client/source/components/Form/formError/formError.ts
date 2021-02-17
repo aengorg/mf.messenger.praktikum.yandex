@@ -1,5 +1,5 @@
-import { Component, PropsComponent } from '../../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../../core/Component/index';
+import template from './template';
 
 export interface PropsFormError extends PropsComponent {
   text?: string;

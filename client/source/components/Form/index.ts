@@ -1,2 +1,1 @@
-import { AbstractForm, PropsAbstractForm } from './form.js';
-export { AbstractForm, PropsAbstractForm };
+export { AbstractForm, PropsAbstractForm } from './form';

@@ -1,15 +1,15 @@
-import { Component } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponentEmpty } from '../../core/Component/index';
+import template from './template';
 
-import { rules } from '../../utils/validationRules/index.js';
+import { rules } from '../../utils/validationRules/index';
 
-import { Title } from '../../components/title/index.js';
-import { Link } from '../../components/link/index.js';
-import { Field } from '../../components/field/index.js';
-import { Button } from '../../components/button/index.js';
-import { Avatar } from '../../components/avatar/index.js';
+import { Title } from '../../components/title/index';
+import { Link } from '../../components/link/index';
+import { Field } from '../../components/field/index';
+import { Button } from '../../components/button/index';
+import { Avatar } from '../../components/avatar/index';
 
-export class Sandbox extends Component<any> {
+export class Sandbox extends Component<PropsComponentEmpty> {
   constructor(props = {}) {
     super(props, {
       // * Link
@@ -56,16 +56,16 @@ export class Sandbox extends Component<any> {
       }),
       buttonIconEmoji: new Button({
         size: 's',
-        icon: 'emoji',
+        icon: 'add-user',
       }),
       // * Avatar
       avatar: new Avatar({}),
       avatarStatus: new Avatar({
-        url: '../public/assets/images/test/photo.png',
+        url: './assets/images/test/photo1.png',
         status: 'online',
       }),
       avatarPhoto: new Avatar({
-        url: '../public/assets/images/test/photo2.png',
+        url: './assets/images/test/photo2.png',
       }),
     });
   }

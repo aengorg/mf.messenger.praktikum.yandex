@@ -1,6 +1,10 @@
-import { required, range, email, equalPasswords } from './validationRules.js';
+import {
+  required,
+  range,
+  email,
+  equalPasswords,
+  phone,
+} from './validationRules';
+export const rules = { required, range, email, equalPasswords, phone };
 
 export type TRule = (...args: any[]) => string;
-export type TErrors = string[];
-
-export const rules = { required, range, email, equalPasswords };

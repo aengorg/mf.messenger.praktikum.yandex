@@ -1,2 +1,1 @@
-import { Icon, PropsIcon, TypeIcon } from './icon.js';
-export { Icon, PropsIcon, TypeIcon };
+export { Icon, PropsIcon, TypeIcon } from './icon';

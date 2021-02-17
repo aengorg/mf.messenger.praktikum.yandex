@@ -1,6 +1,6 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import { joinClasses } from '../../utils/joinClasses.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import { joinClasses } from '../../utils/joinClasses/index';
+import template from './template';
 
 export type TextColors = 'red' | 'green';
 
@@ -34,6 +34,7 @@ export class Title extends Component<PropsTitle> {
         'title',
         this.props?.size ? `title--size-${this.props.size}` : '',
         this.props?.color ? `title--color-${this.props.color}` : '',
+        this.props?.className ? `${this.props.className}` : '',
       ]),
     };
   }

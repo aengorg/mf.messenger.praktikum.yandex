@@ -1,9 +1,8 @@
 export default `
 <div class="app app--center bg bg--img-settings">
+  {{SLOT 'alert' }}
   <form id="form-setting" class="form form--page form--size-l">
-
     {{SLOT 'title' }}
-
     <div class="setting-wrapper">
       <div class="setting-wrapper_left">
         <div class="form_wrapper-inputs">
@@ -14,7 +13,7 @@ export default `
           {{SLOT 'fieldLogin' }}
           {{SLOT 'fieldPhone' }}
           <component>
-            <span class="field_label">Password</span>
+            <span class="field_label">{{ data.textPassword }}</span>
             <br />
             {{SLOT 'linkPasswordSetting' }}
           </component>
@@ -24,18 +23,13 @@ export default `
 
       <div class="setting-wrapper_right">
         <div class="form_wrapper-inputs">
-          <div>
-            {{SLOT 'titleAvatar' }}
-            {{SLOT 'avatar' }}
-          </div>
-          {{SLOT 'uploadAvatar' }}
-          {{SLOT 'removePhoto' }}
-          
+          {{SLOT 'avatarUpload' }}
         </div>
       </div>
     </div>
 
     <div class="form_buttons-group">
+      {{SLOT 'buttonLogout' }}
       {{SLOT 'buttonCancel' }}
       {{SLOT 'buttonSave' }}
     </div>

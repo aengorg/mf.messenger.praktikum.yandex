@@ -1,6 +1,6 @@
-import { TRule, TErrors } from './index.js';
+import { TRule } from './index';
 
-export function validation(value: string | number, rules: TRule[]): TErrors {
+export function validation(value: string | number, rules: TRule[]): string[] {
   const arr = rules.map((rule) => rule(value));
   if (!arr.some((v) => v !== '')) {
     return [];
@@ -8,6 +8,6 @@ export function validation(value: string | number, rules: TRule[]): TErrors {
   return arr.filter((v) => Boolean(v));
 }
 
-export function isValid(errors: TErrors): boolean {
+export function isValid(errors: string[]): boolean {
   return errors.length === 0;
 }

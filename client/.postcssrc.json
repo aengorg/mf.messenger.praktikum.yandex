@@ -1,0 +1,8 @@
+{
+  "map": false,
+  "plugins": {
+    "postcss-nested": {},
+    "autoprefixer": {},
+    "cssnano": {}
+  }
+}

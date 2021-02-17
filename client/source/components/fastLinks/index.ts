@@ -1,2 +1,1 @@
-import { FastLink } from './fastLink.js';
-export { FastLink };
+export { FastLink } from './fastLink';

@@ -2,27 +2,26 @@ import {
   Children,
   Component,
   PropsComponent,
-  PropsComponentEmpty,
-} from '../../core/Component/index.js';
+} from '../../core/Component/index';
 
-import { DataForm } from '../../core/DataForm/index.js';
-import { FormError } from './formError/index.js';
+import { DataForm } from '../../core/DataForm/index';
+import { FormError } from './formError/index';
 
-import { Field } from '../field/index.js';
+import { Field } from '../field/index';
 
 // TODO задумано тут перечислить все поля ввода
 // export type TInputs = Field
 
 export interface PropsAbstractForm extends PropsComponent {
   formSelector: string;
+  defaultErrorForm?: string;
 }
 
-export abstract class AbstractForm<
-  PropsFormComponent
-> extends Component<PropsComponentEmpty> {
+export abstract class AbstractForm<PropsFormComponent> extends Component<any> {
   formSelector: string;
   $form: HTMLFormElement | null;
   inputsData: DataForm | null;
+  defaultErrorForm: string;
 
   constructor(
     props: PropsAbstractForm & PropsFormComponent,
@@ -33,6 +32,7 @@ export abstract class AbstractForm<
       error: new FormError({}),
     });
 
+    this.defaultErrorForm = props.defaultErrorForm || 'Error form';
     this.formSelector = props.formSelector;
     this.$form = null;
     this.inputsData = null;
@@ -49,30 +49,55 @@ export abstract class AbstractForm<
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.isValidation()) {
-      this.$form?.classList.add('form--error');
-      this.children.error.props.text = 'Error field(s)';
+    const valid = this.valid();
+    if (valid) {
+      this.setErrorFrom(valid);
     } else {
-      this.$form?.classList.remove('form--error');
-      this.children.error.props.text = '';
+      this.delErrorFrom();
       this.submitHandler();
     }
   }
 
-  public isValidation(): boolean {
+  public setErrorFrom(text: string): void {
+    this.$form?.classList.add('form--error');
+    this.children.error.props.text = text;
+  }
+
+  public delErrorFrom(): void {
+    this.$form?.classList.remove('form--error');
+    this.children.error.props.text = '';
+  }
+
+  public valid(): false | string {
     const inputs: Field[] = Object.values(this.children).filter((child) => {
       // TODO использовать перечисленные поля
+      // происходит фильтрация от других не валидируемых компонентов
       return child instanceof Field;
     });
 
-    const errors = inputs.map((input) => {
+    let errors = inputs.map((input) => {
       return input.validationHandler();
     });
 
-    return errors.some((arr) => arr.length > 0);
+    // проверка полей формы
+    if (errors.some((arr) => arr.length > 0)) {
+      return this.defaultErrorForm;
+    }
+
+    // кастомная проверка формы
+    const customValidation = this.validHandler();
+    if (customValidation.some((arr) => arr.length > 0)) {
+      return customValidation[0];
+    }
+
+    return false;
   }
 
-  public submitHandler(): void {
-    console.log(this.inputsData?.getData());
+  // переопределять на странице
+  public validHandler(): string[] {
+    return [];
   }
+
+  // переопределять на странице
+  public submitHandler(): void {}
 }

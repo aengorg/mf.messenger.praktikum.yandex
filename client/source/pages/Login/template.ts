@@ -1,5 +1,6 @@
 export default `
 <div class="app app--center bg bg--img-login">
+  {{SLOT 'alert' }}
   <form id="form-login" class="form form--page">
 
     {{SLOT 'title' }}
@@ -7,7 +8,7 @@ export default `
     <div class="form_wrapper-inputs">
       {{SLOT 'fieldLogin' }}
       {{SLOT 'fieldPassword' }}
-      {{SLOT 'error'}}
+      {{SLOT 'error' }}
     </div>
 
     <div class="form_buttons-group form_buttons-group--row">

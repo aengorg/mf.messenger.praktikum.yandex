@@ -1,9 +1,9 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { joinClasses } from '../../utils/joinClasses.js';
+import { joinClasses } from '../../utils/joinClasses/index';
 
-export type TypeIcon = 'profile' | 'done' | 'done-done';
+export type TypeIcon = 'profile' | 'done' | 'done-done' | 'admin-user';
 
 export interface PropsIcon extends PropsComponent {
   icon?: TypeIcon;

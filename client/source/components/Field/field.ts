@@ -1,10 +1,10 @@
-import { Component, PropsComponent } from '../../core/Component/index.js';
-import template from './template.js';
+import { Component, PropsComponent } from '../../core/Component/index';
+import template from './template';
 
-import { FieldError } from './fieldError/index.js';
-import { TRule, TErrors } from '../../utils/validationRules/index.js';
-import { validation } from '../../utils/validationRules/validation.js';
-import { joinClasses } from '../../utils/joinClasses.js';
+import { FieldError } from './fieldError/index';
+import { TRule } from '../../utils/validationRules/index';
+import { validation } from '../../utils/validationRules/validation';
+import { joinClasses } from '../../utils/joinClasses/index';
 
 export type IconsField = 'search';
 
@@ -24,7 +24,6 @@ export interface PropsField extends PropsComponent {
 
 export class Field extends Component<PropsField> {
   $input: HTMLInputElement | null;
-  value: string;
   isError: boolean;
 
   constructor(props: PropsField) {
@@ -33,7 +32,6 @@ export class Field extends Component<PropsField> {
     });
 
     this.$input = null;
-    this.value = props.initValue || '';
     this.isError = false;
   }
 
@@ -51,9 +49,9 @@ export class Field extends Component<PropsField> {
     }
   }
 
-  public validationHandler(): TErrors {
+  public validationHandler(): string[] {
     if (this.props.validation !== undefined) {
-      const errors: TErrors = validation(
+      const errors: string[] = validation(
         this.$input?.value || '',
         this.props.validation.rules,
       );
@@ -63,7 +61,7 @@ export class Field extends Component<PropsField> {
     return [];
   }
 
-  private setError(errors: TErrors): void {
+  private setError(errors: string[]): void {
     if (errors.length > 0) {
       this.isError = true;
       this.children.error.props.text = errors[0];
@@ -94,14 +92,16 @@ export class Field extends Component<PropsField> {
   public beforeRemoveHandler() {
     if (this.props.validation !== undefined) {
       this.props.validation.events.forEach((event) => {
-        console.log('delete event');
-        this.$input?.removeEventListener(event, this.validationHandler);
+        if (this.$input !== null) {
+          this.$input.removeEventListener(event, this.validationHandler);
+        }
       });
     }
   }
 
   public getContext() {
     return {
+      value: this.props.initValue,
       fieldClasses: joinClasses(['field']),
       labelClasses: joinClasses(['field_label']),
       inputClasses: joinClasses([

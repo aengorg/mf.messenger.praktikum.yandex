@@ -1,2 +1,1 @@
-import { SettingPage, PropsSettingPage } from './page.js';
-export { SettingPage, PropsSettingPage };
+export { SettingPage, PropsSettingPage } from './page';

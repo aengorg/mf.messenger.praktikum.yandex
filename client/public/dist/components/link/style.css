@@ -1,0 +1,1 @@
+.link{text-decoration:none;color:var(--color-blue-1);}.link:hover{color:var(--color-blue-2);text-decoration:underline}.link--block{display:block;text-align:center;margin:0 auto}.link--size-1{font-size:var(--text-size-1)}.link--size-2{font-size:var(--text-size-2)}

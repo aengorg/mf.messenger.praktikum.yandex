@@ -4,18 +4,18 @@ import { generationId } from '../../utils/generationId/index.js';
 import { htmlToElement } from '../../utils/htmlToElement/index.js';
 import { TAG_SLOT } from '../../constants/index.js';
 
-// export interface Children {
-//   [key: string]: Component<any>;
-// }
 export interface Children {
   [key: string]: any;
 }
-
 export interface PropsComponent {
   className?: string;
 }
 
 export interface PropsComponentEmpty extends PropsComponent {}
+
+export interface ComponentFactory<TypeProps> {
+  new (props: TypeProps, children?: Children): Component<TypeProps>;
+}
 
 enum Events {
   beforeCreate,
@@ -26,10 +26,6 @@ enum Events {
   updated,
   beforeRemove,
   render, // * FLOW_RENDER
-}
-
-export interface ComponentFactory<TypeProps> {
-  new (props: TypeProps, children?: Children): Component<TypeProps>;
 }
 
 export abstract class Component<TypeProps extends PropsComponent> {

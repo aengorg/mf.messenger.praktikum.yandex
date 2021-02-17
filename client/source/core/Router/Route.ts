@@ -38,4 +38,8 @@ export class Route<PropsComponent> {
     }
     return pathname === this.pathname;
   }
+
+  public getPathname() {
+    return this.pathname;
+  }
 }

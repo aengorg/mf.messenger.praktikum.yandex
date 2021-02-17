@@ -3,7 +3,7 @@ import template from './template.js';
 
 import { joinClasses } from '../../utils/joinClasses/index.js';
 
-export type TypeIcon = 'profile' | 'done' | 'done-done';
+export type TypeIcon = 'profile' | 'done' | 'done-done' | 'admin-user';
 
 export interface PropsIcon extends PropsComponent {
   icon?: TypeIcon;

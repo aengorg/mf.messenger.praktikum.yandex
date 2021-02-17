@@ -6,6 +6,7 @@ import { Button, TypeIconsButton } from '../../../button/index.js';
 
 import { joinClasses } from '../../../../utils/joinClasses/index.js';
 import { TypeRole } from '../../../../api/types.js';
+import { Icon } from '../../../Icon/icon.js';
 
 export interface PropsUserItem extends PropsComponent {
   id: number;
@@ -20,7 +21,12 @@ export class UserItem extends Component<PropsUserItem> {
   constructor(props: PropsUserItem) {
     super(props, {
       avatar: new Avatar({ size: 's', url: props.avatar }),
-      button: new Button({ size: 's', icon: props.buttonIcon }),
+      button: new Button({
+        size: 's',
+        icon: props.buttonIcon,
+        value: props.id,
+      }),
+      iconAdmin: new Icon({ icon: 'admin-user' }),
     });
   }
 

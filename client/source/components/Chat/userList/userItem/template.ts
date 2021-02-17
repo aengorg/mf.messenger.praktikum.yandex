@@ -12,9 +12,11 @@ export default `
     </div>
   </div>
   <div class="user-item_action">
-    {{#unless state.isAdmin }}
+    {{#if state.isAdmin }}
+      {{SLOT 'iconAdmin' }}
+    {{else}}
       {{SLOT 'button' }}
-    {{/unless}}
+    {{/if}}
   </div>
 </li>
 `;

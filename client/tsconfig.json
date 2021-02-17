@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "./public/dist",
     "module": "es2015",
-    "target": "es2017",
+    "target": "es2018",
     "strict": true,
     "noImplicitThis": true,
     "noImplicitAny": true,

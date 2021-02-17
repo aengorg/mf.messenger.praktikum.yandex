@@ -102,6 +102,6 @@ npm run server:dev
 open http://localhost:4000/public/#
 ```
 
-## Сделано на совесть
+## Сделано
 
 Никита Строганов

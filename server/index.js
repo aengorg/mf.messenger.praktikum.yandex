@@ -5,13 +5,14 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
-const { HOST, PATH_STATIC, PORT } = process.env;
+const { PATH_STATIC, PORT } = process.env;
+const HOST_API = 'https://ya-praktikum.tech';
 
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'"],
+        defaultSrc: ['default-src', "'self'", HOST_API],
         scriptSrc: ["'self'", "'unsafe-eval'"],
         objectSrc: ["'self'"],
       },

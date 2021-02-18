@@ -47,9 +47,11 @@
 npm run client:build
 git add .
 git commit -m 'build'
+git push
 git checkout main
 git merge dev
 npm version patch
+git push
 git checkout deploy
 git merge main
 git push

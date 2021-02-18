@@ -45,7 +45,7 @@ export const ru: { [k: string]: string } = {
   // ? validation rules
   ruleRequired: 'Это поле обязательно',
   ruleRangeSmall: 'Значение короче чем',
-  ruleRangeBig: 'Значение длинее чем',
+  ruleRangeBig: 'Значение длиннее чем',
   ruleEmail: 'Формат почты не правильный',
   rulePhone: 'Формат телефона не правильный',
   ruleEqualPasswords: 'Пароли не совпадают',
@@ -64,7 +64,7 @@ export const ru: { [k: string]: string } = {
   errorPasswordIsIncorrect: 'Текущий пароль указан не верно',
   errorDefaultForm: 'Ошибка в форме, проверьте все поля',
   errorUploadAvatar: 'Ошибка загрузки аватара #002',
-  userNotFound: 'Пользователь не найден', // ! DELETE
+  userNotFound: 'Пользователь не найден',
   errorNotFound: 'Не найден',
   error500: 'Error #003',
 };

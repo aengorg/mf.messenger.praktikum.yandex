@@ -7,12 +7,15 @@ export const en: { [k: string]: string } = {
   join: 'Join the world!',
   editProfile: 'Edit profile',
   again: 'again',
-  ok: 'Ok',
   changePassword: 'Change password',
   profilePhoto: 'Profile photo',
   textAddFirstChat: 'Add your first chat',
   createChat: 'Create new chat',
   textSelectChat: 'Select chat',
+  textSendFirstMsg: 'Напишите первое сообщение',
+  addUserChat: 'Добавить в чат',
+  usersChat: 'Участники чата',
+  listEmpty: 'Список пуст',
 
   // ? button
   cancel: 'Cancel',
@@ -25,6 +28,7 @@ export const en: { [k: string]: string } = {
   registration: 'Registration',
   uploadAnImagePhoto: 'Upload an image',
   create: 'Create',
+  close: 'Close',
 
   // ? fields
   login: 'Login',
@@ -47,12 +51,20 @@ export const en: { [k: string]: string } = {
   ruleEqualPasswords: 'Not equal passwords',
 
   // ? Responses
+  ok: 'Ok',
+  successAddUserChat: 'Пользователь успешно добавлен',
+  successDeleteUserChat: 'Пользователь успешно удален',
   'user already in system': 'User already in system',
   'Login or password is incorrect': 'Login or password is incorrect',
   'Cookie is not valid': 'Error #001',
   'No chat': 'No chat',
+  'Wrong json format': 'Неверный формат данных (json)',
   errorUnauthorized: 'No access',
+  errorForbidden: 'Нет прав',
   errorPasswordIsIncorrect: 'Old password is incorrect',
   errorDefaultForm: 'Ошибка в форме, проверьте все поля',
   errorUploadAvatar: 'Error upload avatar #002',
+  userNotFound: 'Пользователь не найден',
+  errorNotFound: 'Не найден',
+  error500: 'Error #003',
 };

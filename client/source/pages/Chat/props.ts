@@ -1,5 +1,7 @@
-import { PropsChatPage } from '../../pages/chat/index';
 import { t } from '../../locales/index';
+import { PropsChatPage } from '../../pages/chat/index';
+import { Icon } from '../../components/Icon/index';
+import { rules } from '../../utils/validationRules/index';
 
 // * ChatPage
 export const propsChatPage: PropsChatPage = {

@@ -1,5 +1,6 @@
 import { t } from '../../locales/index';
 import { PropsSettingPasswordPage } from './index';
+import { rules } from '../../utils/validationRules/index';
 
 // * SettingPasswordPage;
 export const propsSettingPasswordPage: PropsSettingPasswordPage = {

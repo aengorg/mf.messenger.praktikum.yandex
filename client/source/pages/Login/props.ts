@@ -1,5 +1,6 @@
 import { t } from '../../locales/index';
 import { PropsLoginPage } from '../../pages/login/index';
+import { rules } from '../../utils/validationRules/index';
 
 // * LoginPage
 export const propsLoginPage: PropsLoginPage = {

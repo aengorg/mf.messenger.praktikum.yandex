@@ -18,59 +18,55 @@ export class UserService {
 
   public changeProfile(data: TypeUserProfileRequest) {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
-      this.api.changeProfile(data).then((res) => {
-        if (res.status === 200) {
-          // когда пригодится использовать приходящие данные
-          // const data: TypeUserProfileResponse = JSON.parse(res.response);
+      this.api
+        .changeProfile(data)
+        .then(() => {
           resolve({ message: t['ok'] });
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        })
+        .catch((error) => {
+          reject(t[error]);
+        });
     });
   }
 
   public changePassword(data: TypeUserPasswordRequest) {
     return new Promise<TypeUserPasswordResponse>((resolve, reject) => {
-      this.api.changePassword(data).then((res) => {
-        if (res.status === 200) {
+      this.api
+        .changePassword(data)
+        .then(() => {
           resolve({ message: t['ok'] });
-        } else {
+        })
+        .catch(() => {
           reject(t['errorPasswordIsIncorrect']);
-        }
-      });
+        });
     });
   }
 
   public changeAvatar(data: FormData) {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
-      this.api.changeAvatar(data).then((res) => {
-        if (res.status === 200) {
-          // когда пригодится использовать приходящие данные
-          // const data: TypeUserProfileResponse = JSON.parse(res.response);
+      this.api
+        .changeAvatar(data)
+        .then(() => {
           resolve({ message: t['ok'] });
-        } else {
+        })
+        .catch(() => {
           reject(t['errorUploadAvatar']);
-        }
-      });
+        });
     });
   }
 
   public searchUser(data: TypeUserLogin) {
     return new Promise<TypeUserResponse[]>((resolve, reject) => {
-      this.api.searchUser(data).then((res) => {
-        if (res.status === 200) {
+      this.api
+        .searchUser(data)
+        .then((res) => {
           const data: TypeUserResponse[] = JSON.parse(res.response);
-          if (!data.length) {
-            reject(t['userNotFound']);
-          }
+          if (!data.length) reject(t['userNotFound']);
           resolve(data);
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        })
+        .catch((error) => {
+          reject(t[error]);
+        });
     });
   }
 }

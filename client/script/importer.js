@@ -10,8 +10,6 @@ const files = FileHound.create()
   .ext('js')
   .find();
 
-// console.log();
-
 files.then((filePaths) => {
   filePaths.forEach((filepath) => {
     fs.readFile(filepath, 'utf8', (err, data) => {

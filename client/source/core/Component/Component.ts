@@ -53,15 +53,14 @@ export abstract class Component<TypeProps extends PropsComponent> {
   }
 
   private makeProxy(props: TypeProps): TypeProps {
-    const self = this;
     const handler = {
-      set(target: TypeProps, prop: keyof TypeProps, value: any): boolean {
+      set: (target: TypeProps, prop: keyof TypeProps, value: any): boolean => {
         const oldTarget = { ...target };
         target[prop] = value;
-        self.eventBus.emit(Events.update, oldTarget, target);
+        this.eventBus.emit(Events.update, oldTarget, target);
         return true;
       },
-      deleteProperty(): never {
+      deleteProperty: (): never => {
         throw new Error('nope');
       },
     };
@@ -142,41 +141,41 @@ export abstract class Component<TypeProps extends PropsComponent> {
     const context = { data: this.props, state: this.getContext() };
     const element: HTMLElement = htmlToElement(this.template(context));
 
-    if (element !== null) {
-      for (const childName in this.children) {
-        if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
-          const slots = element.querySelectorAll(
-            `${TAG_SLOT}[data-slot=${childName}]`,
-          );
+    if (element === null) return;
 
-          if (slots !== null) {
-            slots.forEach((slot) => {
-              const child = this.children[childName];
-              const index = slot.getAttribute('data-index');
+    for (const childName in this.children) {
+      if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
+        const slots = element.querySelectorAll(
+          `${TAG_SLOT}[data-slot=${childName}]`,
+        );
 
-              if (Array.isArray(child)) {
-                if (index !== null && child.length > 0) {
-                  slot.replaceWith(child[Number(index) - 1].getElement() || '');
-                }
-              } else {
-                slot.replaceWith(child?.getElement() || '');
-              }
-            });
+        if (slots === null) return;
+
+        slots.forEach((slot) => {
+          const child = this.children[childName];
+          const index = slot.getAttribute('data-index');
+
+          if (Array.isArray(child)) {
+            if (index !== null && child.length > 0) {
+              slot.replaceWith(child[Number(index) - 1].getElement() || '');
+            }
+          } else {
+            slot.replaceWith(child?.getElement() || '');
           }
-        }
+        });
       }
+    }
 
-      if (this.$element === null) {
-        this.$element = element;
-        this.$element.setAttribute('data-id', this.id);
-      } else {
-        this.eventBus.emit(Events.beforeRemove);
-        setTimeout(() => {
-          this.$element!.firstElementChild?.replaceWith(
-            element?.firstElementChild as HTMLElement,
-          );
-        }, 0);
-      }
+    if (this.$element === null) {
+      this.$element = element;
+      this.$element.setAttribute('data-id', this.id);
+    } else {
+      this.eventBus.emit(Events.beforeRemove);
+      setTimeout(() => {
+        this.$element!.firstElementChild?.replaceWith(
+          element?.firstElementChild as HTMLElement,
+        );
+      }, 0);
     }
   }
 

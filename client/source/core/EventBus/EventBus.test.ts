@@ -1,5 +1,6 @@
 import 'mocha';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
+import sinon from 'sinon';
 
 import { EventBus } from './EventBus';
 
@@ -10,48 +11,50 @@ describe('Event bus', () => {
 
     bus.on('event-1', handler);
 
-    expect(bus.listeners.hasOwnProperty('event-1')).to.be.true;
+    expect(bus.listeners.has('event-1')).to.be.true;
   });
 
   it('удаляем обработчик события', () => {
     const bus = new EventBus();
-    const hendler = () => {};
-    const hendler2 = () => {};
+    const handler = () => {};
+    const handler2 = () => {};
 
-    bus.on('event-1', hendler);
-    bus.on('event-1', hendler2);
-    bus.off('event-1', hendler);
+    bus.on('event-1', handler);
+    bus.on('event-1', handler2);
+    bus.off('event-1', handler);
 
-    expect(bus.listeners['event-1'].length).to.equal(1);
+    expect(bus.listeners.get('event-1').length).to.equal(1);
   });
 
-  // it('нельзя удалить не существующий обработчик', () => {
-  //   const bus = new EventBus();
-  //   const hendler = () => {};
+  it('нельзя удалить не существующий обработчик', () => {
+    const bus = new EventBus();
+    const handler = () => {};
 
-  //   const expected = () => {
-  //     bus.off('event-1', hendler);
-  //   };
+    const expected = () => {
+      bus.off('event-1', handler);
+    };
 
-  //   expect(expected).toThrow(Error);
-  // });
+    expect(expected).to.throw(Error);
+  });
 
-  // it('вызываем обработчики события', () => {
-  //   const bus = new EventBus();
-  //   const mock = jest.fn();
+  it('вызываем обработчики события', () => {
+    const bus = new EventBus();
+    const stub = sinon.stub();
+    const spy = sinon.spy();
 
-  //   bus.on('event-1', mock);
-  //   bus.emit('event-1');
+    bus.on('event-1', stub);
+    bus.emit('event-1');
 
-  //   expect(mock).toBeCalled();
-  // });
+    assert(stub.calledBefore(spy));
+  });
 
-  // it('удаляем событие', () => {
-  //   const bus = new EventBus();
-  //   const hendler = () => {};
+  it('удаляем событие', () => {
+    const bus = new EventBus();
+    const handler = () => {};
 
-  //   bus.on('event-1', hendler);
-  //   bus.off('event-1', hendler);
-  //   expect(Object.keys(bus.listeners).length).toBe(0);
-  // });
+    bus.on('event-1', handler);
+    bus.off('event-1', handler);
+
+    expect(bus.listeners.get('event-1').length).to.equal(0);
+  });
 });

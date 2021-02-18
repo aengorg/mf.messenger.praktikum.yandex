@@ -64,14 +64,14 @@ export default `
             </div>
           </div>
         {{/unless}}
-        <div class="bg bg--img-message-sent bg--size-l bg--pos-tc" style="height: 100%;">
+        {{!-- <div class="bg bg--img-message-sent bg--size-l bg--pos-tc" style="height: 100%;">
           <div class="text-center-page">
             {{ state.textWarningChat }}
           </div>
-        </div>
+        </div> --}}
 
 
-        {{!-- <div class="message">
+        <div class="message">
           <div class="message_top">
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
@@ -95,12 +95,113 @@ export default `
               neque.
             </div>
           </div>
-        </div> --}}
+        </div>
+        <div class="message">
+          <div class="message_top">
+            <div class="message_avatar">
+              <div class="avatar avatar--size-xs">
+                <img
+                  src="./assets/images/test/photo2.png"
+                  alt="avatar"
+                  class="avatar_image"
+                />
+                <div class="status status--online avatar_status"></div>
+              </div>
+            </div>
+            <div class="message_name-user">Александддра Яковлееева</div>
+            <div class="message_date">12:15</div>
+          </div>
+          <div class="message_bot">
+            <div class="message_content">
+              Aliquam pulvinar vestibulum blandit. Donec
+            </div>
+          </div>
+        </div>
+        <div class="message">
+          <div class="message_top">
+            <div class="message_avatar">
+              <div class="avatar avatar--size-xs">
+                <img
+                  src="./assets/images/test/photo3.png"
+                  alt="avatar"
+                  class="avatar_image"
+                />
+                <div class="status status--online avatar_status"></div>
+              </div>
+            </div>
+            <div class="message_name-user message_name-user--you">
+              Тимофей Корягин (you)
+            </div>
+            <div class="message_date">12:15</div>
+            <div class="icon icon--done-done"></div>
+          </div>
+          <div class="message_bot">
+            <div class="message_content">
+              <img
+                class="message_img"
+                src="./assets/images/test/content2.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="message">
+          <div class="message_top">
+            <div class="message_avatar">
+              <div class="avatar avatar--size-xs">
+                <img
+                  src="./assets/images/test/photo3.png"
+                  alt="avatar"
+                  class="avatar_image"
+                />
+                <div class="status status--online avatar_status"></div>
+              </div>
+            </div>
+            <div class="message_name-user message_name-user--you">
+              Тимофей Корягин (you)
+            </div>
+            <div class="message_date">12:15</div>
+            <div class="icon icon--done-done"></div>
+          </div>
+          <div class="message_bot">
+            <div class="message_content">
+              <img
+                class="message_img"
+                src="./assets/images/test/content3.png"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="message">
+          <div class="message_top">
+            <div class="message_avatar">
+              <div class="avatar avatar--size-xs">
+                <img
+                  src="./assets/images/test/photo3.png"
+                  alt="avatar"
+                  class="avatar_image"
+                />
+                <div class="status status--online avatar_status"></div>
+              </div>
+            </div>
+            <div class="message_name-user message_name-user--you">
+              Тимофей Корягин (you)
+            </div>
+            <div class="message_date">12:15</div>
+            <div class="icon icon--done-done"></div>
+          </div>
+          <div class="message_bot">
+            <div class="message_content">
+              ullamcorper erat commodo. Vestibulum sit amet ipsum vitae
+              mauris mattis vulputate lacinia nec neque.
+            </div>
+          </div>
+        </div>
+
       </main>
 
 {{!-- chat_bot --}}
       <footer class="chat_bot-bar">
-        {{!-- <div class="bot-bar_actions">
+        <div class="bot-bar_actions">
           <button
             class="button button--icon button--icon-add-photo button--size-s"
           ></button>
@@ -126,7 +227,7 @@ export default `
 
         <button
           class="button button--icon button--icon-send button--size-s bot-bar_send"
-        ></button> --}}
+        ></button>
       </footer>
     </div>
 

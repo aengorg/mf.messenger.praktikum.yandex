@@ -56,9 +56,12 @@ export const ru = {
     'No chat': 'Такого чата нет',
     'Wrong json format': 'Неверный формат данных (json)',
     errorUnauthorized: 'Нет доступа, необходимо войти',
+    errorForbidden: 'Нет прав',
     errorPasswordIsIncorrect: 'Текущий пароль указан не верно',
     errorDefaultForm: 'Ошибка в форме, проверьте все поля',
     errorUploadAvatar: 'Ошибка загрузки аватара #002',
     userNotFound: 'Пользователь не найден',
+    errorNotFound: 'Не найден',
+    error500: 'Error #003',
 };
 //# sourceMappingURL=ru.js.map

@@ -1,4 +1,5 @@
 import { queryString } from '../../../utils/queryString/index';
+import { response } from './response';
 
 export type Data =
   | null
@@ -42,32 +43,20 @@ export class HTTPTransport {
     this.apiBaseUrl = url;
   }
 
-  public get = (
-    url: string,
-    options: TypeOptions = {},
-  ): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: Methods.GET });
+  public get = (url: string, options: TypeOptions = {}) => {
+    return response(this.request(url, { ...options, method: Methods.GET }));
   };
 
-  public post = (
-    url: string,
-    options: TypeOptions = {},
-  ): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: Methods.POST });
+  public post = (url: string, options: TypeOptions = {}) => {
+    return response(this.request(url, { ...options, method: Methods.POST }));
   };
 
-  public put = (
-    url: string,
-    options: TypeOptions = {},
-  ): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: Methods.PUT });
+  public put = (url: string, options: TypeOptions = {}) => {
+    return response(this.request(url, { ...options, method: Methods.PUT }));
   };
 
-  public delete = (
-    url: string,
-    options: TypeOptions = {},
-  ): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: Methods.DELETE });
+  public delete = (url: string, options: TypeOptions = {}) => {
+    return response(this.request(url, { ...options, method: Methods.DELETE }));
   };
 
   private request = (

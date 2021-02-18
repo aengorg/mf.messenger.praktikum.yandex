@@ -1,4 +1,5 @@
 import { queryString } from '../../../utils/queryString/index.js';
+import { response } from './response.js';
 var Methods;
 (function (Methods) {
     Methods["GET"] = "GET";
@@ -18,16 +19,16 @@ export class HTTPTransport {
             headers: {},
         };
         this.get = (url, options = {}) => {
-            return this.request(url, { ...options, method: Methods.GET });
+            return response(this.request(url, { ...options, method: Methods.GET }));
         };
         this.post = (url, options = {}) => {
-            return this.request(url, { ...options, method: Methods.POST });
+            return response(this.request(url, { ...options, method: Methods.POST }));
         };
         this.put = (url, options = {}) => {
-            return this.request(url, { ...options, method: Methods.PUT });
+            return response(this.request(url, { ...options, method: Methods.PUT }));
         };
         this.delete = (url, options = {}) => {
-            return this.request(url, { ...options, method: Methods.DELETE });
+            return response(this.request(url, { ...options, method: Methods.DELETE }));
         };
         this.request = (url, options = {}) => {
             const { data, method, timeout, getParam, headers } = options;

@@ -31,15 +31,14 @@ export class Component {
         this.eventBus.emit(Events.create);
     }
     makeProxy(props) {
-        const self = this;
         const handler = {
-            set(target, prop, value) {
+            set: (target, prop, value) => {
                 const oldTarget = { ...target };
                 target[prop] = value;
-                self.eventBus.emit(Events.update, oldTarget, target);
+                this.eventBus.emit(Events.update, oldTarget, target);
                 return true;
             },
-            deleteProperty() {
+            deleteProperty: () => {
                 throw new Error('nope');
             },
         };
@@ -83,37 +82,37 @@ export class Component {
     internalRender() {
         const context = { data: this.props, state: this.getContext() };
         const element = htmlToElement(this.template(context));
-        if (element !== null) {
-            for (const childName in this.children) {
-                if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
-                    const slots = element.querySelectorAll(`${TAG_SLOT}[data-slot=${childName}]`);
-                    if (slots !== null) {
-                        slots.forEach((slot) => {
-                            const child = this.children[childName];
-                            const index = slot.getAttribute('data-index');
-                            if (Array.isArray(child)) {
-                                if (index !== null && child.length > 0) {
-                                    slot.replaceWith(child[Number(index) - 1].getElement() || '');
-                                }
-                            }
-                            else {
-                                slot.replaceWith((child === null || child === void 0 ? void 0 : child.getElement()) || '');
-                            }
-                        });
+        if (element === null)
+            return;
+        for (const childName in this.children) {
+            if (Object.prototype.hasOwnProperty.call(this.children, childName)) {
+                const slots = element.querySelectorAll(`${TAG_SLOT}[data-slot=${childName}]`);
+                if (slots === null)
+                    return;
+                slots.forEach((slot) => {
+                    const child = this.children[childName];
+                    const index = slot.getAttribute('data-index');
+                    if (Array.isArray(child)) {
+                        if (index !== null && child.length > 0) {
+                            slot.replaceWith(child[Number(index) - 1].getElement() || '');
+                        }
                     }
-                }
+                    else {
+                        slot.replaceWith((child === null || child === void 0 ? void 0 : child.getElement()) || '');
+                    }
+                });
             }
-            if (this.$element === null) {
-                this.$element = element;
-                this.$element.setAttribute('data-id', this.id);
-            }
-            else {
-                this.eventBus.emit(Events.beforeRemove);
-                setTimeout(() => {
-                    var _a;
-                    (_a = this.$element.firstElementChild) === null || _a === void 0 ? void 0 : _a.replaceWith(element === null || element === void 0 ? void 0 : element.firstElementChild);
-                }, 0);
-            }
+        }
+        if (this.$element === null) {
+            this.$element = element;
+            this.$element.setAttribute('data-id', this.id);
+        }
+        else {
+            this.eventBus.emit(Events.beforeRemove);
+            setTimeout(() => {
+                var _a;
+                (_a = this.$element.firstElementChild) === null || _a === void 0 ? void 0 : _a.replaceWith(element === null || element === void 0 ? void 0 : element.firstElementChild);
+            }, 0);
         }
     }
     getContent() {

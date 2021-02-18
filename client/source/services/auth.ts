@@ -19,29 +19,29 @@ export class AuthService {
 
   public signIn(data: TypeSignInRequest) {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
-      this.api.signIn(data).then((res) => {
-        if (res.status === 200) {
+      this.api
+        .signIn(data)
+        .then(() => {
           localStorage.setItem(`${LS}-auth`, 'true');
           resolve({ message: t['ok'] });
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        })
+        .catch((error) => {
+          reject(t[error]);
+        });
     });
   }
 
   public signUp(data: TypeSignUpForm) {
     return new Promise<TypeSignUpResponse>((resolve, reject) => {
-      this.api.signUp(data).then((res) => {
-        if (res.status === 200) {
+      this.api
+        .signUp(data)
+        .then((res) => {
           localStorage.setItem(`${LS}-auth`, 'true');
           resolve(JSON.parse(res.response));
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        })
+        .catch((error) => {
+          reject(t[error]);
+        });
     });
   }
 
@@ -49,13 +49,11 @@ export class AuthService {
     return new Promise<TypeGoodResponse>((resolve, reject) => {
       this.api
         .logout()
-        .then((res) => {
-          if (res.status === 200) {
-            resolve({ message: t['ok'] });
-          } else {
-            const errorStr = JSON.parse(res.response).reason;
-            reject(t[errorStr]);
-          }
+        .then(() => {
+          resolve({ message: t['ok'] });
+        })
+        .catch((error) => {
+          reject(t[error]);
         })
         .finally(() => {
           localStorage.removeItem(`${LS}-auth`);
@@ -65,18 +63,16 @@ export class AuthService {
 
   public getUser() {
     return new Promise<TypeUserResponse>((resolve, reject) => {
-      this.api.getUser().then((res) => {
-        if (res.status === 200) {
+      this.api
+        .getUser()
+        .then((res) => {
           const user: TypeUserResponse = JSON.parse(res.response);
           user.avatar = urlAvatar(user.avatar);
           resolve(user);
-        } else if (res.status === 401) {
-          reject(t['ErrorUnauthorized']);
-        } else {
-          const errorStr = JSON.parse(res.response).reason;
-          reject(t[errorStr]);
-        }
-      });
+        })
+        .catch((error) => {
+          reject(t[error]);
+        });
     });
   }
 

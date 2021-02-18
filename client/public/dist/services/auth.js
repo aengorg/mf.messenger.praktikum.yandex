@@ -8,29 +8,27 @@ export class AuthService {
     }
     signIn(data) {
         return new Promise((resolve, reject) => {
-            this.api.signIn(data).then((res) => {
-                if (res.status === 200) {
-                    localStorage.setItem(`${LS}-auth`, 'true');
-                    resolve({ message: t['ok'] });
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .signIn(data)
+                .then(() => {
+                localStorage.setItem(`${LS}-auth`, 'true');
+                resolve({ message: t['ok'] });
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
     signUp(data) {
         return new Promise((resolve, reject) => {
-            this.api.signUp(data).then((res) => {
-                if (res.status === 200) {
-                    localStorage.setItem(`${LS}-auth`, 'true');
-                    resolve(JSON.parse(res.response));
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .signUp(data)
+                .then((res) => {
+                localStorage.setItem(`${LS}-auth`, 'true');
+                resolve(JSON.parse(res.response));
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
@@ -38,14 +36,11 @@ export class AuthService {
         return new Promise((resolve, reject) => {
             this.api
                 .logout()
-                .then((res) => {
-                if (res.status === 200) {
-                    resolve({ message: t['ok'] });
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+                .then(() => {
+                resolve({ message: t['ok'] });
+            })
+                .catch((error) => {
+                reject(t[error]);
             })
                 .finally(() => {
                 localStorage.removeItem(`${LS}-auth`);
@@ -54,19 +49,15 @@ export class AuthService {
     }
     getUser() {
         return new Promise((resolve, reject) => {
-            this.api.getUser().then((res) => {
-                if (res.status === 200) {
-                    const user = JSON.parse(res.response);
-                    user.avatar = urlAvatar(user.avatar);
-                    resolve(user);
-                }
-                else if (res.status === 401) {
-                    reject(t['ErrorUnauthorized']);
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .getUser()
+                .then((res) => {
+                const user = JSON.parse(res.response);
+                user.avatar = urlAvatar(user.avatar);
+                resolve(user);
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }

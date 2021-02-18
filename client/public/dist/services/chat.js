@@ -7,72 +7,67 @@ export class ChatService {
     }
     addChat(data) {
         return new Promise((resolve, reject) => {
-            this.api.addChat(data).then((res) => {
-                if (res.status === 200) {
-                    resolve({ message: t['ok'] });
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .addChat(data)
+                .then(() => {
+                resolve({ message: t['ok'] });
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
     addUsersChat(data) {
         return new Promise((resolve, reject) => {
-            this.api.addUserChat(data).then((res) => {
-                if (res.status === 200) {
-                    resolve({ message: t['successAddUserChat'] });
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .addUserChat(data)
+                .then(() => {
+                resolve({ message: t['successAddUserChat'] });
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
     deleteUserChat(data) {
         return new Promise((resolve, reject) => {
-            this.api.deleteUserChat(data).then((res) => {
-                if (res.status === 200) {
-                    resolve({ message: t['successDeleteUserChat'] });
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .deleteUserChat(data)
+                .then(() => {
+                resolve({ message: t['successDeleteUserChat'] });
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
     getUsersChat(idChat) {
         return new Promise((resolve, reject) => {
-            this.api.getChatUsers(idChat).then((res) => {
-                if (res.status === 200) {
-                    let users = JSON.parse(res.response);
-                    resolve(users);
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .getChatUsers(idChat)
+                .then((res) => {
+                let users = JSON.parse(res.response);
+                resolve(users);
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }
     getChats() {
         return new Promise((resolve, reject) => {
-            this.api.getChats().then((res) => {
-                if (res.status === 200) {
-                    let chats = JSON.parse(res.response);
-                    chats = chats.map((chat) => {
-                        chat.avatar = urlAvatar(chat.avatar);
-                        return chat;
-                    });
-                    resolve(chats);
-                }
-                else {
-                    const errorStr = JSON.parse(res.response).reason;
-                    reject(t[errorStr]);
-                }
+            this.api
+                .getChats()
+                .then((res) => {
+                let chats = JSON.parse(res.response);
+                chats = chats.map((chat) => {
+                    chat.avatar = urlAvatar(chat.avatar);
+                    return chat;
+                });
+                resolve(chats);
+            })
+                .catch((error) => {
+                reject(t[error]);
             });
         });
     }

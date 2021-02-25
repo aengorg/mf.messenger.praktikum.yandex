@@ -22,6 +22,11 @@ export const propsChatPage: PropsChatPage = {
     icon: 'search',
     width: 'unlimit',
   },
+  fieldMessage: {
+    name: 'message',
+    label: '',
+    width: 'unlimit',
+  },
   buttonCreateChat: {
     text: '',
     name: 'add_chat',
@@ -45,6 +50,13 @@ export const propsChatPage: PropsChatPage = {
     name: 'chat_setting',
     size: 's',
     icon: 'setting-chat',
+  },
+  buttonSendMessage: {
+    text: '',
+    name: 'send_message',
+    size: 's',
+    icon: 'send',
+    className: 'bot-bar_send',
   },
   linkProfile: {
     url: '#setting',

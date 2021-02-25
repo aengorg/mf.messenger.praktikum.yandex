@@ -35,20 +35,31 @@ import { TypeChatRequest } from '../../api/types';
 import { chatService } from '../../services/chat';
 import { authService } from '../../services/auth';
 import { userService } from '../../services/user';
+import { messageService } from '../../services/messages';
 
 import { urlAvatar } from '../../utils/urlAvatar/index';
 import { debounce } from '../../utils/debounce/index';
 
-type TypeState = { selectChatId: number | undefined; selectChat?: ChatItem };
-const state: TypeState = { selectChatId: undefined };
+type TypeState = {
+  userId: number;
+  selectChatId: number | undefined;
+  selectChat?: ChatItem;
+};
+
+const state: TypeState = {
+  selectChatId: undefined,
+  userId: 0,
+};
 
 export interface PropsChatPage extends PropsComponent {
   fieldSearchUser: PropsField;
   fieldSearchMessage: PropsField;
+  fieldMessage: PropsField;
   buttonChatAddUser: PropsButton;
   buttonChatSettingUsers: PropsButton;
   buttonChatSetting: PropsButton;
   buttonCreateChat: PropsButton;
+  buttonSendMessage: PropsButton;
   linkProfile: PropsLink;
   modalCreateChat: PropsModalCreateChat;
   modalAddChatUser: PropsModalAddChatUser;
@@ -66,10 +77,12 @@ export class ChatPage extends Component<PropsChatPage> {
       modalListUser: new ModalListUser(props.modalListUser),
       fieldSearchUser: new Field(props.fieldSearchUser),
       fieldSearchMessage: new Field(props.fieldSearchMessage),
+      fieldMessage: new Field(props.fieldMessage),
       buttonCreateChat: new Button(props.buttonCreateChat),
       buttonChatAddUser: new Button(props.buttonChatAddUser),
       buttonChatSettingUsers: new Button(props.buttonChatSettingUsers),
       buttonChatSetting: new Button(props.buttonChatSetting),
+      buttonSendMessage: new Button(props.buttonSendMessage),
       linkProfile: new Link(props.linkProfile),
       chatList: new ChatList({
         chatItems: props.chatItems,
@@ -111,7 +124,8 @@ export class ChatPage extends Component<PropsChatPage> {
   public initUserProfile() {
     authService
       .getUser()
-      .then(({ avatar, first_name, second_name }) => {
+      .then(({ avatar, first_name, second_name, id }) => {
+        state.userId = id;
         this.props.userName = `${first_name} ${second_name}`;
         this.children.userAvatar.props.url = avatar;
       })
@@ -262,10 +276,6 @@ export class ChatPage extends Component<PropsChatPage> {
     // $buttonShowModal.click();
   }
 
-  public selectChatHandler() {
-    this.forceRender();
-  }
-
   public initEventAddUserChatHandler() {
     const userItems = this.children.modalAddChatUser.children.userList.children
       .userItems;
@@ -333,6 +343,27 @@ export class ChatPage extends Component<PropsChatPage> {
     });
   }
 
+  public selectChatHandler() {
+    if (state.selectChatId) {
+      messageService.close();
+      messageService.connect(state.userId, state.selectChatId);
+    }
+    this.forceRender();
+  }
+
+  public initEventSendMessage() {
+    const $buttonSendMessage = this.children.buttonSendMessage.$element;
+    const fieldMessage = this.children.fieldMessage;
+
+    $buttonSendMessage.addEventListener('click', () => {
+      const msg = fieldMessage.$input.value;
+      if (msg) {
+        messageService.sendMessage(msg);
+        fieldMessage.props.initValue = '';
+      }
+    });
+  }
+
   public beforeCreateHandler() {}
 
   public createdHandler() {
@@ -341,6 +372,7 @@ export class ChatPage extends Component<PropsChatPage> {
     this.initEventModalCreateChat();
     this.initEventModalAddUserChat();
     this.initEventModalListUserChat();
+    this.initEventSendMessage();
   }
 
   public updatedHandler() {}

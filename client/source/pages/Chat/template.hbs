@@ -71,12 +71,12 @@
         </div> --}}
 
 
-        <div class="message">
+        {{!-- <div class="message">
           <div class="message_top">
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="./assets/images/test/photo3.png"
+                  src=""
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -101,7 +101,7 @@
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="./assets/images/test/photo2.png"
+                  src=""
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -122,7 +122,7 @@
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="./assets/images/test/photo3.png"
+                  src=""
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -139,7 +139,7 @@
             <div class="message_content">
               <img
                 class="message_img"
-                src="./assets/images/test/content2.png"
+                src=""
               />
             </div>
           </div>
@@ -149,7 +149,7 @@
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="./assets/images/test/photo3.png"
+                  src=""
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -166,7 +166,7 @@
             <div class="message_content">
               <img
                 class="message_img"
-                src="./assets/images/test/content3.png"
+                src=""
               />
             </div>
           </div>
@@ -176,7 +176,7 @@
             <div class="message_avatar">
               <div class="avatar avatar--size-xs">
                 <img
-                  src="./assets/images/test/photo3.png"
+                  src=""
                   alt="avatar"
                   class="avatar_image"
                 />
@@ -195,39 +195,30 @@
               mauris mattis vulputate lacinia nec neque.
             </div>
           </div>
-        </div>
+        </div> --}}
 
       </main>
 
 {{!-- chat_bot --}}
       <footer class="chat_bot-bar">
-        <div class="bot-bar_actions">
-          <button
-            class="button button--icon button--icon-add-photo button--size-s"
-          ></button>
-          <button
-            class="button button--icon button--icon-add-file button--size-s"
-          ></button>
-          <button
-            class="button button--icon button--icon-location button--size-s"
-          ></button>
-          <button
-            class="button button--icon button--icon-emoji button--size-s"
-          ></button>
-        </div>
-
-        <label for="search_user" class="field bot-bar_input">
-          <input
-            type="text"
-            class="field_input field_input--width-unlimit"
-            name="search_user"
-            tabindex="1"
-          />
-        </label>
-
-        <button
-          class="button button--icon button--icon-send button--size-s bot-bar_send"
-        ></button>
+        {{#if state.selectChatId }}
+          {{!-- <div class="bot-bar_actions">
+            <button
+              class="button button--icon button--icon-add-photo button--size-s"
+            ></button>
+            <button
+              class="button button--icon button--icon-add-file button--size-s"
+            ></button>
+            <button
+              class="button button--icon button--icon-location button--size-s"
+            ></button>
+            <button
+              class="button button--icon button--icon-emoji button--size-s"
+            ></button>
+          </div> --}}
+          {{SLOT 'fieldMessage' }}
+          {{SLOT 'buttonSendMessage' }}
+        {{/if}}
       </footer>
     </div>
 

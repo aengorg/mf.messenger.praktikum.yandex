@@ -2,6 +2,7 @@
   "map": false,
   "plugins": {
     "postcss-nested": {},
+    "postcss-import": {},
     "autoprefixer": {},
     "cssnano": {}
   }

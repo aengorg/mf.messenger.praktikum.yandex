@@ -6,13 +6,10 @@
   "scripts": {
     "test": "mocha",
     "test:coverage": "nyc mocha",
-    "dev:test": "mocha --w",
-    "dev:ts": "tsc-watch --onSuccess \"node script/importer.js\"",
-    "dev:css": "postcss source/**/*.postcss --base source --ext .css --dir public/dist --watch",
-    "build": "npm run build:ts && npm run build:css",
-    "build:ts": "tsc --build && node script/importer.js",
-    "build:css": "postcss source/**/*.postcss --base source --ext .css --dir public/dist",
-    "build:tests": "babel source -d lib --extensions '.ts'",
+    "test:dev": "mocha --w",
+    "dev": "webpack serve",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
     "postupdate": "sh ./script/postinstall.sh"
   },
   "author": "Findoss",
@@ -30,21 +27,33 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "chai": "^4.3.0",
     "chai-dom": "^1.8.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.2",
     "cssnano": "^4.1.10",
+    "file-loader": "^6.2.0",
     "filehound": "^1.17.4",
+    "handlebars-loader": "^1.7.1",
+    "html-webpack-plugin": "^5.2.0",
+    "mini-css-extract-plugin": "^1.3.8",
     "mocha": "^8.3.0",
     "nyc": "^15.1.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
     "postcss-load-config": "^3.0.0",
+    "postcss-loader": "^5.0.0",
     "postcss-nested": "^5.0.3",
+    "raw-loader": "^4.0.2",
     "sinon": "^9.2.4",
     "stylelint-config-recommended": "^3.0.0",
+    "ts-loader": "^8.0.17",
     "tsc-watch": "^4.2.9",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "webpack": "^5.24.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "handlebars": "^4.7.6"
+    "handlebars": "4.7.6"
   }
 }

@@ -1,4 +1,4 @@
-import { HOST } from '../../constants/index';
+import { HOST, HTTP } from '../../constants/index';
 export function urlAvatar(url: string | null): string {
-  return url ? `${HOST}${url}` : '';
+  return url ? `${HTTP}${HOST}${url}` : '';
 }

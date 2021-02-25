@@ -59,6 +59,7 @@ export const ru: { [k: string]: string } = {
   'Cookie is not valid': 'Ошибка #001',
   'No chat': 'Такого чата нет',
   'Wrong json format': 'Неверный формат данных (json)',
+  "Something's wrong. Try again": 'Error #004',
   errorUnauthorized: 'Нет доступа, необходимо войти',
   errorForbidden: 'Нет прав',
   errorPasswordIsIncorrect: 'Текущий пароль указан не верно',

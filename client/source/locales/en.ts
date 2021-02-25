@@ -59,6 +59,7 @@ export const en: { [k: string]: string } = {
   'Cookie is not valid': 'Error #001',
   'No chat': 'No chat',
   'Wrong json format': 'Неверный формат данных (json)',
+  "Something's wrong. Try again": 'Error #004',
   errorUnauthorized: 'No access',
   errorForbidden: 'Нет прав',
   errorPasswordIsIncorrect: 'Old password is incorrect',

@@ -1,5 +1,5 @@
 import { Component, PropsComponent } from '../../core/Component/index';
-import template from './template';
+import template from './template.hbs';
 
 import { Title } from '../title/index';
 import { Button, PropsButton } from '../button/index';

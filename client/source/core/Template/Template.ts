@@ -1,4 +1,4 @@
-const Handlebars = window.Handlebars;
+import Handlebars from 'handlebars';
 import { TAG_SLOT } from '../../constants/index';
 
 export function compileTemplate(templateString: string = '') {

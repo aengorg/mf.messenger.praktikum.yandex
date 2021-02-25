@@ -1,5 +1,5 @@
 import { Component, PropsComponent } from '../../core/Component/index';
-import template from './template';
+import template from './template.hbs';
 
 export interface PropsFileUpload extends PropsComponent {
   text: string;

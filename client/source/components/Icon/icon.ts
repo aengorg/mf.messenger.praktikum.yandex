@@ -1,5 +1,5 @@
 import { Component, PropsComponent } from '../../core/Component/index';
-import template from './template';
+import template from './template.hbs';
 
 import { joinClasses } from '../../utils/joinClasses/index';
 

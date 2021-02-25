@@ -1,6 +1,6 @@
 import { Component, PropsComponent } from '../../core/Component/index';
 import { joinClasses } from '../../utils/joinClasses/index';
-import template from './template';
+import template from './template.hbs';
 
 export interface PropsLink extends PropsComponent {
   text: string;

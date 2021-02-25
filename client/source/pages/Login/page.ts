@@ -1,5 +1,5 @@
-import { AbstractForm, PropsAbstractForm } from '../../components/Form/index';
-import template from './template';
+import { AbstractForm, PropsAbstractForm } from '../../components/form/index';
+import template from './template.hbs';
 
 import { Title, PropsTitle } from '../../components/title/index';
 import { Link, PropsLink } from '../../components/link/index';

@@ -1,5 +1,5 @@
 import { Component, PropsComponentEmpty } from '../../core/Component/index';
-import template from './template';
+import template from './template.hbs';
 
 import { rules } from '../../utils/validationRules/index';
 

@@ -31,6 +31,7 @@ router
   .default('error404', ErrorPage, propsErrorPage404)
   .start($app);
 
+// Меню быстрого перехода для разработки
 // import { FastLink } from './components/fastLinks/index';
 // $app!.appendChild(
 //   new FastLink({}).getElement() || document.createElement('error'),

@@ -8,9 +8,8 @@
     "test:coverage": "nyc mocha",
     "test:dev": "mocha --w",
     "dev": "webpack serve",
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
-    "postupdate": "sh ./script/postinstall.sh"
+    "build": "webpack --mode development",
+    "postinstall": "webpack --mode production"
   },
   "author": "Findoss",
   "license": "MIT",

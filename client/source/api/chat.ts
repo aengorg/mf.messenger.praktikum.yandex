@@ -1,5 +1,5 @@
 import { API_HOST, API_CHAT } from '../constants/index';
-import { HTTPTransport } from '../core/Transport/Http/index';
+import { HTTPTransport } from '../core/Transport/index';
 
 import { TypeChatRequest, TypeChatUsersRequest } from './types';
 
@@ -34,5 +34,9 @@ export class ApiChat {
         title: title,
       },
     });
+  }
+
+  public getToken(idChat: number) {
+    return this.fetch.post(`${API_CHAT}/token/${idChat}`);
   }
 }

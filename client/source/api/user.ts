@@ -1,5 +1,5 @@
 import { API_HOST, API_USER } from '../constants/index';
-import { HTTPTransport } from '../core/Transport/Http/index';
+import { HTTPTransport } from '../core/Transport/index';
 
 import {
   TypeUserPasswordRequest,

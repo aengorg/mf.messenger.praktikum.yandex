@@ -2,6 +2,15 @@
 
 [https://messenger-1.netlify.app/index.html#login](https://messenger-1.netlify.app/index.html#login)
 
+## Замечания для ревью
+
+- Рендр компонентов не оптимален
+- Запросы на бэк не оптимальны (без кэша, без стора)
+- типы для апи - названия плохие (надо было давать по сущностям)
+- страница с чатами - слишком большая, по хорошему надо разнести логику по дочерним компонентам
+- нет удаления/архивирования чата
+- перемудрил с подписками на вебсокеты (надо было больше уделить времени)
+
 ## Нарисован с щепоткой магии
 
 [Вот что получилось - дизайн в figma](https://www.figma.com/proto/mUP7cfOp31SqrgHVCl4mOi/Untitled?node-id=7%3A321&scaling=min-zoom)
@@ -24,12 +33,6 @@ git merge main
 git push
 ```
 
-Обновление зависимостей клиента
-
-```
-npm run client:update
-```
-
 Установка для разработки
 
 ```
@@ -37,19 +40,17 @@ git clone https://github.com/aengorg/mf.messenger.praktikum.yandex.git
 
 cd mf.messenger.praktikum.yandex/
 
-npm run install:all
+npm install
 ```
 
 Запуск
 
 ```
-npm run client:dev:ts
-npm run client:dev:css
-npm run server:dev
+npm run client:dev
 ```
 
 ```
-open http://localhost:4000/public/#
+open http://localhost:9000
 ```
 
 ## История

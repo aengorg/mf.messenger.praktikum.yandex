@@ -1,20 +1,31 @@
 import { Component, PropsComponent } from '../../../../core/Component/index';
 import template from './template.hbs';
 
-import { Avatar, PropsAvatar } from '../../../avatar/index';
+import { LANG } from '../../../../constants/index';
 
-// import { joinClasses } from '../../../../utils/joinClasses/index';
+import { Avatar } from '../../../avatar/index';
+
+import { formatData } from '../../../../utils/formatDate/index';
+import { joinClasses } from '../../../../utils/joinClasses';
 
 export interface PropsMessageItem extends PropsComponent {
-  avatar: PropsAvatar;
-  date?: string;
+  user_id?: number;
+  chat_id?: number;
+  avatar: string;
+  time?: string;
   content?: string;
-  badge?: number;
+  name?: string;
+  me: boolean;
 }
 
 export class MessageItem extends Component<PropsMessageItem> {
   constructor(props: PropsMessageItem) {
-    super(props, { avatar: new Avatar(props.avatar) });
+    super(props, {
+      avatar: new Avatar({
+        url: props.avatar,
+        size: 'xs',
+      }),
+    });
   }
 
   public beforeCreateHandler() {}
@@ -30,7 +41,13 @@ export class MessageItem extends Component<PropsMessageItem> {
   public beforeRemoveHandler() {}
 
   public getContext() {
-    return {};
+    return {
+      styleUserName: joinClasses([
+        'message_name-user',
+        this.props.me ? 'message_name-user--me' : '',
+      ]),
+      time: formatData(this.props.time, LANG),
+    };
   }
 
   public render() {

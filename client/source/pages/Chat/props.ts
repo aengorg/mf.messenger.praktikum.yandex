@@ -56,7 +56,30 @@ export const propsChatPage: PropsChatPage = {
     name: 'send_message',
     size: 's',
     icon: 'send',
-    className: 'bot-bar_send',
+  },
+  buttonSendPhoto: {
+    text: '',
+    name: '',
+    size: 's',
+    icon: 'add-photo',
+  },
+  buttonSendFile: {
+    text: '',
+    name: '',
+    size: 's',
+    icon: 'add-file',
+  },
+  buttonSendLocation: {
+    text: '',
+    name: '',
+    size: 's',
+    icon: 'location',
+  },
+  buttonSendEmoji: {
+    text: '',
+    name: '',
+    size: 's',
+    icon: 'emoji',
   },
   linkProfile: {
     url: '#setting',
@@ -66,7 +89,6 @@ export const propsChatPage: PropsChatPage = {
     className: 'chat-list_link-profile',
     staticContent: new Icon({ icon: 'profile' }).getContent(),
   },
-  chatItems: [],
   modalCreateChat: {
     show: false,
     formSelector: '#form-create-chat',
@@ -116,4 +138,6 @@ export const propsChatPage: PropsChatPage = {
       text: t['close'],
     },
   },
+  chatItems: [],
+  messageItems: [],
 };

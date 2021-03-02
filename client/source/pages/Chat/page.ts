@@ -28,9 +28,15 @@ import {
   ModalListUser,
   PropsModalListUser,
 } from '../../components/modalUserList/index';
+import { MessageList } from '../../components/Chat/MessageList/index';
+import { PropsMessageItem } from '../../components/Chat/MessageList/messageItem/index';
 
 import { t } from '../../locales/index';
-import { TypeChatRequest } from '../../api/types';
+import {
+  TypeChatRequest,
+  TypeMessage,
+  TypeChatUsersResponse,
+} from '../../api/types';
 
 import { chatService } from '../../services/chat';
 import { authService } from '../../services/auth';
@@ -39,14 +45,19 @@ import { messageService } from '../../services/messages';
 
 import { urlAvatar } from '../../utils/urlAvatar/index';
 import { debounce } from '../../utils/debounce/index';
+import { merge } from '../../utils/merge';
 
 type TypeState = {
+  users: TypeChatUsersResponse;
+  messages: PropsMessageItem[];
   userId: number;
   selectChatId: number | undefined;
   selectChat?: ChatItem;
 };
 
 const state: TypeState = {
+  users: [],
+  messages: [],
   selectChatId: undefined,
   userId: 0,
 };
@@ -60,12 +71,17 @@ export interface PropsChatPage extends PropsComponent {
   buttonChatSetting: PropsButton;
   buttonCreateChat: PropsButton;
   buttonSendMessage: PropsButton;
+  buttonSendPhoto: PropsButton;
+  buttonSendFile: PropsButton;
+  buttonSendLocation: PropsButton;
+  buttonSendEmoji: PropsButton;
   linkProfile: PropsLink;
   modalCreateChat: PropsModalCreateChat;
   modalAddChatUser: PropsModalAddChatUser;
   modalListUser: PropsModalListUser;
   userAvatar: PropsAvatar;
   chatItems: PropsChatItem[];
+  messageItems: PropsMessageItem[];
   userName?: string;
 }
 export class ChatPage extends Component<PropsChatPage> {
@@ -83,10 +99,17 @@ export class ChatPage extends Component<PropsChatPage> {
       buttonChatSettingUsers: new Button(props.buttonChatSettingUsers),
       buttonChatSetting: new Button(props.buttonChatSetting),
       buttonSendMessage: new Button(props.buttonSendMessage),
+      buttonSendPhoto: new Button(props.buttonSendPhoto),
+      buttonSendFile: new Button(props.buttonSendFile),
+      buttonSendLocation: new Button(props.buttonSendLocation),
+      buttonSendEmoji: new Button(props.buttonSendEmoji),
       linkProfile: new Link(props.linkProfile),
       chatList: new ChatList({
         chatItems: props.chatItems,
         selectChatId: undefined,
+      }),
+      messageList: new MessageList({
+        messageItems: props.messageItems,
       }),
       userAvatar: new Avatar(props.userAvatar),
     });
@@ -139,6 +162,8 @@ export class ChatPage extends Component<PropsChatPage> {
     this.children.chatList.children.chatItems.forEach((chat: ChatItem) => {
       if (chat.$element !== null) {
         chat.$element.addEventListener('click', (e: Event) => {
+          state.messages = [];
+
           const $chat = e.currentTarget as HTMLElement;
           const id = Number($chat.firstElementChild?.getAttribute('data-key'));
 
@@ -242,35 +267,39 @@ export class ChatPage extends Component<PropsChatPage> {
   public initEventModalListUserChat() {
     const $buttonShowModal = this.children.buttonChatSettingUsers.$element;
     $buttonShowModal.addEventListener('click', () => {
-      this.children.modalListUser.props.show = true;
-      chatService
-        .getUsersChat(state.selectChatId || 189)
-        .then((data) => {
-          const userItems: PropsUserItem[] = data.map((user) => {
-            return {
-              id: user.id,
-              fullName: `${user.first_name} ${user.second_name}`,
-              chatName: user.display_name,
-              avatar: urlAvatar(user.avatar),
-              buttonIcon: 'remove-user',
-              role: user.role,
+      if (state.selectChatId) {
+        this.children.modalListUser.props.show = true;
+        chatService
+          .getUsersChat(state.selectChatId)
+          .then((data) => {
+            const userItems: PropsUserItem[] = data.map((user) => {
+              return {
+                id: user.id,
+                fullName: `${user.first_name} ${user.second_name}`,
+                chatName: user.display_name,
+                avatar: urlAvatar(user.avatar),
+                buttonIcon: 'remove-user',
+                role: user.role,
+              };
+            });
+
+            const payload = {
+              userItems: userItems,
+              textEmpty: '',
             };
+
+            this.children.modalListUser.children.userList = new UserList(
+              payload,
+            );
+            this.children.modalListUser.props.userItems = payload;
+
+            this.initEventDeleteUserChatHandler();
+          })
+          .catch((error) => {
+            this.children.alert.props.type = 'error';
+            this.children.alert.props.text = error;
           });
-
-          const payload = {
-            userItems: userItems,
-            textEmpty: '',
-          };
-
-          this.children.modalListUser.children.userList = new UserList(payload);
-          this.children.modalListUser.props.userItems = payload;
-
-          this.initEventDeleteUserChatHandler();
-        })
-        .catch((error) => {
-          this.children.alert.props.type = 'error';
-          this.children.alert.props.text = error;
-        });
+      }
     });
     // для дебага
     // $buttonShowModal.click();
@@ -344,11 +373,80 @@ export class ChatPage extends Component<PropsChatPage> {
   }
 
   public selectChatHandler() {
-    if (state.selectChatId) {
-      messageService.close();
-      messageService.connect(state.userId, state.selectChatId);
+    if (!state.selectChatId) return;
+
+    chatService.getUsersChat(state.selectChatId).then((users) => {
+      state.users = users;
+    });
+
+    messageService.close();
+    messageService
+      .connect(state.userId, state.selectChatId, {
+        message: this.setMessageChatHandler.bind(this),
+        connect: this.setConnectUserChat.bind(this),
+        error: this.setErrorWebSocket.bind(this),
+        open: () => {},
+      })
+      .then(() => messageService.getHistory());
+  }
+
+  public setConnectUserChat(id?: string) {
+    const user = state.users.find((user) => user.id === Number(id));
+
+    this.children.alert.props.type = 'info';
+    this.children.alert.props.text = `${
+      user?.display_name || user?.first_name
+    } ${t['onlineInChat']}`;
+  }
+
+  public setErrorWebSocket(error?: string) {
+    this.children.alert.props.type = 'error';
+    this.children.alert.props.text = error;
+  }
+
+  public setMessageChatHandler(data: TypeMessage | TypeMessage[]): void {
+    let messageItems: PropsMessageItem[] = [];
+    if (!Array.isArray(data)) {
+      data.user_id = data.userId || 0;
+      data = [data];
     }
-    this.forceRender();
+
+    messageItems = data
+      .map((msg: TypeMessage) => {
+        const user = state.users.find((user) => user.id === msg.user_id);
+
+        return {
+          ...msg,
+          avatar: urlAvatar(user?.avatar || null),
+          name: user?.display_name || user?.first_name || '',
+          me: user?.id === state.userId,
+        };
+      })
+      .reverse();
+
+    state.messages = [...state.messages, ...messageItems];
+
+    const messageList = new MessageList({
+      messageItems: state.messages,
+    });
+
+    this.children.messageList = messageList;
+    this.props.messageItems = state.messages;
+
+    this.setLastMessage(messageItems[messageItems.length - 1]);
+  }
+
+  public setLastMessage(message: PropsMessageItem | undefined): void {
+    const currentChatItem = this.children.chatList.children.chatItems.filter(
+      (chat: ChatItem) => {
+        return chat.props.id === state.selectChatId;
+      },
+    )[0];
+
+    currentChatItem.props = merge(currentChatItem.props, {
+      content: message?.content,
+      time: message?.time,
+    });
   }
 
   public initEventSendMessage() {
@@ -360,6 +458,13 @@ export class ChatPage extends Component<PropsChatPage> {
       if (msg) {
         messageService.sendMessage(msg);
         fieldMessage.props.initValue = '';
+      }
+    });
+
+    this.$element!.addEventListener('keyup', (e: KeyboardEvent) => {
+      if (e.code === 'Enter') {
+        e.preventDefault();
+        $buttonSendMessage.click();
       }
     });
   }
@@ -375,7 +480,17 @@ export class ChatPage extends Component<PropsChatPage> {
     this.initEventSendMessage();
   }
 
-  public updatedHandler() {}
+  public updatedHandler() {
+    if (this.$element !== null) {
+      const $containerMessageList = this.$element.querySelector(
+        '.chat_messages',
+      );
+      if ($containerMessageList !== null) {
+        $containerMessageList.scrollTop = $containerMessageList.scrollHeight;
+      }
+    }
+    this.children.fieldMessage.$input.focus();
+  }
 
   public beforeUpdateHandler() {
     return true;

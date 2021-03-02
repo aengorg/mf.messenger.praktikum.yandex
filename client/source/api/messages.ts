@@ -12,12 +12,17 @@ export class ApiMessages {
     this.messageHandler = () => {};
   }
 
-  public connect(chanel: string): void {
-    this.ws.open(chanel);
-    if (this.ws.socket !== null) {
-      this.ws.socket.addEventListener('open', this.openHandler);
-      this.ws.socket.addEventListener('message', this.messageHandler);
-    }
+  public connect(chanel: string) {
+    return new Promise((res) => {
+      this.ws.open(chanel);
+      if (this.ws.socket !== null) {
+        this.ws.socket.addEventListener('open', this.openHandler);
+        this.ws.socket.addEventListener('message', this.messageHandler);
+        this.ws.socket.addEventListener('close', this.closeHandler);
+        this.ws.socket.addEventListener('error', this.errorHandler);
+      }
+      res(chanel);
+    });
   }
 
   public close(): void {
@@ -32,6 +37,14 @@ export class ApiMessages {
     }
   }
 
+  public getHistory(offset: number = 0): void {
+    if (this.ws.socket !== null) {
+      this.ws.socket.send(
+        JSON.stringify({ content: String(offset), type: 'get old' }),
+      );
+    }
+  }
+
   public initEventOpen(openHandler: (e?: Event) => void) {
     this.openHandler = openHandler;
   }
@@ -39,18 +52,13 @@ export class ApiMessages {
   public initEventMessage(messageHandler: (e?: MessageEvent) => void) {
     this.messageHandler = messageHandler;
   }
+
+  public closeHandler(e: CloseEvent) {
+    if (e.wasClean) console.log('Соединение закрыто чисто');
+    else console.log('Обрыв соединения');
+  }
+
+  public errorHandler(e: Event) {
+    console.error('Ошибка', e);
+  }
 }
-
-// socket.addEventListener('close', event => {
-//   if (event.wasClean) {
-//       console.log('Соединение закрыто чисто');
-//   } else {
-//       console.log('Обрыв соединения');
-//   }
-
-//   console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-// });
-
-// socket.addEventListener('error', event => {
-//   console.log('Ошибка', event.message);
-// });

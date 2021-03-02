@@ -12,7 +12,16 @@ export class MessageService {
     this.apiMessages = new ApiMessages();
   }
 
-  public connect(userId: number, chatId: number) {
+  public connect(
+    userId: number,
+    chatId: number,
+    callbacks: {
+      message: (data: any) => void;
+      connect: (user?: string) => void;
+      error: (error?: string) => void;
+      open: () => void;
+    },
+  ) {
     return new Promise((resolve, reject) => {
       this.apiChat
         .getToken(chatId)
@@ -21,21 +30,29 @@ export class MessageService {
           const chanel = `/${userId}/${chatId}/${data.token}`;
 
           this.apiMessages.initEventMessage((e: any) => {
-            const { data } = e;
-            if (data.type === 'error') {
-              console.log('Ошибка в ответе');
+            let { data } = e;
+            if (data.type !== 'error') {
+              data = JSON.parse(data);
+              switch (data.type) {
+                case 'user connected':
+                  callbacks.connect(data.content);
+                  break;
+
+                default:
+                  callbacks.message(data);
+                  break;
+              }
             } else {
-              console.log(data);
+              callbacks.error(t['errorWS']);
             }
           });
 
           this.apiMessages.initEventOpen(() => {
-            console.log('Соединение открыто');
+            callbacks.open();
+            resolve(data);
           });
 
           this.apiMessages.connect(chanel);
-
-          resolve(data);
         })
         .catch((error) => {
           console.log(error);
@@ -49,6 +66,10 @@ export class MessageService {
       content: message,
       type: 'message',
     });
+  }
+
+  public getHistory(count: number = 0) {
+    return this.apiMessages.getHistory(count);
   }
 
   public close() {

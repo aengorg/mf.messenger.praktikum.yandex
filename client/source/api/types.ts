@@ -116,3 +116,13 @@ export type TypeChatUsersResponse = {
 }[];
 
 export type TypeUserId = { id: number };
+
+export type TypeMessage = {
+  id: number;
+  userId?: number; // проблемы на бэке
+  user_id: number;
+  chat_id: number;
+  content: string;
+  time: string;
+  type?: string;
+};

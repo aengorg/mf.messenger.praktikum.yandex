@@ -8,35 +8,10 @@ import { Link } from '../../components/link/index';
 import { Field } from '../../components/field/index';
 import { Button } from '../../components/button/index';
 import { Avatar } from '../../components/avatar/index';
-import { MessageList } from '../../components/Chat/MessageList/index';
-
-import { messageService } from '../../services/messages';
 
 export class Sandbox extends Component<PropsComponentEmpty> {
   constructor(props = {}) {
     super(props, {
-      messageList: new MessageList({
-        messageItems: [
-          // {
-          //   avatar: {},
-          //   date: 'string',
-          //   content: 'string',
-          //   badge: 5,
-          // },
-          // {
-          //   avatar: {},
-          //   date: 'string',
-          //   content: 'string',
-          //   badge: 5,
-          // },
-          // {
-          //   avatar: {},
-          //   date: 'string',
-          //   content: 'string',
-          //   badge: 5,
-          // },
-        ],
-      }),
       // * Link
       link: new Link({
         url: './',
@@ -98,14 +73,7 @@ export class Sandbox extends Component<PropsComponentEmpty> {
 
   public beforeCreateHandler() {}
 
-  public createdHandler() {
-    this.children.button.$element.addEventListener('click', () => {
-      messageService.connect(9326, 189);
-    });
-    this.children.buttonPrimary.$element.addEventListener('click', () => {
-      messageService.sendMessage(this.children.field.$input.value);
-    });
-  }
+  public createdHandler() {}
 
   public updatedHandler() {}
 

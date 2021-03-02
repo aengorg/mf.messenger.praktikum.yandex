@@ -42,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2|ico)$/,
         type: 'asset/resource',
       },
     ],
@@ -74,6 +74,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       inject: 'body',
+      favicon: 'public/favicon.ico',
     }),
   ],
 };

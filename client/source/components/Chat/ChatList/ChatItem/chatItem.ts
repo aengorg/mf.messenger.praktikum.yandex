@@ -1,15 +1,19 @@
 import { Component, PropsComponent } from '../../../../core/Component/index';
 import template from './template.hbs';
 
+import { LANG } from '../../../../constants/index';
+
 import { Avatar, PropsAvatar } from '../../../avatar/index';
 
 import { joinClasses } from '../../../../utils/joinClasses/index';
+import { formatData } from '../../../../utils/formatDate/index';
+
 export interface PropsChatItem extends PropsComponent {
   id: number;
   avatar: PropsAvatar;
   name: string;
   selectChatId?: number;
-  date?: string;
+  time?: string;
   content?: string;
   badge?: number;
 }
@@ -33,6 +37,7 @@ export class ChatItem extends Component<PropsChatItem> {
 
   public getContext() {
     return {
+      time: formatData(this.props.time, LANG),
       styleClasses: joinClasses([
         'chat-item',
         this.props?.selectChatId === this.props.id ? `chat-item--select` : '',

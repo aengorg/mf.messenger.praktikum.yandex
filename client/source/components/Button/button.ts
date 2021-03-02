@@ -55,6 +55,7 @@ export class Button extends Component<PropsButton> {
         this.props?.danger ? `button--danger` : '',
         this.props?.size ? `button--size-${this.props.size}` : '',
         this.props?.icon ? `button--icon button--icon-${this.props.icon}` : '',
+        this.props?.className ? this.props?.className : '',
       ]),
     };
   }

@@ -2,6 +2,8 @@ export const TAG_SLOT: string = 'component-slot';
 
 export const LS: string = 'v1';
 
+export const LANG: string = 'en';
+
 export const WS: string = 'wss';
 export const HTTP: string = 'https';
 export const HOST: string = '://ya-praktikum.tech';

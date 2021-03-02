@@ -1,4 +1,5 @@
 export const en: { [k: string]: string } = {
+  undefined: '',
   // ? text
   serverError: 'Server error',
   pageNotFound: 'Page not found',
@@ -12,10 +13,11 @@ export const en: { [k: string]: string } = {
   textAddFirstChat: 'Add your first chat',
   createChat: 'Create new chat',
   textSelectChat: 'Select chat',
-  textSendFirstMsg: 'Напишите первое сообщение',
-  addUserChat: 'Добавить в чат',
-  usersChat: 'Участники чата',
-  listEmpty: 'Список пуст',
+  textSendFirstMsg: 'Send first message',
+  addUserChat: 'Add user to chat',
+  usersChat: 'Members',
+  listEmpty: 'Empty list',
+  onlineInChat: 'online in chat',
 
   // ? button
   cancel: 'Cancel',
@@ -52,8 +54,8 @@ export const en: { [k: string]: string } = {
 
   // ? Responses
   ok: 'Ok',
-  successAddUserChat: 'Пользователь успешно добавлен',
-  successDeleteUserChat: 'Пользователь успешно удален',
+  successAddUserChat: 'Success added user',
+  successDeleteUserChat: 'Success delete user',
   'user already in system': 'User already in system',
   'Login or password is incorrect': 'Login or password is incorrect',
   'Cookie is not valid': 'Error #001',
@@ -65,7 +67,8 @@ export const en: { [k: string]: string } = {
   errorPasswordIsIncorrect: 'Old password is incorrect',
   errorDefaultForm: 'Ошибка в форме, проверьте все поля',
   errorUploadAvatar: 'Error upload avatar #002',
-  userNotFound: 'Пользователь не найден',
-  errorNotFound: 'Не найден',
+  userNotFound: 'User not found',
+  errorNotFound: 'Not found',
   error500: 'Error #003',
+  errorWS: 'Error WS',
 };

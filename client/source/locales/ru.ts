@@ -1,4 +1,5 @@
 export const ru: { [k: string]: string } = {
+  undefined: '',
   // ? text
   serverError: 'Ошибка сервера',
   pageNotFound: 'Страница не найдена',
@@ -16,6 +17,7 @@ export const ru: { [k: string]: string } = {
   addUserChat: 'Добавить в чат',
   usersChat: 'Участники чата',
   listEmpty: 'Список пуст',
+  onlineInChat: 'в чате',
 
   // ? button
   cancel: 'Отмена',
@@ -68,4 +70,5 @@ export const ru: { [k: string]: string } = {
   userNotFound: 'Пользователь не найден',
   errorNotFound: 'Не найден',
   error500: 'Error #003',
+  errorWS: 'Error WS',
 };

@@ -1,5 +1,11 @@
-import { ru } from './ru';
-export let t = ru;
+import { LANG } from '../constants/index';
 
-// import { en } from './en';
-// export let t = en;
+import { ru } from './ru';
+import { en } from './en';
+
+const locales: { [k: string]: { [k: string]: string } } = {
+  ru: ru,
+  en: en,
+};
+
+export let t = locales[LANG];

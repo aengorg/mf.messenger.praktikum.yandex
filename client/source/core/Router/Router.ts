@@ -50,7 +50,7 @@ export class Router {
   }
 
   private handlePathChange(pathname: string): void {
-    let route = this.getRoute(pathname);
+    const route = this.getRoute(pathname);
     if (route == null) {
       this.go(this.defaultPathname);
       return;

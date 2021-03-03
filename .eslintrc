@@ -1,8 +1,23 @@
 {
+  "parser": "@typescript-eslint/parser",
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "mocha": true
   },
-  "plugins": ["prettier"],
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier"]
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    // "plugin:@typescript-eslint/eslint-recommended",
+    // "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "react": "off",
+    "no-unused-vars": "off"
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  }
 }

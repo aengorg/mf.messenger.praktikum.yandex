@@ -26,12 +26,12 @@ export class ApiChat {
     return this.fetch.delete(`${API_CHAT}/users`, { data });
   }
 
-  public getChats(offset: number = 0, limit: number = 99, title?: string) {
+  public getChats(offset = 0, limit = 99, title?: string) {
     return this.fetch.get(`${API_CHAT}`, {
       getParam: {
-        offset: offset,
-        limit: limit,
-        title: title,
+        offset,
+        limit,
+        title,
       },
     });
   }

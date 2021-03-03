@@ -1,4 +1,4 @@
-export function formatTime(UTC: string, locales: string = 'ru'): string {
+export function formatTime(UTC: string, locales = 'ru'): string {
   const date = new Date(UTC);
   return date.toLocaleTimeString(locales, {
     hour: 'numeric',
@@ -6,12 +6,12 @@ export function formatTime(UTC: string, locales: string = 'ru'): string {
   });
 }
 
-export function formatDay(UTC: string, locales: string = 'ru'): string {
+export function formatDay(UTC: string, locales = 'ru'): string {
   const date = new Date(UTC);
   return date.toLocaleDateString(locales);
 }
 
-export function formatData(UTC: string = '', locales: string = 'ru') {
+export function formatData(UTC = '', locales = 'ru') {
   if (!UTC) return;
 
   const currentTime = Date.now();

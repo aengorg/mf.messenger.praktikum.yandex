@@ -4,8 +4,8 @@ import { ru } from './ru';
 import { en } from './en';
 
 const locales: { [k: string]: { [k: string]: string } } = {
-  ru: ru,
-  en: en,
+  ru,
+  en,
 };
 
-export let t = locales[LANG];
+export const t = locales[LANG];

@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint source/**/*.ts",
+    "lint:fix": "eslint source/**/*.ts --fix",
     "test": "mocha",
     "test:coverage": "nyc mocha",
     "test:dev": "mocha --w",

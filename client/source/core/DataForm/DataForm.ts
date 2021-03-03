@@ -1,7 +1,7 @@
 type TCallback = (e: Event) => void;
 type TNames = string[];
 interface IData {
-  [input: string]: FormDataEntryValue;
+  [input: string]: string | File;
 }
 interface IInputs {
   [id: string]: Element;
@@ -57,7 +57,7 @@ export class DataForm {
     const data: IData = {};
     if (this.$form) {
       const form = new FormData(this.$form);
-      for (let [key, value] of form.entries()) data[key] = value;
+      for (const [key, value] of form.entries()) data[key] = value;
     }
     return data;
   }

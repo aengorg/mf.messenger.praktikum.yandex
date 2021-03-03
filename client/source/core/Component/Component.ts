@@ -11,7 +11,7 @@ export interface PropsComponent {
   className?: string;
 }
 
-export interface PropsComponentEmpty extends PropsComponent {}
+export type PropsComponentEmpty = PropsComponent;
 
 export interface ComponentFactory<TypeProps> {
   new (props: TypeProps, children?: Children): Component<TypeProps>;

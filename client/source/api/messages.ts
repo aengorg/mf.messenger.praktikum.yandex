@@ -3,13 +3,17 @@ import { WSTransport } from '../core/Transport/index';
 
 export class ApiMessages {
   private ws: WSTransport;
-  private openHandler: (e?: Event) => void;
-  private messageHandler: (e?: MessageEvent) => void;
+
+  private openHandler: () => void;
+
+  private messageHandler: () => void;
 
   constructor() {
     this.ws = new WSTransport(API_MESSAGES);
     this.openHandler = () => {};
-    this.messageHandler = () => {};
+    this.messageHandler = (e?: any) => {
+      return e;
+    };
   }
 
   public connect(chanel: string) {
@@ -37,7 +41,7 @@ export class ApiMessages {
     }
   }
 
-  public getHistory(offset: number = 0): void {
+  public getHistory(offset = 0): void {
     if (this.ws.socket !== null) {
       this.ws.socket.send(
         JSON.stringify({ content: String(offset), type: 'get old' }),
@@ -45,13 +49,15 @@ export class ApiMessages {
     }
   }
 
-  public initEventOpen(openHandler: (e?: Event) => void) {
+  public initEventOpen(openHandler: () => void) {
     this.openHandler = openHandler;
   }
 
-  public initEventMessage(messageHandler: (e?: MessageEvent) => void) {
+  /* eslint-disable */
+  public initEventMessage(messageHandler: (e?: any) => void) {
     this.messageHandler = messageHandler;
   }
+  /* eslint-enable */
 
   public closeHandler(e: CloseEvent) {
     if (e.wasClean) console.log('Соединение закрыто чисто');

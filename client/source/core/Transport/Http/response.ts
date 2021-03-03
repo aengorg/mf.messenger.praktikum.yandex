@@ -4,6 +4,7 @@ export function response(xhr: Promise<XMLHttpRequest>) {
       resolve: (value: Promise<XMLHttpRequest>) => void,
       reject: (error: string) => void,
     ) => {
+      let errorStr = '';
       xhr
         .then((res) => {
           switch (res.status) {
@@ -21,7 +22,7 @@ export function response(xhr: Promise<XMLHttpRequest>) {
               reject('errorNotFound');
               break;
             default:
-              const errorStr = JSON.parse(res.response).reason;
+              errorStr = JSON.parse(res.response).reason;
               reject(errorStr);
               break;
           }

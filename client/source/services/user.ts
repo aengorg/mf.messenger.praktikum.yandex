@@ -21,7 +21,7 @@ export class UserService {
       this.api
         .changeProfile(data)
         .then(() => {
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch((error) => {
           reject(t[error]);
@@ -34,10 +34,10 @@ export class UserService {
       this.api
         .changePassword(data)
         .then(() => {
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch(() => {
-          reject(t['errorPasswordIsIncorrect']);
+          reject(t.errorPasswordIsIncorrect);
         });
     });
   }
@@ -47,10 +47,10 @@ export class UserService {
       this.api
         .changeAvatar(data)
         .then(() => {
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch(() => {
-          reject(t['errorUploadAvatar']);
+          reject(t.errorUploadAvatar);
         });
     });
   }
@@ -61,7 +61,7 @@ export class UserService {
         .searchUser(data)
         .then((res) => {
           const data: TypeUserResponse[] = JSON.parse(res.response);
-          if (!data.length) reject(t['userNotFound']);
+          if (!data.length) reject(t.userNotFound);
           resolve(data);
         })
         .catch((error) => {

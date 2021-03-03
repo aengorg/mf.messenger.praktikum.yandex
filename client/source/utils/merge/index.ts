@@ -7,7 +7,7 @@ function isObject(v: any): boolean {
 }
 
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
-  for (var p in rhs) {
+  for (const p in rhs) {
     try {
       if (isObject(rhs[p])) {
         lhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);

@@ -31,10 +31,6 @@ export interface PropsButton extends PropsComponent {
 }
 
 export class Button extends Component<PropsButton> {
-  constructor(props: PropsButton) {
-    super(props);
-  }
-
   public beforeCreateHandler() {}
 
   public createdHandler() {}

@@ -75,7 +75,7 @@ export abstract class AbstractForm<PropsFormComponent> extends Component<any> {
       return child instanceof Field;
     });
 
-    let errors = inputs.map((input) => {
+    const errors = inputs.map((input) => {
       return input.validationHandler();
     });
 

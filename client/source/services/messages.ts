@@ -5,6 +5,7 @@ import { t } from '../locales/index';
 
 export class MessageService {
   apiChat: ApiChat;
+
   apiMessages: ApiMessages;
 
   constructor() {
@@ -12,16 +13,7 @@ export class MessageService {
     this.apiMessages = new ApiMessages();
   }
 
-  public connect(
-    userId: number,
-    chatId: number,
-    callbacks: {
-      message: (data: any) => void;
-      connect: (user?: string) => void;
-      error: (error?: string) => void;
-      open: () => void;
-    },
-  ) {
+  public connect(userId: number, chatId: number, callbacks: any) {
     return new Promise((resolve, reject) => {
       this.apiChat
         .getToken(chatId)
@@ -43,7 +35,7 @@ export class MessageService {
                   break;
               }
             } else {
-              callbacks.error(t['errorWS']);
+              callbacks.error(t.errorWS);
             }
           });
 
@@ -68,7 +60,7 @@ export class MessageService {
     });
   }
 
-  public getHistory(count: number = 0) {
+  public getHistory(count = 0) {
     return this.apiMessages.getHistory(count);
   }
 

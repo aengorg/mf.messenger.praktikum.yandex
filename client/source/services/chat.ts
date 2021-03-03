@@ -9,6 +9,7 @@ import {
 } from '../api/types';
 import { t } from '../locales/index';
 import { urlAvatar } from '../utils/urlAvatar/index';
+
 export class ChatService {
   api: ApiChat;
 
@@ -21,7 +22,7 @@ export class ChatService {
       this.api
         .addChat(data)
         .then(() => {
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch((error) => {
           reject(t[error]);
@@ -34,7 +35,7 @@ export class ChatService {
       this.api
         .addUserChat(data)
         .then(() => {
-          resolve({ message: t['successAddUserChat'] });
+          resolve({ message: t.successAddUserChat });
         })
         .catch((error) => {
           reject(t[error]);
@@ -47,7 +48,7 @@ export class ChatService {
       this.api
         .deleteUserChat(data)
         .then(() => {
-          resolve({ message: t['successDeleteUserChat'] });
+          resolve({ message: t.successDeleteUserChat });
         })
         .catch((error) => {
           reject(t[error]);
@@ -60,7 +61,7 @@ export class ChatService {
       this.api
         .getChatUsers(idChat)
         .then((res) => {
-          let users: TypeChatUsersResponse = JSON.parse(res.response);
+          const users: TypeChatUsersResponse = JSON.parse(res.response);
           resolve(users);
         })
         .catch((error) => {

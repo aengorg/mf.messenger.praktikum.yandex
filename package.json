@@ -12,15 +12,25 @@
     "client:install": "cd client && npm install",
     "client:dev": "cd client && npm run dev",
     "client:build": "cd client && npm run build",
-    "postinstall": "npm run client:install && npm run server:install"
+    "client:lint": "cd client && npm run lint",
+    "postinstall": "npm run client:install && npm run server:install",
+    "pre-commit": "npm run client:lint"
   },
   "author": "Findoss",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
     "concurrently": "^5.3.0",
     "eslint": "^7.16.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
-    "prettier": "^2.2.1"
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "husky": "^5.1.3",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.2"
   }
 }

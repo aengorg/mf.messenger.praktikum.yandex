@@ -1,6 +1,6 @@
 export function htmlToElement(
   html: string,
-  tagName: string = 'component',
+  tagName = 'component',
 ): HTMLElement {
   const template = document.createElement(tagName);
   template.innerHTML = html;

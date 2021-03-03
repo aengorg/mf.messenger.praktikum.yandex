@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import { TAG_SLOT } from '../../constants/index';
 
-export function compileTemplate(templateString: string = '') {
+export function compileTemplate(templateString = '') {
   return Handlebars.compile(templateString);
 }
 

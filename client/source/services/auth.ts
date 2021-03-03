@@ -23,7 +23,7 @@ export class AuthService {
         .signIn(data)
         .then(() => {
           localStorage.setItem(`${LS}-auth`, 'true');
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch((error) => {
           reject(t[error]);
@@ -50,7 +50,7 @@ export class AuthService {
       this.api
         .logout()
         .then(() => {
-          resolve({ message: t['ok'] });
+          resolve({ message: t.ok });
         })
         .catch((error) => {
           reject(t[error]);

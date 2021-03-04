@@ -53,7 +53,7 @@ export abstract class Component<TypeProps extends PropsComponent> {
   }
 
   private makeProxy(props: TypeProps): TypeProps {
-    const handler = {
+    const handler: any = {
       set: (target: TypeProps, prop: keyof TypeProps, value: any): boolean => {
         const oldTarget = { ...target };
         target[prop] = value;

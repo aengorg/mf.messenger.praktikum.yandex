@@ -1,7 +1,10 @@
-FROM node:14
+FROM node:14.15.4-alpine
 
+WORKDIR /app
+
+COPY package.json ./
+RUN npm install
 COPY . .
-RUN npm install && npm run build
 
-EXPOSE 80
-CMD node server.js
+RUN npm build
+CMD ["node", "server.js"]

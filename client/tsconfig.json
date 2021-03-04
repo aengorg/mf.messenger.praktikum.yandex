@@ -1,6 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "outDir": "./dist-ts",
     "module": "es2015",
     "target": "es2018",
     "strict": true,
@@ -18,5 +19,5 @@
   },
   "types": ["handlebars"],
   "include": ["source/**/*", "node_modules/handlebars/types"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "test/babel-registr.js"]
 }

@@ -6,7 +6,7 @@ import { LANG } from '../../../../constants/index';
 import { Avatar } from '../../../avatar/index';
 
 import { formatData } from '../../../../utils/formatDate/index';
-import { joinClasses } from '../../../../utils/joinClasses';
+import { joinClasses } from '../../../../utils/joinClasses/index';
 
 export interface PropsMessageItem extends PropsComponent {
   user_id?: number;

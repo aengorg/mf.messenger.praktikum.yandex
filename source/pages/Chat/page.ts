@@ -45,7 +45,7 @@ import { messageService } from '../../services/messages';
 
 import { urlAvatar } from '../../utils/urlAvatar/index';
 import { debounce } from '../../utils/debounce/index';
-import { merge } from '../../utils/merge';
+import { merge } from '../../utils/merge/index';
 
 type TypeState = {
   users: TypeChatUsersResponse;

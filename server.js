@@ -5,7 +5,8 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
-const { PATH_STATIC, PORT } = process.env;
+const PORT = 80;
+const PATH_STATIC = 'dist';
 const HOST_API = 'https://ya-praktikum.tech';
 
 app.use(

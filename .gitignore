@@ -2,7 +2,7 @@ tmp
 node_modules
 .nyc_output
 
-client/**/dist
+client/**/dist*
 
 client/source/vendor/**/*
 ! client/source/vendor/handlebars.min.js

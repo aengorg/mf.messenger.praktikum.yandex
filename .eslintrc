@@ -7,13 +7,7 @@
     "node": true
   },
   "plugins": ["@typescript-eslint", "prettier"],
-  "extends": [
-    "eslint:recommended",
-    // "plugin:@typescript-eslint/eslint-recommended",
-    // "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
   "rules": {
     "react": "off",
     "no-unused-vars": "off"

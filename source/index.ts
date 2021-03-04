@@ -1,3 +1,5 @@
+import './styles/root.postcss';
+
 import { PropsComponentEmpty } from './core/Component/index';
 import {
   ErrorPage,

@@ -5,15 +5,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: {
-    'bundle.js': './source/index.ts',
-    style: './source/styles/root.postcss',
+  entry: './source/index.ts',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.css', '.scss', '.html'],
+    alias: {
+      handlebars: 'handlebars/dist/handlebars',
+    },
   },
   output: {
-    publicPath: '',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: '[chunkhash]-[name]',
-    assetModuleFilename: 'assets/[hash][ext][query]',
   },
   module: {
     rules: [
@@ -47,34 +48,17 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.ts', '.js', '.json'],
-    alias: {
-      handlebars: 'handlebars/dist/handlebars',
-    },
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors.js',
-          chunks: 'all',
-        },
-      },
-    },
-  },
-  devServer: {
-    compress: true,
-    port: 9000,
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
-      inject: 'body',
       favicon: 'public/favicon.ico',
+      inject: 'body',
     }),
   ],
+  devServer: {
+    compress: true,
+    port: 9000,
+  },
 };

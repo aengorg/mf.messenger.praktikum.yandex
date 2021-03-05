@@ -1,6 +1,6 @@
-# [Messenger](https://dashboard.heroku.com/apps/obscure-journey-22389)
+# [Messenger](https://obscure-journey-22389.herokuapp.com/)
 
-[https://dashboard.heroku.com/apps/obscure-journey-22389](https://dashboard.heroku.com/apps/obscure-journey-22389)
+[https://obscure-journey-22389.herokuapp.com/](https://obscure-journey-22389.herokuapp.com/)
 
 ## Замечания для ревью
 
@@ -17,8 +17,6 @@
 
 ## Помочь проекту можно, но не обязательно
 
-Публикация на Netlify
-
 Установка для разработки
 
 ```
@@ -29,14 +27,23 @@ cd mf.messenger.praktikum.yandex/
 npm install
 ```
 
-Запуск
+Запуск для разработки
 
 ```
-npm run client:dev
+npm run dev
 ```
 
 ```
 open http://localhost:9000
+```
+
+Публикация на Heroku
+
+```
+heroku login
+heroku container:login
+heroku container:push web --app obscure-journey-22389
+heroku container:release web --app obscure-journey-22389
 ```
 
 ## История
@@ -46,7 +53,7 @@ open http://localhost:9000
 [+] Настройте Webpack в вашем проекте.  
 [+] Настройте loader для работы с TypeScript.  
 [+] Настройте loader для работы с вашим препроцессором и шаблонизатором.  
-[-] Настройте Docker-сборку статического приложения.  
+[+] Настройте Docker-сборку статического приложения.  
 [+] Добавьте ESLint.  
 [-] Настройте precommit на проект.  
 [+] Проведите аудит пакетов, обновите их и приведите в актуальное и безопасное состояние.  

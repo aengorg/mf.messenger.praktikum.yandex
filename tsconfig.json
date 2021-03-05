@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es2019",
+    "module": "ESNext",
+    "strict": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "allowUmdGlobalAccess": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["source/**/*.ts"],
+  "exclude": ["node_modules", "test", "**/*.test.ts"]
+}

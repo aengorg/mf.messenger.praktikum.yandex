@@ -1,0 +1,53 @@
+@import url('./formError/style.postcss');
+
+.form {
+  padding: 20px;
+
+  &--page {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    background-color: var(--color-gray-6);
+    border-radius: var(--border-radius);
+  }
+
+  &--error .form_wrapper-inputs {
+    border: 1px solid var(--color-red);
+    border-radius: var(--border-radius);
+  }
+
+  &--size {
+    &-l {
+      max-width: 430px;
+    }
+  }
+}
+
+.form_wrapper-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  max-width: 220px;
+  padding: 16px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+}
+
+.form_buttons-group {
+  width: 100%;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-gray-5);
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+
+  &--row {
+    flex-direction: column;
+    justify-content: center;
+  }
+}

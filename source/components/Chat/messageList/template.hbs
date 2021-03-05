@@ -1,0 +1,16 @@
+<ul >
+  {{#each data.messageItems }}
+    {{SLOT 'messageItems' @index }}
+  {{else}}
+    {{#if data.search }}
+      <li 
+        class="bg bg--img-searching bg--size-l bg--pos-tc" 
+        style="height: 400px;">
+      </li>
+    {{/if}}
+    <li 
+      class="bg bg--img-message-sent bg--size-l bg--pos-tc" 
+      style="height: 400px;">
+    </li>
+  {{/each}} 
+</ul>

@@ -1,0 +1,90 @@
+
+<div class="app">
+  {{SLOT 'alert' }}
+  {{SLOT 'modalCreateChat' }}
+  {{SLOT 'modalAddChatUser' }}
+  {{SLOT 'modalListUser' }}
+  <div class="chat">
+{{!-- chat_list --}}
+    <div class="chat_list chat-list">
+
+{{!-- chat-list_top --}}
+      <header class="chat-list_top">
+        {{#if data.chatItems }}
+          {{SLOT 'fieldSearchUser' }}
+        {{/if}}
+        <div class="chat-list_actions">
+          {{SLOT 'buttonCreateChat' }}
+        </div>
+      </header>
+
+{{!-- chat-list_mid --}}
+      {{SLOT 'chatList' }}
+
+{{!-- chat-list_bot --}}
+      <footer class="chat-list_bot">
+        {{SLOT 'linkProfile' }}
+      </footer>
+    </div>
+
+{{!-- chat_area --}}
+    <div class="chat_area">
+
+{{!-- chat_top --}}
+      <header class="chat_top-bar top-bar">
+        <div class="top-bar_avatar">
+          {{SLOT 'userAvatar' }}
+        </div>
+        <div class="top-bar_chat-name">
+          {{ data.userName }}
+        </div>
+        {{#if state.selectChatId }}
+          <div class="top-bar_actions">
+            {{SLOT 'fieldSearchMessage' }}
+            {{SLOT 'buttonChatAddUser' }}
+            {{SLOT 'buttonChatSettingUsers' }}
+            {{SLOT 'buttonChatSetting' }}
+          </div>
+        {{/if}}
+      </header>
+
+{{!-- chat_messages --}}
+      <main class="chat_messages">
+        {{#unless data.chatItems }}
+          <div class="bg bg--img-solo bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+        {{#unless state.selectChatId }}
+          <div class="bg bg--img-dou bg--size-l bg--pos-tc" style="height: 100%;">
+            <div class="text-center-page">
+              {{ state.textWarningChat }}
+            </div>
+          </div>
+        {{/unless}}
+        {{#if state.selectChatId }}
+          {{SLOT 'messageList' }}
+        {{/if}}
+      </main>
+
+{{!-- chat_bot --}}
+      <footer class="chat_bot-bar">
+        {{#if state.selectChatId }}
+          <div class="bot-bar_actions">
+            {{SLOT 'buttonSendPhoto' }}
+            {{SLOT 'buttonSendFile' }}
+            {{SLOT 'buttonSendLocation' }}
+            {{SLOT 'buttonSendEmoji' }}
+          </div>
+          {{SLOT 'fieldMessage' }}
+          <div class="bot-bar_actions">
+            {{SLOT 'buttonSendMessage' }}
+          </div>
+        {{/if}}
+      </footer>
+    </div>
+
+  </div>
+</div>

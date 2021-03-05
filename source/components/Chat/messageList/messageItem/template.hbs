@@ -1,0 +1,14 @@
+<div class="message">
+  <div class="message_top">
+    <div class="message_avatar">
+      {{SLOT 'avatar' }}
+    </div>
+    <div class="{{ state.styleUserName }}">{{ data.name }}</div>
+    <div class="message_date">{{ state.time }}</div>
+  </div>
+  <div class="message_bot">
+    <div class="message_content">
+      {{ data.content }}
+    </div>
+  </div>
+</div>

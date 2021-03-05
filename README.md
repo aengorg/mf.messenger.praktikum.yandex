@@ -1,6 +1,6 @@
-# [Messenger](https://messenger-1.netlify.app/index.html#login) [![Netlify Status](https://api.netlify.com/api/v1/badges/f8219fec-4561-4017-9c56-946bb0ddbfb1/deploy-status)](https://app.netlify.com/sites/dreamy-noether-285e69/deploys)
+# [Messenger](https://dashboard.heroku.com/apps/obscure-journey-22389)
 
-[https://messenger-1.netlify.app/index.html#login](https://messenger-1.netlify.app/index.html#login)
+[https://dashboard.heroku.com/apps/obscure-journey-22389](https://dashboard.heroku.com/apps/obscure-journey-22389)
 
 ## Замечания для ревью
 
@@ -18,20 +18,6 @@
 ## Помочь проекту можно, но не обязательно
 
 Публикация на Netlify
-
-```
-npm run client:build
-git add .
-git commit -m 'build'
-git push
-git checkout main
-git merge dev
-npm version patch
-git push
-git checkout deploy
-git merge main
-git push
-```
 
 Установка для разработки
 
